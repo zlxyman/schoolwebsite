@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fasilitas Kampus - Sekolah Terpadu Sedaya Bintang</title>
+    
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            primary: '#1d4486', // Navy
+                            yellow: '#ffcb05',  // Secondary Yellow
+                            red: '#d2232a',     // Secondary Red
+                            light: '#ffffff',
+                            gray: '#f9fafb',    // Clean light gray for backgrounds
+                            dark: '#0f2447',
+                            muted: '#a4b4cb'
+                        }
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '2.5rem',
+                        '6xl': '3rem',
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(29,68,134,0.05)',
+                        'glow-primary': '0 0 30px rgba(29,68,134,0.3)',
+                        'glow-yellow': '0 0 30px rgba(255,203,5,0.4)',
+                        'floating': '0 25px 50px -12px rgba(0,0,0,0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Memanggil CSS Global -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- Menambahkan data-page="programs" agar menu navbar "Programs" otomatis menyala -->
+<body id="top" data-page="programs" class="bg-brand-gray font-sans text-gray-800 antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
+
+    <!-- Navbar & Mobile Menu akan muncul di sini secara otomatis -->
+    <div id="app-navbar"></div>
+
+    <!-- KONTEN UTAMA HALAMAN -->
+    <main>
+        <!-- SECTION 1: HERO BANNER (The Gateway) -->
+        <section class="relative pt-10 pb-16 lg:pt-20 lg:pb-32 overflow-hidden bg-brand-gray/50 flex flex-col justify-center min-h-[500px] lg:min-h-[600px]">
+            <!-- Playful Background Blobs -->
+            <div class="shape-blob bg-brand-primary w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] top-[-100px] left-[-100px] opacity-10"></div>
+            <div class="shape-blob bg-brand-yellow w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bottom-[-50px] right-[-50px] opacity-20" style="animation-delay: 2s;"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="w-full lg:w-5/12 text-center lg:text-left order-2 lg:order-1">
+                        <span class="inline-flex items-center justify-center lg:justify-start gap-2 py-1.5 px-3 sm:px-4 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-4 sm:mb-6 border border-brand-primary/20 backdrop-blur-md w-fit mx-auto lg:mx-0">
+                            <i class="fa-solid fa-building"></i> Fasilitas Kampus
+                        </span>
+                        
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.2] lg:leading-[1.15] mb-4 sm:mb-6 text-brand-primary">
+                            Lingkungan Belajar yang <span class="text-brand-yellow">Aman, Modern,</span> dan Inspiratif.
+                        </h1>
+                        
+                        <p class="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 font-medium leading-relaxed max-w-lg mx-auto lg:mx-0">
+                            Lingkungan fisik sekolah turut menstimulasi proses belajar peserta didik secara spasial.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                            <a href="#" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 sm:px-7 sm:py-4 rounded-xl shadow-md hover:shadow-glow-yellow hover:bg-brand-primary hover:text-white transition-all transform hover:-translate-y-1 text-sm">
+                                <i class="fa-solid fa-vr-cardboard"></i> Fasilitas Secara Virtual
+                            </a>
+                            <a href="#" class="btn-outline-fill inline-flex justify-center items-center gap-2 border-2 border-brand-primary text-brand-primary font-bold px-6 py-3.5 sm:px-7 sm:py-4 rounded-xl text-sm transition-all">
+                                Jadwalkan School Visit
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Visual Content (Irregular Rounded shape similar to Homepage) -->
+                    <div class="w-full lg:w-7/12 relative order-1 lg:order-2">
+                        <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[4/3] rounded-3xl sm:rounded-3xl lg:rounded-[3rem] rounded-tl-xl sm:rounded-tl-[2rem] lg:rounded-tl-[3rem] rounded-br-xl sm:rounded-br-[2rem] lg:rounded-br-[3rem] overflow-hidden shadow-2xl border-4 sm:border-8 border-white bg-gray-200">
+                            <!-- Placeholder for drone view or beautiful campus facade -->
+                            <img src="https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Lanskap Kampus Sedaya Bintang" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Floating Widget -->
+                        <div class="floating-element absolute -bottom-4 sm:-bottom-6 -left-2 sm:-left-6 glass-panel px-4 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl flex items-center gap-3 z-20">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-primary">
+                                <i class="fa-solid fa-map-location-dot text-lg sm:text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest">Alamat Kampus</div>
+                                <div class="text-xs sm:text-sm font-extrabold text-brand-primary">Summarecon Bandung</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE PHILOSOPHY OF OUR SPACE (Kenapa Kelas Kita Berbeda?) -->
+        <section class="py-12 lg:py-20 bg-white relative z-20 -mt-6 sm:-mt-10">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+                    
+                    <!-- Philo Card 1: Sirkulasi Alami -->
+                    <div class="philo-card bg-brand-gray rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-10 border border-gray-100 flex flex-col sm:flex-row gap-5 lg:gap-6 items-start">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 bg-white rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-brand-primary">
+                            <i class="fa-solid fa-wind text-2xl sm:text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Sirkulasi Udara Alami</h3>
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
+                                Ruang kelas di Sekolah Terpadu Sedaya Bintang tidak menggunakan pendingin ruangan buatan, melainkan mengandalkan sirkulasi udara alami melalui ventilasi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Philo Card 2: UKS & Medis -->
+                    <div class="philo-card bg-brand-gray rounded-2xl sm:rounded-3xl p-4 sm:p-5 lg:p-10 border border-gray-100 flex flex-col sm:flex-row gap-5 lg:gap-6 items-start">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 bg-white rounded-xl sm:rounded-2xl shadow-sm flex items-center justify-center text-brand-red">
+                            <i class="fa-solid fa-truck-medical text-2xl sm:text-3xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-primary">Unit Kesehatan Sekolah</h3>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
+                                UKS didampingi oleh perawat medis yang bekerja sama dengan Rumah Sakit Santo Borromeus di kawasan Summarecon Bandung.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: EKSPLORASI FASILITAS (The Core Interactive Gallery) -->
+        <section class="py-16 lg:py-24 bg-brand-gray relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 sm:mb-12">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3 sm:mb-4">Fasilitas Pembelajaran</h2>
+                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
+                        Setiap fasilitas dirancang untuk mendukung pendekatan pembelajaran peserta didik agar berkembang optimal.
+                    </p>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 sm:mb-14 px-2">
+                    <button onclick="filterGallery('all')" class="filter-btn active px-4 py-2 sm:px-6 sm:py-2.5 rounded-full border border-gray-200 bg-white text-gray-600 font-bold text-xs sm:text-sm">Semua Fasilitas</button>
+                    <button onclick="filterGallery('akademik')" class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 rounded-full border border-gray-200 bg-white text-gray-600 font-bold text-xs sm:text-sm">STEAM & Akademik</button>
+                    <button onclick="filterGallery('alam')" class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 rounded-full border border-gray-200 bg-white text-gray-600 font-bold text-xs sm:text-sm">Alam & Olahraga</button>
+                    <button onclick="filterGallery('kbtk')" class="filter-btn px-4 py-2 sm:px-6 sm:py-2.5 rounded-full border border-gray-200 bg-white text-gray-600 font-bold text-xs sm:text-sm">Khusus KBTK</button>
+                </div>
+
+                <!-- Masonry-like Grid -->
+                <div id="gallery-container" class="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                    
+                    <!-- Item 1: Spacelab (Akademik) -->
+                    <div class="gallery-item gallery-card group relative bg-gray-200 rounded-2xl sm:rounded-3xl aspect-square sm:aspect-[4/5] cursor-pointer" data-category="akademik" onclick="openLightbox(this)">
+                        <img src="https://images.pexels.com/photos/8197545/pexels-photo-8197545.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover" alt="Spacelab">
+                        <div class="gallery-overlay absolute inset-0 z-10 rounded-2xl sm:rounded-3xl"></div>
+                        
+                        <!-- Zoom Icon -->
+                        <div class="gallery-icon-zoom absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white z-20">
+                            <i class="fa-solid fa-magnifying-glass-plus text-xl"></i>
+                        </div>
+
+                        <div class="gallery-content absolute bottom-0 left-0 w-full p-6 z-20 text-white">
+                            <div class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-brand-yellow text-brand-primary mb-3"><i class="fa-solid fa-rocket text-sm"></i></div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-1">Spacelab</h4>
+                            <p class="text-[11px] sm:text-xs text-gray-200 opacity-90 line-clamp-2">Ruang eksplorasi bertema luar angkasa untuk mengenalkan konsep STEAM</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Roof Garden (Alam) -->
+                    <div class="gallery-item gallery-card group relative bg-gray-200 rounded-2xl sm:rounded-3xl aspect-square sm:aspect-[4/5] cursor-pointer" data-category="alam" onclick="openLightbox(this)">
+                        <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover" alt="Roof Garden">
+                        <div class="gallery-overlay absolute inset-0 z-10 rounded-2xl sm:rounded-3xl"></div>
+                        
+                        <div class="gallery-icon-zoom absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white z-20">
+                            <i class="fa-solid fa-magnifying-glass-plus text-xl"></i>
+                        </div>
+
+                        <div class="gallery-content absolute bottom-0 left-0 w-full p-6 z-20 text-white">
+                            <div class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-green-500 text-white mb-3"><i class="fa-solid fa-seedling text-sm"></i></div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-1">Roof Garden</h4>
+                            <p class="text-[11px] sm:text-xs text-gray-200 opacity-90 line-clamp-2">Taman di area atap sekolah untuk pengenalan proses alam dan perawatan tanaman secara langsung.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Lab Komputer (Akademik) -->
+                    <div class="gallery-item gallery-card group relative bg-gray-200 rounded-2xl sm:rounded-3xl aspect-square sm:aspect-[4/5] cursor-pointer" data-category="akademik" onclick="openLightbox(this)">
+                        <img src="https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover" alt="Laboratorium Komputer">
+                        <div class="gallery-overlay absolute inset-0 z-10 rounded-2xl sm:rounded-3xl"></div>
+                        
+                        <div class="gallery-icon-zoom absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white z-20">
+                            <i class="fa-solid fa-magnifying-glass-plus text-xl"></i>
+                        </div>
+
+                        <div class="gallery-content absolute bottom-0 left-0 w-full p-6 z-20 text-white">
+                            <div class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500 text-white mb-3"><i class="fa-solid fa-computer text-sm"></i></div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-1">Laboratorium Komputer</h4>
+                            <p class="text-[11px] sm:text-xs text-gray-200 opacity-90 line-clamp-2">Fasilitas pembelajaran literasi digital.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Playground Indoor (KBTK) -->
+                    <div class="gallery-item gallery-card group relative bg-gray-200 rounded-2xl sm:rounded-3xl aspect-square sm:aspect-[4/5] cursor-pointer" data-category="kbtk" onclick="openLightbox(this)">
+                        <img src="https://images.pexels.com/photos/1480650/pexels-photo-1480650.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover" alt="Playground Indoor">
+                        <div class="gallery-overlay absolute inset-0 z-10 rounded-2xl sm:rounded-3xl"></div>
+                        
+                        <div class="gallery-icon-zoom absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white z-20">
+                            <i class="fa-solid fa-magnifying-glass-plus text-xl"></i>
+                        </div>
+
+                        <div class="gallery-content absolute bottom-0 left-0 w-full p-6 z-20 text-white">
+                            <div class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#f97316] text-white mb-3"><i class="fa-solid fa-puzzle-piece text-sm"></i></div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-1">Playground Indoor (KB)</h4>
+                            <p class="text-[11px] sm:text-xs text-gray-200 opacity-90 line-clamp-2">Area bermain fisik (indoor) guna pengembangan jasmani anak Kelompok Bermain.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Playground Outdoor (KBTK) -->
+                    <div class="gallery-item gallery-card group relative bg-gray-200 rounded-2xl sm:rounded-3xl aspect-square sm:aspect-[4/5] cursor-pointer" data-category="kbtk" onclick="openLightbox(this)">
+                        <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover" alt="Playground Outdoor">
+                        <div class="gallery-overlay absolute inset-0 z-10 rounded-2xl sm:rounded-3xl"></div>
+                        
+                        <div class="gallery-icon-zoom absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white z-20">
+                            <i class="fa-solid fa-magnifying-glass-plus text-xl"></i>
+                        </div>
+
+                        <div class="gallery-content absolute bottom-0 left-0 w-full p-6 z-20 text-white">
+                            <div class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#f97316] text-white mb-3"><i class="fa-solid fa-tree text-sm"></i></div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-1">Playground Outdoor (TK)</h4>
+                            <p class="text-[11px] sm:text-xs text-gray-200 opacity-90 line-clamp-2">Area bermain fisik (outdoor) guna pengembangan jasmani anak Taman Kanak-Kanak.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Kolam Renang (Alam) -->
+                    <div class="gallery-item gallery-card group relative bg-gray-200 rounded-2xl sm:rounded-3xl aspect-square sm:aspect-[4/5] cursor-pointer" data-category="alam" onclick="openLightbox(this)">
+                        <img src="https://images.pexels.com/photos/863988/pexels-photo-863988.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover" alt="Kolam Renang">
+                        <div class="gallery-overlay absolute inset-0 z-10 rounded-2xl sm:rounded-3xl"></div>
+                        
+                        <div class="gallery-icon-zoom absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white z-20">
+                            <i class="fa-solid fa-magnifying-glass-plus text-xl"></i>
+                        </div>
+
+                        <div class="gallery-content absolute bottom-0 left-0 w-full p-6 z-20 text-white">
+                            <div class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#0ea5e9] text-white mb-3"><i class="fa-solid fa-water-ladder text-sm"></i></div>
+                            <h4 class="font-bold text-lg sm:text-xl mb-1">Kolam Renang</h4>
+                            <p class="text-[11px] sm:text-xs text-gray-200 opacity-90 line-clamp-2">Kolam renang dengan pemantauan kelayakan kadar air secara berkala.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: SISTEM DIGITAL & OPERASIONAL (Tech & Support) -->
+        <section class="py-16 lg:py-24 bg-white relative overflow-hidden">
+            <!-- Abstract Shapes -->
+            <div class="shape-blob bg-brand-primary w-[300px] h-[300px] top-[-50px] right-[-50px] opacity-10"></div>
+            <div class="shape-blob bg-brand-yellow w-[200px] h-[200px] bottom-[-50px] left-[-50px] opacity-10"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="w-full lg:w-5/12 text-center lg:text-left">
+                        <span class="inline-flex items-center gap-2 py-1.5 px-3 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-3 sm:mb-4 border border-brand-primary/20 w-fit mx-auto lg:mx-0">
+                            <i class="fa-solid fa-mobile-screen-button"></i> School Management System
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-4 leading-tight">Portal Akademik Quintal</h2>
+                        <p class="text-sm sm:text-base text-gray-600 mb-6 font-medium leading-relaxed">
+                            Sekolah menggunakan Quintal sebagai portal akademik terpadu untuk kebutuhan administrasi dan pemantauan capaian belajar peserta didik.
+                        </p>
+                        <ul class="space-y-3 mb-8 text-left max-w-sm mx-auto lg:mx-0">
+                            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-brand-yellow mt-1"></i> Layanan modul akademik bagi orang tua.</li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-brand-yellow mt-1"></i> Layanan rekaman kehadiran peserta didik.</li>
+                            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-brand-yellow mt-1"></i> Sistem administrasi biaya pendidikan.</li>
+                        </ul>
+                        <a href="#" class="btn-outline-fill inline-flex justify-center items-center gap-2 border-2 border-brand-primary text-brand-primary font-bold px-6 py-3.5 rounded-xl text-xs sm:text-sm transition-all">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i> Login Portal Orang Tua
+                        </a>
+                    </div>
+
+                    <!-- Visual Mockup (Mobile/Tablet graphic) -->
+                    <div class="w-full lg:w-7/12 flex justify-center lg:justify-end relative">
+                        <!-- Deco Circle behind mockup -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[400px] h-[280px] sm:h-[400px] bg-brand-primary/5 rounded-full z-0"></div>
+                        
+                        <div class="relative z-10 bg-gray-100 rounded-3xl border-8 border-gray-800 shadow-2xl overflow-hidden w-[250px] sm:w-[320px] aspect-[9/19] transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
+                            <!-- Top Notch Mockup -->
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-gray-800 rounded-b-xl z-20"></div>
+                            <!-- Placeholder App Screenshot -->
+                            <img src="https://images.pexels.com/photos/5076511/pexels-photo-5076511.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Quintal App Dashboard" class="w-full h-full object-cover">
+                            
+                            <!-- Overlay UI element to make it look like a dashboard -->
+                            <div class="absolute top-10 left-4 right-4 bg-white/90 backdrop-blur rounded-xl p-3 shadow-sm border border-gray-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="font-bold text-xs text-brand-primary">Laporan Belajar</div>
+                                    <div class="text-[8px] bg-brand-yellow px-2 py-0.5 rounded text-brand-primary font-bold">Terbaru</div>
+                                </div>
+                                <div class="w-full h-1.5 bg-gray-200 rounded-full mb-1"><div class="w-[85%] h-full bg-green-500 rounded-full"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: LINGKUNGAN TERINTEGRASI SUMMARECON (Bridging) -->
+        <section class="py-16 bg-brand-gray relative border-t border-gray-200 border-b">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12 border border-gray-100 shadow-sm flex flex-col md:flex-row items-center gap-8 lg:gap-12">
+                    <div class="w-full md:w-1/2 rounded-2xl sm:rounded-3xl overflow-hidden aspect-video relative">
+                        <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Kawasan Summarecon Bandung" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-brand-primary/20"></div>
+                        <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-brand-primary flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Kawasan Residensial
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 text-center md:text-left">
+                        <div class="w-12 h-12 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-primary mb-4 mx-auto md:mx-0">
+                            <i class="fa-solid fa-map-location-dot text-xl"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-brand-primary mb-3">Lokasi Kampus</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium mb-6">
+                            Berada pada kawasan terintegrasi Summarecon Bandung bersama fasilitas hunian dan publik lainnya, mendukung kemudahan akses mobilitas.
+                        </p>
+                        <a href="#" class="inline-block text-brand-primary text-xs sm:text-sm font-bold flex items-center gap-2 hover:text-brand-yellow transition-colors justify-center md:justify-start">
+                            Lihat Lokasi di Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FINAL CTA -->
+        <section class="relative py-24 sm:py-32 bg-gray-900 flex items-center justify-center min-h-[400px] sm:min-h-[450px]">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Campus Building" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-brand-primary/85 mix-blend-multiply"></div>
+            </div>
+
+            <div class="relative z-10 text-center px-4 max-w-3xl">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white mb-3 sm:mb-5 leading-tight">Kunjungan Sekolah</h2>
+                <p class="text-xs sm:text-sm lg:text-base text-gray-300 font-medium mb-8 sm:mb-10 max-w-xl mx-auto">
+                    Kunjungi kampus kami secara langsung untuk melihat aktivitas belajar peserta didik.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 lg:gap-5">
+                    <a href="#" class="bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-full shadow-xl hover:bg-white transition-colors text-center text-sm lg:text-base">
+                        Jadwalkan Kunjungan (Tour)
+                    </a>
+                    <a href="#" class="border-2 border-white/50 text-white font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-full hover:bg-[#25D366] hover:border-[#25D366] transition-colors text-center text-sm lg:text-base flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer akan muncul di sini secara otomatis -->
+    <div id="app-footer"></div>
+
+    <!-- LIGHTBOX MODAL (For Gallery Zoom) -->
+    <!-- Dibiarkan di sini agar interaksi Lightbox tetap berjalan -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl hover:text-brand-yellow transition-colors" onclick="closeLightbox()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-5xl w-full px-4 h-[80vh] flex items-center justify-center">
+            <img id="lightbox-img" src="" alt="Fasilitas Zoom" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl">
+        </div>
+        <div id="lightbox-caption" class="text-white text-center mt-4 px-4 font-bold text-lg"></div>
+    </div>
+
+    <!-- Memanggil JS Global -->
+    <!-- PERHATIAN: Pastikan file js/components.js dimuat lebih dulu dari js/app.js -->
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

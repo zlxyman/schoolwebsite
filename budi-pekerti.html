@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendidikan Budi Pekerti - Sekolah Terpadu Sedaya Bintang</title>
+    
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            primary: '#1d4486', // Navy
+                            yellow: '#ffcb05',  // Secondary Yellow
+                            red: '#d2232a',     // Secondary Red
+                            light: '#ffffff',
+                            gray: '#f9fafb',    // Clean light gray for backgrounds
+                            dark: '#0f2447'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(29,68,134,0.08)',
+                        'glow-primary': '0 0 25px rgba(29,68,134,0.25)',
+                        'glow-yellow': '0 0 25px rgba(255,203,5,0.4)',
+                        'glow-red': '0 0 25px rgba(210,35,42,0.4)',
+                        'floating': '0 20px 50px -10px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Memanggil CSS Global -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top" data-page="programs" class="bg-brand-gray font-sans text-gray-800 antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
+
+    <!-- Navbar & Mobile Menu akan muncul di sini secara otomatis -->
+    <div id="app-navbar"></div>
+
+    <main>
+        <!-- SECTION 1: HERO BANNER (The Emotional Connection) -->
+        <section class="relative pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden flex items-center min-h-[75vh] lg:min-h-[600px] bg-brand-dark">
+            <div class="absolute inset-0 z-0">
+                <!-- Background sinematik kebersamaan -->
+                <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Kebersamaan Siswa" class="w-full h-full object-cover object-center opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-brand-primary/20 mix-blend-multiply"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+                <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-red/20 text-white text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 border border-brand-red/50 backdrop-blur-md shadow-lg">
+                    <i class="fa-solid fa-heart text-brand-red"></i> Pilar Utama ACT: Attitude
+                </span>
+                
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.2] lg:leading-[1.1] mb-5 sm:mb-6 text-white drop-shadow-lg max-w-4xl mx-auto">
+                    Pendidikan Budi Pekerti <span class="text-brand-yellow">(德行)</span> <br class="hidden sm:block"/>
+                    Membentuk Pribadi Empatik.
+                </h1>
+                
+                <p class="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 sm:mb-10 font-medium leading-relaxed max-w-3xl mx-auto drop-shadow">
+                    Etika dan empati berjalan berbarengan dengan prestasi akademis. Kami menanamkan nilai moral universal untuk memastikan si kecil memiliki mentalitas yang tangguh, sopan, dan mandiri saat menghadapi masa depan.
+                </p>
+                
+                <div class="flex justify-center">
+                    <a href="#hari-bakti" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-8 py-3.5 sm:px-10 sm:py-4 rounded-xl shadow-lg hover:shadow-glow-yellow hover:bg-white transition-all transform hover:-translate-y-1 text-sm sm:text-base">
+                        Pelajari Pendekatan Kami <i class="fa-solid fa-arrow-down ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: FONDASI SIKAP (Bento Grid) -->
+        <section class="py-16 lg:py-24 bg-white relative z-20 reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10 sm:mb-14">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Sikap Mengawali Langkah Sukses</h2>
+                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
+                        Kecerdasan intelektual membutuhkan kompas moral agar senantiasa membawa kebaikan. Pendidikan etika di Sedaya Bintang dirancang secara universal untuk semua peserta didik.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Main Bento Box -->
+                    <div class="md:col-span-2 bg-brand-gray rounded-2xl p-6 sm:p-10 border border-gray-100 shadow-sm flex flex-col justify-center relative overflow-hidden group hover:shadow-floating transition-all duration-500">
+                        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-primary/5 rounded-full blur-3xl group-hover:bg-brand-primary/10 transition-colors"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-seedling text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-brand-primary mb-3">Berjalan Berbarengan dengan Akademis</h3>
+                        <p class="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xl">
+                            Kami mengintegrasikan moralitas ke dalam ilmu pengetahuan. Setiap kegiatan eksplorasi di kelas selalu disisipkan pemahaman tentang bagaimana bersikap jujur, bekerja sama dengan tulus, dan menghargai usaha orang lain.
+                        </p>
+                    </div>
+
+                    <!-- Secondary Bento Box -->
+                    <div class="bg-brand-primary rounded-2xl p-6 sm:p-10 shadow-soft text-white flex flex-col justify-center relative overflow-hidden group hover:shadow-glow-primary transition-all duration-500">
+                        <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 text-brand-yellow group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-globe text-2xl"></i>
+                        </div>
+                        <h3 class="text-base sm:text-xl font-bold mb-3">Nilai Moral Universal</h3>
+                        <p class="text-sm text-gray-200 leading-relaxed">
+                            Sopan santun, empati, dan rasa tanggung jawab adalah bahasa universal yang menyatukan setiap peserta didik kami dalam harmoni yang damai.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: HARI BAKTI (The Core Highlight) -->
+        <section id="hari-bakti" class="py-16 lg:py-24 bg-brand-gray relative reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10 sm:mb-14">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-white text-brand-primary border border-gray-200 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3 shadow-sm">Highlight Program</span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-4 max-w-3xl mx-auto leading-tight">
+                        Nilai Budi Pekerti Penting Untuk Melatih Empati Si Kecil Melalui <span class="text-brand-yellow">Hari Bakti</span>
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
+                        Sebuah momen hangat yang dirancang secara khusus untuk memberikan ruang bagi si kecil mengekspresikan rasa terima kasih, rasa hormat, dan cinta kasihnya kepada Mama dan Papa.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl sm:rounded-3xl border border-gray-100 shadow-soft p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row gap-8 lg:gap-12">
+                    
+                    <!-- Left: Crossfade Image Gallery -->
+                    <div class="w-full lg:w-1/2 h-[300px] sm:h-[400px] lg:h-[500px] rounded-xl sm:rounded-2xl overflow-hidden relative shadow-inner bg-gray-100">
+                        <img id="img-bakti-0" src="https://images.pexels.com/photos/5212321/pexels-photo-5212321.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cuci Kaki Orang Tua" class="crossfade-img active">
+                        <img id="img-bakti-1" src="https://images.pexels.com/photos/8612920/pexels-photo-8612920.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Persembahan Lagu" class="crossfade-img">
+                        <img id="img-bakti-2" src="https://images.pexels.com/photos/3951377/pexels-photo-3951377.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Memberikan Bunga" class="crossfade-img">
+                        <img id="img-bakti-3" src="https://images.pexels.com/photos/8197545/pexels-photo-8197545.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Pemberian Surat Cinta" class="crossfade-img">
+                        
+                        <div class="absolute bottom-4 left-4 bg-brand-primary/80 backdrop-blur-md text-white text-xs font-bold px-4 py-2 rounded-full border border-white/20 z-10">
+                            <i class="fa-solid fa-camera mr-1"></i> Momen Hari Bakti
+                        </div>
+                    </div>
+
+                    <!-- Right: Interactive List -->
+                    <div class="w-full lg:w-1/2 flex flex-col justify-center pr-0 lg:pr-6 py-4">
+                        <h3 class="text-xl font-bold text-brand-primary mb-6">Empat Rangkaian Utama Hari Bakti:</h3>
+                        
+                        <div class="space-y-2">
+                            <!-- Item 0 -->
+                            <div class="interactive-list-item active p-4 rounded-xl flex gap-4" onmouseenter="switchBaktiImage(0)">
+                                <div class="icon-box w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center shrink-0 transition-colors">
+                                    <i class="fa-solid fa-hands-holding-child"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-brand-primary text-sm sm:text-base mb-1">Prosesi Cuci Kaki</h4>
+                                    <p class="text-[11px] sm:text-sm text-gray-500 leading-relaxed">Melatih kelembutan hati si kecil dan membangun rasa hormat yang tulus kepada orang tua yang merawatnya.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 1 -->
+                            <div class="interactive-list-item p-4 rounded-xl flex gap-4" onmouseenter="switchBaktiImage(1)">
+                                <div class="icon-box w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center shrink-0 transition-colors">
+                                    <i class="fa-solid fa-music"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-brand-primary text-sm sm:text-base mb-1">Persembahan Lagu</h4>
+                                    <p class="text-[11px] sm:text-sm text-gray-500 leading-relaxed">Mengekspresikan cinta kasih si kecil melalui harmoni nada yang dilatih dengan penuh kebanggaan.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="interactive-list-item p-4 rounded-xl flex gap-4" onmouseenter="switchBaktiImage(2)">
+                                <div class="icon-box w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center shrink-0 transition-colors">
+                                    <i class="fa-solid fa-seedling"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-brand-primary text-sm sm:text-base mb-1">Memberikan Bunga</h4>
+                                    <p class="text-[11px] sm:text-sm text-gray-500 leading-relaxed">Simbolisasi apresiasi dan ketulusan hati si kecil untuk senantiasa menghargai keluarga.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="interactive-list-item p-4 rounded-xl flex gap-4" onmouseenter="switchBaktiImage(3)">
+                                <div class="icon-box w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center shrink-0 transition-colors">
+                                    <i class="fa-solid fa-envelope-open-text"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-brand-primary text-sm sm:text-base mb-1">Pemberian Surat Cinta</h4>
+                                    <p class="text-[11px] sm:text-sm text-gray-500 leading-relaxed">Mengasah kemampuan anak dalam menyampaikan perasaan terima kasih mereka secara personal.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3.5: DOKUMENTASI VIDEO -->
+        <section class="py-12 bg-brand-gray pb-24 relative reveal">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group cursor-pointer border-4 border-white" onclick="openVideoModal()">
+                    <!-- Video Poster Image -->
+                    <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Video Hari Bakti" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <!-- Dark Overlay -->
+                    <div class="absolute inset-0 bg-brand-dark/40 group-hover:bg-brand-dark/30 transition-colors flex flex-col items-center justify-center text-white">
+                        <div class="w-16 h-16 sm:w-24 sm:h-24 bg-brand-yellow rounded-full flex items-center justify-center text-brand-primary text-2xl sm:text-4xl shadow-glow-yellow play-btn mb-4 sm:mb-6 pl-1.5 transition-transform group-hover:scale-110">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <span class="bg-brand-primary/80 backdrop-blur px-4 py-1.5 rounded-full text-[11px] sm:text-sm font-bold tracking-widest uppercase border border-white/20">Momen Penuh Makna: Hari Bakti</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 10 NILAI KONFUSIUS UNIVERSAL (Grid Layout + Popups) -->
+        <section class="py-16 lg:py-24 bg-white relative reveal">
+            <!-- Decor -->
+            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent -z-10"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-10 sm:mb-14">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">10 Nilai Konfusius Universal</h2>
+                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
+                        Kesepuluh nilai ini tidak diajarkan sebagai hafalan teori, melainkan dibiasakan melalui interaksi sehari-hari di sekolah dengan berpusat pada satu esensi utama.<br class="hidden sm:block"> <em>(Klik kartu untuk melihat penerapan si kecil)</em>
+                    </p>
+                </div>
+
+                <!-- The Core Essence Card -->
+                <div class="max-w-2xl mx-auto bg-brand-primary text-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center shadow-glow-primary border-4 border-white transform hover:scale-105 transition-transform mb-10 cursor-default">
+                    <div class="w-12 h-12 rounded-full bg-brand-yellow text-brand-primary mx-auto flex items-center justify-center mb-3 shadow-sm">
+                        <i class="fa-solid fa-star text-lg"></i>
+                    </div>
+                    <h3 class="text-base sm:text-xl font-bold mb-2">Esensi Utama</h3>
+                    <p class="text-sm sm:text-base text-gray-200">
+                        "Kesadaran diri untuk menghindari perbuatan yang tidak baik atau tidak pantas."
+                    </p>
+                </div>
+
+                <!-- The 10 Values Grid -->
+                <div class="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-5">
+                    
+                    <button onclick="openNilaiModal(0)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-user-tie"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Etika / Sopan Santun</h4>
+                    </button>
+                    <button onclick="openNilaiModal(1)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-person-cane"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Hormat kepada yang Tua</h4>
+                    </button>
+                    <button onclick="openNilaiModal(2)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Welas Asih</h4>
+                    </button>
+                    <button onclick="openNilaiModal(3)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-hand-sparkles"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Bersih dan Jujur</h4>
+                    </button>
+                    <button onclick="openNilaiModal(4)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-face-flushed"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Perasaan Malu</h4>
+                    </button>
+                    <button onclick="openNilaiModal(5)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-handshake"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Terpercaya</h4>
+                    </button>
+                    <button onclick="openNilaiModal(6)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-house-chimney-user"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Bakti kepada Orang Tua</h4>
+                    </button>
+                    <button onclick="openNilaiModal(7)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Bijaksana / Arif</h4>
+                    </button>
+                    <button onclick="openNilaiModal(8)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Kebenaran & Keadilan</h4>
+                    </button>
+                    <button onclick="openNilaiModal(9)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
+                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-shield-heart"></i></div>
+                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Kesetiaan</h4>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: 8 KARTU PEDOMAN PRAKTIS DI ZI GUI (Interactive Modal) -->
+        <section class="py-16 lg:py-24 bg-brand-dark relative overflow-hidden reveal text-white">
+            <!-- Abstract Shapes -->
+            <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-primary rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 opacity-50"></div>
+            <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-brand-yellow/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-10 sm:mb-16">
+                    <span class="inline-block py-1 px-3 rounded-full bg-white/10 text-brand-yellow text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-3 border border-white/20">8 Pedoman Etika Praktis</span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-3">Nilai Moral Di Zi Gui</h2>
+                    <p class="text-sm sm:text-base text-gray-300 font-medium max-w-2xl mx-auto">
+                        Pedoman etika praktis yang universal, memandu si kecil dalam manajemen waktu, kehati-hatian, kejujuran, hingga cara bergaul yang empatik. <br class="hidden sm:block"> <em>(Klik kartu untuk penjelasan & contoh penerapan)</em>
+                    </p>
+                </div>
+
+                <!-- The 8 Cards Grid (4 columns on Desktop) -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-center">
+                    
+                    <!-- Card 0: Pendahuluan -->
+                    <button onclick="openDzgModal(0)" class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group text-left">
+                        <div class="absolute -bottom-4 -right-4 text-7xl font-bold text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">总</div>
+                        <span class="bg-brand-red text-white text-[10px] font-bold px-2 py-1 rounded mb-3">Esensi</span>
+                        <h3 class="text-lg font-bold mb-1">Pendahuluan</h3>
+                        <p class="text-[10px] text-gray-400">Zǒng Xù (总叙)</p>
+                    </button>
+
+                    <!-- Card 1 -->
+                    <button onclick="openDzgModal(1)" class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group text-left">
+                        <div class="absolute -bottom-4 -right-4 text-7xl font-bold text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">孝</div>
+                        <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-3">Bab 1</span>
+                        <h3 class="text-lg font-bold mb-1">Bakti di Rumah</h3>
+                        <p class="text-[10px] text-gray-400">Rù Zé Xiào (入则孝)</p>
+                    </button>
+
+                    <!-- Card 2 -->
+                    <button onclick="openDzgModal(2)" class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group text-left">
+                        <div class="absolute -bottom-4 -right-4 text-7xl font-bold text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">悌</div>
+                        <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-3">Bab 2</span>
+                        <h3 class="text-lg font-bold mb-1">Etika Luar Rumah</h3>
+                        <p class="text-[10px] text-gray-400">Chū Zé Tì (出则悌)</p>
+                    </button>
+
+                    <!-- Card 3 -->
+                    <button onclick="openDzgModal(3)" class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group text-left">
+                        <div class="absolute -bottom-4 -right-4 text-7xl font-bold text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">谨</div>
+                        <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-3">Bab 3</span>
+                        <h3 class="text-lg font-bold mb-1">Kedisiplinan Hidup</h3>
+                        <p class="text-[10px] text-gray-400">Jǐn (谨)</p>
+                    </button>
+
+                    <!-- Card 4 -->
+                    <button onclick="openDzgModal(4)" class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group text-left">
+                        <div class="absolute -bottom-4 -right-4 text-7xl font-bold text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">信</div>
+                        <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-3">Bab 4</span>
+                        <h3 class="text-lg font-bold mb-1">Dapat Dipercaya</h3>
+                        <p class="text-[10px] text-gray-400">Xìn (信)</p>
+                    </button>
+
+                    <!-- Card 5 -->
+                    <button onclick="openDzgModal(5)" class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group text-left">
+                        <div class="absolute -bottom-4 -right-4 text-7xl font-bold text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">爱</div>
+                        <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-3">Bab 5</span>
+                        <h3 class="text-lg font-bold mb-1">Cinta Kasih Sesama</h3>
+                        <p class="text-[10px] text-gray-400">Fàn Ài Zhòng (泛爱众)</p>
+                    </button>
+
+                    <!-- Card 6 -->
+                    <button onclick="openDzgModal(6)" class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group text-left">
+                        <div class="absolute -bottom-4 -right-4 text-7xl font-bold text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">仁</div>
+                        <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-3">Bab 6</span>
+                        <h3 class="text-lg font-bold mb-1">Mendekati Berbudi</h3>
+                        <p class="text-[10px] text-gray-400">Qīn Rén (亲仁)</p>
+                    </button>
+
+                    <!-- Card 7 -->
+                    <button onclick="openDzgModal(7)" class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden group text-left">
+                        <div class="absolute -bottom-4 -right-4 text-7xl font-bold text-white/5 group-hover:text-white/10 transition-colors pointer-events-none">文</div>
+                        <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-3">Bab 7</span>
+                        <h3 class="text-lg font-bold mb-1">Belajar Ilmu</h3>
+                        <p class="text-[10px] text-gray-400">Yú Lì Xué Wén (余力学文)</p>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: BRIDGING KE PILAR AKADEMIK (CTA) -->
+        <section class="py-16 lg:py-24 bg-white relative reveal">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <div class="w-16 h-16 rounded-full bg-brand-gray border border-gray-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-link text-brand-primary text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-primary mb-4">Sinergi Pendidikan ACT</h2>
+                    <p class="text-sm sm:text-base text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">
+                        Sikap yang baik (Attitude) membuka jalan bagi komunikasi dan nalar yang gemilang. Etika menjadi fondasi kokoh yang berjalan berbarengan dengan penguasaan bahasa dan penalaran ilmiah.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 lg:gap-6">
+                    <!-- CTA Trilingual -->
+                    <a href="tribahasa.html" class="flex items-center justify-center gap-3 border-2 border-brand-primary text-brand-primary font-bold px-6 py-4 rounded-xl sm:rounded-2xl hover:bg-brand-primary hover:text-white transition-all group text-sm sm:text-base w-full sm:w-auto shadow-sm hover:shadow-glow-primary">
+                        <i class="fa-solid fa-earth-asia text-xl group-hover:scale-110 transition-transform"></i> Eksplorasi Pilar Trilingual
+                    </a>
+                    
+                    <!-- CTA STEAM -->
+                    <a href="#" class="flex items-center justify-center gap-3 border-2 border-[#d49900] text-[#d49900] font-bold px-6 py-4 rounded-xl sm:rounded-2xl hover:bg-[#d49900] hover:text-white transition-all group text-sm sm:text-base w-full sm:w-auto shadow-sm hover:shadow-glow-yellow">
+                        <i class="fa-solid fa-rocket text-xl group-hover:scale-110 transition-transform"></i> Eksplorasi Pilar STEAM
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- POP-UP MODAL (10 Nilai Konfusius) -->
+        <div id="nilai-modal" class="custom-modal fixed inset-0 flex items-center justify-center bg-brand-dark/80" onclick="closeNilaiModal(event)">
+            <div class="modal-scale-content bg-white rounded-2xl sm:rounded-2xl max-w-3xl w-full mx-4 shadow-2xl relative overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
+                <button class="absolute top-4 right-4 z-20 w-8 h-8 bg-white/50 backdrop-blur rounded-full text-gray-800 hover:bg-white hover:text-brand-red flex items-center justify-center transition-colors shadow-sm" onclick="closeNilaiModal(event, true)"><i class="fa-solid fa-xmark"></i></button>
+                
+                <!-- Left Image -->
+                <div class="w-full md:w-5/12 h-[200px] md:h-auto relative bg-gray-100 shrink-0">
+                    <img id="m-nilai-img" src="" class="w-full h-full object-cover" alt="Ilustrasi Nilai">
+                    <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-brand-primary/80 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <div id="m-nilai-icon" class="w-10 h-10 bg-white/20 backdrop-blur rounded-full flex items-center justify-center mb-2"><i class="fa-solid fa-star"></i></div>
+                    </div>
+                </div>
+                
+                <!-- Right Content -->
+                <div class="w-full md:w-7/12 p-4 sm:p-8 flex flex-col overflow-y-auto hide-scrollbar">
+                    <h3 id="m-nilai-title" class="text-xl sm:text-2xl font-extrabold text-brand-primary mb-3 mt-2">Judul Nilai</h3>
+                    <p id="m-nilai-desc" class="text-sm text-gray-600 leading-relaxed mb-6 font-medium">Deskripsi penjelasan nilai tersebut.</p>
+                    
+                    <div class="bg-brand-gray p-4 rounded-xl border border-gray-100 mt-auto">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-brand-yellow"></i>
+                            <span class="font-bold text-brand-primary text-xs uppercase tracking-wide">Penerapan pada Si Kecil</span>
+                        </div>
+                        <p id="m-nilai-example" class="text-[11px] sm:text-sm text-gray-600 italic">"Contoh nyata penerapan di sekolah..."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POP-UP MODAL (Di Zi Gui Split Screen) -->
+        <div id="dzg-modal" class="custom-modal fixed inset-0 flex items-center justify-center bg-brand-dark/80" onclick="closeDzgModal(event)">
+            <div class="modal-scale-content bg-white rounded-2xl sm:rounded-2xl max-w-4xl w-full mx-4 shadow-2xl relative overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
+                <button class="absolute top-4 right-4 z-20 w-8 h-8 bg-black/20 backdrop-blur rounded-full text-white hover:bg-brand-red flex items-center justify-center transition-colors shadow-sm" onclick="closeDzgModal(event, true)"><i class="fa-solid fa-xmark"></i></button>
+                
+                <!-- Left Text Content -->
+                <div class="w-full md:w-1/2 p-4 sm:p-8 lg:p-10 flex flex-col overflow-y-auto hide-scrollbar bg-brand-primary text-white relative">
+                    <div id="m-dzg-hanzi" class="absolute top-[-20px] left-[-20px] text-[150px] font-bold text-white/5 select-none pointer-events-none">汉</div>
+                    
+                    <div class="relative z-10">
+                        <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-3 inline-block" id="m-dzg-badge">Bab X</span>
+                        <h3 id="m-dzg-title" class="text-2xl sm:text-3xl font-extrabold mb-1">Judul Bab</h3>
+                        <div id="m-dzg-pinyin" class="text-sm font-medium text-brand-yellow tracking-widest mb-6">Pinyin</div>
+                        
+                        <p id="m-dzg-desc" class="text-sm sm:text-base text-gray-200 leading-relaxed font-medium mb-6">
+                            Deskripsi pedoman secara umum akan muncul di sini.
+                        </p>
+                        
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20 mt-auto">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="fa-regular fa-face-smile-beam text-brand-yellow"></i>
+                                <span class="font-bold text-white text-xs uppercase tracking-wide">Penerapan pada Si Kecil</span>
+                            </div>
+                            <p id="m-dzg-example" class="text-[11px] sm:text-sm text-gray-200 italic">"Contoh penerapan praktis untuk anak-anak..."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Image Content -->
+                <div class="w-full md:w-1/2 h-[250px] md:h-auto relative bg-gray-100 shrink-0">
+                    <img id="m-dzg-img" src="" class="w-full h-full object-cover" alt="Ilustrasi Di Zi Gui">
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDEO MODAL -->
+        <div id="video-modal" class="custom-modal fixed inset-0 flex items-center justify-center bg-black/90" onclick="closeVideoModal(event)">
+            <button class="absolute top-6 right-6 z-20 w-10 h-10 bg-white/10 backdrop-blur rounded-full text-white hover:bg-brand-red flex items-center justify-center transition-colors" onclick="closeVideoModal(event, true)"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="modal-scale-content w-full max-w-5xl mx-4 rounded-2xl overflow-hidden aspect-video bg-black shadow-2xl border border-white/10">
+                <iframe id="youtube-frame" class="w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer akan muncul di sini secara otomatis -->
+    <div id="app-footer"></div>
+
+    <!-- Memanggil JS Global -->
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "schoolweb",
+  "version": "1.0.0",
+  "description": "Static HTML school website",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

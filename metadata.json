@@ -1,0 +1,8 @@
+{
+  "name": "Sekolah Terpadu Sedaya Bintang",
+  "description": "A static school website with admissions, curriculum, and facility details.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

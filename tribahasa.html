@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Program Tribahasa - Sekolah Terpadu Sedaya Bintang</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            primary: '#1d4486',
+                            yellow: '#ffcb05',
+                            red: '#d2232a',
+                            light: '#ffffff',
+                            gray: '#f9fafb',
+                            dark: '#0f2447'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(29,68,134,0.08)',
+                        'glow-primary': '0 0 25px rgba(29,68,134,0.25)',
+                        'glow-yellow': '0 0 25px rgba(255,203,5,0.4)',
+                        'glow-red': '0 0 25px rgba(210,35,42,0.4)',
+                        'floating': '0 20px 50px -10px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        html, body { overflow-x: hidden; width: 100%; position: relative; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .feature-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -10px rgba(29,68,134,0.12); border-color: #1d4486; }
+        .feature-card:hover .icon-circle { background-color: #1d4486; color: white; transform: scale(1.1) rotate(5deg); }
+
+        .icon-3d-container { position: relative; width: 140px; height: 140px; cursor: default; }
+        .bola-bendera { position: relative; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; z-index: 2; transition: transform 0.3s ease; animation: floatIcon 3s ease-in-out infinite; box-shadow: -5px 10px 20px rgba(0, 0, 0, 0.2); }
+        .icon-3d-container:hover .bola-bendera { transform: scale(1.08); animation-play-state: paused; }
+        
+        .chat-bubble { position: absolute; padding: 10px 18px; border-radius: 15px; font-weight: bold; font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; line-height: 1.2; opacity: 0; pointer-events: none; transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); white-space: nowrap; }
+        .chat-bubble span { font-size: 0.7em; font-weight: normal; }
+        
+        .chat-bubble-top { top: -20px; right: -40px; z-index: 3; background: linear-gradient(145deg, #ffffff, #f0f0f0); box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.8); border-bottom-left-radius: 4px; transform: scale(0.5) translateY(20px); }
+        .chat-bubble-bottom { bottom: -10px; left: -50px; z-index: 1; box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2); border-top-right-radius: 4px; transform: scale(0.5) translateY(-20px); }
+        .icon-3d-container:hover .chat-bubble { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+
+        @keyframes floatIcon { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
+        .hero-icon-scale { transform: scale(0.5); transform-origin: center; transition: transform 0.3s; }
+        @media (min-width: 640px) { .hero-icon-scale { transform: scale(0.7); } }
+        @media (min-width: 1024px) { .hero-icon-scale { transform: scale(0.9); } }
+
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 6s ease-in-out infinite; animation-delay: 2s; }
+        .animate-float-fast { animation: float 4s ease-in-out infinite; animation-delay: 1s; }
+
+        .shape-blob { position: absolute; filter: blur(50px); z-index: -1; opacity: 0.2; border-radius: 50%; }
+        @keyframes pulse-slow { 0%, 100% { transform: scale(1); opacity: 0.15;} 50% { transform: scale(1.05); opacity: 0.3; } }
+        .animate-blob { animation: pulse-slow 8s infinite alternate ease-in-out; }
+
+        .progress-bar-fill { transition: width 2s cubic-bezier(0.25, 1, 0.5, 1); }
+
+        @keyframes pulse-video { 0% { box-shadow: 0 0 0 0 rgba(255, 203, 5, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(255, 203, 5, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 203, 5, 0); } }
+        .play-btn { animation: pulse-video 2s infinite; }
+
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
+        .animate-shake { animation: shake 0.4s; background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c !important;}
+        .animate-correct { background-color: #10b981 !important; border-color: #10b981 !important; color: #ffffff !important; transform: scale(1.05); box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);}
+
+        .question-slide-out { animation: slideOutLeft 0.4s forwards cubic-bezier(0.5, 0, 0, 1); }
+        .question-slide-in { animation: slideInRight 0.4s forwards cubic-bezier(0.5, 0, 0, 1); }
+        @keyframes slideOutLeft { 0% { transform: translateX(0); opacity: 1; } 100% { transform: translateX(-100px); opacity: 0; } }
+        @keyframes slideInRight { 0% { transform: translateX(100px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+
+        @keyframes countdownPop { 0% { transform: scale(0.5); opacity: 0; } 40% { transform: scale(1.2); opacity: 1; } 80% { transform: scale(1); opacity: 1; } 100% { transform: scale(0.8); opacity: 0; } }
+        .animate-countdown { animation: countdownPop 1s ease-in-out; }
+
+        .game-btn { transition: all 0.3s ease; }
+        .game-btn:disabled { cursor: not-allowed; opacity: 0.9; }
+        
+        .dot { width: 10px; height: 10px; border-radius: 50%; background-color: #e5e7eb; transition: all 0.3s ease; }
+        .dot.active { background-color: #1d4486; transform: scale(1.3); }
+        
+        #confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 9999; display: none; }
+        .confetti-piece { position: absolute; width: 10px; height: 20px; opacity: 1; }
+        @keyframes shootRight { 0% { transform: translate(0, 100vh) rotate(0deg) scale(1); opacity: 1; } 50% { transform: translate(40vw, 30vh) rotate(180deg) scale(1.2); opacity: 1; } 100% { transform: translate(80vw, 100vh) rotate(360deg) scale(0.8); opacity: 0; } }
+        @keyframes shootLeft { 0% { transform: translate(100vw, 100vh) rotate(0deg) scale(1); opacity: 1; } 50% { transform: translate(60vw, 30vh) rotate(-180deg) scale(1.2); opacity: 1; } 100% { transform: translate(20vw, 100vh) rotate(-360deg) scale(0.8); opacity: 0; } }
+
+        .custom-modal { opacity: 0; pointer-events: none; backdrop-filter: blur(8px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .custom-modal.show { opacity: 1; pointer-events: auto; z-index: 100000; }
+        .modal-scale-content { transform: scale(0.8) translateY(20px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .custom-modal.show .modal-scale-content { transform: scale(1) translateY(0); }
+
+        #correct-popup { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; pointer-events: none; z-index: 50; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        #correct-popup.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+
+        .teacher-box { transition: all 0.4s ease; }
+        .teacher-box:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(29,68,134,0.1); }
+    </style>
+</head>
+<body id="top" data-page="programs" class="bg-brand-gray font-sans text-gray-800 antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
+
+    <div id="app-navbar"></div>
+
+    <main>
+        <section class="relative pt-24 pb-16 lg:pt-32 lg:pb-32 overflow-hidden flex items-center min-h-[450px] lg:min-h-[600px] bg-brand-dark w-full">
+            <div class="absolute inset-0 z-0 w-full h-full">
+                <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg" onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2000&auto=format&fit=crop'" alt="Anak Bermain dan Belajar" class="w-full h-full object-cover object-top opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-brand-primary/40 mix-blend-multiply w-full h-full"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+                <div class="absolute inset-0 z-0 pointer-events-none w-full h-full">
+                    <div class="absolute -top-12 sm:-top-20 left-2 sm:left-10 animate-float">
+                        <div class="hero-icon-scale opacity-60 lg:opacity-100">
+                            <div class="icon-3d-container">
+                                <div class="chat-bubble chat-bubble-bottom" style="color: #ffffff; background: linear-gradient(145deg, #ff0000, #cc0000);">Halo! <br> <span>(Halo!)</span></div>
+                                <img src="https://files.catbox.moe/nnnqey.webp" alt="ID" class="bola-bendera">
+                                <div class="chat-bubble chat-bubble-top" style="color: #d32f2f;">Terima Kasih! <br> <span>(Terima Kasih!)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-8 sm:-top-16 right-2 sm:right-10 animate-float-delayed">
+                        <div class="hero-icon-scale opacity-60 lg:opacity-100">
+                            <div class="icon-3d-container">
+                                <div class="chat-bubble chat-bubble-bottom" style="color: #ffffff; background: linear-gradient(145deg, #ffb700, #ff6600);">谢谢! <br> <span>(Xièxie!)</span></div>
+                                <img src="https://files.catbox.moe/79zazy.webp" alt="CN" class="bola-bendera">
+                                <div class="chat-bubble chat-bubble-top" style="color: #d32f2f;">你好! <br> <span>(Nǐ hǎo!)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-12 sm:bottom-0 right-4 sm:left-1/2 sm:ml-40 animate-float-fast">
+                        <div class="hero-icon-scale opacity-60 lg:opacity-90">
+                            <div class="icon-3d-container">
+                                <div class="chat-bubble chat-bubble-bottom" style="color: #ffffff; background: linear-gradient(145deg, #cf142b, #990f20);">Hello! <br> <span>(Hii!)</span></div>
+                                <img src="https://files.catbox.moe/bj4pdl.webp" alt="UK" class="bola-bendera">
+                                <div class="chat-bubble chat-bubble-top" style="color: #00247d;">Thankyou! <br> <span>(Terima Kasih!)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 max-w-4xl mx-auto pt-6 lg:pt-0">
+                    <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-primary/60 text-white text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 border border-white/20 backdrop-blur-md shadow-lg mt-6 sm:mt-0">
+                        <i class="fa-solid fa-language text-brand-yellow"></i> Program Tribahasa
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.2] lg:leading-[1.1] mb-3 sm:mb-6 text-white drop-shadow-lg">
+                        Menguasai Tiga Bahasa Secara <br class="hidden sm:block"/>
+                        <span class="text-brand-yellow">Natural dan Menyenangkan.</span>
+                    </h1>
+                    <p class="text-sm sm:text-base lg:text-lg text-gray-200 mb-6 sm:mb-10 font-medium leading-relaxed max-w-2xl mx-auto drop-shadow">
+                        Membiasakan anak berkomunikasi sehari-hari dalam <strong class="text-white">Bahasa Indonesia, Bahasa Mandarin, dan Bahasa Inggris</strong> tanpa tekanan menghafal yang kaku.
+                    </p>
+                    <div class="flex justify-center">
+                        <a href="#formasi" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-8 py-3.5 sm:px-10 sm:py-4 rounded-xl shadow-lg hover:shadow-glow-yellow hover:bg-white transition-all transform hover:-translate-y-1 text-sm sm:text-base">
+                            Pelajari Formasi Kelas Kami <i class="fa-solid fa-arrow-down ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formasi" class="py-16 lg:py-24 bg-brand-gray relative z-20 reveal w-full overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-primary/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-10 sm:mb-14">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Susunan Formasi Guru</h2>
+                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
+                        Setiap ruang kelas didampingi oleh tim pendidik yang dirancang khusus untuk memastikan bahasa diserap secara optimal dan akurat.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-5 sm:p-10 lg:p-14 border border-gray-100 shadow-soft max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                        
+                        <div class="lg:col-span-5 text-center lg:text-left">
+                            <span class="bg-brand-primary/10 text-brand-primary text-[10px] font-bold px-3 py-1 rounded-full mb-3 inline-block uppercase tracking-wider border border-brand-primary/20">Setiap Kelas</span>
+                            <h3 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-primary mb-4 leading-tight">Didampingi <br class="hidden lg:block">oleh <span class="text-brand-yellow">3 Guru</span></h3>
+                            <p class="text-sm text-gray-500 font-medium mb-8">Kolaborasi pendidik yang menjamin keseimbangan interaksi akademis dan penguasaan bahasa harian.</p>
+                            
+                            <!-- BENTO GRID FOR TEACHERS ON MOBILE -->
+                            <div class="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-4 text-left">
+                                <div class="teacher-box bg-gray-50 p-3 sm:p-5 rounded-xl border border-gray-100 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4">
+                                    <div class="w-12 h-10 sm:w-16 sm:h-12 shrink-0 relative z-10 overflow-visible mx-auto sm:mx-0 mt-1">
+                                        <div style="transform: scale(0.3); transform-origin: top left; width: 140px; height: 140px; position: absolute; left: 0;" class="icon-3d-container cursor-default">
+                                            <img src="https://files.catbox.moe/79zazy.webp" alt="CN" class="bola-bendera">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-primary text-[13px] sm:text-base mb-1">1 Guru Native</h4>
+                                        <p class="text-[10px] sm:text-sm text-gray-600 leading-relaxed">Penutur asli memastikan pelafalan dan nada berjalan akurat.</p>
+                                    </div>
+                                </div>
+
+                                <div class="teacher-box bg-gray-50 p-3 sm:p-5 rounded-xl border border-gray-100 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4">
+                                    <div class="w-16 h-10 sm:w-20 sm:h-12 shrink-0 relative z-10 overflow-visible mx-auto sm:mx-0 mt-1">
+                                        <div style="transform: scale(0.3); transform-origin: top left; width: 140px; height: 140px; position: absolute; left: 0; z-index: 20;" class="icon-3d-container cursor-default">
+                                            <img src="https://files.catbox.moe/bj4pdl.webp" alt="UK" class="bola-bendera">
+                                        </div>
+                                        <div style="transform: scale(0.3); transform-origin: top left; width: 140px; height: 140px; position: absolute; left: 20px; z-index: 10;" class="icon-3d-container cursor-default">
+                                            <img src="https://files.catbox.moe/nnnqey.webp" alt="ID" class="bola-bendera">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-brand-primary text-[13px] sm:text-base mb-1">2 Pendamping</h4>
+                                        <p class="text-[10px] sm:text-sm text-gray-600 leading-relaxed">Fasih berbahasa Indonesia & Inggris untuk dampingi aktivitas akademis.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-7 flex justify-center relative h-full min-h-[250px] sm:min-h-[300px] mt-6 lg:mt-0">
+                            <div class="relative w-full h-full">
+                                <div class="absolute inset-0 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+                                    <img src="https://images.pexels.com/photos/8612920/pexels-photo-8612920.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Guru Sedaya Bintang" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-brand-primary/10 mix-blend-multiply"></div>
+                                </div>
+                                
+                                <div class="absolute bottom-4 -left-2 sm:left-4 bg-white/95 backdrop-blur px-4 py-2 sm:px-5 sm:py-3 rounded-xl shadow-floating border border-gray-100 flex items-center gap-3 animate-float z-30 scale-90 sm:scale-100">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-brand-primary to-blue-600 rounded-full flex items-center justify-center text-white shadow-glow-primary"><i class="fa-solid fa-check text-xs sm:text-base"></i></div>
+                                    <div>
+                                        <p class="text-[9px] sm:text-[10px] text-gray-500 font-bold uppercase tracking-widest">Rasio Ideal</p>
+                                        <p class="text-sm sm:text-base font-extrabold text-brand-primary">1 : 2 Pendidik</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PENDEKATAN BENTO GRID (2 Kolom Mobile) -->
+        <section class="py-16 lg:py-24 bg-white relative reveal w-full overflow-hidden">
+            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent -z-10"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-10 sm:mb-14">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Pendekatan Tiga Bahasa</h2>
+                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
+                        Kapasitas alami anak menyerap bahasa baru dilakukan secara natural melalui aktivitas bermakna, bukan sekadar hafalan.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
+                    
+                    <div class="feature-card bg-brand-gray p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-gray-100 flex flex-col items-center text-center cursor-default h-full relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-16 h-16 sm:w-24 sm:h-24 bg-brand-red/5 rounded-bl-full transition-transform group-hover:scale-110 -z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-16 sm:h-16 rounded-xl bg-white text-brand-red shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-colors z-10 border border-gray-100 p-1 sm:p-2">
+                            <img src="https://files.catbox.moe/nnnqey.webp" alt="ID" class="w-full h-full object-contain drop-shadow-sm rounded-full">
+                        </div>
+                        <span class="text-brand-red font-bold text-[8px] sm:text-[10px] uppercase tracking-widest mb-1 z-10">Bahasa Ibu</span>
+                        <h4 class="font-bold text-brand-primary text-sm sm:text-xl mb-2 sm:mb-3 z-10">Indonesia</h4>
+                        <p class="text-[10px] sm:text-sm text-gray-600 leading-relaxed font-medium z-10">
+                            Kelestarian nilai dan budaya Nusantara melalui Kurikulum Nasional.
+                        </p>
+                    </div>
+
+                    <div class="feature-card bg-brand-gray p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-gray-100 flex flex-col items-center text-center cursor-default h-full relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-16 h-16 sm:w-24 sm:h-24 bg-brand-yellow/10 rounded-bl-full transition-transform group-hover:scale-110 -z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-16 sm:h-16 rounded-xl bg-white text-brand-yellow shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-colors z-10 border border-gray-100 p-1 sm:p-2">
+                            <img src="https://files.catbox.moe/79zazy.webp" alt="CN" class="w-full h-full object-contain drop-shadow-sm rounded-full">
+                        </div>
+                        <span class="text-[#d49900] font-bold text-[8px] sm:text-[10px] uppercase tracking-widest mb-1 z-10">Terukur YCT</span>
+                        <h4 class="font-bold text-brand-primary text-sm sm:text-xl mb-2 sm:mb-3 z-10">Mandarin</h4>
+                        <p class="text-[10px] sm:text-sm text-gray-600 leading-relaxed font-medium z-10">
+                            Pengenalan kosa kata interaktif dengan evaluasi Youth Chinese Test.
+                        </p>
+                    </div>
+
+                    <!-- Centered on mobile, normal on desktop -->
+                    <div class="feature-card bg-brand-gray p-4 sm:p-8 rounded-xl sm:rounded-2xl border border-gray-100 flex flex-col items-center text-center cursor-default h-full relative overflow-hidden group col-span-2 lg:col-span-1 justify-self-center w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.75rem)] lg:w-full">
+                        <div class="absolute top-0 right-0 w-16 h-16 sm:w-24 sm:h-24 bg-brand-primary/5 rounded-bl-full transition-transform group-hover:scale-110 -z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-16 sm:h-16 rounded-xl bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-colors z-10 border border-gray-100 p-1 sm:p-2">
+                            <img src="https://files.catbox.moe/bj4pdl.webp" alt="EN" class="w-full h-full object-contain drop-shadow-sm rounded-full">
+                        </div>
+                        <span class="text-brand-primary font-bold text-[8px] sm:text-[10px] uppercase tracking-widest mb-1 z-10">Wawasan Global</span>
+                        <h4 class="font-bold text-brand-primary text-sm sm:text-xl mb-2 sm:mb-3 z-10">Inggris</h4>
+                        <p class="text-[10px] sm:text-sm text-gray-600 leading-relaxed font-medium z-10 max-w-sm mx-auto">
+                            Diperkuat kurikulum internasional Pearson Edexcel, diterapkan konsisten.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 lg:py-24 bg-brand-primary relative overflow-hidden reveal text-white w-full">
+            <div class="shape-blob bg-white/10 w-[400px] h-[400px] top-0 right-0 -translate-y-1/2 translate-x-1/3 animate-blob"></div>
+            <div class="shape-blob bg-brand-yellow/20 w-[300px] h-[300px] bottom-0 left-0 translate-y-1/2 -translate-x-1/3 animate-blob" style="animation-delay: 2s;"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+                    <div class="w-full lg:w-5/12 text-center lg:text-left">
+                        <span class="inline-block py-1.5 px-4 rounded-full bg-white/10 text-brand-yellow text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 border border-white/20">Distribusi Optimal</span>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4">Porsi Proporsional Sesuai Jenjang Kognitif</h2>
+                        <p class="text-sm sm:text-base text-gray-300 font-medium leading-relaxed mb-6">
+                            Persentase penggunaan Bahasa Mandarin di dalam kelas tidak dipukul rata, disesuaikan dengan tahap perkembangan otak dan kebutuhan akademis.
+                        </p>
+                    </div>
+
+                    <div class="w-full lg:w-7/12">
+                        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-5 sm:p-8 lg:p-10 shadow-2xl flex flex-col gap-6">
+                            <div>
+                                <div class="flex justify-between items-end mb-2">
+                                    <div>
+                                        <h4 class="font-bold text-base sm:text-lg text-brand-yellow">KB & TK</h4>
+                                        <p class="text-[10px] sm:text-xs text-gray-300 mt-1">Memanfaatkan masa emas (Golden Age).</p>
+                                    </div>
+                                    <span class="text-2xl sm:text-3xl font-extrabold text-white">70%</span>
+                                </div>
+                                <div class="w-full bg-brand-dark rounded-full h-3 sm:h-4 overflow-hidden border border-white/10">
+                                    <div class="bg-gradient-to-r from-brand-yellow to-[#eacc00] h-full rounded-full relative progress-bar-fill w-0" id="prog-1">
+                                        <div class="absolute right-0 top-0 bottom-0 w-4 bg-white/30 blur-sm rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-end mb-2">
+                                    <div>
+                                        <h4 class="font-bold text-base sm:text-lg text-[#60a5fa]">Sekolah Dasar (SD)</h4>
+                                        <p class="text-[10px] sm:text-xs text-gray-300 mt-1">Berimbang dengan penalaran akademik.</p>
+                                    </div>
+                                    <span class="text-2xl sm:text-3xl font-extrabold text-white">42%</span>
+                                </div>
+                                <div class="w-full bg-brand-dark rounded-full h-3 sm:h-4 overflow-hidden border border-white/10">
+                                    <div class="bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] h-full rounded-full relative progress-bar-fill w-0" id="prog-2">
+                                        <div class="absolute right-0 top-0 bottom-0 w-4 bg-white/30 blur-sm rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 lg:py-24 bg-white relative reveal w-full overflow-hidden">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Mendengar Langsung dari Anak-Anak Kami</h2>
+                <p class="text-sm sm:text-base text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto mb-10 sm:mb-14">
+                    Melihat senyum antusias mereka saat mempraktikkan kosa kata bahasa Mandarin bersama guru native di dalam kelas.
+                </p>
+                <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border-4 border-gray-100 bg-brand-dark" onclick="openVideoModal()">
+                    <img src="https://images.pexels.com/photos/892654/pexels-photo-892654.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Video Bahasa Mandarin" class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 opacity-80">
+                    <div class="absolute inset-0 bg-brand-dark/40 group-hover:bg-brand-dark/20 transition-colors flex flex-col items-center justify-center text-white">
+                        <div class="w-14 h-14 sm:w-20 sm:h-20 bg-brand-yellow rounded-full flex items-center justify-center text-brand-primary text-xl sm:text-3xl shadow-glow-yellow play-btn mb-4 sm:mb-6 pl-1.5 transition-transform group-hover:scale-110">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <span class="bg-brand-primary/80 backdrop-blur px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase border border-white/20">Play Dokumentasi</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 lg:py-24 bg-brand-gray relative overflow-hidden reveal w-full" id="minigame-section">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-white border border-gray-200 text-brand-yellow text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">Interactive Fun</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-primary mb-3">Mini Kuis: Tebak Kosakata Mandarin!</h2>
+                <p class="text-sm sm:text-base text-gray-500 font-medium mb-6 sm:mb-8 max-w-xl mx-auto">
+                    Belajar bahasa baru itu menyenangkan! Mari uji pengetahuan dasar dengan 5 kosa kata ini.
+                </p>
+
+                <div class="bg-white rounded-2xl p-2 shadow-2xl border border-gray-200 max-w-2xl mx-auto relative z-10 overflow-hidden" id="game-board">
+                    <div class="bg-[#f0f9ff] rounded-2xl p-4 sm:p-10 border border-blue-100 flex flex-col items-center relative overflow-hidden min-h-[350px] sm:min-h-[450px]">
+                        
+                        <div id="start-screen" class="flex flex-col items-center justify-center w-full h-full text-center py-10 my-auto">
+                            <div class="w-20 h-20 sm:w-24 sm:h-24 bg-brand-yellow/20 rounded-full flex items-center justify-center mb-6 shadow-inner">
+                                <i class="fa-solid fa-gamepad text-4xl sm:text-5xl text-brand-yellow"></i>
+                            </div>
+                            <h3 class="text-xl sm:text-3xl font-extrabold text-brand-primary mb-3">Are You Ready?</h3>
+                            <p class="text-gray-500 mb-8 text-xs sm:text-sm font-medium">Uji seberapa hebat kosakata Mandarin kamu di sini!</p>
+                            <button onclick="startCountdown()" class="bg-brand-primary text-white font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-glow-primary hover:bg-[#15346b] hover:-translate-y-1 transition-all text-sm sm:text-base">
+                                Mulai Kuis Sekarang <i class="fa-solid fa-play ml-2 text-brand-yellow"></i>
+                            </button>
+                        </div>
+
+                        <div id="countdown-screen" class="hidden flex flex-col items-center justify-center w-full h-full py-20 my-auto">
+                            <span id="countdown-number" class="text-7xl sm:text-9xl font-black text-brand-primary">3</span>
+                        </div>
+
+                        <div class="hidden items-center justify-between w-full mb-6" id="game-header">
+                            <div class="flex gap-1.5 sm:gap-2" id="game-dots"></div>
+                            <div class="text-brand-primary font-bold text-xs sm:text-sm bg-white px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-sm border border-blue-100">
+                                Poin: <span id="current-point">0</span>
+                            </div>
+                        </div>
+
+                        <div id="correct-popup" class="bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-xl border-2 border-[#10b981] flex items-center gap-2 text-[#10b981] font-bold text-xs sm:text-sm">
+                            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" class="w-5 h-5 sm:w-6 sm:h-6"> Benar!
+                        </div>
+
+                        <div id="question-container" class="hidden flex-col items-center w-full mt-2">
+                            <div class="w-24 h-24 sm:w-40 sm:h-40 mb-3 sm:mb-4 relative">
+                                <div class="absolute inset-0 bg-blue-200/50 rounded-full blur-xl -translate-y-4"></div>
+                                <img id="q-img" src="" alt="Objek" class="w-full h-full object-contain relative z-10 drop-shadow-xl animate-[float_3s_ease-in-out_infinite]">
+                            </div>
+                            <h3 id="q-word" class="text-lg sm:text-2xl font-bold text-brand-primary mb-4 sm:mb-6 uppercase tracking-wider text-center h-[28px] sm:h-[40px]"></h3>
+                            
+                            <!-- BENTO GRID FOR KUIS CHOICES -->
+                            <div class="flex flex-wrap gap-2 sm:gap-4 w-full justify-center" id="q-options">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- CTA & Register forms -->
+        <section class="py-16 lg:py-24 bg-white relative reveal w-full overflow-hidden">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <div class="w-16 h-16 rounded-full bg-brand-gray border border-gray-100 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-layer-group text-brand-primary text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-primary mb-4">Sinergi Pembelajaran ACT</h2>
+                    <p class="text-sm sm:text-base text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">
+                        Kemampuan bahasa yang luwes akan menjembatani si kecil menuju penalaran logika yang kritis dan karakter yang beretika.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 justify-center gap-3 sm:gap-6 max-w-2xl mx-auto">
+                    <a href="budi-pekerti.html" class="flex items-center justify-center gap-3 border-2 border-brand-red text-brand-red font-bold px-4 py-3 sm:px-6 sm:py-4 rounded-xl hover:bg-brand-red hover:text-white transition-all group text-sm sm:text-base w-full shadow-sm hover:shadow-lg">
+                        <i class="fa-solid fa-heart text-lg group-hover:scale-110 transition-transform"></i> Eksplorasi Budi Pekerti
+                    </a>
+                    <a href="#" class="flex items-center justify-center gap-3 border-2 border-[#d49900] text-[#d49900] font-bold px-4 py-3 sm:px-6 sm:py-4 rounded-xl hover:bg-[#d49900] hover:text-white transition-all group text-sm sm:text-base w-full shadow-sm hover:shadow-glow-yellow">
+                        <i class="fa-solid fa-rocket text-lg group-hover:scale-110 transition-transform"></i> Eksplorasi STEAM
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="app-footer"></div>
+
+    <div id="result-modal" class="custom-modal fixed inset-0 flex items-center justify-center bg-brand-dark/95 backdrop-blur-md hidden" style="z-index: 100000;">
+        <div class="modal-scale-content bg-gradient-to-b from-[#1d4486] to-[#0f2447] border border-blue-400 rounded-2xl p-6 sm:p-8 max-w-sm w-full mx-4 shadow-[0_0_50px_rgba(255,203,5,0.3)] relative text-center">
+            <button class="absolute top-4 right-4 z-[60] w-8 h-8 bg-white/20 backdrop-blur rounded-full text-white hover:bg-brand-red flex items-center justify-center transition-colors shadow-sm" onclick="closeResultModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="relative w-24 h-24 mx-auto mb-4 mt-2">
+                <div class="absolute inset-0 bg-brand-yellow rounded-full blur-xl opacity-50 animate-pulse"></div>
+                <img id="result-trophy" src="" alt="Trophy" class="w-full h-full object-contain relative z-10 drop-shadow-2xl animate-bounce">
+            </div>
+            <h3 class="text-white text-lg sm:text-xl font-bold mb-2">Kuis Selesai!</h3>
+            <p class="text-gray-300 text-xs sm:text-sm mb-6" id="result-msg">Kamu berhasil menjawab <span id="final-correct" class="text-brand-yellow font-extrabold">0</span> dari 5 soal.</p>
+            <div class="bg-black/30 rounded-xl p-3 sm:p-4 mb-6 border border-white/10">
+                <p class="text-[10px] sm:text-xs text-gray-400 uppercase tracking-widest mb-1">Skor Akhir</p>
+                <p class="text-4xl sm:text-5xl font-black text-brand-yellow" id="final-score-text">0</p>
+            </div>
+            <button onclick="resetGame()" class="w-full bg-brand-yellow text-brand-primary font-extrabold py-3 rounded-xl shadow-glow-yellow hover:bg-white transition-colors text-sm sm:text-base">
+                Main Lagi <i class="fa-solid fa-rotate-right ml-1"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="video-modal" class="custom-modal fixed inset-0 flex items-center justify-center bg-black/95 backdrop-blur-sm w-full h-full" style="z-index: 100000;" onclick="closeVideoModal(event)">
+        <button class="absolute top-4 right-4 z-20 w-8 h-8 bg-white/20 backdrop-blur rounded-full text-white hover:bg-brand-red flex items-center justify-center transition-colors shadow-sm" onclick="closeVideoModal(event, true)"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-scale-content w-full max-w-4xl mx-4 rounded-xl overflow-hidden aspect-video bg-black shadow-2xl border border-white/10 relative">
+            <iframe id="youtube-frame" class="absolute inset-0 w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        function animateProgressBars() {
+            const prog1 = document.getElementById('prog-1');
+            const prog2 = document.getElementById('prog-2');
+            if (!prog1 || !prog2) return;
+            const rect1 = prog1.getBoundingClientRect();
+            if (rect1.top < window.innerHeight && rect1.bottom >= 0) {
+                prog1.style.width = '70%';
+                prog2.style.width = '42%';
+                window.removeEventListener('scroll', animateProgressBars);
+            }
+        }
+        window.addEventListener('scroll', animateProgressBars);
+        animateProgressBars();
+
+        const vModal = document.getElementById('video-modal');
+        const vFrame = document.getElementById('youtube-frame');
+        function openVideoModal() {
+            vFrame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"; 
+            vModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeVideoModal(e, force = false) {
+            if (force || e.target === vModal) {
+                vFrame.src = ""; 
+                vModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        const questions = [
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Food/Shallow%20Pan%20of%20Food.png", word: "PIRING", options: ["瓶子 (Píngzi)", "盘子 (Pánzi)", "杯子 (Bēizi)", "碗 (Wǎn)"], correct: 1 },
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png", word: "BUKU", options: ["书 (Shū)", "笔 (Bǐ)", "纸 (Zhǐ)", "包 (Bāo)"], correct: 0 },
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Sun.png", word: "MATAHARI", options: ["月亮 (Yuèliàng)", "星星 (Xīngxīng)", "太阳 (Tàiyáng)", "云 (Yún)"], correct: 2 },
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Cat%20Face.png", word: "KUCING", options: ["狗 (Gǒu)", "猫 (Māo)", "鸟 (Niǎo)", "鱼 (Yú)"], correct: 1 },
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Droplet.png", word: "AIR", options: ["牛奶 (Niúnǎi)", "水 (Shuǐ)", "果汁 (Guǒzhī)", "茶 (Chá)"], correct: 1 }
+        ];
+
+        let currentQIndex = 0;
+        let currentScore = 0;
+        let isAnswering = false;
+
+        const startScreen = document.getElementById('start-screen');
+        const countdownScreen = document.getElementById('countdown-screen');
+        const cdNumber = document.getElementById('countdown-number');
+        const gameHeader = document.getElementById('game-header');
+        
+        const qContainer = document.getElementById('question-container');
+        const qImg = document.getElementById('q-img');
+        const qWord = document.getElementById('q-word');
+        const qOptionsContainer = document.getElementById('q-options');
+        const dotsContainer = document.getElementById('game-dots');
+        const pointText = document.getElementById('current-point');
+        
+        const correctPopup = document.getElementById('correct-popup');
+        
+        const resultModal = document.getElementById('result-modal');
+        const scoreText = document.getElementById('final-correct');
+        const scoreBig = document.getElementById('final-score-text');
+        const rMsg = document.getElementById('result-msg');
+        const rTrophy = document.getElementById('result-trophy');
+
+        function initGame() {
+            currentQIndex = 0;
+            currentScore = 0;
+            pointText.innerText = '0';
+            
+            startScreen.classList.remove('hidden');
+            startScreen.classList.add('flex');
+            
+            countdownScreen.classList.remove('flex');
+            countdownScreen.classList.add('hidden');
+            
+            gameHeader.classList.remove('flex');
+            gameHeader.classList.add('hidden');
+            
+            qContainer.classList.remove('flex');
+            qContainer.classList.add('hidden');
+            
+            resultModal.classList.add('hidden');
+            resultModal.classList.remove('show');
+            document.body.style.overflow = 'auto'; 
+            
+            qContainer.classList.remove('question-slide-out', 'question-slide-in');
+        }
+
+        function startCountdown() {
+            startScreen.classList.remove('flex');
+            startScreen.classList.add('hidden');
+            
+            countdownScreen.classList.remove('hidden');
+            countdownScreen.classList.add('flex');
+            
+            let count = 3;
+            cdNumber.innerText = count;
+            
+            cdNumber.classList.remove('animate-countdown');
+            void cdNumber.offsetWidth; 
+            cdNumber.classList.add('animate-countdown');
+
+            const interval = setInterval(() => {
+                count--;
+                if(count > 0) {
+                    cdNumber.innerText = count;
+                    cdNumber.classList.remove('animate-countdown');
+                    void cdNumber.offsetWidth; 
+                    cdNumber.classList.add('animate-countdown');
+                } else if(count === 0) {
+                    cdNumber.innerText = "GO!";
+                    cdNumber.classList.remove('animate-countdown');
+                    void cdNumber.offsetWidth; 
+                    cdNumber.classList.add('animate-countdown');
+                } else {
+                    clearInterval(interval);
+                    countdownScreen.classList.remove('flex');
+                    countdownScreen.classList.add('hidden');
+                    startGame();
+                }
+            }, 1000);
+        }
+
+        function startGame() {
+            gameHeader.classList.remove('hidden');
+            gameHeader.classList.add('flex');
+            qContainer.classList.remove('hidden');
+            qContainer.classList.add('flex');
+            renderQuestion();
+            updateDots();
+        }
+
+        function updateDots() {
+            dotsContainer.innerHTML = '';
+            for(let i=0; i<questions.length; i++) {
+                const dot = document.createElement('div');
+                if(i < currentQIndex) {
+                    dot.className = "w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-brand-primary transition-all";
+                } else if (i === currentQIndex) {
+                    dot.className = "w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-brand-yellow shadow-glow-yellow transition-all scale-110";
+                } else {
+                    dot.className = "w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gray-300 transition-all";
+                }
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQIndex];
+            qContainer.classList.remove('question-slide-out');
+            void qContainer.offsetWidth;
+            qContainer.classList.add('question-slide-in');
+
+            qImg.src = q.img;
+            qWord.innerText = '"' + q.word + '"';
+            qOptionsContainer.innerHTML = '';
+            
+            const prefixes = ['A', 'B', 'C', 'D'];
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "game-btn w-[calc(50%-0.25rem)] sm:w-[calc(50%-0.5rem)] flex-initial bg-white border-2 border-brand-primary text-brand-primary font-bold py-2.5 sm:py-3.5 rounded-xl shadow-sm hover:bg-brand-primary hover:text-white transition-colors text-[10px] sm:text-sm";
+                btn.innerText = prefixes[index] + ". " + opt;
+                btn.onclick = () => handleAnswer(index, btn);
+                qOptionsContainer.appendChild(btn);
+            });
+            isAnswering = false;
+        }
+
+        function handleAnswer(selectedIndex, btnElement) {
+            if(isAnswering) return;
+            isAnswering = true;
+            
+            const isCorrect = (selectedIndex === questions[currentQIndex].correct);
+            const allBtns = document.querySelectorAll('.game-btn');
+
+            allBtns.forEach(b => b.style.pointerEvents = 'none');
+
+            if(isCorrect) {
+                currentScore++;
+                pointText.innerText = currentScore * 20; 
+                btnElement.classList.add('animate-correct');
+                correctPopup.classList.add('show');
+            } else {
+                btnElement.classList.add('animate-shake');
+                allBtns[questions[currentQIndex].correct].classList.add('animate-correct');
+            }
+
+            setTimeout(() => {
+                correctPopup.classList.remove('show');
+                qContainer.classList.remove('question-slide-in');
+                qContainer.classList.add('question-slide-out');
+
+                setTimeout(() => {
+                    currentQIndex++;
+                    if(currentQIndex < questions.length) {
+                        updateDots();
+                        renderQuestion();
+                    } else {
+                        showEndScreen();
+                    }
+                }, 400); 
+            }, 1200); 
+        }
+
+        function showEndScreen() {
+            resultModal.classList.remove('hidden');
+            setTimeout(() => {
+                resultModal.classList.add('show');
+                document.body.style.overflow = 'hidden'; 
+            }, 10);
+            
+            scoreText.innerText = currentScore;
+            scoreBig.innerText = currentScore * 20;
+            
+            if (currentScore >= 3) {
+                rMsg.innerHTML = 'Luar Biasa! Kamu berhasil menjawab <span class="text-brand-yellow font-extrabold text-sm sm:text-base">' + currentScore + '</span> dari 5 soal.';
+                rTrophy.src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Trophy.png";
+                fireConfettiDual();
+            } else {
+                rMsg.innerHTML = 'Jangan Menyerah! Kamu menjawab <span class="text-brand-yellow font-extrabold text-sm sm:text-base">' + currentScore + '</span> dari 5 soal.';
+                rTrophy.src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Crying%20Face.png";
+            }
+        }
+
+        function closeResultModal() {
+            resultModal.classList.remove('show');
+            setTimeout(() => {
+                resultModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                initGame();
+            }, 300);
+        }
+
+        function resetGame() {
+            resultModal.classList.remove('show');
+            setTimeout(() => {
+                resultModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                currentQIndex = 0;
+                currentScore = 0;
+                pointText.innerText = '0';
+                startCountdown(); 
+            }, 300);
+        }
+
+        initGame();
+
+        function fireConfettiDual() {
+            const container = document.getElementById('confetti-container');
+            container.style.display = 'block';
+            container.innerHTML = ''; 
+            const colors = ['#ffcb05', '#1d4486', '#d2232a', '#10b981', '#3b82f6', '#ffffff'];
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-piece');
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                const animDuration = Math.random() * 1.5 + 2; 
+                const animDelay = Math.random() * 0.5; 
+                if(i % 2 === 0) {
+                    confetti.style.left = '-10px';
+                    confetti.style.bottom = '10%'; 
+                    confetti.style.animation = 'shootLeft ' + animDuration + 's cubic-bezier(.25, .8, .25, 1) ' + animDelay + 's forwards';
+                } else {
+                    confetti.style.right = '-10px';
+                    confetti.style.bottom = '10%';
+                    confetti.style.animation = 'shootRight ' + animDuration + 's cubic-bezier(.25, .8, .25, 1) ' + animDelay + 's forwards';
+                }
+                container.appendChild(confetti);
+            }
+            setTimeout(() => { container.style.display = 'none'; container.innerHTML = ''; }, 4500);
+        }
+    </script>
+</body>
+</html>
