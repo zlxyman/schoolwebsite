@@ -9,32 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-                    colors: {
-                        brand: {
-                            primary: '#1d4486',
-                            yellow: '#ffcb05',
-                            red: '#d2232a',
-                            light: '#ffffff',
-                            gray: '#f9fafb',
-                            dark: '#0f2447'
-                        }
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(29,68,134,0.08)',
-                        'glow-primary': '0 0 25px rgba(29,68,134,0.25)',
-                        'glow-yellow': '0 0 25px rgba(255,203,5,0.4)',
-                        'glow-red': '0 0 25px rgba(210,35,42,0.4)',
-                        'floating': '0 20px 50px -10px rgba(0,0,0,0.1)',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="js/tailwind-config.js"></script>
     <link rel="stylesheet" href="css/style.css">
     
     <style>
@@ -373,57 +348,55 @@
         </section>
 
         <section class="py-16 lg:py-24 bg-brand-gray relative overflow-hidden reveal w-full" id="minigame-section">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <span class="inline-block py-1.5 px-4 rounded-full bg-white border border-gray-200 text-brand-yellow text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">Interactive Fun</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-primary mb-3">Mini Kuis: Tebak Kosakata Mandarin!</h2>
-                <p class="text-sm sm:text-base text-gray-500 font-medium mb-6 sm:mb-8 max-w-xl mx-auto">
-                    Belajar bahasa baru itu menyenangkan! Mari uji pengetahuan dasar dengan 5 kosa kata ini.
-                </p>
-
-                <div class="bg-white rounded-2xl p-2 shadow-2xl border border-gray-200 max-w-2xl mx-auto relative z-10 overflow-hidden" id="game-board">
-                    <div class="bg-[#f0f9ff] rounded-2xl p-4 sm:p-10 border border-blue-100 flex flex-col items-center relative overflow-hidden min-h-[350px] sm:min-h-[450px]">
-                        
-                        <div id="start-screen" class="flex flex-col items-center justify-center w-full h-full text-center py-10 my-auto">
-                            <div class="w-20 h-20 sm:w-24 sm:h-24 bg-brand-yellow/20 rounded-full flex items-center justify-center mb-6 shadow-inner">
-                                <i class="fa-solid fa-gamepad text-4xl sm:text-5xl text-brand-yellow"></i>
-                            </div>
-                            <h3 class="text-xl sm:text-3xl font-extrabold text-brand-primary mb-3">Are You Ready?</h3>
-                            <p class="text-gray-500 mb-8 text-xs sm:text-sm font-medium">Uji seberapa hebat kosakata Mandarin kamu di sini!</p>
-                            <button onclick="startCountdown()" class="bg-brand-primary text-white font-bold px-6 py-3 sm:px-8 sm:py-4 rounded-xl shadow-glow-primary hover:bg-[#15346b] hover:-translate-y-1 transition-all text-sm sm:text-base">
-                                Mulai Kuis Sekarang <i class="fa-solid fa-play ml-2 text-brand-yellow"></i>
-                            </button>
-                        </div>
-
-                        <div id="countdown-screen" class="hidden flex flex-col items-center justify-center w-full h-full py-20 my-auto">
-                            <span id="countdown-number" class="text-7xl sm:text-9xl font-black text-brand-primary">3</span>
-                        </div>
-
-                        <div class="hidden items-center justify-between w-full mb-6" id="game-header">
-                            <div class="flex gap-1.5 sm:gap-2" id="game-dots"></div>
-                            <div class="text-brand-primary font-bold text-xs sm:text-sm bg-white px-2 py-1 sm:px-3 sm:py-1 rounded-full shadow-sm border border-blue-100">
-                                Poin: <span id="current-point">0</span>
-                            </div>
-                        </div>
-
-                        <div id="correct-popup" class="bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-xl border-2 border-[#10b981] flex items-center gap-2 text-[#10b981] font-bold text-xs sm:text-sm">
-                            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" class="w-5 h-5 sm:w-6 sm:h-6"> Benar!
-                        </div>
-
-                        <div id="question-container" class="hidden flex-col items-center w-full mt-2">
-                            <div class="w-24 h-24 sm:w-40 sm:h-40 mb-3 sm:mb-4 relative">
-                                <div class="absolute inset-0 bg-blue-200/50 rounded-full blur-xl -translate-y-4"></div>
-                                <img id="q-img" src="" alt="Objek" class="w-full h-full object-contain relative z-10 drop-shadow-xl animate-[float_3s_ease-in-out_infinite]">
-                            </div>
-                            <h3 id="q-word" class="text-lg sm:text-2xl font-bold text-brand-primary mb-4 sm:mb-6 uppercase tracking-wider text-center h-[28px] sm:h-[40px]"></h3>
-                            
-                            <!-- BENTO GRID FOR KUIS CHOICES -->
-                            <div class="flex flex-wrap gap-2 sm:gap-4 w-full justify-center" id="q-options">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="bg-[#0f172a] rounded-[2.5rem] p-8 sm:p-12 shadow-2xl relative flex flex-col lg:flex-row items-center justify-between border border-slate-800 overflow-hidden">
+                    <!-- Background Decor -->
+                    <div class="absolute -top-32 -right-32 w-96 h-96 bg-brand-primary rounded-full blur-[100px] opacity-30"></div>
+                    <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-brand-yellow rounded-full blur-[100px] opacity-20"></div>
+                    
+                    <!-- Text Container -->
+                    <div class="w-full lg:w-5/12 text-center lg:text-left z-10">
+                        <span class="inline-block py-1.5 px-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4">Mini Games</span>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">Belajar Jadi Lebih <span class="text-brand-yellow">Seru!</span></h2>
+                        <p class="text-slate-400 font-medium mb-8 text-sm sm:text-base leading-relaxed">
+                            Uji kemampuan kosakata Mandarin melalui koleksi mini game interaktif.
+                        </p>
+                        <a href="games.html" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-brand-yellow text-brand-primary font-extrabold px-8 py-4 rounded-2xl shadow-lg hover:bg-white transition-all hover:-translate-y-1 group">
+                            Buka Portal Game <i class="fa-solid fa-gamepad group-hover:rotate-12 transition-transform"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Asset Cards Container -->
+                    <div class="w-full lg:w-7/12 relative h-[320px] sm:h-[400px] flex justify-center items-center pointer-events-none mt-8 lg:mt-0">
+                        <!-- Vocab Master (Asset) -->
+                        <div class="absolute z-10 transform -rotate-12 -translate-x-12 sm:-translate-x-20 scale-[0.6] sm:scale-[0.75] xl:scale-[0.85] mt-4">
+                            <div class="w-[300px] h-[350px] bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[2.5rem] p-8 pb-10 flex flex-col items-center text-center border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative">
+                                <div class="absolute top-5 right-5 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-black text-white flex items-center gap-1.5 border border-white/30 uppercase tracking-widest shadow-lg">
+                                    <i class="fa-solid fa-language text-white"></i> Bahasa
+                                </div>
+                                <div class="h-40 mt-[-4rem] mb-6 w-full flex justify-center">
+                                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png" class="w-40 h-40 object-contain drop-shadow-xl" />
+                                </div>
+                                <h3 class="text-3xl font-black text-white mb-3 tracking-tight">Vocab Master</h3>
+                                <div class="w-full bg-white/20 h-4 rounded-full mt-auto p-1"><div class="bg-white h-full rounded-full w-3/4"></div></div>
                             </div>
                         </div>
 
+                        <!-- Hanzi Master (Asset) -->
+                        <div class="absolute z-20 transform rotate-6 translate-x-12 sm:translate-x-24 scale-[0.65] sm:scale-[0.8] xl:scale-[0.9] mt-16 sm:mt-20">
+                            <div class="w-[300px] h-[350px] bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-[2.5rem] p-8 pb-10 flex flex-col items-center text-center border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative">
+                                <div class="absolute top-5 right-5 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-black text-white flex items-center gap-1.5 border border-white/30 uppercase tracking-widest shadow-lg">
+                                    <i class="fa-solid fa-star text-yellow-300"></i> Populer
+                                </div>
+                                <div class="h-40 mt-[-4rem] mb-6 w-full flex justify-center">
+                                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Artist%20Palette.png" class="w-40 h-40 object-contain drop-shadow-xl" />
+                                </div>
+                                <h3 class="text-3xl font-black text-white mb-3 tracking-tight">Hanzi Master</h3>
+                                <div class="w-full bg-white/20 h-4 rounded-full mt-auto p-1"><div class="bg-brand-yellow h-full rounded-full w-1/2"></div></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
             </div>
         </section>
 
@@ -455,25 +428,6 @@
 
     <div id="app-footer"></div>
 
-    <div id="result-modal" class="custom-modal fixed inset-0 flex items-center justify-center bg-brand-dark/95 backdrop-blur-md hidden" style="z-index: 100000;">
-        <div class="modal-scale-content bg-gradient-to-b from-[#1d4486] to-[#0f2447] border border-blue-400 rounded-2xl p-6 sm:p-8 max-w-sm w-full mx-4 shadow-[0_0_50px_rgba(255,203,5,0.3)] relative text-center">
-            <button class="absolute top-4 right-4 z-[60] w-8 h-8 bg-white/20 backdrop-blur rounded-full text-white hover:bg-brand-red flex items-center justify-center transition-colors shadow-sm" onclick="closeResultModal()"><i class="fa-solid fa-xmark"></i></button>
-            <div class="relative w-24 h-24 mx-auto mb-4 mt-2">
-                <div class="absolute inset-0 bg-brand-yellow rounded-full blur-xl opacity-50 animate-pulse"></div>
-                <img id="result-trophy" src="" alt="Trophy" class="w-full h-full object-contain relative z-10 drop-shadow-2xl animate-bounce">
-            </div>
-            <h3 class="text-white text-lg sm:text-xl font-bold mb-2">Kuis Selesai!</h3>
-            <p class="text-gray-300 text-xs sm:text-sm mb-6" id="result-msg">Kamu berhasil menjawab <span id="final-correct" class="text-brand-yellow font-extrabold">0</span> dari 5 soal.</p>
-            <div class="bg-black/30 rounded-xl p-3 sm:p-4 mb-6 border border-white/10">
-                <p class="text-[10px] sm:text-xs text-gray-400 uppercase tracking-widest mb-1">Skor Akhir</p>
-                <p class="text-4xl sm:text-5xl font-black text-brand-yellow" id="final-score-text">0</p>
-            </div>
-            <button onclick="resetGame()" class="w-full bg-brand-yellow text-brand-primary font-extrabold py-3 rounded-xl shadow-glow-yellow hover:bg-white transition-colors text-sm sm:text-base">
-                Main Lagi <i class="fa-solid fa-rotate-right ml-1"></i>
-            </button>
-        </div>
-    </div>
-
     <div id="video-modal" class="custom-modal fixed inset-0 flex items-center justify-center bg-black/95 backdrop-blur-sm w-full h-full" style="z-index: 100000;" onclick="closeVideoModal(event)">
         <button class="absolute top-4 right-4 z-20 w-8 h-8 bg-white/20 backdrop-blur rounded-full text-white hover:bg-brand-red flex items-center justify-center transition-colors shadow-sm" onclick="closeVideoModal(event, true)"><i class="fa-solid fa-xmark"></i></button>
         <div class="modal-scale-content w-full max-w-4xl mx-4 rounded-xl overflow-hidden aspect-video bg-black shadow-2xl border border-white/10 relative">
@@ -481,279 +435,8 @@
         </div>
     </div>
 
-    <div id="confetti-container"></div>
-
     <script src="js/components.js"></script>
     <script src="js/app.js"></script>
-    <script>
-        function animateProgressBars() {
-            const prog1 = document.getElementById('prog-1');
-            const prog2 = document.getElementById('prog-2');
-            if (!prog1 || !prog2) return;
-            const rect1 = prog1.getBoundingClientRect();
-            if (rect1.top < window.innerHeight && rect1.bottom >= 0) {
-                prog1.style.width = '70%';
-                prog2.style.width = '42%';
-                window.removeEventListener('scroll', animateProgressBars);
-            }
-        }
-        window.addEventListener('scroll', animateProgressBars);
-        animateProgressBars();
-
-        const vModal = document.getElementById('video-modal');
-        const vFrame = document.getElementById('youtube-frame');
-        function openVideoModal() {
-            vFrame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"; 
-            vModal.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeVideoModal(e, force = false) {
-            if (force || e.target === vModal) {
-                vFrame.src = ""; 
-                vModal.classList.remove('show');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        const questions = [
-            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Food/Shallow%20Pan%20of%20Food.png", word: "PIRING", options: ["瓶子 (Píngzi)", "盘子 (Pánzi)", "杯子 (Bēizi)", "碗 (Wǎn)"], correct: 1 },
-            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png", word: "BUKU", options: ["书 (Shū)", "笔 (Bǐ)", "纸 (Zhǐ)", "包 (Bāo)"], correct: 0 },
-            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Sun.png", word: "MATAHARI", options: ["月亮 (Yuèliàng)", "星星 (Xīngxīng)", "太阳 (Tàiyáng)", "云 (Yún)"], correct: 2 },
-            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Cat%20Face.png", word: "KUCING", options: ["狗 (Gǒu)", "猫 (Māo)", "鸟 (Niǎo)", "鱼 (Yú)"], correct: 1 },
-            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Droplet.png", word: "AIR", options: ["牛奶 (Niúnǎi)", "水 (Shuǐ)", "果汁 (Guǒzhī)", "茶 (Chá)"], correct: 1 }
-        ];
-
-        let currentQIndex = 0;
-        let currentScore = 0;
-        let isAnswering = false;
-
-        const startScreen = document.getElementById('start-screen');
-        const countdownScreen = document.getElementById('countdown-screen');
-        const cdNumber = document.getElementById('countdown-number');
-        const gameHeader = document.getElementById('game-header');
-        
-        const qContainer = document.getElementById('question-container');
-        const qImg = document.getElementById('q-img');
-        const qWord = document.getElementById('q-word');
-        const qOptionsContainer = document.getElementById('q-options');
-        const dotsContainer = document.getElementById('game-dots');
-        const pointText = document.getElementById('current-point');
-        
-        const correctPopup = document.getElementById('correct-popup');
-        
-        const resultModal = document.getElementById('result-modal');
-        const scoreText = document.getElementById('final-correct');
-        const scoreBig = document.getElementById('final-score-text');
-        const rMsg = document.getElementById('result-msg');
-        const rTrophy = document.getElementById('result-trophy');
-
-        function initGame() {
-            currentQIndex = 0;
-            currentScore = 0;
-            pointText.innerText = '0';
-            
-            startScreen.classList.remove('hidden');
-            startScreen.classList.add('flex');
-            
-            countdownScreen.classList.remove('flex');
-            countdownScreen.classList.add('hidden');
-            
-            gameHeader.classList.remove('flex');
-            gameHeader.classList.add('hidden');
-            
-            qContainer.classList.remove('flex');
-            qContainer.classList.add('hidden');
-            
-            resultModal.classList.add('hidden');
-            resultModal.classList.remove('show');
-            document.body.style.overflow = 'auto'; 
-            
-            qContainer.classList.remove('question-slide-out', 'question-slide-in');
-        }
-
-        function startCountdown() {
-            startScreen.classList.remove('flex');
-            startScreen.classList.add('hidden');
-            
-            countdownScreen.classList.remove('hidden');
-            countdownScreen.classList.add('flex');
-            
-            let count = 3;
-            cdNumber.innerText = count;
-            
-            cdNumber.classList.remove('animate-countdown');
-            void cdNumber.offsetWidth; 
-            cdNumber.classList.add('animate-countdown');
-
-            const interval = setInterval(() => {
-                count--;
-                if(count > 0) {
-                    cdNumber.innerText = count;
-                    cdNumber.classList.remove('animate-countdown');
-                    void cdNumber.offsetWidth; 
-                    cdNumber.classList.add('animate-countdown');
-                } else if(count === 0) {
-                    cdNumber.innerText = "GO!";
-                    cdNumber.classList.remove('animate-countdown');
-                    void cdNumber.offsetWidth; 
-                    cdNumber.classList.add('animate-countdown');
-                } else {
-                    clearInterval(interval);
-                    countdownScreen.classList.remove('flex');
-                    countdownScreen.classList.add('hidden');
-                    startGame();
-                }
-            }, 1000);
-        }
-
-        function startGame() {
-            gameHeader.classList.remove('hidden');
-            gameHeader.classList.add('flex');
-            qContainer.classList.remove('hidden');
-            qContainer.classList.add('flex');
-            renderQuestion();
-            updateDots();
-        }
-
-        function updateDots() {
-            dotsContainer.innerHTML = '';
-            for(let i=0; i<questions.length; i++) {
-                const dot = document.createElement('div');
-                if(i < currentQIndex) {
-                    dot.className = "w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-brand-primary transition-all";
-                } else if (i === currentQIndex) {
-                    dot.className = "w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-brand-yellow shadow-glow-yellow transition-all scale-110";
-                } else {
-                    dot.className = "w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gray-300 transition-all";
-                }
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        function renderQuestion() {
-            const q = questions[currentQIndex];
-            qContainer.classList.remove('question-slide-out');
-            void qContainer.offsetWidth;
-            qContainer.classList.add('question-slide-in');
-
-            qImg.src = q.img;
-            qWord.innerText = '"' + q.word + '"';
-            qOptionsContainer.innerHTML = '';
-            
-            const prefixes = ['A', 'B', 'C', 'D'];
-            q.options.forEach((opt, index) => {
-                const btn = document.createElement('button');
-                btn.className = "game-btn w-[calc(50%-0.25rem)] sm:w-[calc(50%-0.5rem)] flex-initial bg-white border-2 border-brand-primary text-brand-primary font-bold py-2.5 sm:py-3.5 rounded-xl shadow-sm hover:bg-brand-primary hover:text-white transition-colors text-[10px] sm:text-sm";
-                btn.innerText = prefixes[index] + ". " + opt;
-                btn.onclick = () => handleAnswer(index, btn);
-                qOptionsContainer.appendChild(btn);
-            });
-            isAnswering = false;
-        }
-
-        function handleAnswer(selectedIndex, btnElement) {
-            if(isAnswering) return;
-            isAnswering = true;
-            
-            const isCorrect = (selectedIndex === questions[currentQIndex].correct);
-            const allBtns = document.querySelectorAll('.game-btn');
-
-            allBtns.forEach(b => b.style.pointerEvents = 'none');
-
-            if(isCorrect) {
-                currentScore++;
-                pointText.innerText = currentScore * 20; 
-                btnElement.classList.add('animate-correct');
-                correctPopup.classList.add('show');
-            } else {
-                btnElement.classList.add('animate-shake');
-                allBtns[questions[currentQIndex].correct].classList.add('animate-correct');
-            }
-
-            setTimeout(() => {
-                correctPopup.classList.remove('show');
-                qContainer.classList.remove('question-slide-in');
-                qContainer.classList.add('question-slide-out');
-
-                setTimeout(() => {
-                    currentQIndex++;
-                    if(currentQIndex < questions.length) {
-                        updateDots();
-                        renderQuestion();
-                    } else {
-                        showEndScreen();
-                    }
-                }, 400); 
-            }, 1200); 
-        }
-
-        function showEndScreen() {
-            resultModal.classList.remove('hidden');
-            setTimeout(() => {
-                resultModal.classList.add('show');
-                document.body.style.overflow = 'hidden'; 
-            }, 10);
-            
-            scoreText.innerText = currentScore;
-            scoreBig.innerText = currentScore * 20;
-            
-            if (currentScore >= 3) {
-                rMsg.innerHTML = 'Luar Biasa! Kamu berhasil menjawab <span class="text-brand-yellow font-extrabold text-sm sm:text-base">' + currentScore + '</span> dari 5 soal.';
-                rTrophy.src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Trophy.png";
-                fireConfettiDual();
-            } else {
-                rMsg.innerHTML = 'Jangan Menyerah! Kamu menjawab <span class="text-brand-yellow font-extrabold text-sm sm:text-base">' + currentScore + '</span> dari 5 soal.';
-                rTrophy.src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Crying%20Face.png";
-            }
-        }
-
-        function closeResultModal() {
-            resultModal.classList.remove('show');
-            setTimeout(() => {
-                resultModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                initGame();
-            }, 300);
-        }
-
-        function resetGame() {
-            resultModal.classList.remove('show');
-            setTimeout(() => {
-                resultModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                currentQIndex = 0;
-                currentScore = 0;
-                pointText.innerText = '0';
-                startCountdown(); 
-            }, 300);
-        }
-
-        initGame();
-
-        function fireConfettiDual() {
-            const container = document.getElementById('confetti-container');
-            container.style.display = 'block';
-            container.innerHTML = ''; 
-            const colors = ['#ffcb05', '#1d4486', '#d2232a', '#10b981', '#3b82f6', '#ffffff'];
-            for (let i = 0; i < 80; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti-piece');
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                const animDuration = Math.random() * 1.5 + 2; 
-                const animDelay = Math.random() * 0.5; 
-                if(i % 2 === 0) {
-                    confetti.style.left = '-10px';
-                    confetti.style.bottom = '10%'; 
-                    confetti.style.animation = 'shootLeft ' + animDuration + 's cubic-bezier(.25, .8, .25, 1) ' + animDelay + 's forwards';
-                } else {
-                    confetti.style.right = '-10px';
-                    confetti.style.bottom = '10%';
-                    confetti.style.animation = 'shootRight ' + animDuration + 's cubic-bezier(.25, .8, .25, 1) ' + animDelay + 's forwards';
-                }
-                container.appendChild(confetti);
-            }
-            setTimeout(() => { container.style.display = 'none'; container.innerHTML = ''; }, 4500);
-        }
-    </script>
+    
 </body>
 </html>

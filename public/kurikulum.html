@@ -9,35 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Konfigurasi Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-                    colors: {
-                        brand: {
-                            primary: '#1d4486', // Navy
-                            yellow: '#ffcb05',  // Secondary Yellow
-                            red: '#d2232a',     // Secondary Red
-                            light: '#ffffff',
-                            gray: '#f9fafb',    // Clean light gray for backgrounds
-                            blue: '#eaf1fb'     // Sangat muda untuk aksen kurikulum
-                        }
-                    },
-                    borderRadius: {
-                        '4xl': '2rem',
-                        '5xl': '2.5rem',
-                        '6xl': '3rem',
-                    },
-                    boxShadow: {
-                        'soft': '0 20px 40px -15px rgba(29,68,134,0.05)',
-                        'glow-primary': '0 0 30px rgba(29,68,134,0.2)',
-                        'glow-yellow': '0 0 30px rgba(255,203,5,0.3)',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="js/tailwind-config.js"></script>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -376,7 +348,7 @@
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Tiga Pilar Sekolah</h2>
                 <p class="text-sm sm:text-base text-gray-500 font-medium mb-12 sm:mb-16 max-w-2xl mx-auto">Sekolah Terpadu Sedaya Bintang memiliki pilar Budi Pekerti, Trilingual, dan STEAM.</p>
                 
-                <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
                     
                     <!-- Bridging Budi Pekerti -->
                     <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-gray-100 shadow-sm hover-lift flex flex-col items-center">
@@ -414,7 +386,12 @@
                             Eksplorasi Pendekatan <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
+                </div>
 
+                <div class="mt-12 sm:mt-16 text-center">
+                    <a href="kurikulum.html" class="inline-flex items-center justify-center bg-brand-primary text-white font-bold px-8 py-4 lg:px-10 lg:py-4 rounded-full shadow-lg hover:bg-brand-yellow hover:text-brand-primary transition-all transform hover:-translate-y-1 text-sm lg:text-base w-full sm:w-auto gap-3">
+                        <i class="fa-solid fa-book-bookmark"></i> Pelajari Metode Belajar Kami
+                    </a>
                 </div>
             </div>
         </section>

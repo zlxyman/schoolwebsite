@@ -9,32 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Konfigurasi Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-                    colors: {
-                        brand: {
-                            primary: '#1d4486', // Navy
-                            yellow: '#ffcb05',  // Secondary Yellow
-                            red: '#d2232a',     // Secondary Red
-                            light: '#ffffff',
-                            gray: '#f9fafb',    // Clean light gray for backgrounds
-                            dark: '#0f2447'
-                        }
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(29,68,134,0.08)',
-                        'glow-primary': '0 0 25px rgba(29,68,134,0.25)',
-                        'glow-yellow': '0 0 25px rgba(255,203,5,0.4)',
-                        'glow-red': '0 0 25px rgba(210,35,42,0.4)',
-                        'floating': '0 20px 50px -10px rgba(0,0,0,0.1)',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="js/tailwind-config.js"></script>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -244,46 +219,56 @@
                 <!-- The 10 Values Grid -->
                 <div class="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-5">
                     
-                    <button onclick="openNilaiModal(0)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-user-tie"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Etika / Sopan Santun</h4>
-                    </button>
-                    <button onclick="openNilaiModal(1)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-person-cane"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Hormat kepada yang Tua</h4>
-                    </button>
-                    <button onclick="openNilaiModal(2)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Welas Asih</h4>
-                    </button>
-                    <button onclick="openNilaiModal(3)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-hand-sparkles"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Bersih dan Jujur</h4>
-                    </button>
-                    <button onclick="openNilaiModal(4)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-face-flushed"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Perasaan Malu</h4>
-                    </button>
-                    <button onclick="openNilaiModal(5)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-handshake"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Terpercaya</h4>
-                    </button>
-                    <button onclick="openNilaiModal(6)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-house-chimney-user"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Bakti kepada Orang Tua</h4>
-                    </button>
-                    <button onclick="openNilaiModal(7)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-lightbulb"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Bijaksana / Arif</h4>
-                    </button>
-                    <button onclick="openNilaiModal(8)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Kebenaran & Keadilan</h4>
-                    </button>
-                    <button onclick="openNilaiModal(9)" class="feature-card w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] flex-initial bg-brand-gray p-3 sm:p-5 rounded-2xl border border-gray-100 flex flex-col items-center text-center focus:outline-none">
-                        <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white text-brand-primary shadow-sm flex items-center justify-center mb-3 transition-colors"><i class="fa-solid fa-shield-heart"></i></div>
-                        <h4 class="font-bold text-brand-primary text-[11px] sm:text-sm">Kesetiaan</h4>
-                    </button>
+                    <div onclick="openNilaiModal(0)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-user-tie"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Etika / Sopan Santun</h4>
+                    </div>
+                    <div onclick="openNilaiModal(1)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-person-cane"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Hormat kepada yang Tua</h4>
+                    </div>
+                    <div onclick="openNilaiModal(2)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Welas Asih</h4>
+                    </div>
+                    <div onclick="openNilaiModal(3)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-hand-sparkles"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Bersih dan Jujur</h4>
+                    </div>
+                    <div onclick="openNilaiModal(4)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-face-flushed"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Perasaan Malu</h4>
+                    </div>
+                    <div onclick="openNilaiModal(5)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-handshake"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Terpercaya</h4>
+                    </div>
+                    <div onclick="openNilaiModal(6)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-house-chimney-user"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Bakti kepada Orang Tua</h4>
+                    </div>
+                    <div onclick="openNilaiModal(7)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Bijaksana / Arif</h4>
+                    </div>
+                    <div onclick="openNilaiModal(8)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Kebenaran & Keadilan</h4>
+                    </div>
+                    <div onclick="openNilaiModal(9)" class="group relative w-[calc(50%-0.375rem)] md:w-[calc(33.33%-0.66rem)] lg:w-[calc(20%-1rem)] bg-white p-4 sm:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center cursor-pointer overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+                        <div class="icon-circle w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-gray text-brand-primary group-hover:bg-brand-primary group-hover:text-white shadow-sm flex items-center justify-center mb-3 sm:mb-4 transition-all duration-300 relative z-10"><i class="fa-solid fa-shield-heart"></i></div>
+                        <h4 class="font-bold text-gray-800 group-hover:text-brand-primary transition-colors text-xs sm:text-sm relative z-10">Kesetiaan</h4>
+                    </div>
 
                 </div>
             </div>

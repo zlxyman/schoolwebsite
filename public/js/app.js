@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburgerIcon.classList.replace('fa-bars', 'fa-xmark');
             hamburgerIcon.classList.add('rotate-90');
         }
+        const easyWrapper = document.getElementById('easy-touch-wrapper');
+        if(easyWrapper) {
+            easyWrapper.classList.add('opacity-0', 'pointer-events-none', 'scale-90');
+        }
         document.body.style.overflow = 'hidden';
     };
 
@@ -34,6 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if(hamburgerIcon) {
             hamburgerIcon.classList.replace('fa-xmark', 'fa-bars');
             hamburgerIcon.classList.remove('rotate-90');
+        }
+        const easyWrapper = document.getElementById('easy-touch-wrapper');
+        if(easyWrapper) {
+            easyWrapper.classList.remove('opacity-0', 'pointer-events-none', 'scale-90');
         }
         document.body.style.overflow = '';
     };
@@ -67,20 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /* --- 3. FLOATING HOME BUTTON & NAVBAR SHADOW ON SCROLL --- */
-    const floatingHomeBtn = document.getElementById('floating-home-btn');
     const header = document.getElementById('main-header');
     
     window.addEventListener('scroll', () => {
-        // Floating button
-        if(floatingHomeBtn) {
-            if (window.scrollY > 350) {
-                floatingHomeBtn.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
-                floatingHomeBtn.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
-            } else {
-                floatingHomeBtn.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
-                floatingHomeBtn.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-            }
-        }
         // Navbar shadow
         if(header) {
             if (window.scrollY > 20) {
@@ -119,6 +116,28 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /* --- 5. TABS LOGIC (ABOUT, PRESCHOOL, KARIR) --- */
+    
+    /* --- TOGGLE SWITCH LOGIC (ABOUT PAGE) --- */
+    window.toggleSwitch = function(tabId) {
+        const bg = document.getElementById('switch-bg');
+        const btnSumm = document.getElementById('switch-btn-summarecon');
+        const btnPahoa = document.getElementById('switch-btn-pahoa');
+        
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        const selectedTab = document.getElementById('tab-' + tabId);
+        if(selectedTab) selectedTab.classList.add('active');
+        
+        if(tabId === 'summarecon') {
+            if(bg) bg.style.left = '4px';
+            if(btnSumm) btnSumm.className = "relative z-10 w-1/2 py-3 lg:py-3.5 rounded-full text-xs sm:text-sm lg:text-base font-bold transition-colors text-white focus:outline-none flex items-center justify-center";
+            if(btnPahoa) btnPahoa.className = "relative z-10 w-1/2 py-3 lg:py-3.5 rounded-full text-xs sm:text-sm lg:text-base font-bold transition-colors text-gray-500 hover:text-brand-primary focus:outline-none flex items-center justify-center";
+        } else {
+            if(bg) bg.style.left = 'calc(50%)';
+            if(btnPahoa) btnPahoa.className = "relative z-10 w-1/2 py-3 lg:py-3.5 rounded-full text-xs sm:text-sm lg:text-base font-bold transition-colors text-white focus:outline-none flex items-center justify-center";
+            if(btnSumm) btnSumm.className = "relative z-10 w-1/2 py-3 lg:py-3.5 rounded-full text-xs sm:text-sm lg:text-base font-bold transition-colors text-gray-500 hover:text-brand-primary focus:outline-none flex items-center justify-center";
+        }
+    };
+
     window.switchTab = function(tabId) {
         // Cek jika halaman About (tombol ada id tab-btn-)
         if(document.getElementById('tab-btn-' + tabId)) {
@@ -520,265 +539,287 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', window.animateProgressBars);
     window.animateProgressBars();
 
-    /* --- 15. TRIBAHASA MINI GAME --- */
-    window.gameQuestions = [
-        { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Food/Shallow%20Pan%20of%20Food.png", word: "PIRING", options: ["瓶子 (Píngzi)", "盘子 (Pánzi)", "杯子 (Bēizi)"], correct: 1 },
-        { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png", word: "BUKU", options: ["书 (Shū)", "笔 (Bǐ)", "纸 (Zhǐ)"], correct: 0 },
-        { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Sun.png", word: "MATAHARI", options: ["月亮 (Yuèliàng)", "星星 (Xīngxīng)", "太阳 (Tàiyáng)"], correct: 2 },
-        { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Cat%20Face.png", word: "KUCING", options: ["狗 (Gǒu)", "猫 (Māo)", "鸟 (Niǎo)"], correct: 1 },
-        { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Droplet.png", word: "AIR", options: ["牛奶 (Niúnǎi)", "水 (Shuǐ)", "果汁 (Guǒzhī)"], correct: 1 }
+    const principalData = [
+        {
+            name: "Dr. Ibu Kepala Sekolah",
+            title: "Head of KB-TK, Sedaya Bintang",
+            quote: '"Setiap anak lahir dengan potensi tanpa batas. Tugas kita adalah memberikan wadah yang tepat di masa keemasannya."',
+            p1: "Pendidikan anak usia dini merupakan masa emas perkembangan otak. Pada masa ini, anak memiliki kelenturan tinggi untuk menyerap bahasa dan nilai kehidupan.",
+            p2: "Kami menitikberatkan pendidikan budi pekerti yang mengacu pada ajaran moral Di Zi Gui. Kami juga melengkapi peserta didik dengan kemampuan trilingual melalui interaktif dan mengasah nalar kritis melalui pendekatan STEAM.",
+            img: "https://images.pexels.com/photos/5212361/pexels-photo-5212361.jpeg?auto=compress&cs=tinysrgb&w=800"
+        },
+        {
+            name: "Bapak Kepala Sekolah",
+            title: "Head of SD, Sedaya Bintang",
+            quote: '"Karakter yang kuat dan pemikiran yang kritis adalah fondasi tak tergoyahkan untuk masa depan peserta didik."',
+            p1: "Di tingkat dasar, kami membekali peserta didik dengan kompetensi akademik yang kokoh tanpa meninggalkan nilai moral dan budi pekerti.",
+            p2: "Pendekatan Kurikulum Nasional yang dipadukan dengan metode Critical Thinking (ACT) dan lingkungan Trilingual akan mempersiapkan anak menjadi warga dunia yang tangguh.",
+            img: "https://images.pexels.com/photos/8612920/pexels-photo-8612920.jpeg?auto=compress&cs=tinysrgb&w=800"
+        }
     ];
-    window.currentQIndex = 0;
-    window.currentScore = 0;
-    window.isAnswering = false;
+    
+    let currentPrincipalIndex = 0;
+    const kepsekImgEl = document.getElementById("kepsek-img");
+    const kepsekNameEl = document.getElementById("kepsek-name");
+    const kepsekTitleEl = document.getElementById("kepsek-title");
+    const kepsekQuoteEl = document.getElementById("kepsek-quote");
+    const kepsekP1El = document.getElementById("kepsek-p1");
+    const kepsekP2El = document.getElementById("kepsek-p2");
+    const kepsekImgWrapper = document.getElementById("kepsek-img-wrapper");
+    const kepsekTextWrapper = document.getElementById("kepsek-text-wrapper");
 
-    window.initGame = function() {
-        window.currentQIndex = 0;
-        window.currentScore = 0;
-        const pointText = document.getElementById('current-point');
-        if(pointText) pointText.innerText = '0';
-        
-        const startScreen = document.getElementById('start-screen');
-        const countdownScreen = document.getElementById('countdown-screen');
-        const gameHeader = document.getElementById('game-header');
-        const qContainer = document.getElementById('question-container');
-        const resultModal = document.getElementById('result-modal');
-
-        if(startScreen) {
-            startScreen.classList.remove('hidden');
-            startScreen.classList.add('flex');
-        }
-        if(countdownScreen) {
-            countdownScreen.classList.remove('flex');
-            countdownScreen.classList.add('hidden');
-        }
-        if(gameHeader) {
-            gameHeader.classList.remove('flex');
-            gameHeader.classList.add('hidden');
-        }
-        if(qContainer) {
-            qContainer.classList.remove('flex', 'question-slide-out', 'question-slide-in');
-            qContainer.classList.add('hidden');
-        }
-        if(resultModal) {
-            resultModal.classList.add('hidden');
-            resultModal.classList.remove('show');
-        }
-        document.body.style.overflow = 'auto'; 
-    };
-
-    window.startCountdown = function() {
-        const startScreen = document.getElementById('start-screen');
-        const countdownScreen = document.getElementById('countdown-screen');
-        const cdNumber = document.getElementById('countdown-number');
-        if(!countdownScreen) return;
-
-        startScreen.classList.remove('flex');
-        startScreen.classList.add('hidden');
-        
-        countdownScreen.classList.remove('hidden');
-        countdownScreen.classList.add('flex');
-        
-        let count = 3;
-        cdNumber.innerText = count;
-        
-        cdNumber.classList.remove('animate-countdown');
-        void cdNumber.offsetWidth; 
-        cdNumber.classList.add('animate-countdown');
-
-        const interval = setInterval(() => {
-            count--;
-            if(count > 0) {
-                cdNumber.innerText = count;
-                cdNumber.classList.remove('animate-countdown');
-                void cdNumber.offsetWidth; 
-                cdNumber.classList.add('animate-countdown');
-            } else if(count === 0) {
-                cdNumber.innerText = "GO!";
-                cdNumber.classList.remove('animate-countdown');
-                void cdNumber.offsetWidth; 
-                cdNumber.classList.add('animate-countdown');
-            } else {
-                clearInterval(interval);
-                countdownScreen.classList.remove('flex');
-                countdownScreen.classList.add('hidden');
-                window.startGame();
-            }
-        }, 1000);
-    };
-
-    window.startGame = function() {
-        document.getElementById('game-header').classList.remove('hidden');
-        document.getElementById('game-header').classList.add('flex');
-        document.getElementById('question-container').classList.remove('hidden');
-        document.getElementById('question-container').classList.add('flex');
-        window.renderQuestion();
-        window.updateDots();
-    };
-
-    window.updateDots = function() {
-        const dotsContainer = document.getElementById('game-dots');
-        if(!dotsContainer) return;
-        dotsContainer.innerHTML = '';
-        for(let i=0; i<window.gameQuestions.length; i++) {
-            const dot = document.createElement('div');
-            if(i < window.currentQIndex) {
-                dot.className = "w-2.5 h-2.5 rounded-full bg-brand-primary transition-all";
-            } else if (i === window.currentQIndex) {
-                dot.className = "w-3 h-3 rounded-full bg-brand-yellow shadow-glow-yellow transition-all scale-110";
-            } else {
-                dot.className = "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all";
-            }
-            dotsContainer.appendChild(dot);
-        }
-    };
-
-    window.renderQuestion = function() {
-        const qContainer = document.getElementById('question-container');
-        const qImg = document.getElementById('q-img');
-        const qWord = document.getElementById('q-word');
-        const qOptionsContainer = document.getElementById('q-options');
-        const q = window.gameQuestions[window.currentQIndex];
-        
-        qContainer.classList.remove('question-slide-out');
-        void qContainer.offsetWidth; 
-        qContainer.classList.add('question-slide-in');
-
-        qImg.src = q.img;
-        qWord.innerText = `"${q.word}"`;
-        qOptionsContainer.innerHTML = '';
-        
-        const prefixes = ['A', 'B', 'C'];
-        q.options.forEach((opt, index) => {
-            const btn = document.createElement('button');
-            btn.className = "game-btn w-[calc(50%-0.25rem)] sm:w-[calc(50%-0.5rem)] flex-initial bg-white border-2 border-brand-primary text-brand-primary font-bold py-3 sm:py-4 rounded-xl shadow-sm hover:bg-brand-primary hover:text-white transition-colors text-sm sm:text-base";
-            btn.innerText = `${prefixes[index]}. ${opt}`;
-            btn.onclick = () => window.handleAnswer(index, btn);
-            qOptionsContainer.appendChild(btn);
-        });
-        window.isAnswering = false;
-    };
-
-    window.handleAnswer = function(selectedIndex, btnElement) {
-        if(window.isAnswering) return;
-        window.isAnswering = true;
-        
-        const qContainer = document.getElementById('question-container');
-        const correctPopup = document.getElementById('correct-popup');
-        const isCorrect = (selectedIndex === window.gameQuestions[window.currentQIndex].correct);
-        const allBtns = document.querySelectorAll('.game-btn');
-
-        allBtns.forEach(b => b.style.pointerEvents = 'none');
-
-        if(isCorrect) {
-            window.currentScore++;
-            document.getElementById('current-point').innerText = window.currentScore * 20; 
-            btnElement.classList.add('animate-correct');
-            correctPopup.classList.add('show');
-        } else {
-            btnElement.classList.add('animate-shake');
-            allBtns[window.gameQuestions[window.currentQIndex].correct].classList.add('animate-correct');
-        }
-
-        setTimeout(() => {
-            correctPopup.classList.remove('show');
-            qContainer.classList.remove('question-slide-in');
-            qContainer.classList.add('question-slide-out');
-
+    if(kepsekImgEl && kepsekTextWrapper) {
+        setInterval(() => {
+            kepsekImgWrapper.style.opacity = '0';
+            kepsekTextWrapper.style.opacity = '0';
+            
             setTimeout(() => {
-                window.currentQIndex++;
-                if(window.currentQIndex < window.gameQuestions.length) {
-                    window.updateDots();
-                    window.renderQuestion();
-                } else {
-                    window.showEndScreen();
-                }
-            }, 400); 
-        }, 1200); 
-    };
-
-    window.showEndScreen = function() {
-        const resultModal = document.getElementById('result-modal');
-        resultModal.classList.remove('hidden');
-        setTimeout(() => {
-            resultModal.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }, 10);
-        
-        document.getElementById('final-correct').innerText = window.currentScore;
-        document.getElementById('final-score-text').innerText = window.currentScore * 20;
-        
-        if (window.currentScore >= 3) {
-            document.getElementById('result-msg').innerHTML = `Luar Biasa! Kamu berhasil menjawab <span class="text-brand-yellow font-extrabold text-lg">${window.currentScore}</span> dari 5 soal.`;
-            document.getElementById('result-trophy').src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Trophy.png";
-            window.fireConfettiDual();
-        } else {
-            document.getElementById('result-msg').innerHTML = `Jangan Menyerah! Kamu menjawab <span class="text-brand-yellow font-extrabold text-lg">${window.currentScore}</span> dari 5 soal.`;
-            document.getElementById('result-trophy').src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Crying%20Face.png";
-        }
-    };
-
-    window.closeResultModal = function() {
-        const resultModal = document.getElementById('result-modal');
-        resultModal.classList.remove('show');
-        setTimeout(() => {
-            resultModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            window.initGame(); 
-        }, 300);
-    };
-
-    window.resetGame = function() {
-        const resultModal = document.getElementById('result-modal');
-        resultModal.classList.remove('show');
-        setTimeout(() => {
-            resultModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            window.currentQIndex = 0;
-            window.currentScore = 0;
-            document.getElementById('current-point').innerText = '0';
-            window.startCountdown(); 
-        }, 300);
-    };
-
-    window.fireConfettiDual = function() {
-        const container = document.getElementById('confetti-container');
-        if(!container) return;
-        container.style.display = 'block';
-        container.innerHTML = ''; 
-        
-        const colors = ['#ffcb05', '#1d4486', '#d2232a', '#10b981', '#3b82f6', '#ffffff'];
-        const confettiCount = 80; 
-        
-        for (let i = 0; i < confettiCount; i++) {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti-piece');
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            
-            const animDuration = Math.random() * 1.5 + 2; 
-            const animDelay = Math.random() * 0.5; 
-            
-            if(i % 2 === 0) {
-                confetti.style.left = '-10px';
-                confetti.style.bottom = '10%'; 
-                confetti.style.animation = `shootLeft ${animDuration}s cubic-bezier(.25, .8, .25, 1) ${animDelay}s forwards`;
-            } else {
-                confetti.style.right = '-10px';
-                confetti.style.bottom = '10%';
-                confetti.style.animation = `shootRight ${animDuration}s cubic-bezier(.25, .8, .25, 1) ${animDelay}s forwards`;
-            }
-            
-            container.appendChild(confetti);
-        }
-        
-        setTimeout(() => {
-            container.style.display = 'none';
-            container.innerHTML = '';
-        }, 4500);
-    };
-
-    // Initialize game if we are on the tribahasa page
-    if(document.getElementById('start-screen')) {
-        window.initGame();
+                currentPrincipalIndex = (currentPrincipalIndex + 1) % principalData.length;
+                const data = principalData[currentPrincipalIndex];
+                
+                kepsekImgEl.src = data.img;
+                kepsekNameEl.textContent = data.name;
+                kepsekTitleEl.textContent = data.title;
+                kepsekQuoteEl.textContent = data.quote;
+                kepsekP1El.textContent = data.p1;
+                kepsekP2El.textContent = data.p2;
+                
+                kepsekImgWrapper.style.opacity = '1';
+                kepsekTextWrapper.style.opacity = '1';
+            }, 500);
+        }, 5000);
     }
+
 });
+
+/* --- KARIR LOGIC --- */
+
+        // Data Lowongan Akademik
+        const akademikJobs = [
+            {
+                title: "Guru Mandarin SD (Native/Fluent)",
+                type: "Full-Time", location: "Bandung", icon: "fa-language",
+                desc: "Mengajar bahasa Mandarin menggunakan kurikulum terintegrasi dan standar HSK, serta membimbing siswa dalam persiapan ujian sertifikasi.",
+                req: ["Minimal S1 Pendidikan Bahasa Mandarin / Sastra China.", "Memiliki sertifikat HSK minimal level 5.", "Pengalaman mengajar anak usia SD minimal 2 tahun.", "Fasih berbahasa Mandarin lisan dan tulisan."]
+            },
+            {
+                title: "Guru Matematika SMP/SMA",
+                type: "Full-Time", location: "Bandung", icon: "fa-calculator",
+                desc: "Merancang dan menyampaikan materi Matematika dengan pendekatan Critical Thinking (ACT) dan berorientasi pada pemecahan masalah (Problem Solving).",
+                req: ["Minimal S1 Pendidikan Matematika / Matematika Murni.", "Mampu mengajar menggunakan pengantar Bahasa Inggris (Bilingual).", "Berpengalaman mengajar kurikulum Nasional (Merdeka) & Cambridge.", "Kreatif dalam membuat alat peraga pembelajaran."]
+            },
+            {
+                title: "Guru Bimbingan & Konseling (BK)",
+                type: "Full-Time", location: "Bandung", icon: "fa-hand-holding-heart",
+                desc: "Memberikan bimbingan psikologis, akademik, dan karir kepada siswa, serta berkolaborasi dengan orang tua untuk perkembangan holistik siswa.",
+                req: ["Minimal S1 Bimbingan dan Konseling / Psikologi.", "Memiliki empati tinggi dan kemampuan komunikasi persuasif.", "Berpengalaman dalam menangani remaja.", "Memahami pendekatan konseling pendidikan modern."]
+            },
+            {
+                title: "Guru IPA / Sains Terpadu (SD)",
+                type: "Full-Time", location: "Bandung", icon: "fa-flask",
+                desc: "Mengajar sains dengan pendekatan eksperimen praktis (Hands-on Learning) dan memfasilitasi keingintahuan alami siswa.",
+                req: ["Minimal S1 Pendidikan IPA / Sains.", "Mampu merancang eksperimen aman untuk usia SD.", "Kreatif, enerjik, dan menyukai dunia anak-anak.", "Bersedia mengajar lintas disiplin (STEM)."]
+            },
+            {
+                title: "Teacher Assistant (KB-TK)",
+                type: "Full-Time", location: "Bandung", icon: "fa-child-reaching",
+                desc: "Mendampingi Guru Utama dalam kegiatan belajar mengajar, menyiapkan material kelas, dan mengobservasi perkembangan motorik anak.",
+                req: ["Minimal S1 PGPAUD atau Psikologi Anak.", "Menyukai dunia anak usia dini dan sabar.", "Mampu berbahasa Inggris dasar.", "Aktif, cekatan, dan memiliki inisiatif tinggi."]
+            }
+        ];
+
+        // Data Lowongan Non-Akademik (Officer)
+        const officerJobs = [
+            {
+                title: "General Affair (GA) Officer",
+                type: "Full-Time", location: "Bandung", icon: "fa-building-shield",
+                desc: "Pemeliharaan fasilitas dan lingkungan fisik sekolah.",
+                req: ["Minimal D3 / S1 Manajemen atau sederajat.", "Memiliki pengalaman sebagai GA di sekolah atau gedung perkantoran.", "Tegas, cekatan, dan memiliki problem-solving lapangan yang baik.", "Mampu mengelola vendor pihak ketiga."]
+            },
+            {
+                title: "IT Support & Infrastructure",
+                type: "Full-Time", location: "Bandung", icon: "fa-server",
+                desc: "Pemeliharaan infrastruktur teknologi informasi dan portal Quintal.",
+                req: ["Minimal D3 Teknik Informatika / Sistem Informasi.", "Menguasai troubleshooting hardware, OS, dan jaringan LAN/WiFi.", "Responsif terhadap keluhan teknis staf dan guru.", "Memiliki pengetahuan dasar tentang keamanan siber."]
+            },
+            {
+                title: "Purchasing Staff",
+                type: "Full-Time", location: "Bandung", icon: "fa-cart-flatbed",
+                desc: "Pengelolaan kebutuhan pengadaan sekolah.",
+                req: ["Minimal D3 Akuntansi / Manajemen.", "Berpengalaman dalam bidang purchasing/procurement minimal 1 tahun.", "Memiliki kemampuan negosiasi dan administrasi dokumen yang rapi.", "Jujur, teliti, dan berintegritas tinggi."]
+            },
+            {
+                title: "Mechanical Electrical (ME) Technician",
+                type: "Full-Time", location: "Bandung", icon: "fa-bolt",
+                desc: "Perawatan sistem kelistrikan dan pengecekan fasilitas air rutin.",
+                req: ["Lulusan SMK / D3 Teknik Mesin / Elektro.", "Memiliki sertifikasi keahlian lebih diutamakan.", "Berpengalaman merawat gedung bertingkat atau institusi pendidikan.", "Siap bekerja dengan sistem shift / siaga akhir pekan jika diperlukan."]
+            },
+            {
+                title: "Graphic & UI/UX Designer",
+                type: "Full-Time", location: "Bandung", icon: "fa-bezier-curve",
+                desc: "Merancang materi komunikasi visual sekolah.",
+                req: ["Minimal S1 Desain Komunikasi Visual (DKV).", "Mahir menggunakan Adobe Creative Suite, Figma, dan tools desain modern.", "Memiliki portofolio desain yang kuat (sertakan link).", "Kreatif, update terhadap tren desain visual edukasi."]
+            }
+        ];
+
+        // Fungsi Render HTML
+        function generateJobsHTML(jobs) {
+            return jobs.map((job, index) => `
+                <div class="job-card bg-white border border-gray-100 rounded-xl lg:rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <div class="job-header p-5 lg:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center cursor-pointer gap-4 group" onclick="toggleAccordion(this)">
+                        <div class="flex items-center gap-4 lg:gap-5">
+                            <div class="w-12 h-12 rounded-full bg-brand-gray text-brand-primary flex items-center justify-center group-hover:bg-brand-yellow transition-colors shrink-0">
+                                <i class="fa-solid ${job.icon} text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-brand-primary text-base lg:text-lg group-hover:text-[#15346b] transition-colors">${job.title}</h3>
+                                <div class="flex items-center gap-3 mt-1.5 flex-wrap">
+                                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
+                                        <i class="fa-regular fa-clock"></i> ${job.type}
+                                    </span>
+                                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
+                                        <i class="fa-solid fa-location-dot"></i> ${job.location}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sm:self-center self-end w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-brand-primary text-gray-400 group-hover:text-brand-primary transition-all shrink-0 accordion-icon">
+                            <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Area Accordion -->
+                    <div class="job-accordion-content bg-gray-50">
+                        <div class="job-accordion-inner">
+                            <div class="p-5 lg:p-6 lg:pt-2 border-t border-gray-100">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 relative pb-20 lg:pb-0">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-brand-primary mb-2 flex items-center gap-2"><i class="fa-solid fa-bullseye text-brand-yellow"></i> Deskripsi Pekerjaan</h4>
+                                        <p class="text-xs lg:text-sm text-gray-600 leading-relaxed">${job.desc}</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-brand-primary mb-2 flex items-center gap-2"><i class="fa-solid fa-list-check text-brand-yellow"></i> Kualifikasi</h4>
+                                        <ul class="text-xs lg:text-sm text-gray-600 leading-relaxed list-disc list-outside ml-4 space-y-1">
+                                            ${job.req.map(r => `<li>${r}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Sticky Button Apply -->
+                                    <div class="absolute bottom-0 right-0 left-0 md:static md:col-span-2 flex justify-end mt-4 pt-4 md:pt-6 md:border-t border-gray-200/60 sticky-footer-area">
+                                        <button class="w-full md:w-auto bg-brand-primary text-white font-bold px-8 py-3 rounded-full hover:bg-[#15346b] transition-colors shadow-md text-sm">
+                                            Apply Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentAkademik = document.getElementById('content-akademik');
+            if (contentAkademik) { contentAkademik.innerHTML = generateJobsHTML(akademikJobs); }
+            const contentOfficer = document.getElementById('content-officer');
+            if (contentOfficer) { contentOfficer.innerHTML = generateJobsHTML(officerJobs); }
+        });
+
+        // Accordion Logic
+        window.toggleAccordion = function(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.accordion-icon i');
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+                element.classList.remove('bg-gray-50/50');
+            } else {
+                const allContents = element.closest('section').querySelectorAll('.job-accordion-content');
+                const allIcons = element.closest('section').querySelectorAll('.accordion-icon i');
+                const allHeaders = element.closest('section').querySelectorAll('.job-header');
+                
+                allContents.forEach(c => c.classList.remove('open'));
+                allIcons.forEach(i => i.style.transform = 'rotate(0deg)');
+                allHeaders.forEach(h => h.classList.remove('bg-gray-50/50'));
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+                element.classList.add('bg-gray-50/50');
+            }
+        };
+
+    // TESTIMONIAL SLIDER LOGIC
+    window.scrollTestimonial = function(direction) {
+        const slider = document.getElementById('testimonial-slider');
+        if (!slider) return;
+        const scrollAmount = slider.clientWidth > 768 ? 400 + 24 : slider.clientWidth;
+        if (direction === 'left') {
+            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    };
+
+    // TESTIMONIAL VIDEO MODAL LOGIC
+    window.openTestimonialModal = function(videoUrl) {
+        const modal = document.getElementById('testimonial-video-modal');
+        const modalContent = document.getElementById('video-modal-content');
+        const player = document.getElementById('testimonial-video-player');
+        if (!modal || !player) return;
+
+        // Set video source
+        player.src = videoUrl;
+
+        // Show modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        // Slight delay for animation
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+            player.play();
+        }, 10);
+
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeTestimonialModal = function() {
+        const modal = document.getElementById('testimonial-video-modal');
+        const modalContent = document.getElementById('video-modal-content');
+        const player = document.getElementById('testimonial-video-player');
+        if (!modal) return;
+
+        // Hide animations
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0');
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-95');
+        
+        // Pause video
+        if (player) {
+            player.pause();
+            player.currentTime = 0;
+        }
+
+        // Remove from DOM after animation
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            if (player) player.src = ""; // Clear source
+            document.body.style.overflow = '';
+        }, 300);
+    };
+
+    // Close modal on ESC key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('testimonial-video-modal');
+            if (modal && !modal.classList.contains('hidden')) {
+                window.closeTestimonialModal();
+            }
+        }
+    });

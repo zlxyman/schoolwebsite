@@ -9,24 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Konfigurasi Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-                    colors: {
-                        brand: {
-                            primary: '#1d4486', // Navy
-                            yellow: '#ffcb05',  // Secondary Yellow
-                            red: '#d2232a',     // Secondary Red
-                            light: '#ffffff',
-                            gray: '#f9fafb'     // Clean light gray for backgrounds
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="js/tailwind-config.js"></script>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -410,7 +393,159 @@
             </div>
         </section>
 
-        <!-- SECTION KUNJUNGI KAMPUS KAMI -->
+        <!-- TESTIMONIAL VIDEO SECTION -->
+        <section class="py-16 lg:py-24 bg-white relative overflow-hidden" id="testimonial-section">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-yellow/10 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row justify-between items-end mb-10 lg:mb-14 gap-6">
+                    <div class="max-w-2xl">
+                        <span class="inline-block py-1.5 px-4 rounded-full bg-brand-yellow/20 border border-brand-yellow/30 text-brand-primary text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4">Kisah Sukses</span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-brand-primary mb-4 leading-tight">Mendengar Langsung dari <span class="text-brand-yellow">Mereka</span></h2>
+                        <p class="text-gray-500 font-medium text-sm sm:text-base leading-relaxed">
+                            Jelajahi pengalaman nyata dari orang tua dan siswa tentang perjalanan transformasi mereka bersama Sedaya Bintang.
+                        </p>
+                    </div>
+                    <!-- Navigation Buttons -->
+                    <div class="hidden sm:flex gap-3 shrink-0 mb-2">
+                        <button onclick="scrollTestimonial('left')" class="w-11 h-11 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300 group"><i class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"></i></button>
+                        <button onclick="scrollTestimonial('right')" class="w-11 h-11 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300 group"><i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></button>
+                    </div>
+                </div>
+
+                <!-- Slider Container -->
+                <div id="testimonial-slider" class="flex overflow-x-auto snap-x snap-mandatory gap-4 lg:gap-6 pb-8 -mx-4 px-4 sm:mx-0 sm:px-0 hide-scrollbar scroll-smooth">
+                    
+                    <!-- Testimonial Card 1 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px] lg:w-[400px] group relative bg-white border border-gray-100 rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col cursor-pointer">
+                        <!-- Video Placeholder (Landscape) -->
+                        <div class="relative w-full aspect-video overflow-hidden bg-gray-100" onclick="openTestimonialModal('https://www.w3schools.com/html/mov_bbb.mp4')">
+                            <img src="https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Testimonial Video">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <!-- Play Button -->
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center border border-white/50 text-white group-hover:bg-brand-yellow group-hover:text-brand-primary group-hover:border-brand-yellow transition-all duration-300 shadow-lg group-hover:scale-110">
+                                    <i class="fa-solid fa-play text-lg sm:text-xl ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Content -->
+                        <div class="p-5 sm:p-6 lg:p-8 flex flex-col flex-1">
+                            <div class="flex gap-1 text-brand-yellow text-xs sm:text-sm mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed mb-6 line-clamp-3 italic">
+                                "Sejak bergabung, anak saya tidak hanya mahir berbahasa Mandarin, tapi juga memiliki nalar kritis yang luar biasa. Sangat merekomendasikan sekolah ini!"
+                            </p>
+                            <div class="flex items-center gap-3 mt-auto">
+                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Avatar" class="w-10 h-10 rounded-full object-cover bg-gray-100">
+                                <div>
+                                    <h4 class="text-brand-primary font-bold text-xs sm:text-sm">Bunda Sarah</h4>
+                                    <p class="text-gray-500 text-[10px] sm:text-xs">Orang Tua Murid SD</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 2 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px] lg:w-[400px] group relative bg-white border border-gray-100 rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col cursor-pointer">
+                        <div class="relative w-full aspect-video overflow-hidden bg-gray-100" onclick="openTestimonialModal('https://www.w3schools.com/html/mov_bbb.mp4')">
+                            <img src="https://images.pexels.com/photos/5212353/pexels-photo-5212353.jpeg?auto=compress&cs=tinysrgb&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Testimonial Video">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center border border-white/50 text-white group-hover:bg-brand-yellow group-hover:text-brand-primary group-hover:border-brand-yellow transition-all duration-300 shadow-lg group-hover:scale-110">
+                                    <i class="fa-solid fa-play text-lg sm:text-xl ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 sm:p-6 lg:p-8 flex flex-col flex-1">
+                            <div class="flex gap-1 text-brand-yellow text-xs sm:text-sm mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed mb-6 line-clamp-3 italic">
+                                "Fasilitasnya sangat mendukung minat anak saya di bidang teknologi dan sains. Pendekatan belajar yang modern sangat terasa di sini."
+                            </p>
+                            <div class="flex items-center gap-3 mt-auto">
+                                <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Avatar" class="w-10 h-10 rounded-full object-cover bg-gray-100">
+                                <div>
+                                    <h4 class="text-brand-primary font-bold text-xs sm:text-sm">Bapak Anton</h4>
+                                    <p class="text-gray-500 text-[10px] sm:text-xs">Orang Tua Murid TK</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 3 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px] lg:w-[400px] group relative bg-white border border-gray-100 rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col cursor-pointer">
+                        <div class="relative w-full aspect-video overflow-hidden bg-gray-100" onclick="openTestimonialModal('https://www.w3schools.com/html/mov_bbb.mp4')">
+                            <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Testimonial Video">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center border border-white/50 text-white group-hover:bg-brand-yellow group-hover:text-brand-primary group-hover:border-brand-yellow transition-all duration-300 shadow-lg group-hover:scale-110">
+                                    <i class="fa-solid fa-play text-lg sm:text-xl ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 sm:p-6 lg:p-8 flex flex-col flex-1">
+                            <div class="flex gap-1 text-brand-yellow text-xs sm:text-sm mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed mb-6 line-clamp-3 italic">
+                                "Pendidikan budi pekerti yang diajarkan sangat membekas. Saya melihat perubahan sikap anak yang jadi jauh lebih mandiri dan santun."
+                            </p>
+                            <div class="flex items-center gap-3 mt-auto">
+                                <img src="https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Avatar" class="w-10 h-10 rounded-full object-cover bg-gray-100">
+                                <div>
+                                    <h4 class="text-brand-primary font-bold text-xs sm:text-sm">Ibu Ratna</h4>
+                                    <p class="text-gray-500 text-[10px] sm:text-xs">Orang Tua Murid SD</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 4 -->
+                    <div class="snap-center shrink-0 w-[280px] sm:w-[320px] lg:w-[400px] group relative bg-white border border-gray-100 rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all flex flex-col cursor-pointer">
+                        <div class="relative w-full aspect-video overflow-hidden bg-gray-100" onclick="openTestimonialModal('https://www.w3schools.com/html/mov_bbb.mp4')">
+                            <img src="https://images.pexels.com/photos/8613071/pexels-photo-8613071.jpeg?auto=compress&cs=tinysrgb&w=800" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Testimonial Video">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                            <div class="absolute inset-0 flex items-center justify-center z-10">
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center border border-white/50 text-white group-hover:bg-brand-yellow group-hover:text-brand-primary group-hover:border-brand-yellow transition-all duration-300 shadow-lg group-hover:scale-110">
+                                    <i class="fa-solid fa-play text-lg sm:text-xl ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 sm:p-6 lg:p-8 flex flex-col flex-1">
+                            <div class="flex gap-1 text-brand-yellow text-xs sm:text-sm mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed mb-6 line-clamp-3 italic">
+                                "Tidak pernah menyesal menyekolahkan anak di sini. Gurunya sangat suportif dan lingkungan belajarnya sangat inovatif!"
+                            </p>
+                            <div class="flex items-center gap-3 mt-auto">
+                                <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Avatar" class="w-10 h-10 rounded-full object-cover bg-gray-100">
+                                <div>
+                                    <h4 class="text-brand-primary font-bold text-xs sm:text-sm">Bapak William</h4>
+                                    <p class="text-gray-500 text-[10px] sm:text-xs">Orang Tua Murid TK</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <style>
+                .hide-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+                .hide-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            </style>
+        </section>
+
         <section class="relative py-32 bg-gray-900 flex items-center justify-center min-h-[450px]">
             <div class="absolute inset-0 z-0">
                 <img src="https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Campus Building" class="w-full h-full object-cover">
@@ -553,5 +688,26 @@
     <script src="js/components.js"></script>
     <script src="js/app.js"></script>
 
+    <!-- VIDEO MODAL -->
+    <div id="testimonial-video-modal" class="fixed inset-0 z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-[#0f2447]/80 backdrop-blur-md" onclick="closeTestimonialModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative z-10 w-[90%] max-w-4xl transform scale-95 transition-transform duration-300" id="video-modal-content">
+            <!-- Close Button -->
+            <button onclick="closeTestimonialModal()" class="absolute -top-12 right-0 sm:-right-12 w-10 h-10 rounded-full bg-white/10 hover:bg-brand-yellow text-white hover:text-brand-primary flex items-center justify-center transition-colors backdrop-blur-sm">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <!-- Video Container -->
+            <div class="w-full aspect-video bg-black rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10">
+                <video id="testimonial-video-player" class="w-full h-full object-contain" controls preload="none">
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

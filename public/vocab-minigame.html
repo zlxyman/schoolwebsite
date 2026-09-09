@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mandarin Vocab Master</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        game: {
+                            dark: '#0a0f1d',
+                            panel: '#151b2d',
+                            primary: '#3b82f6',
+                            accent: '#f59e0b',
+                            success: '#10b981',
+                            danger: '#ef4444'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px 0px rgba(59, 130, 246, 0.3)' },
+                            '50%': { boxShadow: '0 0 40px 10px rgba(59, 130, 246, 0.6)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #0a0f1d; 
+            color: #f8fafc; 
+            overflow: hidden; 
+        }
+        
+        .ambient-light {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glass Panel */
+        .glass-panel {
+            background: rgba(21, 27, 45, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Button FX */
+        .option-btn {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+        }
+        .option-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+        .option-btn:active {
+            transform: translateY(2px) scale(0.98);
+        }
+
+        /* Status FX */
+        .btn-correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: #10b981 !important;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4) !important;
+            transform: scale(1.05) !important;
+            color: #10b981 !important;
+        }
+        .btn-wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            border-color: #ef4444 !important;
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+            color: #ef4444 !important;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* Slide Transitions */
+        .slide-enter {
+            animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .slide-exit {
+            animation: slideOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(50px) scale(0.95); opacity: 0; }
+            to { transform: translateX(0) scale(1); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0) scale(1); opacity: 1; }
+            to { transform: translateX(-50px) scale(0.95); opacity: 0; }
+        }
+
+        /* Confetti Canvas */
+        #confetti {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 100;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen relative flex flex-col items-center justify-center">
+
+    <div class="ambient-light bg-blue-600 w-[300px] h-[300px] top-[-10%] left-[-10%]"></div>
+    <div class="ambient-light bg-purple-600 w-[400px] h-[400px] bottom-[-20%] right-[-10%]"></div>
+    <div class="ambient-light bg-emerald-500 w-[200px] h-[200px] top-[40%] left-[40%] opacity-10"></div>
+
+    <!-- HEADER -->
+    <header class="absolute top-0 w-full h-16 lg:h-20 flex justify-between items-center px-6 lg:px-10 z-20">
+        <a href="games.html" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-300 hover:bg-white/20 hover:text-white transition-all border border-white/10 shadow-lg backdrop-blur-md">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <div class="flex items-center gap-4 bg-white/5 border border-white/10 px-4 py-2 rounded-2xl backdrop-blur-md shadow-lg">
+            <i class="fa-solid fa-star text-game-accent"></i>
+            <span class="font-black tracking-widest text-sm text-white">SKOR: <span id="score-display" class="text-game-accent">0</span></span>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="w-full max-w-4xl px-4 z-10 relative flex-1 flex flex-col justify-center">
+        
+        <!-- START SCREEN -->
+        <div id="start-screen" class="glass-panel rounded-[2rem] p-8 md:p-12 text-center flex flex-col items-center max-w-lg mx-auto w-full transition-all duration-500">
+            <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mb-6 shadow-2xl rotate-3 hover:rotate-6 transition-transform">
+                <i class="fa-solid fa-language text-5xl text-white"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-black text-white mb-2 tracking-tight">Tebak Kosa Kata</h1>
+            <p class="text-slate-400 font-medium mb-10 text-sm md:text-base">Uji penguasaan kosa kata Mandarin kamu dengan menebak arti dari gambar yang muncul!</p>
+            
+            <button onclick="startGame()" class="w-full bg-game-primary text-white font-black py-4 rounded-2xl text-lg shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:bg-blue-400 transition-all hover:scale-105 active:scale-95 flex justify-center items-center gap-3 group">
+                MULAI GAME <i class="fa-solid fa-play group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div id="game-screen" class="hidden flex-col items-center w-full max-w-2xl mx-auto">
+            
+            <!-- Progress Bar -->
+            <div class="w-full mb-8 flex flex-col gap-2">
+                <div class="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+                    <span>Soal <span id="current-q-num" class="text-white">1</span>/5</span>
+                    <span id="streak-text" class="text-game-accent hidden"><i class="fa-solid fa-fire"></i> STREAK!</span>
+                </div>
+                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full w-[20%] transition-all duration-500"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div id="q-card" class="glass-panel w-full rounded-[2.5rem] p-8 md:p-12 flex flex-col items-center mb-8 relative">
+                <!-- Image Wrapper -->
+                <div class="w-32 h-32 md:w-48 md:h-48 relative mb-6">
+                    <div class="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl"></div>
+                    <img id="q-img" src="" alt="Objek" class="w-full h-full object-contain relative z-10 animate-float drop-shadow-2xl">
+                </div>
+                
+                <h2 id="q-word" class="text-2xl md:text-3xl font-black text-white uppercase tracking-widest text-center"></h2>
+            </div>
+
+            <!-- Options Grid -->
+            <div id="options-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+                <!-- Options injected via JS -->
+            </div>
+            
+        </div>
+
+        <!-- END SCREEN -->
+        <div id="end-screen" class="hidden glass-panel rounded-[2rem] p-8 md:p-12 text-center flex flex-col items-center max-w-lg mx-auto w-full transition-all duration-500">
+            <img id="end-emoji" src="" alt="Result" class="w-32 h-32 mb-6 drop-shadow-2xl">
+            <h2 id="end-title" class="text-3xl font-black text-white mb-2"></h2>
+            <p id="end-subtitle" class="text-slate-400 font-medium mb-8"></p>
+            
+            <div class="bg-black/30 rounded-2xl w-full p-6 mb-8 border border-white/5">
+                <span class="text-xs font-bold tracking-widest text-slate-500 uppercase">Total Poin</span>
+                <div id="end-score" class="text-6xl font-black text-game-accent mt-2"></div>
+            </div>
+
+            <button onclick="startGame()" class="w-full bg-white text-game-panel font-black py-4 rounded-2xl text-lg shadow-xl hover:bg-slate-200 transition-all hover:scale-105 active:scale-95 flex justify-center items-center gap-3 group">
+                <i class="fa-solid fa-rotate-right group-hover:-rotate-180 transition-transform duration-500"></i> MAIN LAGI
+            </button>
+        </div>
+        
+    </main>
+
+    <canvas id="confetti"></canvas>
+
+    <!-- Global "Easy Touch" FAB injected here if needed, but for a game, we might want to hide it to avoid misclicks. We can just skip it here since there's a back button. -->
+    
+    <script>
+        // --- GAME DATA ---
+        const gameQuestions = [
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Food/Shallow%20Pan%20of%20Food.png", word: "PIRING", options: ["瓶子 (Píngzi)", "盘子 (Pánzi)", "杯子 (Bēizi)"], correct: 1 },
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png", word: "BUKU", options: ["书 (Shū)", "笔 (Bǐ)", "纸 (Zhǐ)"], correct: 0 },
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Sun.png", word: "MATAHARI", options: ["月亮 (Yuèliàng)", "星星 (Xīngxīng)", "太阳 (Tàiyáng)"], correct: 2 },
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Cat%20Face.png", word: "KUCING", options: ["狗 (Gǒu)", "猫 (Māo)", "鸟 (Niǎo)"], correct: 1 },
+            { img: "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Droplet.png", word: "AIR", options: ["牛奶 (Niúnǎi)", "水 (Shuǐ)", "果汁 (Guǒzhī)"], correct: 1 }
+        ];
+
+        let currentIndex = 0;
+        let score = 0;
+        let isAnswering = false;
+        let streak = 0;
+
+        // UI Elements
+        const startScreen = document.getElementById('start-screen');
+        const gameScreen = document.getElementById('game-screen');
+        const endScreen = document.getElementById('end-screen');
+        const scoreDisplay = document.getElementById('score-display');
+        const qCard = document.getElementById('q-card');
+        const qImg = document.getElementById('q-img');
+        const qWord = document.getElementById('q-word');
+        const optionsGrid = document.getElementById('options-grid');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQNum = document.getElementById('current-q-num');
+        const streakText = document.getElementById('streak-text');
+
+        function startGame() {
+            startScreen.classList.add('hidden');
+            endScreen.classList.add('hidden');
+            gameScreen.classList.remove('hidden');
+            gameScreen.classList.add('flex');
+            
+            currentIndex = 0;
+            score = 0;
+            streak = 0;
+            scoreDisplay.innerText = 0;
+            
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            isAnswering = false;
+            const q = gameQuestions[currentIndex];
+            
+            // Update Progress
+            currentQNum.innerText = currentIndex + 1;
+            progressBar.style.width = ((currentIndex) / gameQuestions.length * 100) + '%';
+            
+            // Animation reset
+            qCard.classList.remove('slide-exit');
+            void qCard.offsetWidth;
+            qCard.classList.add('slide-enter');
+
+            // Set Content
+            qImg.src = q.img;
+            qWord.innerText = q.word;
+            
+            // Generate Options
+            optionsGrid.innerHTML = '';
+            const prefixes = ['A', 'B', 'C'];
+            
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "option-btn bg-white/5 border-2 border-white/10 text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-between group";
+                btn.innerHTML = `<span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-black text-slate-300 group-hover:bg-blue-500 group-hover:text-white transition-colors">${prefixes[idx]}</span> <span class="text-lg">${opt}</span>`;
+                btn.onclick = () => selectOption(idx, btn);
+                optionsGrid.appendChild(btn);
+            });
+        }
+
+        function selectOption(selectedIndex, btnElement) {
+            if (isAnswering) return;
+            isAnswering = true;
+            
+            const q = gameQuestions[currentIndex];
+            const isCorrect = (selectedIndex === q.correct);
+            const allBtns = optionsGrid.querySelectorAll('.option-btn');
+            
+            allBtns.forEach(b => b.style.pointerEvents = 'none');
+
+            if (isCorrect) {
+                btnElement.classList.add('btn-correct');
+                streak++;
+                score += 100 + (streak * 20); // Bonus for streak
+                scoreDisplay.innerText = score;
+                scoreDisplay.classList.add('animate-pulse');
+                setTimeout(() => scoreDisplay.classList.remove('animate-pulse'), 500);
+                
+                if(streak > 1) {
+                    streakText.classList.remove('hidden');
+                    streakText.classList.add('animate-bounce');
+                }
+            } else {
+                btnElement.classList.add('btn-wrong');
+                allBtns[q.correct].classList.add('btn-correct');
+                streak = 0;
+                streakText.classList.add('hidden');
+                streakText.classList.remove('animate-bounce');
+            }
+
+            setTimeout(() => {
+                qCard.classList.remove('slide-enter');
+                qCard.classList.add('slide-exit');
+                optionsGrid.innerHTML = ''; // fade out options instantly
+                
+                setTimeout(() => {
+                    currentIndex++;
+                    if (currentIndex < gameQuestions.length) {
+                        loadQuestion();
+                    } else {
+                        showEndScreen();
+                    }
+                }, 400);
+            }, 1200);
+        }
+
+        function showEndScreen() {
+            gameScreen.classList.remove('flex');
+            gameScreen.classList.add('hidden');
+            endScreen.classList.remove('hidden');
+            
+            progressBar.style.width = '100%';
+            streakText.classList.add('hidden');
+            
+            document.getElementById('end-score').innerText = score;
+            const title = document.getElementById('end-title');
+            const sub = document.getElementById('end-subtitle');
+            const emoji = document.getElementById('end-emoji');
+            
+            // Max score is 500 + 40 + 60 + 80 + 100 = 780
+            if (score > 600) {
+                title.innerText = "Luar Biasa!";
+                title.className = "text-3xl font-black mb-2 text-game-accent";
+                sub.innerText = "Kamu menguasai kosakata Mandarin dengan sangat baik.";
+                emoji.src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Trophy.png";
+                fireConfetti();
+            } else if (score > 300) {
+                title.innerText = "Bagus Sekali!";
+                title.className = "text-3xl font-black mb-2 text-blue-400";
+                sub.innerText = "Sedikit lagi menuju sempurna. Terus berlatih!";
+                emoji.src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png";
+            } else {
+                title.innerText = "Jangan Menyerah!";
+                title.className = "text-3xl font-black mb-2 text-white";
+                sub.innerText = "Perbanyak bacaan Mandarin dan coba lagi ya.";
+                emoji.src = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Flexed%20Biceps.png";
+            }
+        }
+
+        // --- SIMPLE CONFETTI ---
+        function fireConfetti() {
+            const canvas = document.getElementById('confetti');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const pieces = [];
+            const colors = ['#f59e0b', '#3b82f6', '#10b981', '#ef4444', '#ffffff'];
+            
+            for(let i=0; i<100; i++) {
+                pieces.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2 + 100,
+                    vx: (Math.random() - 0.5) * 20,
+                    vy: (Math.random() - 1) * 20 - 5,
+                    size: Math.random() * 10 + 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rot: Math.random() * 360,
+                    rotSpeed: (Math.random() - 0.5) * 10
+                });
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let active = false;
+                
+                pieces.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.5; // gravity
+                    p.rot += p.rotSpeed;
+                    
+                    if (p.y < canvas.height) active = true;
+                    
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rot * Math.PI / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                    ctx.restore();
+                });
+                
+                if (active) requestAnimationFrame(animate);
+                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            animate();
+        }
+    </script>
+</body>
+</html>
