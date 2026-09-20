@@ -334,9 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Define Slides Data inside the function or globally
         const slides = [
-            { title: "Pembentukan Karakter Melalui Pendidikan Budi Pekerti", img: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1200", desc: "Sekolah Terpadu Sedaya Bintang menekankan pendidikan karakter yang mengacu pada Di Zi Gui, penguasaan trilingual, dan pengembangan daya berpikir kritis melalui STEAM." },
-            { title: "Lingkungan Belajar yang Menyenangkan", img: "https://images.pexels.com/photos/289737/pexels-photo-289737.jpeg?auto=compress&cs=tinysrgb&w=1200", desc: "Fasilitas modern yang dirancang khusus untuk merangsang kreativitas dan minat belajar anak. Ruang kelas interaktif memastikan setiap siswa mendapatkan perhatian optimal." },
-            { title: "Kolaborasi dan Inovasi Sejak Dini", img: "https://images.pexels.com/photos/892654/pexels-photo-892654.jpeg?auto=compress&cs=tinysrgb&w=1200", desc: "Melalui kurikulum STEAM, siswa kami dilatih untuk memecahkan masalah, bekerja sama dalam tim, dan berinovasi menciptakan solusi untuk masa depan." }
+            { title: "Pembentukan Karakter Melalui Pendidikan Budi Pekerti", img: "https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1200", desc: "Sekolah Terpadu Sedaya Bintang menekankan pendidikan karakter berlandaskan Di Zi Gui dan 10 Nilai Moral, penguasaan trilingual, dan daya berpikir kritis melalui STEAM." },
+            { title: "Lingkungan Belajar yang Menyenangkan", img: "https://images.pexels.com/photos/289737/pexels-photo-289737.jpeg?auto=compress&cs=tinysrgb&w=1200", desc: "Fasilitas modern yang dirancang khusus untuk merangsang kreativitas dan minat belajar anak. Ruang kelas interaktif memastikan setiap murid mendapatkan perhatian optimal." },
+            { title: "Kolaborasi dan Inovasi Sejak Dini", img: "https://images.pexels.com/photos/892654/pexels-photo-892654.jpeg?auto=compress&cs=tinysrgb&w=1200", desc: "Melalui kurikulum STEAM, murid kami dilatih untuk memecahkan masalah, bekerja sama dalam tim, dan berinovasi menciptakan solusi untuk masa depan." }
         ];
 
         window.currentSlide = index;
@@ -543,17 +543,17 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: "Dr. Ibu Kepala Sekolah",
             title: "Head of KB-TK, Sedaya Bintang",
-            quote: '"Setiap anak lahir dengan potensi tanpa batas. Tugas kita adalah memberikan wadah yang tepat di masa keemasannya."',
+            quote: '"Usia dini adalah masa emas untuk membentuk bahasa dan karakter anak — tugas kami mendampingi mereka di masa ini."',
             p1: "Pendidikan anak usia dini merupakan masa emas perkembangan otak. Pada masa ini, anak memiliki kelenturan tinggi untuk menyerap bahasa dan nilai kehidupan.",
-            p2: "Kami menitikberatkan pendidikan budi pekerti yang mengacu pada ajaran moral Di Zi Gui. Kami juga melengkapi peserta didik dengan kemampuan trilingual melalui interaktif dan mengasah nalar kritis melalui pendekatan STEAM.",
+            p2: "Kami menitikberatkan pendidikan Budi Pekerti berlandaskan Di Zi Gui dan 10 Nilai Moral, membekali trilingual secara interaktif, dan mengasah nalar kritis lewat STEAM.",
             img: "https://images.pexels.com/photos/5212361/pexels-photo-5212361.jpeg?auto=compress&cs=tinysrgb&w=800"
         },
         {
             name: "Bapak Kepala Sekolah",
             title: "Head of SD, Sedaya Bintang",
-            quote: '"Karakter yang kuat dan pemikiran yang kritis adalah fondasi tak tergoyahkan untuk masa depan peserta didik."',
-            p1: "Di tingkat dasar, kami membekali peserta didik dengan kompetensi akademik yang kokoh tanpa meninggalkan nilai moral dan budi pekerti.",
-            p2: "Pendekatan Kurikulum Nasional yang dipadukan dengan metode Critical Thinking (ACT) dan lingkungan Trilingual akan mempersiapkan anak menjadi warga dunia yang tangguh.",
+            quote: '"Karakter yang kuat dan cara berpikir yang kritis adalah bekal utama murid untuk masa depan."',
+            p1: "Di tingkat dasar, kami membekali murid dengan kompetensi akademik yang kokoh tanpa meninggalkan nilai moral dan budi pekerti.",
+            p2: "Kurikulum Nasional yang dipadukan dengan ACT (Attitude, Communication, Thinking) dan lingkungan Trilingual mempersiapkan anak untuk masa depan yang lebih luas.",
             img: "https://images.pexels.com/photos/8612920/pexels-photo-8612920.jpeg?auto=compress&cs=tinysrgb&w=800"
         }
     ];
@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 title: "Guru Mandarin SD (Native/Fluent)",
                 type: "Full-Time", location: "Bandung", icon: "fa-language",
-                desc: "Mengajar bahasa Mandarin menggunakan kurikulum terintegrasi dan standar HSK, serta membimbing siswa dalam persiapan ujian sertifikasi.",
+                desc: "Mengajar bahasa Mandarin menggunakan kurikulum terintegrasi dan standar HSK, serta membimbing murid dalam persiapan ujian sertifikasi.",
                 req: ["Minimal S1 Pendidikan Bahasa Mandarin / Sastra China.", "Memiliki sertifikat HSK minimal level 5.", "Pengalaman mengajar anak usia SD minimal 2 tahun.", "Fasih berbahasa Mandarin lisan dan tulisan."]
             },
             {
@@ -611,13 +611,13 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 title: "Guru Bimbingan & Konseling (BK)",
                 type: "Full-Time", location: "Bandung", icon: "fa-hand-holding-heart",
-                desc: "Memberikan bimbingan psikologis, akademik, dan karir kepada siswa, serta berkolaborasi dengan orang tua untuk perkembangan holistik siswa.",
+                desc: "Memberikan bimbingan psikologis, akademik, dan karir kepada murid, serta berkolaborasi dengan orang tua untuk perkembangan holistik murid.",
                 req: ["Minimal S1 Bimbingan dan Konseling / Psikologi.", "Memiliki empati tinggi dan kemampuan komunikasi persuasif.", "Berpengalaman dalam menangani remaja.", "Memahami pendekatan konseling pendidikan modern."]
             },
             {
                 title: "Guru IPA / Sains Terpadu (SD)",
                 type: "Full-Time", location: "Bandung", icon: "fa-flask",
-                desc: "Mengajar sains dengan pendekatan eksperimen praktis (Hands-on Learning) dan memfasilitasi keingintahuan alami siswa.",
+                desc: "Mengajar sains dengan pendekatan eksperimen praktis (Hands-on Learning) dan memfasilitasi keingintahuan alami murid.",
                 req: ["Minimal S1 Pendidikan IPA / Sains.", "Mampu merancang eksperimen aman untuk usia SD.", "Kreatif, enerjik, dan menyukai dunia anak-anak.", "Bersedia mengajar lintas disiplin (STEM)."]
             },
             {

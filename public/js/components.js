@@ -29,7 +29,7 @@ const navbarTemplate = `
                             <a href="#" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
                                 <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-pen-to-square text-lg"></i></div>
                                 <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">Apply</div>
-                                <div class="text-[11px] text-gray-500 leading-tight">Pendaftaran peserta didik baru.</div>
+                                <div class="text-[11px] text-gray-500 leading-tight">Pendaftaran murid baru.</div>
                             </a>
                             <a href="#" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
                                 <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-file-invoice-dollar text-lg"></i></div>
@@ -55,7 +55,7 @@ const navbarTemplate = `
                     </div>
                 </div>
 
-                <div class="nav-item group h-full flex items-center cursor-pointer relative">
+                <div class="nav-item group h-full flex items-center cursor-pointer">
                     <div id="nav-academics" class="relative h-full flex items-center gap-1.5 text-sm font-bold text-gray-700 group-hover:text-brand-primary transition-colors">
                         Academics <i class="fa-solid fa-angle-down text-[11px] mt-0.5 transition-transform duration-300 group-hover:rotate-180"></i>
                         <span class="nav-underline"></span>
@@ -370,7 +370,7 @@ function loadComponents() {
                 // Open the parent accordion automatically
                 const parentAccordion = link.closest('.mobile-accordion-content');
                 if (parentAccordion) {
-                    parentAccordion.style.display = 'block';
+                    parentAccordion.classList.add('active');
                     const iconId = parentAccordion.id + '-icon';
                     const icon = document.getElementById(iconId);
                     if(icon) {
@@ -407,7 +407,7 @@ function loadComponents() {
             // Ubah span underline
             const span = activeNav.querySelector('span.nav-underline');
             if (span) {
-                span.className = "absolute bottom-0 left-1/2 w-full h-[3px] bg-brand-primary -translate-x-1/2 rounded-t-sm nav-underline";
+                span.className = "absolute bottom-0 left-1/2 !w-full h-[3px] bg-brand-primary -translate-x-1/2 rounded-t-sm nav-underline";
             }
         }
     }

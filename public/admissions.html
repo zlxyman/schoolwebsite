@@ -10,7 +10,7 @@
     
     <!-- Konfigurasi Tailwind -->
     <script src="js/tailwind-config.js"></script>
-    
+
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -42,28 +42,23 @@
                     </span>
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-[56px] font-extrabold tracking-tight leading-[1.2] mb-4 sm:mb-6 text-white">
                         Penerimaan <br class="hidden lg:block"/>
-                        <span class="text-brand-yellow">Peserta Didik Baru</span>
+                        <span class="text-brand-yellow">Murid Baru</span>
                     </h1>
                     <p class="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 sm:mb-10 font-medium leading-relaxed">
-                        Panduan pendaftaran peserta didik baru Sekolah Terpadu Sedaya Bintang. Tim kami siap mendampingi di setiap tahapan.
+                        Panduan pendaftaran murid baru Sekolah Terpadu Sedaya Bintang. Tim kami siap mendampingi di setiap tahapan.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                         <a href="#" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:bg-white transition-all transform hover:-translate-y-1 text-sm sm:text-base">
                             <i class="fa-solid fa-pen-to-square"></i> Mulai Pendaftaran Online
                         </a>
-                        <a href="#" class="inline-flex justify-center items-center gap-2 bg-transparent border-2 border-white/40 text-white font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl hover:bg-white hover:text-brand-primary hover:border-white transition-all text-sm sm:text-base backdrop-blur-md">
+                        <a href="kurikulum.html" class="inline-flex justify-center items-center gap-2 bg-transparent border-2 border-white/40 text-white font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl hover:bg-white hover:text-brand-primary hover:border-white transition-all text-sm sm:text-base backdrop-blur-md">
                             <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Tim Admission
                         </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Curved Bottom -->
-            <div class="absolute -bottom-px left-0 w-full overflow-hidden leading-none z-10">
-                <svg class="relative block w-full h-[40px] sm:h-[60px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V120H0Z" class="fill-brand-gray"></path>
-                </svg>
-            </div>
+
         </section>
 
         <!-- SECTION 2: 7 LANGKAH PENDAFTARAN (Interactive Journey Map) -->
@@ -74,9 +69,15 @@
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16 lg:mb-24 reveal">
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Tujuh Tahap Pendaftaran</h2>
+                    
                     <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
-                        Proses pendaftaran yang terstruktur bagi calon peserta didik baru.
+                        Proses pendaftaran yang terstruktur bagi calon murid baru.
                     </p>
+                    <div class="inline-flex bg-white rounded-full p-1 shadow-sm border border-gray-200 mt-6 relative" id="admission-toggle">
+                        <div class="absolute left-1 top-1 w-[calc(50%-4px)] h-[calc(100%-8px)] bg-brand-yellow rounded-full transition-transform duration-300 ease-out z-0" id="admission-indicator"></div>
+                        <button class="relative z-10 px-6 py-2 text-sm font-bold text-brand-primary w-32 transition-colors duration-300" onclick="switchAdmissionFlow('kbtk')">KB-TK</button>
+                        <button class="relative z-10 px-6 py-2 text-sm font-bold text-gray-500 w-32 transition-colors duration-300" onclick="switchAdmissionFlow('sd')">SD</button>
+                    </div>
                 </div>
 
                 <div class="relative py-4">
@@ -95,7 +96,7 @@
                                 <div class="absolute -top-6 -right-6 lg:-left-6 text-6xl text-brand-primary/5 rotate-12"><i class="fa-solid fa-file-signature"></i></div>
                                 <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Membeli Formulir Pendaftaran</h3>
                                 <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                    Mengisi data dasar calon siswa serta memenuhi biaya administrasi formulir pendaftaran.
+                                    Mengisi data dasar calon murid serta memenuhi biaya administrasi formulir pendaftaran.
                                 </p>
                             </div>
                         </div>
@@ -106,10 +107,18 @@
                         <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-12 lg:pr-0 order-2">
                             <div class="timeline-card right-side bg-white p-4 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
                                 <div class="absolute -top-6 -right-6 text-6xl text-brand-yellow/10 -rotate-12"><i class="fa-solid fa-users-viewfinder"></i></div>
-                                <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Observasi & Wawancara</h3>
-                                <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                    Pemetaan kesiapan motorik, psikologis, dan kemampuan bahasa anak, serta penyelarasan visi pendidikan bersama orang tua.
-                                </p>
+                                <div id="obs-kbtk">
+                                    <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Observasi & Wawancara (KB-TK)</h3>
+                                    <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
+                                        Pemetaan kesiapan motorik, psikologis, dan kemampuan bahasa anak melalui interaksi dan bermain, serta penyelarasan visi pendidikan bersama orang tua.
+                                    </p>
+                                </div>
+                                <div id="obs-sd" style="display: none;">
+                                    <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Tes Pemetaan & Wawancara (SD)</h3>
+                                    <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
+                                        Evaluasi kesiapan akademis dasar dan wawancara untuk menyelaraskan nilai pendidikan bersama orang tua.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-yellow flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0 order-1">
@@ -191,9 +200,9 @@
                         <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-0 lg:pr-12 text-left lg:text-right">
                             <div class="timeline-card left-side bg-brand-primary p-4 sm:p-8 shadow-glow-primary relative overflow-hidden">
                                 <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
-                                <h3 class="text-base sm:text-xl font-bold text-brand-yellow mb-2">Resmi Terdaftar sebagai Siswa</h3>
+                                <h3 class="text-base sm:text-xl font-bold text-brand-yellow mb-2">Resmi Terdaftar sebagai Murid</h3>
                                 <p class="text-[11px] sm:text-sm text-gray-200 leading-relaxed font-light">
-                                    Calon siswa mendapatkan Nomor Induk Siswa (NIS) dan terdaftar secara resmi.
+                                    Calon murid mendapatkan Nomor Induk Murid (NIS) dan terdaftar secara resmi.
                                 </p>
                             </div>
                         </div>
@@ -303,8 +312,8 @@
                         </div>
                         
                         <div class="relative z-10 pt-4 border-t border-gray-100">
-                            <a href="#" class="w-full flex items-center justify-center gap-2 bg-brand-primary text-white font-bold px-6 py-3.5 sm:py-4 rounded-xl hover:bg-[#15346b] transition-colors text-sm">
-                                <i class="fa-solid fa-download"></i> Download Checklist (PDF)
+                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="inline-flex items-center gap-2 bg-brand-primary text-white font-bold px-6 py-2.5 rounded-full hover:bg-brand-yellow hover:text-brand-primary transition-colors text-sm shadow-md mt-6">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Info Pendaftaran & Biaya
                             </a>
                         </div>
                     </div>
@@ -342,9 +351,9 @@
 
                     <div class="flex-none w-[85vw] sm:w-[350px] lg:w-auto snap-center bg-white rounded-2xl p-4 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full">
                         <div class="w-12 h-12 bg-brand-red/10 rounded-full flex items-center justify-center text-brand-red mb-4 group-hover:scale-110 transition-transform text-xl"><i class="fa-solid fa-yin-yang"></i></div>
-                        <h3 class="font-bold text-brand-primary text-base sm:text-lg mb-3 leading-tight">"Apakah Budi Pekerti Konfusius bertentangan dengan agama?"</h3>
+                        <h3 class="font-bold text-brand-primary text-base sm:text-lg mb-3 leading-tight">"Apakah Pendidikan Budi Pekerti bertentangan dengan agama?"</h3>
                         <p class="text-[11px] sm:text-sm text-gray-600 flex-1 leading-relaxed">
-                            Sama sekali tidak. Pengajaran Budi Pekerti dari kitab <em>Di Zi Gui</em> difokuskan murni pada nilai etika universal (seperti menghormati orang tua dan kejujuran). Sekolah kami terbuka dan merangkul siswa dari semua agama.
+                            Sama sekali tidak. Pendidikan Budi Pekerti berlandaskan Di Zi Gui dan 10 Nilai Moral, fokusnya murni pada nilai etika universal (seperti menghormati orang tua dan kejujuran). Sekolah kami terbuka dan merangkul murid dari semua agama.
                         </p>
                     </div>
 
@@ -366,7 +375,7 @@
                     <span class="inline-block py-1 px-3 rounded-full bg-brand-primary text-white text-[10px] font-bold tracking-wider uppercase mb-4 shadow-sm">Pendaftaran Terbuka</span>
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-primary mb-4 leading-tight">Tahun Ajaran <br/> 2027/2028</h2>
                     <p class="text-brand-primary/80 font-medium text-sm sm:text-base max-w-sm mx-auto md:mx-0">
-                        Uang Pangkal yang dibayarkan mencakup masa studi kelanjutan jenjang peserta didik.
+                        Uang Pangkal yang dibayarkan mencakup masa studi kelanjutan jenjang murid.
                     </p>
                 </div>
 
@@ -375,7 +384,7 @@
                         <div class="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-tags text-xl"></i></div>
                         <div>
                             <h4 class="font-bold text-brand-primary text-base">Pendaftaran TA 2027/2028</h4>
-                            <p class="text-xs text-gray-500">Telah dibuka penerimaan peserta didik baru.</p>
+                            <p class="text-xs text-gray-500">Telah dibuka penerimaan murid baru.</p>
                         </div>
                     </div>
                     <div class="bg-white/90 backdrop-blur rounded-2xl p-5 shadow-sm border border-white flex items-center gap-4">
@@ -387,7 +396,7 @@
                     </div>
                     
                     <div class="mt-2">
-                        <a href="#" class="w-full inline-flex justify-center items-center gap-2 bg-brand-primary text-white font-bold px-6 py-4 rounded-2xl hover:bg-[#15346b] transition-all shadow-md text-sm sm:text-base group">
+                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="w-full inline-flex justify-center items-center gap-2 bg-brand-primary text-white font-bold px-6 py-4 rounded-2xl hover:bg-[#15346b] transition-all shadow-md text-sm sm:text-base group">
                             Lihat Rincian Biaya Pendidikan <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
@@ -426,5 +435,31 @@
     <script src="js/components.js"></script>
     <script src="js/app.js"></script>
 
+
+    <!-- Admission Flow Toggle Script -->
+    <script>
+        function switchAdmissionFlow(level) {
+            const indicator = document.getElementById('admission-indicator');
+            const buttons = document.getElementById('admission-toggle').querySelectorAll('button');
+            const obsKbtk = document.getElementById('obs-kbtk');
+            const obsSd = document.getElementById('obs-sd');
+            
+            if (level === 'kbtk') {
+                indicator.style.transform = 'translateX(0)';
+                buttons[0].classList.replace('text-gray-500', 'text-brand-primary');
+                buttons[1].classList.replace('text-brand-primary', 'text-gray-500');
+                
+                obsKbtk.style.display = 'block';
+                obsSd.style.display = 'none';
+            } else {
+                indicator.style.transform = 'translateX(100%)';
+                buttons[0].classList.replace('text-brand-primary', 'text-gray-500');
+                buttons[1].classList.replace('text-gray-500', 'text-brand-primary');
+                
+                obsKbtk.style.display = 'none';
+                obsSd.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
