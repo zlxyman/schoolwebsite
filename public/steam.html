@@ -2,305 +2,614 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Program STEAM - Sekolah Terpadu Sedaya Bintang</title>
-
+    
+    <!-- Memuat Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Konfigurasi Tailwind Terpusat -->
+    <script src="js/tailwind-config.js"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script src="js/tailwind-config.js"></script>
+    <!-- CSS Global Terpadu -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/steam.css">
 </head>
 <body id="top" data-page="programs" class="bg-brand-gray font-sans text-gray-800 antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
 
+    <!-- Navbar & Mobile Drawer Otomatis Terinjeksi dari components.js -->
     <div id="app-navbar"></div>
 
     <main>
-
-        <!-- HERO -->
-        <section class="relative pt-16 pb-20 lg:pt-24 lg:pb-32 overflow-hidden flex items-center min-h-[560px] lg:min-h-[640px] bg-brand-dark w-full">
-            <div class="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-primary/50 via-brand-dark to-brand-dark"></div>
-            <div class="starfield absolute inset-0 z-0"></div>
+        <!-- SECTION 1: HERO BANNER (Pilar ACT: Thinking) -->
+        <section class="relative pt-12 pb-20 lg:pt-24 lg:pb-32 overflow-hidden flex items-center min-h-[75vh] lg:min-h-[640px] bg-brand-dark">
+            <!-- Background Kosmik & Partikel Bintang -->
+            <div class="absolute inset-0 z-0 overflow-hidden" id="space-bg">
+                <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-primary/40 via-brand-dark to-brand-dark"></div>
+                <!-- Bintang di-generate dinamis dan rapi via js/steam.js -->
+            </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-
-                    <div class="lg:col-span-6 flex flex-col justify-center text-center lg:text-left">
-                        <span class="inline-flex items-center justify-center lg:justify-start gap-2 py-1.5 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-brand-yellow text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 w-fit mx-auto lg:mx-0">
-                            <i class="fa-solid fa-rocket"></i> Kompetensi ACT: Thinking
+                    
+                    <div class="lg:col-span-7 flex flex-col justify-center text-center lg:text-left">
+                        <span class="inline-flex items-center justify-center lg:justify-start gap-2 py-1.5 px-4 rounded-full glass-space text-brand-yellow text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 shadow-glow-primary w-fit mx-auto lg:mx-0 border border-white/10">
+                            <i class="fa-solid fa-brain text-brand-yellow"></i> Pilar ACT: Thinking
                         </span>
-
-                        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.2] lg:leading-[1.1] mb-5 sm:mb-6 text-white drop-shadow-lg">
-                            Melatih Cara Berpikir Anak Lewat <span class="text-brand-yellow">Mencoba Langsung.</span>
+                        
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.2] lg:leading-[1.15] mb-5 sm:mb-6 text-white drop-shadow-lg">
+                            Membiasakan <span class="text-brand-yellow">Nalar Kritis</span> Melalui Eksplorasi Nyata.
                         </h1>
-
-                        <p class="text-sm sm:text-base lg:text-lg text-gray-300 mb-8 sm:mb-10 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0 drop-shadow">
-                            Anak belajar <strong class="text-white">sains, teknologi, rekayasa, seni, dan matematika</strong> lewat satu proyek yang sama &mdash; bukan lima pelajaran yang berdiri sendiri.
+                        
+                        <p class="text-sm sm:text-base lg:text-lg text-gray-300 mb-8 sm:mb-10 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 drop-shadow">
+                            Pendekatan terpadu STEAM di Sedaya Bintang memadukan Kurikulum Nasional dan kurikulum internasional Pearson Edexcel iPrimary untuk membekali si kecil dengan keterampilan mengamati, menganalisis, dan mencari solusi terstruktur.
                         </p>
-
-                        <div class="flex justify-center lg:justify-start">
-                            <a href="#unsur-steam" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-8 py-3.5 sm:px-10 sm:py-4 rounded-xl shadow-lg hover:shadow-glow-yellow hover:bg-white transition-all transform hover:-translate-y-1 text-sm sm:text-base">
-                                Lihat Lima Bidangnya <i class="fa-solid fa-arrow-down ml-1"></i>
+                        
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#unsur-steam" class="w-full sm:w-auto inline-flex justify-center items-center gap-2.5 bg-brand-yellow text-brand-primary font-extrabold px-8 py-3.5 rounded-xl hover:bg-white transition-all shadow-glow-yellow text-sm sm:text-base transform hover:-translate-y-0.5">
+                                <span>Pelajari 5 Unsur STEAM</span>
+                                <i class="fa-solid fa-arrow-down text-xs"></i>
+                            </a>
+                            <a href="#portal-games" class="w-full sm:w-auto inline-flex justify-center items-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-bold px-7 py-3.5 rounded-xl transition-all border border-white/20 text-sm sm:text-base">
+                                <i class="fa-solid fa-gamepad text-brand-yellow"></i>
+                                <span>Tantangan Mini Games</span>
                             </a>
                         </div>
                     </div>
 
-                    <div class="lg:col-span-6 relative h-[280px] sm:h-[360px] lg:h-[460px] flex items-center justify-center pointer-events-none mt-4 lg:mt-0">
-                        <div class="absolute w-[220px] h-[220px] sm:w-[320px] sm:h-[320px] bg-brand-primary rounded-full blur-[80px] opacity-50"></div>
-
-                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Roket STEAM" class="w-44 sm:w-60 lg:w-72 object-contain animate-float drop-shadow-[0_0_30px_rgba(255,203,5,0.4)] relative z-20">
-
-                        <div class="absolute w-[260px] h-[260px] sm:w-[380px] sm:h-[380px] border border-white/10 rounded-full border-dashed animate-[spin_20s_linear_infinite] z-10">
-                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-brand-primary rounded-full shadow-glow-primary"></div>
-                            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-brand-red rounded-full shadow-glow-red"></div>
+                    <!-- Visual Kosmik & Karakter Interaktif -->
+                    <div class="lg:col-span-5 relative h-[320px] sm:h-[400px] lg:h-[460px] flex items-center justify-center pointer-events-none mt-4 lg:mt-0">
+                        <!-- Glow Ambient -->
+                        <div class="absolute w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] bg-brand-primary/40 rounded-full blur-[80px]"></div>
+                        
+                        <!-- 3D Element Rocket -->
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="STEAM Rocket Illustration" class="w-48 sm:w-60 lg:w-72 object-contain animate-float-space drop-shadow-[0_15px_35px_rgba(255,203,5,0.35)] relative z-20">
+                        
+                        <!-- Orbit Rings -->
+                        <div class="absolute w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] border border-white/15 rounded-full border-dashed animate-[spin_24s_linear_infinite] z-10">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-brand-yellow shadow-glow-yellow"></div>
+                            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-sky-400 shadow-glow-energy"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- LIMA BIDANG STEAM -->
-        <section id="unsur-steam" class="py-16 lg:py-24 bg-brand-gray relative z-20 reveal w-full overflow-hidden">
+        <!-- SECTION 2: 5 UNSUR PENDEKATAN STEAM (Bento Grid Interaktif) -->
+        <section id="unsur-steam" class="py-16 lg:py-24 bg-white relative z-20 reveal">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 sm:mb-14">
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Lima Bidang, Satu Proyek</h2>
-                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
-                        Setiap bidang dikerjakan dalam proyek yang sama, supaya anak terbiasa melihat hubungan antar pelajaran.
+                <div class="text-center mb-12 sm:mb-16">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-brand-gray border border-gray-200 text-brand-primary text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-3 shadow-xs">
+                        Pendekatan Antardisiplin
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">
+                        5 Unsur Pembelajaran Terpadu
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+                        Kelima elemen saling melengkapi dalam bentuk proyek tematik terarah, sehingga si kecil terbiasa menghubungkan teori sains dengan penerapan kontekstual di keseharian.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-
-                    <div class="feature-card bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:col-span-2 lg:col-span-2 relative overflow-hidden group">
-                        <div class="absolute -right-10 -top-10 text-9xl text-brand-primary/5 group-hover:text-brand-primary/10 transition-colors pointer-events-none"><i class="fa-solid fa-flask"></i></div>
-                        <div class="icon-circle w-12 h-12 rounded-xl bg-brand-blue text-brand-primary flex items-center justify-center mb-4 transition-all">
+                <!-- Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-5 sm:gap-6">
+                    
+                    <!-- 1. Science (Span 3 col) -->
+                    <div class="feature-card bg-brand-gray/70 hover:bg-white p-6 sm:p-8 rounded-[2rem] border border-gray-200/80 shadow-xs flex flex-col md:col-span-3 relative overflow-hidden group">
+                        <div class="absolute -right-8 -top-8 text-8xl text-brand-primary/5 group-hover:text-brand-primary/10 transition-colors pointer-events-none">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-flask text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-brand-primary mb-2">Science</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed max-w-sm">Mengamati dan mencoba langsung &mdash; dari tanaman di Roof Garden sampai percobaan sederhana di dalam kelas.</p>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <h3 class="text-xl font-extrabold text-brand-primary">Science (Sains)</h3>
+                            <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-blue-50 text-brand-primary">Inkuiri Alam</span>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6 flex-1">
+                            Membiasakan si kecil mengamati gejala alam, merumuskan rasa penasaran, serta melakukan pembuktian sederhana melalui eksperimen langsung yang aman dan menyenangkan.
+                        </p>
+                        <button onclick="openSteamDetail('science')" class="inline-flex items-center gap-2 text-xs font-bold text-brand-primary hover:text-brand-yellow transition-colors mt-auto w-fit">
+                            <span>Lihat Penerapan Kurikulum</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
                     </div>
 
-                    <div class="feature-card bg-brand-primary p-6 sm:p-8 rounded-2xl shadow-sm flex flex-col text-white md:col-span-1 lg:col-span-2 relative overflow-hidden group">
-                        <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-brand-yellow/20 rounded-full blur-2xl"></div>
-                        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center mb-4 text-brand-yellow">
+                    <!-- 2. Technology (Span 3 col) -->
+                    <div class="feature-card bg-brand-primary p-6 sm:p-8 rounded-[2rem] shadow-soft flex flex-col text-white md:col-span-3 relative overflow-hidden group">
+                        <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-brand-yellow/15 rounded-full blur-2xl"></div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur flex items-center justify-center mb-5 text-brand-yellow group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-microchip text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Technology</h3>
-                        <p class="text-sm text-gray-200 leading-relaxed">Mengenalkan perangkat digital sebagai alat bantu belajar dan berkarya, bukan sekadar hiburan.</p>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <h3 class="text-xl font-extrabold text-white">Technology (Teknologi)</h3>
+                            <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white/10 text-brand-yellow">Literasi Digital</span>
+                        </div>
+                        <p class="text-sm text-gray-200 leading-relaxed mb-6 flex-1">
+                            Pengenalan perangkat digital secara bijak dan beretika. Teknologi difungsikan sebagai alat bantu pencarian data, pemrosesan logika, dan media ekspresi karya.
+                        </p>
+                        <button onclick="openSteamDetail('technology')" class="inline-flex items-center gap-2 text-xs font-bold text-brand-yellow hover:text-white transition-colors mt-auto w-fit">
+                            <span>Lihat Penerapan Kurikulum</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
                     </div>
 
-                    <div class="feature-card bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:col-span-1 lg:col-span-1 relative overflow-hidden group">
-                        <div class="icon-circle w-12 h-12 rounded-xl bg-brand-yellow/20 text-[#d49900] flex items-center justify-center mb-4 transition-all">
+                    <!-- 3. Engineering (Span 2 col) -->
+                    <div class="feature-card bg-brand-gray/70 hover:bg-white p-6 sm:p-8 rounded-[2rem] border border-gray-200/80 shadow-xs flex flex-col md:col-span-2 relative overflow-hidden group">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-gears text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-brand-primary mb-2">Engineering</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Merancang lalu membuat sesuatu untuk menyelesaikan masalah nyata di sekitar anak.</p>
+                        <h3 class="text-lg font-extrabold text-brand-primary mb-2">Engineering (Rekayasa)</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6 flex-1">
+                            Melatih si kecil merancang tahapan solusi, menyusun struktur bangun sederhana, dan melakukan perbaikan saat menjumpai kendala teknis.
+                        </p>
+                        <button onclick="openSteamDetail('engineering')" class="inline-flex items-center gap-2 text-xs font-bold text-brand-primary hover:text-brand-yellow transition-colors mt-auto w-fit">
+                            <span>Lihat Penerapan</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
                     </div>
 
-                    <div class="feature-card bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:col-span-1 lg:col-span-1 relative overflow-hidden group">
-                        <div class="icon-circle w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center mb-4 transition-all">
+                    <!-- 4. Arts (Span 2 col) -->
+                    <div class="feature-card bg-brand-gray/70 hover:bg-white p-6 sm:p-8 rounded-[2rem] border border-gray-200/80 shadow-xs flex flex-col md:col-span-2 relative overflow-hidden group">
+                        <div class="w-12 h-12 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-palette text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-brand-primary mb-2">Arts</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Menuangkan ide menjadi bentuk yang bisa dilihat, sekaligus melatih motorik halus.</p>
+                        <h3 class="text-lg font-extrabold text-brand-primary mb-2">Arts (Seni & Kreativitas)</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6 flex-1">
+                            Menyeimbangkan logika eksak dengan kepekaan estetika, imajinasi visual, dan keberanian mengekspresikan gagasan secara orisinal.
+                        </p>
+                        <button onclick="openSteamDetail('arts')" class="inline-flex items-center gap-2 text-xs font-bold text-brand-primary hover:text-brand-yellow transition-colors mt-auto w-fit">
+                            <span>Lihat Penerapan</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
                     </div>
 
-                    <div class="feature-card bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:col-span-2 lg:col-span-2 relative overflow-hidden group">
-                        <div class="absolute -right-5 -bottom-5 text-8xl text-brand-yellow/10 group-hover:text-brand-yellow/20 transition-colors pointer-events-none"><i class="fa-solid fa-square-root-variable"></i></div>
-                        <div class="icon-circle w-12 h-12 rounded-xl bg-brand-gray text-brand-primary flex items-center justify-center mb-4 border border-gray-200 transition-all">
+                    <!-- 5. Mathematics (Span 2 col) -->
+                    <div class="feature-card bg-brand-gray/70 hover:bg-white p-6 sm:p-8 rounded-[2rem] border border-gray-200/80 shadow-xs flex flex-col md:col-span-2 relative overflow-hidden group">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 text-brand-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-calculator text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-brand-primary mb-2">Mathematics</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed max-w-md">Memakai Framework Singapura dari <strong class="text-brand-primary">Dr. Yeap Ban Har</strong>: anak paham konsepnya dulu, baru masuk ke angka dan rumus.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- FASILITAS -->
-        <section class="py-16 lg:py-24 bg-white relative reveal w-full overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
-                    <span class="inline-block py-1.5 px-4 rounded-full bg-brand-gray border border-gray-200 text-brand-primary text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-3 shadow-sm">Ruang Belajar</span>
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Tempat Anak Mencoba</h2>
-                    <p class="text-sm sm:text-base text-gray-500 font-medium">
-                        Ruang yang dipakai dalam kegiatan harian, bukan hanya saat acara tertentu.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-
-                    <div class="facility-card relative rounded-2xl bg-gray-200 h-[250px] sm:h-[300px] group col-span-1 md:col-span-2 lg:col-span-2 shadow-sm border border-gray-100">
-                        <img src="assets/images/fasilitas-spacelab.jpg" alt="SPACELAB" class="w-full h-full object-cover">
-                        <div class="facility-overlay absolute inset-0"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
-                            <span class="bg-brand-primary text-white text-[10px] font-bold px-2 py-1 rounded mb-2 inline-block shadow-sm">Science</span>
-                            <h3 class="text-xl font-bold mb-1">SPACELAB</h3>
-                            <p class="text-sm text-gray-200">Ruang eksplorasi sains dan luar angkasa. Anak mengamati, bertanya, lalu mencoba sendiri.</p>
-                        </div>
-                    </div>
-
-                    <div class="facility-card relative rounded-2xl bg-gray-200 h-[250px] sm:h-[300px] group col-span-1 shadow-sm border border-gray-100">
-                        <img src="assets/images/preschool-mini-corners.jpg" alt="Learning Corners" class="w-full h-full object-cover">
-                        <div class="facility-overlay absolute inset-0"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
-                            <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2 py-1 rounded mb-2 inline-block shadow-sm">Metode Belajar</span>
-                            <h3 class="text-lg font-bold mb-1">Learning Corners</h3>
-                            <p class="text-xs text-gray-200 leading-relaxed">Sudut kegiatan di dalam kelas mengikuti Six Elements of Teaching dari Prof. Lin Pei Rong.</p>
-                        </div>
-                    </div>
-
-                    <div class="facility-card relative rounded-2xl bg-gray-200 h-[250px] sm:h-[300px] group col-span-1 shadow-sm border border-gray-100">
-                        <img src="assets/images/fasilitas-roof-garden.jpg" alt="Roof Garden" class="w-full h-full object-cover">
-                        <div class="facility-overlay absolute inset-0"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
-                            <span class="bg-[#10b981] text-white text-[10px] font-bold px-2 py-1 rounded mb-2 inline-block shadow-sm">Pengamatan</span>
-                            <h3 class="text-lg font-bold mb-1">Roof Garden</h3>
-                            <p class="text-xs text-gray-200 leading-relaxed">Kebun di atap sekolah untuk mengamati pertumbuhan tanaman dari minggu ke minggu.</p>
-                        </div>
-                    </div>
-
-                    <div class="facility-card relative rounded-2xl bg-gray-200 h-[250px] sm:h-[300px] group col-span-1 md:col-span-2 lg:col-span-2 shadow-sm border border-gray-100">
-                        <img src="assets/images/lab-komputer.jpg" alt="Laboratorium Komputer" class="w-full h-full object-cover">
-                        <div class="facility-overlay absolute inset-0"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
-                            <span class="bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded mb-2 inline-block shadow-sm">Technology</span>
-                            <h3 class="text-xl font-bold mb-1">Laboratorium Komputer</h3>
-                            <p class="text-sm text-gray-200">Dipakai murid SD untuk mata pelajaran Computing dari Pearson Edexcel.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- 4C -->
-        <section class="py-16 lg:py-24 bg-brand-gray relative reveal w-full overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10 sm:mb-14">
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Yang Dilatih: 4C</h2>
-                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
-                        Empat kemampuan yang terbentuk dari cara belajar ini, meski tidak muncul di nilai rapor.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-
-                    <div class="hover-lift bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
-                        <div class="absolute top-0 w-full h-2 bg-brand-primary"></div>
-                        <div class="w-16 h-16 rounded-full bg-brand-blue text-brand-primary flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-brain"></i></div>
-                        <h3 class="text-lg font-bold text-brand-primary mb-2">Critical Thinking</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Menimbang informasi dulu sebelum mengambil kesimpulan.</p>
-                    </div>
-
-                    <div class="hover-lift bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
-                        <div class="absolute top-0 w-full h-2 bg-brand-yellow"></div>
-                        <div class="w-16 h-16 rounded-full bg-yellow-50 text-[#d49900] flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-lightbulb"></i></div>
-                        <h3 class="text-lg font-bold text-brand-primary mb-2">Creativity</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Mencari cara lain saat cara pertama belum berhasil.</p>
-                    </div>
-
-                    <div class="hover-lift bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
-                        <div class="absolute top-0 w-full h-2 bg-brand-red"></div>
-                        <div class="w-16 h-16 rounded-full bg-red-50 text-brand-red flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-people-group"></i></div>
-                        <h3 class="text-lg font-bold text-brand-primary mb-2">Collaboration</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Membagi peran dan menyelesaikan tugas bersama kelompok.</p>
-                    </div>
-
-                    <div class="hover-lift bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
-                        <div class="absolute top-0 w-full h-2 bg-[#10b981]"></div>
-                        <div class="w-16 h-16 rounded-full bg-green-50 text-[#10b981] flex items-center justify-center mb-4 text-2xl"><i class="fa-solid fa-comments"></i></div>
-                        <h3 class="text-lg font-bold text-brand-primary mb-2">Communication</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Menjelaskan hasil kerjanya supaya dipahami orang lain.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- BRIDGING KE PORTAL GAME -->
-        <section class="py-16 lg:py-24 bg-white relative overflow-hidden reveal w-full" id="minigame-section">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="bg-[#0f172a] rounded-[2.5rem] p-8 sm:p-12 shadow-2xl relative flex flex-col lg:flex-row items-center justify-between border border-slate-800 overflow-hidden">
-                    <div class="absolute -top-32 -right-32 w-96 h-96 bg-brand-primary rounded-full blur-[100px] opacity-30"></div>
-                    <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-brand-yellow rounded-full blur-[100px] opacity-20"></div>
-
-                    <div class="w-full lg:w-5/12 text-center lg:text-left z-10">
-                        <span class="inline-block py-1.5 px-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4">Mini Games</span>
-                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">Latih Logikanya Sambil <span class="text-brand-yellow">Main.</span></h2>
-                        <p class="text-slate-400 font-medium mb-8 text-sm sm:text-base leading-relaxed">
-                            Kumpulan mini game logika dan sains yang bisa langsung dimainkan dari browser.
+                        <h3 class="text-lg font-extrabold text-brand-primary mb-2">Mathematics (Matematika)</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6 flex-1">
+                            Mengadopsi Framework Matematika Singapura oleh Dr. Yeap Ban Har dengan alur konkret ke abstrak (CPA) untuk nalar angka yang kokoh.
                         </p>
-                        <a href="games.html" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-brand-yellow text-brand-primary font-extrabold px-8 py-4 rounded-2xl shadow-lg hover:bg-white transition-all hover:-translate-y-1 group">
-                            Buka Portal Game <i class="fa-solid fa-gamepad group-hover:rotate-12 transition-transform"></i>
+                        <button onclick="openSteamDetail('mathematics')" class="inline-flex items-center gap-2 text-xs font-bold text-brand-primary hover:text-brand-yellow transition-colors mt-auto w-fit">
+                            <span>Lihat Penerapan</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FASILITAS PENUNJANG (Ekosistem Nyata Sekolah) -->
+        <section class="py-16 lg:py-24 bg-brand-gray relative reveal overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 sm:mb-14 gap-4 text-center md:text-left">
+                    <div class="max-w-2xl">
+                        <span class="inline-block py-1.5 px-4 rounded-full bg-white border border-gray-200 text-brand-primary text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-3 shadow-xs">
+                            Ruang & Fasilitas Nyata
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">
+                            Fasilitas Pendukung Eksplorasi
+                        </h2>
+                        <p class="text-sm sm:text-base text-gray-600 font-medium">
+                            Setiap sudut sekolah dirancang untuk memfasilitasi rasa ingin tahu, pengamatan aktif, dan kebugaran jasmani si kecil dalam lingkungan yang bersih dan aman.
+                        </p>
+                    </div>
+                    <div class="shrink-0">
+                        <a href="fasilitas.html" class="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:text-brand-yellow transition-colors bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-xs">
+                            <span>Lihat Semua Fasilitas</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
                     </div>
+                </div>
 
-                    <div class="w-full lg:w-7/12 relative h-[320px] sm:h-[400px] flex justify-center items-center pointer-events-none mt-8 lg:mt-0">
-                        <div class="absolute z-10 transform -rotate-12 -translate-x-12 sm:-translate-x-20 scale-[0.6] sm:scale-[0.75] xl:scale-[0.85] mt-4">
-                            <div class="w-[300px] h-[350px] bg-gradient-to-br from-orange-400 to-rose-500 rounded-[2.5rem] p-8 pb-10 flex flex-col items-center text-center border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative">
-                                <div class="absolute top-5 right-5 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-black text-white flex items-center gap-1.5 border border-white/30 uppercase tracking-widest shadow-lg">
-                                    <i class="fa-solid fa-cube text-white"></i> 3D WebGL
-                                </div>
-                                <div class="h-40 mt-[-4rem] mb-6 w-full flex justify-center">
-                                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Racing%20Car.png" alt="3D WebGL Demo" class="w-40 h-40 object-contain drop-shadow-xl" />
-                                </div>
-                                <h3 class="text-3xl font-black text-white mb-3 tracking-tight">3D WebGL</h3>
-                                <div class="w-full bg-white/20 h-4 rounded-full mt-auto p-1"><div class="bg-white h-full rounded-full w-1/2"></div></div>
-                            </div>
-                        </div>
-
-                        <div class="absolute z-20 transform rotate-6 translate-x-12 sm:translate-x-24 scale-[0.65] sm:scale-[0.8] xl:scale-[0.9] mt-16 sm:mt-20">
-                            <div class="w-[300px] h-[350px] bg-gradient-to-br from-sky-400 to-blue-600 rounded-[2.5rem] p-8 pb-10 flex flex-col items-center text-center border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.4)] relative">
-                                <div class="absolute top-5 right-5 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-black text-white flex items-center gap-1.5 border border-white/30 uppercase tracking-widest shadow-lg">
-                                    <i class="fa-solid fa-rocket text-orange-200"></i> Edukasi
-                                </div>
-                                <div class="h-40 mt-[-4rem] mb-6 w-full flex justify-center">
-                                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="STEAM Explorer" class="w-40 h-40 object-contain drop-shadow-xl" />
-                                </div>
-                                <h3 class="text-3xl font-black text-white mb-3 tracking-tight">STEAM Explorer</h3>
-                                <div class="w-full bg-white/20 h-4 rounded-full mt-auto p-1"><div class="bg-brand-yellow h-full rounded-full w-3/4"></div></div>
-                            </div>
+                <!-- Facilities Grid Menggunakan Aset Gambar Sekolah -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+                    
+                    <!-- Spacelab Interaktif -->
+                    <div class="facility-card relative bg-slate-900 h-[260px] sm:h-[300px] group col-span-1 md:col-span-2 lg:col-span-2 shadow-xs border border-gray-200">
+                        <img src="assets/images/fasilitas-spacelab.jpg" onerror="this.src='https://images.unsplash.com/photo-1507668077129-56e32842fceb?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover" alt="Spacelab Interaktif Sedaya Bintang">
+                        <div class="facility-overlay absolute inset-0"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
+                            <span class="bg-brand-primary text-white text-[10px] font-bold px-2.5 py-1 rounded-md mb-2 inline-block shadow-xs border border-white/20">
+                                Sains & Observasi
+                            </span>
+                            <h3 class="text-xl font-extrabold mb-1">SPACELAB Interaktif</h3>
+                            <p class="text-xs sm:text-sm text-gray-200 max-w-xl line-clamp-2">
+                                Ruang stimulasi visual dan eksperimen sains antariksa untuk menumbuhkan imajinasi serta pemahaman astronomi dasar si kecil.
+                            </p>
                         </div>
                     </div>
+
+                    <!-- Learning Corners Kelas -->
+                    <div class="facility-card relative bg-slate-900 h-[260px] sm:h-[300px] group col-span-1 shadow-xs border border-gray-200">
+                        <img src="assets/images/preschool-mini-corners.jpg" onerror="this.src='assets/images/kurikulum-preschool-kindergarten.jpg'" class="w-full h-full object-cover" alt="Learning Corners di Ruang Kelas">
+                        <div class="facility-overlay absolute inset-0"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
+                            <span class="bg-brand-yellow text-brand-primary text-[10px] font-bold px-2.5 py-1 rounded-md mb-2 inline-block shadow-xs">
+                                Kemandirian Kelas
+                            </span>
+                            <h3 class="text-lg font-extrabold mb-1">Metode Learning Corners</h3>
+                            <p class="text-xs text-gray-200 line-clamp-2">
+                                Penataan sudut kegiatan tematik dengan alat peraga Montessori untuk melatih inisiatif dan fokus mandiri anak usia dini.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Roof Garden -->
+                    <div class="facility-card relative bg-slate-900 h-[260px] sm:h-[300px] group col-span-1 shadow-xs border border-gray-200">
+                        <img src="assets/images/fasilitas-roof-garden.jpg" onerror="this.src='assets/images/fasilitas-taman-observasi.jpg'" class="w-full h-full object-cover" alt="Roof Garden & Taman Observasi">
+                        <div class="facility-overlay absolute inset-0"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
+                            <span class="bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md mb-2 inline-block shadow-xs">
+                                Observasi Ekologi
+                            </span>
+                            <h3 class="text-lg font-extrabold mb-1">Roof Garden & Botani</h3>
+                            <p class="text-xs text-gray-200 line-clamp-2">
+                                Area hijau terbuka di mana murid merawat tanaman dan mempelajari siklus fotosintesis serta keanekaragaman flora secara langsung.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Lab Komputer -->
+                    <div class="facility-card relative bg-slate-900 h-[260px] sm:h-[300px] group col-span-1 shadow-xs border border-gray-200">
+                        <img src="assets/images/lab-komputer.jpg" onerror="this.src='assets/images/fasilitas-lab-bahasa.jpg'" class="w-full h-full object-cover" alt="Laboratorium Komputer">
+                        <div class="facility-overlay absolute inset-0"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
+                            <span class="bg-sky-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md mb-2 inline-block shadow-xs">
+                                Teknologi Dasar (SD)
+                            </span>
+                            <h3 class="text-lg font-extrabold mb-1">Laboratorium Komputer</h3>
+                            <p class="text-xs text-gray-200 line-clamp-2">
+                                Fasilitas literasi komputasi yang terintegrasi dengan Pearson Edexcel Computing, mengajarkan logika pemecahan masalah sejak sekolah dasar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Kolam Renang -->
+                    <div class="facility-card relative bg-slate-900 h-[260px] sm:h-[300px] group col-span-1 shadow-xs border border-gray-200">
+                        <img src="assets/images/fasilitas-kolam-renang.jpg" onerror="this.src='assets/images/fasilitas-playground-indoor.jpg'" class="w-full h-full object-cover" alt="Kolam Renang Sekolah">
+                        <div class="facility-overlay absolute inset-0"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
+                            <span class="bg-amber-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md mb-2 inline-block shadow-xs">
+                                Motorik & Jasmani
+                            </span>
+                            <h3 class="text-lg font-extrabold mb-1">Kolam Renang & Area Gerak</h3>
+                            <p class="text-xs text-gray-200 line-clamp-2">
+                                Membina kebugaran fisik, koordinasi motorik kasar, serta rasa percaya diri di air dengan pendampingan pelatih dan pengawasan ketat.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- SINERGI ACT -->
-        <section class="py-16 lg:py-24 bg-brand-gray relative reveal w-full overflow-hidden">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10">
-                    <div class="w-16 h-16 rounded-full bg-white border border-gray-100 flex items-center justify-center mx-auto mb-4">
-                        <i class="fa-solid fa-layer-group text-brand-primary text-xl"></i>
-                    </div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-primary mb-4">Sinergi Pembelajaran ACT</h2>
-                    <p class="text-sm sm:text-base text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">
-                        Cara berpikir kritis, kemampuan berbahasa, dan sikap yang baik kami kembangkan bersama lewat ACT: Attitude, Communication, Thinking.
+        <!-- SECTION 4: KETERAMPILAN 4C (Output Karakter & Nalar) -->
+        <section class="py-16 lg:py-24 bg-white relative reveal">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 sm:mb-16">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-brand-gray border border-gray-200 text-brand-primary text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-3 shadow-xs">
+                        Kecakapan Abad 21
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">
+                        Tujuan Kompetensi 4C
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+                        Kami tidak sekadar mengukur hafalan rumus, melainkan membentuk kebiasaan berpikir runtut yang menjadi bekal kemandirian si kecil seumur hidup.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 justify-center gap-3 sm:gap-6 max-w-2xl mx-auto">
-                    <a href="budi-pekerti.html" class="flex items-center justify-center gap-3 border-2 border-brand-red text-brand-red font-bold px-4 py-3 sm:px-6 sm:py-4 rounded-xl hover:bg-brand-red hover:text-white transition-all group text-sm sm:text-base w-full shadow-sm hover:shadow-lg bg-white">
-                        <i class="fa-solid fa-heart text-lg group-hover:scale-110 transition-transform"></i> Eksplorasi Budi Pekerti
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Critical Thinking -->
+                    <div class="bg-brand-gray/60 hover:bg-white rounded-[2rem] p-7 border border-gray-200/80 shadow-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft relative overflow-hidden">
+                        <div class="absolute top-0 w-full h-1.5 bg-brand-primary"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-blue-50 text-brand-primary flex items-center justify-center mb-5 text-2xl shadow-xs">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-2">Critical Thinking</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-medium">
+                            Kemampuan menelaah data, mempertanyakan sebab-akibat, dan mengambil keputusan rasional berdasarkan fakta terverifikasi.
+                        </p>
+                    </div>
+                    
+                    <!-- Creativity -->
+                    <div class="bg-brand-gray/60 hover:bg-white rounded-[2rem] p-7 border border-gray-200/80 shadow-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft relative overflow-hidden">
+                        <div class="absolute top-0 w-full h-1.5 bg-brand-yellow"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5 text-2xl shadow-xs">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-2">Creativity</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-medium">
+                            Daya cipta untuk memikirkan sudut pandang baru dan menghadirkan solusi orisinal saat menghadapi keterbatasan sarana.
+                        </p>
+                    </div>
+
+                    <!-- Collaboration -->
+                    <div class="bg-brand-gray/60 hover:bg-white rounded-[2rem] p-7 border border-gray-200/80 shadow-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft relative overflow-hidden">
+                        <div class="absolute top-0 w-full h-1.5 bg-brand-red"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-red-50 text-brand-red flex items-center justify-center mb-5 text-2xl shadow-xs">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-2">Collaboration</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-medium">
+                            Kecakapan berbagi tanggung jawab, berempati, serta menghargai kontribusi teman dalam menyelesaikan misi kelompok.
+                        </p>
+                    </div>
+
+                    <!-- Communication -->
+                    <div class="bg-brand-gray/60 hover:bg-white rounded-[2rem] p-7 border border-gray-200/80 shadow-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-soft relative overflow-hidden">
+                        <div class="absolute top-0 w-full h-1.5 bg-emerald-500"></div>
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5 text-2xl shadow-xs">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-primary mb-2">Communication</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed font-medium">
+                            Keterampilan mengartikulasikan alur pikir secara santun, terstruktur, dan percaya diri dalam lingkungan multibahasa.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: BRIDGING KE PORTAL MINI GAMES (Sedaya Games Hub) -->
+        <section id="portal-games" class="py-16 lg:py-24 bg-brand-dark relative overflow-hidden reveal text-white">
+            <!-- Radial background ambient -->
+            <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_30%_30%,_#1d4486_0%,_#0a1526_70%)] opacity-70"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                    <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow font-bold text-xs uppercase tracking-widest mb-3 shadow-glow-yellow">
+                        <i class="fa-solid fa-gamepad"></i> Ekstensi Belajar Interaktif
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 tracking-tight">
+                        Latih Nalar & Logika di Sedaya Games Hub
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-300 font-medium leading-relaxed">
+                        Kami merancang mini game edukatif interaktif untuk menguji pemahaman konsep sains, aksara Mandarin, kosakata, dan nalar spasial. Ramah anak, tanpa iklan komersial, dan dapat dimainkan langsung di peramban.
+                    </p>
+                </div>
+
+                <!-- Bridging Interactive Showcase Area -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- Left Column: Interactive Selector List -->
+                    <div class="lg:col-span-5 flex flex-col justify-between gap-3">
+                        <div class="space-y-3">
+                            <p class="text-xs uppercase tracking-wider font-bold text-gray-400 mb-2">
+                                <i class="fa-solid fa-list-check text-brand-yellow mr-1.5"></i> Koleksi Game Edukasi di Portal:
+                            </p>
+                            
+                            <!-- Item 0: STEAM Astro Logic -->
+                            <button onclick="selectBridgeGame(0)" class="bridge-tab-btn w-full text-left flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/15 border border-white/30 text-white font-bold transition-all shadow-md">
+                                <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center shrink-0 text-lg">
+                                    <i class="fa-solid fa-rocket"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-extrabold truncate">STEAM Astro Logic</span>
+                                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 font-bold">STEAM 3D</span>
+                                    </div>
+                                    <p class="text-xs text-gray-300 font-normal truncate mt-0.5">Tantangan logika aliran energi antariksa</p>
+                                </div>
+                            </button>
+
+                            <!-- Item 1: Hanzi Master -->
+                            <button onclick="selectBridgeGame(1)" class="bridge-tab-btn w-full text-left flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 font-semibold transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-violet-500/20 text-violet-400 flex items-center justify-center shrink-0 text-lg">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-extrabold truncate">Hanzi Master</span>
+                                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-300 font-bold">Mandarin</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 font-normal truncate mt-0.5">Rekonstruksi goresan aksara Mandarin</p>
+                                </div>
+                            </button>
+
+                            <!-- Item 2: Vocab Master -->
+                            <button onclick="selectBridgeGame(2)" class="bridge-tab-btn w-full text-left flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 font-semibold transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-lg">
+                                    <i class="fa-solid fa-book"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-extrabold truncate">Vocab Master</span>
+                                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">Tribahasa</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 font-normal truncate mt-0.5">Kuis ketangkasan kosakata multibahasa</p>
+                                </div>
+                            </button>
+
+                            <!-- Item 3: 3D Spatial Demo -->
+                            <button onclick="selectBridgeGame(3)" class="bridge-tab-btn w-full text-left flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 font-semibold transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0 text-lg">
+                                    <i class="fa-solid fa-cube"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-extrabold truncate">3D WebGL Demo</span>
+                                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold">Simulasi</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 font-normal truncate mt-0.5">Eksplorasi koordinasi visual & grafis</p>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- Info Pill -->
+                        <div class="mt-4 p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 text-xs text-gray-300">
+                            <i class="fa-solid fa-shield-halved text-brand-yellow text-base"></i>
+                            <span>Semua permainan dirancang khusus untuk lingkungan edukasi yang sehat dan terstruktur.</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Featured Preview Card & Direct Bridging CTA -->
+                    <div class="lg:col-span-7 flex flex-col">
+                        <div id="bridge-preview-card" class="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-[2.5rem] p-6 sm:p-10 flex flex-col justify-between flex-1 relative overflow-hidden transition-all duration-300">
+                            
+                            <!-- Ambient Light Behind Preview -->
+                            <div class="absolute -top-16 -right-16 w-56 h-56 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                            <div>
+                                <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                                    <span id="bridge-pv-tag" class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 border border-sky-500/30 text-xs font-bold uppercase tracking-wider">
+                                        Logika & Sains 3D
+                                    </span>
+                                    <span id="bridge-pv-difficulty" class="text-xs text-gray-400 font-medium flex items-center gap-1.5">
+                                        <i class="fa-solid fa-user-check text-brand-yellow"></i> Usia 5 - 12 Tahun
+                                    </span>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mb-8">
+                                    <div class="w-28 h-28 sm:w-36 sm:h-36 shrink-0 relative flex items-center justify-center bg-white/10 rounded-3xl border border-white/20 p-4 shadow-glow-primary">
+                                        <img id="bridge-pv-img" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Game Preview Icon" class="w-full h-full object-contain animate-float-space">
+                                    </div>
+                                    <div class="text-center sm:text-left">
+                                        <h3 id="bridge-pv-title" class="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+                                            STEAM Astro Logic
+                                        </h3>
+                                        <p id="bridge-pv-desc" class="text-sm text-gray-300 leading-relaxed">
+                                            Tantangan memecahkan teka-teki logika rotasi aliran energi dan ruang spasial 3D. Melatih kesabaran, nalar analitis, dan daya prediksi si kecil.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom CTA Container -->
+                            <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center gap-4">
+                                <a href="games.html" class="w-full sm:flex-1 bg-brand-yellow hover:bg-white text-brand-primary font-extrabold px-6 py-4 rounded-2xl transition-all duration-300 shadow-glow-yellow flex items-center justify-center gap-3 text-sm sm:text-base transform hover:-translate-y-0.5">
+                                    <i class="fa-solid fa-gamepad text-lg"></i>
+                                    <span>Buka Portal Games Edukatif</span>
+                                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                                <a id="bridge-pv-direct-btn" href="steam-minigame.html" class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold transition-all border border-white/20 text-sm flex items-center justify-center gap-2">
+                                    <span>Mainkan Langsung</span>
+                                    <i class="fa-solid fa-play text-xs text-brand-yellow"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: SINERGI PENDIDIKAN ACT & FINAL CTA -->
+        <section class="py-16 lg:py-24 bg-white relative reveal">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="w-16 h-16 rounded-2xl bg-brand-gray border border-gray-200 flex items-center justify-center mx-auto mb-5 text-brand-primary text-2xl shadow-xs">
+                    <i class="fa-solid fa-shapes"></i>
+                </div>
+                
+                <span class="text-xs font-bold text-brand-primary uppercase tracking-widest mb-2 block">
+                    Harmoni Tiga Pilar Pendidikan
+                </span>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-4">
+                    Sinergi Pilar ACT: Thinking, Attitude & Compassion
+                </h2>
+                <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed max-w-2xl mx-auto mb-10">
+                    Kapasitas nalar (<em>Thinking</em>) si kecil akan berbuah optimal ketika dibarengi dengan etika luhur (<em>Attitude</em>) dan empati sosial dalam pergaulan antarbangsa (<em>Compassion</em>).
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <!-- CTA Tribahasa -->
+                    <a href="tribahasa.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-brand-primary text-brand-primary font-bold px-7 py-3.5 rounded-xl hover:bg-brand-primary hover:text-white transition-all text-sm sm:text-base shadow-xs">
+                        <i class="fa-solid fa-earth-asia"></i>
+                        <span>Pilar Tribahasa</span>
                     </a>
-                    <a href="tribahasa.html" class="flex items-center justify-center gap-3 border-2 border-brand-primary text-brand-primary font-bold px-4 py-3 sm:px-6 sm:py-4 rounded-xl hover:bg-brand-primary hover:text-white transition-all group text-sm sm:text-base w-full shadow-sm hover:shadow-glow-primary bg-white">
-                        <i class="fa-solid fa-earth-asia text-lg group-hover:scale-110 transition-transform"></i> Eksplorasi Tribahasa
+
+                    <!-- CTA Budi Pekerti -->
+                    <a href="budi-pekerti.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 border-2 border-brand-red text-brand-red font-bold px-7 py-3.5 rounded-xl hover:bg-brand-red hover:text-white transition-all text-sm sm:text-base shadow-xs">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Pilar Budi Pekerti</span>
+                    </a>
+
+                    <!-- CTA Admissions -->
+                    <a href="admissions.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-yellow text-brand-primary border-2 border-brand-yellow font-extrabold px-8 py-3.5 rounded-xl hover:bg-brand-primary hover:border-brand-primary hover:text-white transition-all text-sm sm:text-base shadow-xs">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Jadwalkan Kunjungan</span>
                     </a>
                 </div>
             </div>
         </section>
 
+        <!-- MODAL INTERAKTIF: DETAIL KURIKULUM 5 UNSUR STEAM -->
+        <div id="steam-detail-modal" class="custom-modal fixed inset-0 flex items-center justify-center bg-brand-dark/80 p-4 z-[100] opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="modal-scale-content bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative overflow-hidden flex flex-col max-h-[90vh]">
+                <!-- Close Button -->
+                <button onclick="closeSteamDetail()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-gray-100 hover:bg-brand-red hover:text-white text-gray-500 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                <div class="flex items-center gap-4 mb-6">
+                    <div id="modal-element-icon" class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl bg-blue-50 text-brand-primary shrink-0">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <div>
+                        <span id="modal-element-badge" class="text-[11px] font-bold uppercase tracking-wider text-brand-primary bg-brand-gray px-2.5 py-0.5 rounded-full border border-gray-200">
+                            Kategori Unsur
+                        </span>
+                        <h3 id="modal-element-title" class="text-xl sm:text-2xl font-extrabold text-brand-primary mt-1">
+                            Judul Unsur STEAM
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="overflow-y-auto space-y-4 pr-1 text-sm text-gray-600 leading-relaxed flex-1">
+                    <div class="bg-brand-gray/80 p-4 rounded-2xl border border-gray-100">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-brand-primary mb-1">
+                            Konsep Pendekatan:
+                        </h4>
+                        <p id="modal-element-summary" class="font-medium text-gray-700"></p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-blue-50/50 border border-blue-100">
+                            <span class="text-[11px] font-extrabold text-brand-primary uppercase tracking-wide block mb-1">
+                                <i class="fa-solid fa-cubes text-brand-yellow mr-1"></i> Jenjang KB-TK (Preschool)
+                            </span>
+                            <p id="modal-element-preschool" class="text-xs text-gray-600 leading-relaxed"></p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-amber-50/50 border border-amber-100">
+                            <span class="text-[11px] font-extrabold text-brand-primary uppercase tracking-wide block mb-1">
+                                <i class="fa-solid fa-graduation-cap text-amber-600 mr-1"></i> Jenjang SD (Primary)
+                            </span>
+                            <p id="modal-element-primary" class="text-xs text-gray-600 leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100">
+                        <span class="text-[11px] font-extrabold text-emerald-800 uppercase tracking-wide block mb-1">
+                            <i class="fa-solid fa-lightbulb text-emerald-600 mr-1"></i> Contoh Proyek Nyata di Kelas
+                        </span>
+                        <p id="modal-element-activity" class="text-xs text-emerald-900 leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <div class="pt-5 mt-4 border-t border-gray-100 flex justify-end">
+                    <button onclick="closeSteamDetail()" class="px-6 py-2.5 rounded-xl bg-brand-primary text-white font-bold hover:bg-brand-primary/90 transition-colors text-sm">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
     </main>
 
+    <!-- Footer Otomatis Terinjeksi dari components.js -->
     <div id="app-footer"></div>
 
+    <!-- Script Global Komponen & Aplikasi -->
     <script src="js/components.js"></script>
     <script src="js/app.js"></script>
-
+    <!-- Script Khusus Halaman STEAM (Modular & Rapi) -->
+    <script src="js/steam.js"></script>
 </body>
 </html>

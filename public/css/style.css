@@ -240,3 +240,77 @@
 
 .teacher-box { transition: all 0.4s ease; }
 .teacher-box:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(29,68,134,0.1); }
+
+/* --- STEAM Program Specific Styles --- */
+.glass-space {
+    background: rgba(29, 68, 134, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.shadow-glow-primary {
+    box-shadow: 0 0 30px rgba(29, 68, 134, 0.4);
+}
+
+.shadow-glow-yellow {
+    box-shadow: 0 0 25px rgba(255, 203, 5, 0.45);
+}
+
+.shadow-glow-energy {
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+}
+
+@keyframes float-space {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-14px) rotate(1.5deg); }
+}
+.animate-float-space { animation: float-space 6s ease-in-out infinite; }
+
+.star-particle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: twinkle var(--duration, 4s) infinite alternate ease-in-out;
+}
+@keyframes twinkle {
+    0% { opacity: 0.15; transform: scale(0.8); }
+    100% { opacity: 0.95; transform: scale(1.3); box-shadow: 0 0 8px rgba(255, 255, 255, 0.9); }
+}
+
+.facility-card {
+    overflow: hidden;
+    border-radius: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.facility-card img {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.facility-card:hover img {
+    transform: scale(1.08);
+}
+.facility-overlay {
+    background: linear-gradient(to top, rgba(10, 21, 38, 0.92) 0%, rgba(10, 21, 38, 0.4) 55%, transparent 100%);
+    opacity: 0.85;
+    transition: opacity 0.4s ease;
+}
+.facility-card:hover .facility-overlay {
+    opacity: 0.95;
+}
+
+/* Bridging Section Game Card Previews */
+.bridge-game-card {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(0);
+}
+.bridge-game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+}
+.bridge-game-icon {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.bridge-game-card:hover .bridge-game-icon {
+    transform: scale(1.15) rotate(3deg);
+}
