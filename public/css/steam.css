@@ -1,0 +1,45 @@
+/* ============================================================
+   Halaman STEAM (steam.html)
+   Hanya class yang belum ada di style.css. Sisanya memakai
+   class bersama: .reveal, .feature-card, .icon-circle,
+   .hover-lift, .animate-float
+   ============================================================ */
+
+/* Latar bintang untuk Hero. Murni CSS, tanpa JavaScript. */
+.starfield::before,
+.starfield::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+}
+.starfield::before {
+    background-image:
+        radial-gradient(2px 2px at 8% 18%, #ffffff, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 23% 62%, #ffffff, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 37% 12%, #ffffff, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 52% 78%, #ffffff, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 68% 28%, #ffffff, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 81% 66%, #ffffff, rgba(255,255,255,0)),
+        radial-gradient(2px 2px at 94% 38%, #ffffff, rgba(255,255,255,0));
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+.starfield::after {
+    background-image:
+        radial-gradient(1px 1px at 15% 45%, rgba(255,255,255,0.85), rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 30% 88%, rgba(255,255,255,0.85), rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 45% 33%, rgba(255,255,255,0.85), rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 60% 55%, rgba(255,255,255,0.85), rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 74% 15%, rgba(255,255,255,0.85), rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 88% 82%, rgba(255,255,255,0.85), rgba(255,255,255,0)),
+        radial-gradient(1px 1px at 97% 58%, rgba(255,255,255,0.85), rgba(255,255,255,0));
+    animation: twinkle 6s ease-in-out infinite alternate-reverse;
+}
+@keyframes twinkle { from { opacity: 0.35; } to { opacity: 1; } }
+
+/* Kartu fasilitas: foto zoom saat hover, teks selalu terbaca. */
+.facility-card { overflow: hidden; }
+.facility-card img { transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.facility-card:hover img { transform: scale(1.08); }
+.facility-overlay {
+    background: linear-gradient(to top, rgba(15,36,71,0.95) 0%, rgba(15,36,71,0.45) 50%, rgba(15,36,71,0) 100%);
+    opacity: 0.85; transition: opacity 0.4s ease;
+}
+.facility-card:hover .facility-overlay { opacity: 1; }
