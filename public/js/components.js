@@ -108,7 +108,7 @@ const navbarTemplate = `
                                 <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">Tribahasa</div>
                                 <div class="text-[11px] text-gray-500 leading-tight">Pembelajaran interaktif.</div>
                             </a>
-                            <a href="#" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
+                            <a href="steam.html" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
                                 <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-flask text-lg"></i></div>
                                 <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">STEAM</div>
                                 <div class="text-[11px] text-gray-500 leading-tight">Science, Technology, dsb.</div>
@@ -220,7 +220,7 @@ const navbarTemplate = `
                      <a href="kurikulum.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-book-bookmark w-5 text-center text-brand-yellow"></i> Kurikulum</a>
                      <a href="budi-pekerti.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-heart w-5 text-center text-brand-yellow"></i> Budi Pekerti</a>
                      <a href="tribahasa.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-earth-asia w-5 text-center text-brand-yellow"></i> Tribahasa</a>
-                     <a href="#" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-flask w-5 text-center text-brand-yellow"></i> STEAM</a>
+                     <a href="steam.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-flask w-5 text-center text-brand-yellow"></i> STEAM</a>
                      <a href="fasilitas.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-building w-5 text-center text-brand-yellow"></i> Fasilitas</a>
                      <a href="games.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-gamepad w-5 text-center text-brand-yellow"></i> Mini Games</a>
                 </div>
