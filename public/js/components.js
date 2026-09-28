@@ -129,7 +129,7 @@ const navbarTemplate = `
                     </div>
                     <div class="mega-menu absolute top-[100%] left-1/2 w-[600px] max-w-[90vw] bg-white shadow-2xl rounded-b-2xl border border-gray-100 overflow-hidden pt-2 pb-6">
                         <div class="px-8 pt-4 grid grid-cols-2 gap-4">
-                            <a href="#" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
+                            <a href="kampus-bandung.html" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
                                 <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-map-location-dot text-lg"></i></div>
                                 <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">Summarecon Bandung</div>
                                 <div class="text-[11px] text-gray-500 leading-tight">Kampus utama kawasan Summarecon.</div>
@@ -220,6 +220,17 @@ const navbarTemplate = `
                      <a href="steam.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-flask w-5 text-center text-brand-yellow"></i> STEAM</a>
                      <a href="fasilitas.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-building w-5 text-center text-brand-yellow"></i> Fasilitas</a>
                      <a href="games.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-gamepad w-5 text-center text-brand-yellow"></i> Mini Games</a>
+                </div>
+            </div>
+            
+            <div class="rounded-xl border border-gray-100 overflow-hidden bg-white">
+                <button id="mnav-campus" class="mobile-nav-link w-full flex justify-between items-center py-3.5 px-4 font-bold text-gray-700 hover:text-brand-primary transition-all duration-200" onclick="toggleMobileAccordion('campus-mobile')">
+                    <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-lg bg-brand-gray text-brand-primary flex items-center justify-center text-sm"><i class="fa-solid fa-map-location-dot"></i></span><span>Campus</span></div>
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform duration-300" id="campus-mobile-icon"></i>
+                </button>
+                <div id="campus-mobile" class="mobile-accordion-content bg-gray-50/80 px-3 pb-3 space-y-1.5 border-t border-gray-100/60">
+                    <a href="kampus-bandung.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-map-location-dot w-5 text-center text-brand-yellow"></i> Summarecon Bandung</a>
+                    <div class="text-xs font-semibold text-gray-400 flex items-center gap-3 py-2.5 px-3 rounded-lg opacity-60 cursor-not-allowed"><i class="fa-solid fa-map-location-dot w-5 text-center text-gray-300"></i> Summarecon Bogor <span class="text-[9px] bg-brand-yellow text-brand-primary px-1.5 py-0.5 rounded-full ml-1 font-bold">SOON</span></div>
                 </div>
             </div>
             

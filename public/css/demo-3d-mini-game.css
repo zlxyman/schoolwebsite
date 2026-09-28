@@ -1,0 +1,38 @@
+body { margin: 0; overflow: hidden; background-color: #87CEEB; }
+canvas { display: block; }
+#back-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    z-index: 100;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+#back-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+#info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    pointer-events: none;
+    text-shadow: 1px 1px 2px black;
+}

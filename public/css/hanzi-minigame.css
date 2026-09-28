@@ -1,0 +1,68 @@
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    overflow: hidden; 
+    touch-action: none;
+}
+
+/* --- KERTAS MIZI GE (DARK MODE) --- */
+.mizi-ge {
+    background-color: #1e293b;
+    background-image:
+        linear-gradient(to right, transparent 49.5%, rgba(148, 163, 184, 0.15) 49.5%, rgba(148, 163, 184, 0.15) 50.5%, transparent 50.5%),
+        linear-gradient(to bottom, transparent 49.5%, rgba(148, 163, 184, 0.15) 49.5%, rgba(148, 163, 184, 0.15) 50.5%, transparent 50.5%),
+        linear-gradient(45deg, transparent 49.5%, rgba(148, 163, 184, 0.08) 49.5%, rgba(148, 163, 184, 0.08) 50.5%, transparent 50.5%),
+        linear-gradient(-45deg, transparent 49.5%, rgba(148, 163, 184, 0.08) 49.5%, rgba(148, 163, 184, 0.08) 50.5%, transparent 50.5%);
+    background-size: 100% 100%;
+}
+
+/* --- ANIMASI & EFEK NEON --- */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px) rotate(-2deg); }
+    75% { transform: translateX(6px) rotate(2deg); }
+}
+.shake-error {
+    animation: shake 0.3s ease-in-out;
+    background-color: rgba(239, 68, 68, 0.2) !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+@keyframes hanziPulseGlow {
+    0% { opacity: 0.4; filter: drop-shadow(0 0 4px currentColor); }
+    100% { opacity: 1; filter: drop-shadow(0 0 16px currentColor); }
+}
+.hint-glow {
+    animation: hanziPulseGlow 0.8s infinite alternate ease-in-out;
+}
+
+/* --- TOMBOL GORESAN (NEUMORPHIC / GLASS) --- */
+.hanzi-stroke-btn {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(51, 65, 85, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 1.25rem;
+    display: flex; align-items: center; justify-content: center; 
+    cursor: pointer;
+    overflow: hidden; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 70px; height: 70px;
+}
+@media (min-width: 640px) { .hanzi-stroke-btn { width: 85px; height: 85px; border-radius: 1.5rem; } }
+@media (min-width: 1024px) { .hanzi-stroke-btn { width: 95px; height: 95px; } }
+
+.hanzi-stroke-btn:hover { 
+    transform: translateY(-5px) scale(1.05); 
+    border-color: #38bdf8; 
+    background: rgba(30, 41, 59, 0.9);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25); 
+}
+.hanzi-stroke-btn:active { transform: translateY(0) scale(0.95); }
+.hanzi-stroke-btn.disabled { opacity: 0; pointer-events: none; transform: scale(0.5); }
+
+/* General Utilities */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.confetti-piece { position: absolute; opacity: 1; }
