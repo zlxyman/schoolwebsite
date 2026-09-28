@@ -35,65 +35,99 @@
             z-index: 1; 
         }
         
-        /* UI Layer */
+        /* UI Layer - Absolute Overlay */
         .ui-layer {
             position: absolute;
             inset: 0;
-            z-index: 10;
+            z-index: 20;
+            pointer-events: none;
+            padding: 12px 16px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            pointer-events: none;
-            padding: 20px;
+            align-items: center;
         }
         .pointer-events-auto { pointer-events: auto; }
+
+        /* Top Container */
+        .top-container {
+            width: 100%;
+            max-width: 860px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            pointer-events: none;
+            z-index: 25;
+        }
 
         /* Sci-Fi Title */
         .game-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 800;
             text-align: center;
-            background: linear-gradient(180deg, #fff, var(--neon-blue));
+            background: linear-gradient(180deg, #ffffff 40%, var(--neon-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
-            margin-top: 10px;
+            text-shadow: 0 0 18px rgba(0, 243, 255, 0.4);
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: 2px;
+        }
+        @media (min-width: 640px) {
+            .game-title { font-size: 2rem; }
         }
 
-        /* Slots Panel */
+        /* Slots Panel (Panduan Panah Langkah Selalu di Bagian Atas) */
         .slot-panel {
-            background: rgba(10, 15, 30, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 243, 255, 0.2);
-            border-radius: 30px;
-            padding: 15px 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 243, 255, 0.1);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            max-width: 95vw;
-        }
-        .slot {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px dashed rgba(0, 243, 255, 0.3);
+            background: rgba(12, 19, 39, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(0, 243, 255, 0.35);
+            border-radius: 9999px;
+            padding: 7px 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 243, 255, 0.15), inset 0 0 15px rgba(0, 243, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: rgba(255,255,255,0.2);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 10px;
+            max-width: 95vw;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slot {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px dashed rgba(0, 243, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.25);
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4);
         }
         .slot.filled {
-            background: rgba(0, 243, 255, 0.1);
+            background: rgba(0, 243, 255, 0.18);
             border: 2px solid var(--neon-blue);
             color: var(--neon-blue);
-            transform: scale(1.15);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            transform: scale(1.1);
+            box-shadow: 0 0 18px rgba(0, 243, 255, 0.6), inset 0 0 8px rgba(0, 243, 255, 0.3);
+        }
+        .slot.executing {
+            background: rgba(0, 255, 102, 0.3) !important;
+            border: 2px solid #00ff66 !important;
+            color: #00ff66 !important;
+            transform: scale(1.22) !important;
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.9), inset 0 0 10px rgba(0, 255, 102, 0.5) !important;
+        }
+        .slot.completed-step {
+            background: rgba(0, 243, 255, 0.1) !important;
+            border: 2px solid rgba(0, 243, 255, 0.7) !important;
+            color: rgba(0, 243, 255, 0.9) !important;
+            transform: scale(1.0) !important;
+            box-shadow: none !important;
         }
 
         /* 3D Game Buttons */
@@ -240,21 +274,27 @@
     <div id="canvas-container"></div>
 
     <div class="ui-layer">
-        <!-- Top Header Navigation -->
-        <div class="w-full flex justify-between items-center pointer-events-auto max-w-5xl mx-auto px-2">
-            <a href="games.html" class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/25 transition-all border border-white/20" title="Kembali ke Portal Games">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
-            <a href="steam.html" class="text-xs font-bold text-cyan-300 bg-cyan-950/60 border border-cyan-500/40 px-3 py-1.5 rounded-full hover:bg-cyan-900/60 transition-all flex items-center gap-1.5">
-                <i class="fa-solid fa-flask text-yellow-400"></i> Program STEAM
-            </a>
-        </div>
+        <!-- Top Container: Navigasi, Judul, dan Panduan Slot Panah (SELALU MUNCUL DI ATAS) -->
+        <div class="top-container">
+            <!-- Baris Navigasi -->
+            <div class="w-full flex justify-between items-center pointer-events-auto px-1 sm:px-2">
+                <a href="games.html" class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/25 transition-all border border-white/20 shadow-md" title="Kembali ke Portal Games">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
 
-        <!-- Top -->
-        <div class="flex flex-col items-center">
-            <h1 id="game-title-text" class="game-title mb-1 transition-all duration-500 ease-in-out">ASTRO LOGIC</h1>
-            <div id="slot-panel" class="slot-panel mt-3 pointer-events-auto transition-all duration-500 ease-in-out">
-                <!-- Dynamically Generated Slots -->
+                <a href="steam.html" class="text-xs font-bold text-cyan-300 bg-cyan-950/70 border border-cyan-500/40 px-3 py-2 rounded-full hover:bg-cyan-900/80 transition-all flex items-center gap-1.5 shadow-md">
+                    <i class="fa-solid fa-flask text-yellow-400"></i> <span class="hidden sm:inline">Program</span> STEAM
+                </a>
+            </div>
+
+            <!-- Panduan Panah Langkah (Slot Panel) di Bagian Atas -->
+            <div class="pointer-events-auto flex flex-col items-center">
+                <div id="slot-panel" class="slot-panel">
+                    <!-- Dynamically Generated Slots -->
+                </div>
+                <div id="slot-instruction" class="text-[11px] sm:text-xs text-cyan-200/90 font-semibold mt-1 tracking-wide text-center drop-shadow-sm">
+                    Tekan tombol panah di bawah untuk mengisi rute langkah astronot
+                </div>
             </div>
         </div>
 
@@ -688,6 +728,7 @@
         for (let i = 0; i < MAX_STEPS; i++) {
             const div = document.createElement('div');
             div.className = 'slot';
+            div.setAttribute('title', `Langkah ${i + 1}`);
             slotPanel.appendChild(div);
             slots.push(div);
         }
@@ -704,15 +745,31 @@
                 if(i < characterMoves.length) {
                     slots[i].innerHTML = dirIcons[characterMoves[i]];
                     slots[i].classList.add('filled');
+                    slots[i].classList.remove('executing', 'completed-step');
                 } else {
                     slots[i].innerHTML = '';
-                    slots[i].classList.remove('filled');
+                    slots[i].classList.remove('filled', 'executing', 'completed-step');
                     slots[i].style.borderColor = '';
                     slots[i].style.transform = '';
                     slots[i].style.boxShadow = '';
                 }
             }
-            document.getElementById('btn-go').disabled = (characterMoves.length !== MAX_STEPS || isExecuting);
+            const isFull = (characterMoves.length === MAX_STEPS);
+            document.getElementById('btn-go').disabled = (!isFull || isExecuting);
+
+            const instructionEl = document.getElementById('slot-instruction');
+            if (instructionEl) {
+                if (isExecuting) {
+                    instructionEl.innerHTML = `<span class="text-green-400 font-bold animate-pulse"><i class="fa-solid fa-person-walking mr-1"></i> Astronot menjalankan instruksi...</span>`;
+                } else if (isFull) {
+                    instructionEl.innerHTML = `<span class="text-yellow-300 font-bold"><i class="fa-solid fa-circle-check mr-1 text-green-400"></i> Rute ${MAX_STEPS} langkah siap! Tekan <strong class="text-white underline">JALAN!</strong></span>`;
+                } else if (characterMoves.length === 0) {
+                    instructionEl.innerHTML = `Tekan tombol panah di bawah untuk mengisi <span class="text-cyan-300 font-bold">${MAX_STEPS} langkah</span> rute`;
+                } else {
+                    const remaining = MAX_STEPS - characterMoves.length;
+                    instructionEl.innerHTML = `Langkah <span class="text-cyan-300 font-bold">${characterMoves.length}</span> / ${MAX_STEPS} &bull; Sisa <span class="text-yellow-300 font-bold">${remaining} langkah</span> lagi`;
+                }
+            }
         }
 
         document.querySelectorAll('.ctrl-btn[data-dir]').forEach(btn => {
@@ -737,15 +794,13 @@
                 isExecuting = true;
                 document.getElementById('btn-go').disabled = true;
                 
-                // Hide UI Mode
-                const topTitle = document.getElementById('game-title-text');
-                const topLevel = document.getElementById('level-indicator');
-                const slotPanel = document.getElementById('slot-panel');
+                const instructionEl = document.getElementById('slot-instruction');
+                if (instructionEl) {
+                    instructionEl.innerHTML = `<span class="text-green-400 font-bold animate-pulse"><i class="fa-solid fa-person-walking mr-1"></i> Astronot menjalankan instruksi...</span>`;
+                }
+
+                // Sembunyikan kontrol bawah sementara agar papan 3D leluasa dilihat
                 const bottomControls = document.getElementById('bottom-controls');
-                
-                if(topTitle) { topTitle.style.opacity = '0'; topTitle.style.transform = 'translateY(-20px)'; }
-                if(slotPanel) { slotPanel.style.transform = 'translateY(-50px)'; }
-                
                 if(bottomControls) {
                     bottomControls.style.opacity = '0';
                     bottomControls.style.transform = 'translate(-50%, 150%)';
@@ -753,6 +808,32 @@
                 }
                 
                 executeMoves();
+            }
+        });
+
+        // Dukungan Keyboard untuk Pengguna Laptop / Komputer
+        window.addEventListener('keydown', (e) => {
+            if (isExecuting) return;
+            if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
+                e.preventDefault();
+                if (characterMoves.length < MAX_STEPS) { playSound('click'); characterMoves.push('up'); updateUI(); }
+            } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
+                e.preventDefault();
+                if (characterMoves.length < MAX_STEPS) { playSound('click'); characterMoves.push('down'); updateUI(); }
+            } else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+                e.preventDefault();
+                if (characterMoves.length < MAX_STEPS) { playSound('click'); characterMoves.push('left'); updateUI(); }
+            } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+                e.preventDefault();
+                if (characterMoves.length < MAX_STEPS) { playSound('click'); characterMoves.push('right'); updateUI(); }
+            } else if (e.key === 'Backspace' || e.key === 'z' || e.key === 'Z') {
+                e.preventDefault();
+                if (characterMoves.length > 0) { playSound('click'); characterMoves.pop(); updateUI(); }
+            } else if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (characterMoves.length === MAX_STEPS) {
+                    document.getElementById('btn-go').click();
+                }
             }
         });
         
@@ -865,18 +946,15 @@
         }
 
         function restoreUIMode() {
-            const topTitle = document.getElementById('game-title-text');
-            const topLevel = document.getElementById('level-indicator');
-            const slotPanel = document.getElementById('slot-panel');
             const bottomControls = document.getElementById('bottom-controls');
-
-            if(topTitle) { topTitle.style.opacity = '1'; topTitle.style.transform = 'translateY(0)'; }
-            if(slotPanel) { slotPanel.style.transform = 'translateY(0)'; }
             if(bottomControls) {
                 bottomControls.style.opacity = '1';
                 bottomControls.style.transform = 'translate(-50%, 0)';
                 bottomControls.style.pointerEvents = 'auto';
             }
+            isExecuting = false;
+            slots.forEach(s => s.classList.remove('executing', 'completed-step'));
+            updateUI();
         }
 
         async function executeMoves() {
@@ -894,11 +972,16 @@
                 const move = characterMoves[i];
                 let nextC = currC; let nextR = currR;
                 
-                // Highlight Slot UI
-                slots.forEach(s => { s.style.borderColor = ''; s.style.transform = ''; s.style.boxShadow = ''; });
-                slots[i].style.borderColor = '#00ff66'; 
-                slots[i].style.transform = 'scale(1.2)';
-                slots[i].style.boxShadow = '0 0 20px #00ff66';
+                // Highlight Slot UI aktif secara elegan
+                slots.forEach((s, idx) => {
+                    s.classList.remove('executing');
+                    if (idx < i) {
+                        s.classList.add('completed-step');
+                    } else {
+                        s.classList.remove('completed-step');
+                    }
+                });
+                slots[i].classList.add('executing');
                 
                 // Rotation
                 let targetRot = characterModel.rotation.y;

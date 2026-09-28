@@ -1,0 +1,74 @@
+/* ============================================================
+   Halaman Apply / Pendaftaran (apply.html)
+   Sekolah Terpadu Sedaya Bintang
+   Hanya class khusus yang melengkapi style.css.
+   ============================================================ */
+
+/* Form Input & Focus States */
+.input-field {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input-field:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(29, 68, 134, 0.12);
+    border-color: #1d4486;
+    background-color: #ffffff;
+}
+
+/* Kalender Datepicker Styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.2) sepia(1) saturate(5) hue-rotate(195deg);
+    padding: 4px;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    transform: scale(1.15);
+}
+
+/* Tombol WhatsApp dengan Animasi Hover Fill */
+.btn-wa-fill {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-wa-fill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #20b858, #128c7e);
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-wa-fill:hover {
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+    transform: translateY(-2px);
+}
+.btn-wa-fill:hover::before {
+    transform: scaleY(1);
+}
+.btn-wa-fill:active {
+    transform: translateY(0);
+}
+
+/* Timeline Langkah Pendaftaran */
+.timeline-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+}
+
+/* Card Glow & Floating Shadows */
+.shadow-floating {
+    box-shadow: 0 20px 45px -12px rgba(29, 68, 134, 0.25);
+}

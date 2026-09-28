@@ -1,0 +1,109 @@
+/* ==========================================================================
+   CSS KHUSUS: SCHOOL VISIT - SEKOLAH TERPADU SEDAYA BINTANG
+   Pola Arsitektur: Modular Page-Level Stylesheet (Clean Code & High Performance)
+   ========================================================================== */
+
+/* Input Focus Styling */
+.input-field {
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(29, 68, 134, 0.1);
+}
+
+/* Date Picker Browser Icon Fix */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.4) sepia(1) saturate(5) hue-rotate(200deg);
+}
+
+/* Card Selection Logic */
+.select-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 2px solid #e5e7eb;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.select-card:hover:not(.disabled) {
+    border-color: #1d4486;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px -5px rgba(29, 68, 134, 0.15);
+}
+
+.select-card.active {
+    border-color: #1d4486;
+    background-color: #1d4486;
+    color: #ffffff;
+    box-shadow: 0 10px 25px -5px rgba(29, 68, 134, 0.3);
+    transform: translateY(-4px);
+}
+
+.select-card.active .text-brand-primary,
+.select-card.active .text-gray-500,
+.select-card.active .text-gray-400 {
+    color: #ffffff !important;
+}
+
+.select-card.active .text-brand-yellow {
+    color: #ffcb05 !important;
+    text-shadow: 0 0 10px rgba(255, 203, 5, 0.5);
+}
+
+.select-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f3f4f6;
+}
+
+/* Checkmark Icon for Active Card */
+.check-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+    color: #ffcb05;
+    font-size: 14px;
+}
+
+.select-card.active .check-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* WhatsApp Button Fill Animation */
+.btn-wa-fill {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-wa-fill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #20b858;
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease-in-out;
+}
+
+.btn-wa-fill:hover {
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    transform: translateY(-3px);
+}
+
+.btn-wa-fill:hover::before {
+    transform: scaleY(1);
+}

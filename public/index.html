@@ -231,7 +231,7 @@
                         </div>
 
                         <div class="flex flex-wrap gap-3 mt-8 lg:mt-10">
-                            <a href="#form-section" class="bg-brand-primary text-white font-bold px-6 py-3 lg:px-8 lg:py-3.5 rounded-xl hover:bg-[#15346b] transition-all shadow-md flex items-center gap-2 text-sm">
+                            <a href="apply.html" class="bg-brand-primary text-white font-bold px-6 py-3 lg:px-8 lg:py-3.5 rounded-xl hover:bg-[#15346b] transition-all shadow-md flex items-center gap-2 text-sm">
                                 Daftar Sekarang <i class="fa-solid fa-arrow-right text-brand-yellow"></i>
                             </a>
                             <a href="about.html" class="bg-white text-brand-primary border border-gray-200 font-bold px-6 py-3 lg:px-8 lg:py-3.5 rounded-xl hover:border-brand-primary hover:bg-gray-50 transition-all text-sm">
@@ -310,83 +310,111 @@
                 </div>
 
                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mt-6 lg:mt-10">
+                    <!-- KB - TK -->
                     <div class="hover-video-card relative bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group aspect-square overflow-hidden flex flex-col">
-                        <div class="w-full flex-1 relative overflow-hidden bg-gray-200">
+                        <!-- Bagian Gambar Latar (Rasio Tetap 4:1,3 = 32.5% tinggi card) -->
+                        <div class="w-full h-[32.5%] shrink-0 relative overflow-hidden bg-gray-200" style="height: 32.5%;">
                             <img src="assets/images/murid-kb-menggambar.jpg" alt="Latar KB TK" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out">
                         </div>
-                        <div class="w-full shrink-0 relative bg-white flex flex-col justify-end p-3 sm:p-5 lg:p-6 z-10">
-                            <div class="w-[55%] sm:w-[50%] flex flex-col items-start">
-                                <span class="text-[#a4b4cb] text-[7px] sm:text-[9px] lg:text-[10px] font-extrabold uppercase tracking-widest mb-0.5 sm:mb-1 block">Jenjang</span>
-                                <h3 class="text-base sm:text-xl lg:text-2xl font-extrabold text-[#113271] leading-tight mb-1">KB - TK</h3>
-                                <p class="text-gray-500 text-[8px] sm:text-[10px] lg:text-xs font-medium mb-2.5 sm:mb-4">Untuk usia 3 - 6 Tahun</p>
-                                <a href="preschool.html" class="inline-block border-[1.5px] sm:border-2 border-[#113271] text-[#113271] font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[8px] sm:text-[10px] lg:text-xs hover:bg-[#113271] hover:text-white transition-colors duration-300 whitespace-nowrap">Learn More</a>
+                        <!-- Bagian Box Putih (Rasio Tetap 4:2,7 = 67.5% tinggi card) -->
+                        <div class="w-full h-[67.5%] shrink-0 relative bg-white flex flex-col justify-between p-2.5 sm:p-5 md:p-6 lg:p-5 z-10" style="height: 67.5%;">
+                            <div class="w-[55%] sm:w-[54%] md:w-[52%] lg:w-[50%] flex flex-col items-start">
+                                <span class="text-[#a4b4cb] text-[7px] sm:text-xs md:text-xs lg:text-[11px] font-extrabold uppercase tracking-widest mb-0.5 sm:mb-1 block">Jenjang</span>
+                                <h3 class="text-[13px] sm:text-2xl md:text-3xl lg:text-2xl font-extrabold text-[#113271] leading-tight mb-0.5 sm:mb-1">KB - TK</h3>
+                                <p class="text-gray-500 text-[8px] sm:text-sm md:text-base lg:text-xs font-medium leading-tight sm:leading-normal">Untuk usia 3 - 6 Tahun</p>
                             </div>
-                        </div>
-                        <div class="absolute right-0 bottom-3 sm:bottom-5 lg:bottom-6 w-[45%] sm:w-[50%] h-[85%] z-20 flex justify-center items-end pointer-events-none group-hover:scale-105 transition-transform duration-500 origin-bottom">
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[100%] h-[70%] bg-white rounded-full filter blur-[15px] sm:blur-[20px] opacity-60 z-0"></div>
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[30%] w-[70%] h-[50%] bg-[#ffe433] rounded-full filter blur-[10px] sm:blur-[15px] opacity-80 z-10 mix-blend-screen"></div>
-                            <video src="assets/images/video-hero-index-1.webm" muted playsinline preload="auto" class="hover-video relative z-20 w-full h-full object-contain object-bottom drop-shadow-xl pr-1.5 sm:pr-3 lg:pr-2"></video>
+                            <div class="w-[55%] sm:w-[54%] md:w-[52%] lg:w-[50%] flex items-center">
+                                <a href="preschool.html" class="inline-flex items-center justify-center border-[1.5px] sm:border-2 border-[#113271] text-[#113271] font-bold px-2.5 sm:px-5 md:px-6 lg:px-4 py-0.5 sm:py-2 md:py-2 lg:py-1.5 rounded-full text-[8px] sm:text-xs md:text-sm lg:text-xs hover:bg-[#113271] hover:text-white transition-all duration-300 whitespace-nowrap shadow-xs">Learn More</a>
+                            </div>
+
+                            <!-- Karakter 3D (Kaki sejajar bawah Learn More, Ujung rambut sejajar tulisan Jenjang) -->
+                            <div class="absolute right-1 sm:right-2.5 lg:right-3 top-2.5 sm:top-5 md:top-6 lg:top-5 bottom-2.5 sm:bottom-5 md:bottom-6 lg:bottom-5 w-[48%] sm:w-[48%] lg:w-[48%] z-20 pointer-events-none group-hover:scale-105 transition-transform duration-500 origin-bottom flex justify-center items-end">
+                                <div class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[75%] bg-white rounded-full filter blur-[15px] sm:blur-[20px] opacity-60 z-0"></div>
+                                <div class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[55%] bg-[#ffe433] rounded-full filter blur-[10px] sm:blur-[15px] opacity-80 z-10 mix-blend-screen"></div>
+                                <video src="assets/images/video-hero-index-1.webm" muted playsinline preload="auto" class="hover-video relative z-20 w-full h-[126%] object-contain object-bottom drop-shadow-xl"></video>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- SD -->
                     <div class="hover-video-card relative bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group aspect-square overflow-hidden flex flex-col">
-                        <div class="w-full flex-1 relative overflow-hidden bg-gray-200">
+                        <!-- Bagian Gambar Latar (Rasio Tetap 4:1,3 = 32.5% tinggi card) -->
+                        <div class="w-full h-[32.5%] shrink-0 relative overflow-hidden bg-gray-200" style="height: 32.5%;">
                             <img src="assets/images/partner-sekolah-pahoa.jpg" alt="Latar SD" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out">
                         </div>
-                        <div class="w-full shrink-0 relative bg-white flex flex-col justify-end p-3 sm:p-5 lg:p-6 z-10">
-                            <div class="w-[55%] sm:w-[50%] flex flex-col items-start">
-                                <span class="text-[#a4b4cb] text-[7px] sm:text-[9px] lg:text-[10px] font-extrabold uppercase tracking-widest mb-0.5 sm:mb-1 block">Jenjang</span>
-                                <h3 class="text-base sm:text-xl lg:text-2xl font-extrabold text-[#113271] leading-tight mb-1">SD</h3>
-                                <p class="text-gray-500 text-[8px] sm:text-[10px] lg:text-xs font-medium mb-2.5 sm:mb-4">Untuk usia 6 - 12 Tahun</p>
-                                <a href="primary.html" class="inline-block border-[1.5px] sm:border-2 border-[#113271] text-[#113271] font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[8px] sm:text-[10px] lg:text-xs hover:bg-[#113271] hover:text-white transition-colors duration-300 whitespace-nowrap">Learn More</a>
+                        <!-- Bagian Box Putih (Rasio Tetap 4:2,7 = 67.5% tinggi card) -->
+                        <div class="w-full h-[67.5%] shrink-0 relative bg-white flex flex-col justify-between p-2.5 sm:p-5 md:p-6 lg:p-5 z-10" style="height: 67.5%;">
+                            <div class="w-[55%] sm:w-[54%] md:w-[52%] lg:w-[50%] flex flex-col items-start">
+                                <span class="text-[#a4b4cb] text-[7px] sm:text-xs md:text-xs lg:text-[11px] font-extrabold uppercase tracking-widest mb-0.5 sm:mb-1 block">Jenjang</span>
+                                <h3 class="text-[13px] sm:text-2xl md:text-3xl lg:text-2xl font-extrabold text-[#113271] leading-tight mb-0.5 sm:mb-1">SD</h3>
+                                <p class="text-gray-500 text-[8px] sm:text-sm md:text-base lg:text-xs font-medium leading-tight sm:leading-normal">Untuk usia 6 - 12 Tahun</p>
                             </div>
-                        </div>
-                        <div class="absolute right-0 bottom-3 sm:bottom-5 lg:bottom-6 w-[45%] sm:w-[50%] h-[85%] z-20 flex justify-center items-end pointer-events-none group-hover:scale-105 transition-transform duration-500 origin-bottom">
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[100%] h-[70%] bg-white rounded-full filter blur-[15px] sm:blur-[20px] opacity-60 z-0"></div>
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[30%] w-[70%] h-[50%] bg-[#ffe433] rounded-full filter blur-[10px] sm:blur-[15px] opacity-80 z-10 mix-blend-screen"></div>
-                            <video src="assets/images/video-hero-index-2.webm" muted playsinline preload="auto" class="hover-video relative z-20 w-full h-full object-contain object-bottom drop-shadow-xl pr-1.5 sm:pr-3 lg:pr-2"></video>
+                            <div class="w-[55%] sm:w-[54%] md:w-[52%] lg:w-[50%] flex items-center">
+                                <a href="primary.html" class="inline-flex items-center justify-center border-[1.5px] sm:border-2 border-[#113271] text-[#113271] font-bold px-2.5 sm:px-5 md:px-6 lg:px-4 py-0.5 sm:py-2 md:py-2 lg:py-1.5 rounded-full text-[8px] sm:text-xs md:text-sm lg:text-xs hover:bg-[#113271] hover:text-white transition-all duration-300 whitespace-nowrap shadow-xs">Learn More</a>
+                            </div>
+
+                            <!-- Karakter 3D (Kaki sejajar bawah Learn More, Ujung rambut sejajar tulisan Jenjang) -->
+                            <div class="absolute right-1 sm:right-2.5 lg:right-3 top-2.5 sm:top-5 md:top-6 lg:top-5 bottom-2.5 sm:bottom-5 md:bottom-6 lg:bottom-5 w-[48%] sm:w-[48%] lg:w-[48%] z-20 pointer-events-none group-hover:scale-105 transition-transform duration-500 origin-bottom flex justify-center items-end">
+                                <div class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[75%] bg-white rounded-full filter blur-[15px] sm:blur-[20px] opacity-60 z-0"></div>
+                                <div class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[55%] bg-[#ffe433] rounded-full filter blur-[10px] sm:blur-[15px] opacity-80 z-10 mix-blend-screen"></div>
+                                <video src="assets/images/video-hero-index-2.webm" muted playsinline preload="auto" class="hover-video relative z-20 w-full h-[126%] object-contain object-bottom drop-shadow-xl"></video>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- SMP -->
                     <div class="relative bg-gray-50 rounded-xl sm:rounded-2xl lg:rounded-3xl border border-gray-100 shadow-xs opacity-90 group aspect-square overflow-hidden flex flex-col">
-                        <div class="w-full flex-1 relative overflow-hidden bg-gray-200">
+                        <!-- Bagian Gambar Latar (Rasio Tetap 4:1,3 = 32.5% tinggi card) -->
+                        <div class="w-full h-[32.5%] shrink-0 relative overflow-hidden bg-gray-200" style="height: 32.5%;">
                             <img src="assets/images/hero-sekolah-utama.jpg" alt="Latar SMP" class="absolute inset-0 w-full h-full object-cover grayscale opacity-50">
                         </div>
-                        <div class="w-full shrink-0 relative bg-gray-50 flex flex-col justify-end p-3 sm:p-5 lg:p-6 z-10">
-                            <div class="w-[55%] sm:w-[50%] flex flex-col items-start">
-                                <span class="text-gray-400 text-[7px] sm:text-[9px] lg:text-[10px] font-extrabold uppercase tracking-widest mb-0.5 sm:mb-1 block">Jenjang</span>
-                                <div class="flex items-center gap-1 sm:gap-1.5 mb-1 flex-wrap">
-                                    <h3 class="text-base sm:text-xl lg:text-2xl font-extrabold text-gray-400 leading-tight">SMP</h3>
-                                    <span class="bg-gray-200 text-gray-500 text-[5px] sm:text-[7px] lg:text-[9px] px-1.5 py-0.5 rounded-full font-bold self-start mt-0.5">SOON</span>
+                        <!-- Bagian Box Abu/Putih (Rasio Tetap 4:2,7 = 67.5% tinggi card) -->
+                        <div class="w-full h-[67.5%] shrink-0 relative bg-gray-50 flex flex-col justify-between p-2.5 sm:p-5 md:p-6 lg:p-5 z-10" style="height: 67.5%;">
+                            <div class="w-[55%] sm:w-[54%] md:w-[52%] lg:w-[50%] flex flex-col items-start">
+                                <span class="text-gray-400 text-[7px] sm:text-xs md:text-xs lg:text-[11px] font-extrabold uppercase tracking-widest mb-0.5 sm:mb-1 block">Jenjang</span>
+                                <div class="flex items-center gap-1.5 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
+                                    <h3 class="text-[13px] sm:text-2xl md:text-3xl lg:text-2xl font-extrabold text-gray-400 leading-tight">SMP</h3>
+                                    <span class="bg-gray-200 text-gray-500 text-[6px] sm:text-[10px] md:text-xs lg:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full font-bold self-center">SOON</span>
                                 </div>
-                                <p class="text-gray-400 text-[8px] sm:text-[10px] lg:text-xs font-medium mb-2.5 sm:mb-4">Untuk usia 12 - 15 Tahun</p>
-                                <button disabled class="inline-block border-[1.5px] sm:border-2 border-gray-200 text-gray-400 font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[8px] sm:text-[10px] lg:text-xs whitespace-nowrap cursor-not-allowed bg-white/50">Segera Hadir</button>
+                                <p class="text-gray-400 text-[8px] sm:text-sm md:text-base lg:text-xs font-medium leading-tight sm:leading-normal">Untuk usia 12 - 15 Tahun</p>
                             </div>
-                        </div>
-                        <div class="absolute right-0 bottom-3 sm:bottom-5 lg:bottom-6 w-[45%] sm:w-[50%] h-[85%] z-20 flex justify-center items-end pointer-events-none origin-bottom">
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[100%] h-[70%] bg-gray-100 rounded-full filter blur-[15px] sm:blur-[20px] opacity-60 z-0"></div>
-                            <img src="assets/images/karakter-3d-smp-sma-terkunci.webp" alt="Karakter SMP" class="relative z-20 w-full h-full object-contain object-bottom drop-shadow-xl grayscale opacity-60 pr-1.5 sm:pr-3 lg:pr-2">
+                            <div class="w-[55%] sm:w-[54%] md:w-[52%] lg:w-[50%] flex items-center">
+                                <button disabled class="inline-flex items-center justify-center border-[1.5px] sm:border-2 border-gray-200 text-gray-400 font-bold px-2.5 sm:px-5 md:px-6 lg:px-4 py-0.5 sm:py-2 md:py-2 lg:py-1.5 rounded-full text-[8px] sm:text-xs md:text-sm lg:text-xs whitespace-nowrap cursor-not-allowed bg-white/50 shadow-xs">Segera Hadir</button>
+                            </div>
+
+                            <!-- Karakter 3D (Kaki sejajar bawah Learn More, Ujung rambut sejajar tulisan Jenjang) -->
+                            <div class="absolute right-1 sm:right-2.5 lg:right-3 top-2.5 sm:top-5 md:top-6 lg:top-5 bottom-2.5 sm:bottom-5 md:bottom-6 lg:bottom-5 w-[48%] sm:w-[48%] lg:w-[48%] z-20 pointer-events-none origin-bottom flex justify-center items-end">
+                                <div class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[70%] bg-gray-100 rounded-full filter blur-[15px] sm:blur-[20px] opacity-60 z-0"></div>
+                                <img src="assets/images/karakter-3d-smp-sma-terkunci.webp" alt="Karakter SMP" class="relative z-20 w-full h-[126%] object-contain object-bottom drop-shadow-xl grayscale opacity-60">
+                            </div>
                         </div>
                     </div>
 
+                    <!-- SMA -->
                     <div class="relative bg-gray-50 rounded-xl sm:rounded-2xl lg:rounded-3xl border border-gray-100 shadow-xs opacity-90 group aspect-square overflow-hidden flex flex-col">
-                        <div class="w-full flex-1 relative overflow-hidden bg-gray-200">
+                        <!-- Bagian Gambar Latar (Rasio Tetap 4:1,3 = 32.5% tinggi card) -->
+                        <div class="w-full h-[32.5%] shrink-0 relative overflow-hidden bg-gray-200" style="height: 32.5%;">
                             <img src="assets/images/latar-sma.jpg" alt="Latar SMA" class="absolute inset-0 w-full h-full object-cover grayscale opacity-50">
                         </div>
-                        <div class="w-full shrink-0 relative bg-gray-50 flex flex-col justify-end p-3 sm:p-5 lg:p-6 z-10">
-                            <div class="w-[55%] sm:w-[50%] flex flex-col items-start">
-                                <span class="text-gray-400 text-[7px] sm:text-[9px] lg:text-[10px] font-extrabold uppercase tracking-widest mb-0.5 sm:mb-1 block">Jenjang</span>
-                                <div class="flex items-center gap-1 sm:gap-1.5 mb-1 flex-wrap">
-                                    <h3 class="text-base sm:text-xl lg:text-2xl font-extrabold text-gray-400 leading-tight">SMA</h3>
-                                    <span class="bg-gray-200 text-gray-500 text-[5px] sm:text-[7px] lg:text-[9px] px-1.5 py-0.5 rounded-full font-bold self-start mt-0.5">SOON</span>
+                        <!-- Bagian Box Abu/Putih (Rasio Tetap 4:2,7 = 67.5% tinggi card) -->
+                        <div class="w-full h-[67.5%] shrink-0 relative bg-gray-50 flex flex-col justify-between p-2.5 sm:p-5 md:p-6 lg:p-5 z-10" style="height: 67.5%;">
+                            <div class="w-[55%] sm:w-[54%] md:w-[52%] lg:w-[50%] flex flex-col items-start">
+                                <span class="text-gray-400 text-[7px] sm:text-xs md:text-xs lg:text-[11px] font-extrabold uppercase tracking-widest mb-0.5 sm:mb-1 block">Jenjang</span>
+                                <div class="flex items-center gap-1.5 sm:gap-2 mb-0.5 sm:mb-1 flex-wrap">
+                                    <h3 class="text-[13px] sm:text-2xl md:text-3xl lg:text-2xl font-extrabold text-gray-400 leading-tight">SMA</h3>
+                                    <span class="bg-gray-200 text-gray-500 text-[6px] sm:text-[10px] md:text-xs lg:text-[9px] px-1.5 sm:px-2 py-0.5 rounded-full font-bold self-center">SOON</span>
                                 </div>
-                                <p class="text-gray-400 text-[8px] sm:text-[10px] lg:text-xs font-medium mb-2.5 sm:mb-4">Untuk usia 15 - 18 Tahun</p>
-                                <button disabled class="inline-block border-[1.5px] sm:border-2 border-gray-200 text-gray-400 font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[8px] sm:text-[10px] lg:text-xs whitespace-nowrap cursor-not-allowed bg-white/50">Segera Hadir</button>
+                                <p class="text-gray-400 text-[8px] sm:text-sm md:text-base lg:text-xs font-medium leading-tight sm:leading-normal">Untuk usia 15 - 18 Tahun</p>
                             </div>
-                        </div>
-                        <div class="absolute right-0 bottom-3 sm:bottom-5 lg:bottom-6 w-[45%] sm:w-[50%] h-[85%] z-20 flex justify-center items-end pointer-events-none origin-bottom">
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[40%] w-[100%] h-[70%] bg-gray-100 rounded-full filter blur-[15px] sm:blur-[20px] opacity-60 z-0"></div>
-                            <img src="assets/images/karakter-3d-smp-sma-terkunci.webp" alt="Karakter SMA" class="relative z-20 w-full h-full object-contain object-bottom drop-shadow-xl grayscale opacity-60 pr-1.5 sm:pr-3 lg:pr-2">
+                            <div class="w-[55%] sm:w-[54%] md:w-[52%] lg:w-[50%] flex items-center">
+                                <button disabled class="inline-flex items-center justify-center border-[1.5px] sm:border-2 border-gray-200 text-gray-400 font-bold px-2.5 sm:px-5 md:px-6 lg:px-4 py-0.5 sm:py-2 md:py-2 lg:py-1.5 rounded-full text-[8px] sm:text-xs md:text-sm lg:text-xs whitespace-nowrap cursor-not-allowed bg-white/50 shadow-xs">Segera Hadir</button>
+                            </div>
+
+                            <!-- Karakter 3D (Kaki sejajar bawah Learn More, Ujung rambut sejajar tulisan Jenjang) -->
+                            <div class="absolute right-1 sm:right-2.5 lg:right-3 top-2.5 sm:top-5 md:top-6 lg:top-5 bottom-2.5 sm:bottom-5 md:bottom-6 lg:bottom-5 w-[48%] sm:w-[48%] lg:w-[48%] z-20 pointer-events-none origin-bottom flex justify-center items-end">
+                                <div class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[70%] bg-gray-100 rounded-full filter blur-[15px] sm:blur-[20px] opacity-60 z-0"></div>
+                                <img src="assets/images/karakter-3d-smp-sma-terkunci.webp" alt="Karakter SMA" class="relative z-20 w-full h-[126%] object-contain object-bottom drop-shadow-xl grayscale opacity-60">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -555,7 +583,7 @@
             <div class="relative z-10 text-center px-4">
                 <h2 class="text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white mb-8 lg:mb-10">Kunjungi Kampus Kami</h2>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 lg:gap-5">
-                    <a href="#" class="bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 lg:px-8 lg:py-4 rounded-full shadow-xl hover:bg-white transition-colors text-center text-sm lg:text-base">Jadwalkan School Visit</a>
+                    <a href="school-visit.html" class="bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 lg:px-8 lg:py-4 rounded-full shadow-xl hover:bg-white transition-colors text-center text-sm lg:text-base">Jadwalkan School Visit</a>
                     <a href="#" class="border-2 border-white text-white font-bold px-6 py-3.5 lg:px-8 lg:py-4 rounded-full hover:bg-white hover:text-brand-primary transition-colors text-center text-sm lg:text-base"><i class="fa-solid fa-vr-cardboard mr-2"></i> Akses 360 Virtual Tour</a>
                 </div>
             </div>

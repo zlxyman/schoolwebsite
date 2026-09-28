@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Siswa Baru - Sekolah Terpadu Sedaya Bintang</title>
+    
+    <!-- Memuat Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Konfigurasi Tailwind Terpusat -->
+    <script src="js/tailwind-config.js"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Global Terpadu -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CSS Khusus Halaman Apply -->
+    <link rel="stylesheet" href="css/apply.css">
+</head>
+<body id="top" data-page="admissions" class="bg-brand-gray font-sans text-gray-800 antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
+
+    <!-- Navbar & Mobile Drawer Otomatis Terinjeksi dari components.js -->
+    <div id="app-navbar"></div>
+
+    <main>
+        <!-- MAIN SECTION: SPLIT SCREEN APPLY FORM -->
+        <section class="relative pt-8 pb-16 lg:pt-14 lg:pb-24 overflow-hidden bg-brand-gray">
+            
+            <!-- Subtle Background Decorations -->
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[90px] -translate-y-1/2 translate-x-1/3 z-0 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-[420px] h-[420px] bg-brand-yellow/10 rounded-full blur-[70px] translate-y-1/3 -translate-x-1/3 z-0 pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <!-- Hero Header -->
+                <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-14">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-white border border-gray-200 text-brand-primary text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 shadow-xs">
+                        Penerimaan Murid Baru TA 2027/2028
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-primary mb-4 leading-tight">
+                        Mari Memulai Perjalanan<br class="hidden sm:block"> Bersama Kami.
+                    </h1>
+                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">
+                        Langkah awal yang aman, bersahaja, dan mudah. Tim Admisi kami siap mendampingi keluarga Anda dari pendataan awal hingga proses observasi ananda.
+                    </p>
+                </div>
+
+                <!-- Split Screen Layout -->
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                    
+                    <!-- LEFT COLUMN: Informasi & Langkah Pendaftaran -->
+                    <div class="w-full lg:w-5/12 flex flex-col gap-6">
+                        
+                        <!-- Offer Bento Card -->
+                        <div class="bg-gradient-to-br from-brand-primary to-[#15346b] rounded-3xl p-7 sm:p-8 shadow-floating text-white relative overflow-hidden">
+                            <div class="absolute -right-4 -top-4 w-32 h-32 bg-brand-yellow/20 rounded-full blur-2xl"></div>
+                            <div class="w-12 h-12 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center text-brand-yellow text-xl mb-4 border border-white/15">
+                                <i class="fa-solid fa-gift"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Penawaran Early Bird</h3>
+                            <p class="text-sm text-gray-200 leading-relaxed mb-4">
+                                Dapatkan kemudahan pendaftaran dan kepastian kuota kelas ananda lebih awal:
+                            </p>
+                            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                                <div class="flex items-center gap-3 mb-1.5">
+                                    <i class="fa-solid fa-tags text-brand-yellow text-base"></i>
+                                    <span class="text-sm font-bold text-white">Gelombang Khusus Pendaftaran Awal</span>
+                                </div>
+                                <p class="text-xs text-gray-300 ml-7 leading-relaxed">
+                                    Prioritas jadwal observasi dan konsultasi kurikulum tatap muka bersama tim akademik.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Journey Steps Bento Card -->
+                        <div class="bg-white rounded-3xl p-7 sm:p-8 border border-gray-100 shadow-xs relative">
+                            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Memo.png" class="absolute top-6 right-6 w-12 opacity-30 animate-float pointer-events-none" alt="Memo Icon">
+                            <h3 class="text-lg font-bold text-brand-primary mb-6">Tahapan Pendaftaran</h3>
+                            
+                            <div class="relative pl-6 border-l-2 border-brand-primary/20 space-y-6">
+                                <!-- Step 1 -->
+                                <div class="relative">
+                                    <div class="timeline-dot absolute -left-[33px] top-0 bg-brand-primary"></div>
+                                    <h4 class="font-bold text-brand-primary text-sm mb-1">1. Isi Pendataan Awal</h4>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Lengkapi formulir singkat di samping untuk menyampaikan data dasar calon murid.</p>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="relative">
+                                    <div class="timeline-dot absolute -left-[33px] top-0 bg-brand-yellow"></div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">2. Konsultasi Ramah via WhatsApp</h4>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Tim Admisi akan menyapa Anda secara personal untuk memberikan informasi lengkap seputar tahapan pendaftaran dan menjawab pertanyaan Anda.</p>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="relative">
+                                    <div class="timeline-dot absolute -left-[33px] top-0 bg-gray-300"></div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">3. Observasi & Verifikasi Berkas</h4>
+                                    <p class="text-xs text-gray-500 leading-relaxed">Penyelesaian administrasi resmi dan penjadwalan observasi yang hangat bagi ananda di kampus.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN: Formulir Pendataan Awal -->
+                    <div class="w-full lg:w-7/12">
+                        <div class="bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 border border-gray-100 shadow-xl relative z-10">
+                            <div class="flex items-center justify-between mb-2">
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-primary">Formulir Pendataan Awal</h2>
+                                <span class="w-8 h-8 rounded-full bg-brand-gray border border-gray-200 flex items-center justify-center text-brand-primary text-sm">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-500 mb-8 font-medium">Informasi keluarga Anda terjaga kerahasiaannya. Silakan lengkapi formulir di bawah ini.</p>
+                            
+                            <form id="apply-form" class="space-y-5">
+                                
+                                <!-- Nama Orang Tua & Anak -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="wa-parent" class="block text-xs font-bold text-brand-primary mb-2 uppercase tracking-wide">
+                                            Nama Orang Tua / Wali *
+                                        </label>
+                                        <input type="text" id="wa-parent" required class="input-field w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50 text-sm text-gray-800" placeholder="Cth: Bapak / Ibu Santoso">
+                                    </div>
+                                    <div>
+                                        <label for="wa-child" class="block text-xs font-bold text-brand-primary mb-2 uppercase tracking-wide">
+                                            Nama Lengkap Ananda *
+                                        </label>
+                                        <input type="text" id="wa-child" required class="input-field w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50 text-sm text-gray-800" placeholder="Cth: Nala Santoso">
+                                    </div>
+                                </div>
+
+                                <!-- Tanggal Lahir & Minat Jenjang -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="wa-dob" class="block text-xs font-bold text-brand-primary mb-2 uppercase tracking-wide">
+                                            Tanggal Lahir Ananda *
+                                        </label>
+                                        <div class="relative">
+                                            <input type="date" id="wa-dob" required class="input-field w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50 text-sm text-gray-800 cursor-pointer">
+                                            <p class="text-[10px] text-gray-400 mt-1">Dibutuhkan untuk penyesuaian jenjang kelas.</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="wa-grade" class="block text-xs font-bold text-brand-primary mb-2 uppercase tracking-wide">
+                                            Minat Jenjang Pendidikan *
+                                        </label>
+                                        <div class="relative">
+                                            <select id="wa-grade" required class="input-field w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50 text-sm text-gray-800 cursor-pointer appearance-none">
+                                                <option value="" disabled selected>-- Pilih Jenjang --</option>
+                                                <option value="Kelompok Bermain (KB) - Usia 3 Tahun">Kelompok Bermain (KB) - Usia 3 Tahun</option>
+                                                <option value="Taman Kanak-Kanak A (TK A) - Usia 4 Tahun">Taman Kanak-Kanak A (TK A) - Usia 4 Tahun</option>
+                                                <option value="Taman Kanak-Kanak B (TK B) - Usia 5 Tahun">Taman Kanak-Kanak B (TK B) - Usia 5 Tahun</option>
+                                                <option value="SD Kelas 1 (Primary 1) - Usia 6+ Tahun">SD Kelas 1 (Primary 1) - Usia 6+ Tahun</option>
+                                            </select>
+                                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Nomor WhatsApp Aktif -->
+                                <div>
+                                    <label for="wa-phone" class="block text-xs font-bold text-brand-primary mb-2 uppercase tracking-wide">
+                                        Nomor WhatsApp Aktif *
+                                    </label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-emerald-600">
+                                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                                        </div>
+                                        <input type="tel" id="wa-phone" required class="input-field w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50 text-sm text-gray-800" placeholder="0812xxxxxxxx">
+                                    </div>
+                                    <p class="text-[10px] text-gray-400 mt-1">Digunakan Tim Admisi untuk mengirim informasi tindak lanjut.</p>
+                                </div>
+
+                                <!-- Sumber Informasi -->
+                                <div>
+                                    <label for="wa-source" class="block text-xs font-bold text-brand-primary mb-2 uppercase tracking-wide">
+                                        Mengetahui Sedaya Bintang Dari *
+                                    </label>
+                                    <div class="relative">
+                                        <select id="wa-source" required class="input-field w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50 text-sm text-gray-800 cursor-pointer appearance-none">
+                                            <option value="" disabled selected>-- Pilih Sumber Informasi --</option>
+                                            <option value="Instagram / Media Sosial">Instagram / Media Sosial</option>
+                                            <option value="Rekomendasi Keluarga / Teman">Rekomendasi Keluarga / Teman</option>
+                                            <option value="Brosur / Spanduk">Brosur / Spanduk</option>
+                                            <option value="Pencarian Google / Website">Pencarian Google / Website</option>
+                                            <option value="Kunjungan Langsung ke Kampus">Kunjungan Langsung ke Kampus</option>
+                                            <option value="Lainnya">Lainnya</option>
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Submit Button -->
+                                <div class="pt-4 border-t border-gray-100 mt-6">
+                                    <button type="submit" id="wa-submit-btn" class="btn-wa-fill w-full bg-[#25D366] text-white font-extrabold px-6 py-4 rounded-xl text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-md">
+                                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                                        <span>Kirim Data via WhatsApp</span>
+                                    </button>
+                                    <p class="text-[11px] text-center text-gray-400 mt-3 font-medium leading-relaxed">
+                                        Setelah menekan tombol di atas, format pesan terstruktur akan disiapkan secara otomatis dan diarahkan ke WhatsApp resmi Admisi Sekolah Terpadu Sedaya Bintang.
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: HELPDESK & CAMPUS TOUR BANNER -->
+        <section class="py-10 bg-white border-t border-gray-100">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 bg-brand-gray rounded-3xl p-6 sm:p-8 border border-gray-200">
+                    <div class="flex items-center gap-4 text-center sm:text-left">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand-primary shadow-xs shrink-0 border border-gray-100 text-2xl">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-primary text-base sm:text-lg mb-1">Butuh Bantuan atau Informasi Langsung?</h4>
+                            <p class="text-xs sm:text-sm text-gray-500 font-medium">
+                                Hubungi hotline sekolah kami di <strong class="text-brand-primary">022 6316 0808</strong> pada hari kerja.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="shrink-0 w-full sm:w-auto">
+                        <a href="admissions.html" class="block w-full text-center bg-white border-2 border-brand-primary text-brand-primary font-bold px-6 py-3 rounded-xl hover:bg-brand-primary hover:text-white transition-colors text-xs sm:text-sm shadow-xs">
+                            <i class="fa-solid fa-book-open-reader mr-1.5"></i> Baca Panduan Admisi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Otomatis Terinjeksi dari components.js -->
+    <div id="app-footer"></div>
+
+    <!-- Script Global Komponen & Aplikasi -->
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Script Khusus Halaman Apply (Modular & Rapi) -->
+    <script src="js/apply.js"></script>
+</body>
+</html>

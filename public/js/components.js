@@ -24,19 +24,14 @@ const navbarTemplate = `
                         Admissions <i class="fa-solid fa-angle-down text-[11px] mt-0.5 transition-transform duration-300 group-hover:rotate-180"></i>
                         <span class="nav-underline"></span>
                     </div>
-                    <div class="mega-menu absolute top-[100%] left-1/2 w-[1000px] max-w-[90vw] bg-white shadow-2xl rounded-b-2xl border border-gray-100 overflow-hidden pt-2 pb-6">
-                        <div class="px-8 pt-4 grid grid-cols-5 gap-4">
-                            <a href="#" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
+                    <div class="mega-menu absolute top-[100%] left-1/2 w-[880px] max-w-[90vw] bg-white shadow-2xl rounded-b-2xl border border-gray-100 overflow-hidden pt-2 pb-6">
+                        <div class="px-8 pt-4 grid grid-cols-4 gap-4">
+                            <a href="apply.html" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
                                 <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-pen-to-square text-lg"></i></div>
                                 <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">Apply</div>
                                 <div class="text-[11px] text-gray-500 leading-tight">Pendaftaran murid baru.</div>
                             </a>
-                            <a href="#" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
-                                <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-file-invoice-dollar text-lg"></i></div>
-                                <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">School Fee</div>
-                                <div class="text-[11px] text-gray-500 leading-tight">Informasi biaya pendidikan.</div>
-                            </a>
-                            <a href="#" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
+                            <a href="school-visit.html" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
                                 <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-school text-lg"></i></div>
                                 <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">School Visit</div>
                                 <div class="text-[11px] text-gray-500 leading-tight">Jadwalkan kunjungan sekolah.</div>
@@ -153,7 +148,7 @@ const navbarTemplate = `
                 <a href="index.html" class="w-11 h-11 rounded-full bg-gray-50 hover:bg-brand-primary text-gray-600 hover:text-brand-yellow transition-all duration-300 flex items-center justify-center border border-gray-100 shadow-xs" title="Beranda">
                     <i class="fa-solid fa-house text-sm"></i>
                 </a>
-                <a href="#form-section" class="bg-brand-yellow text-brand-primary font-extrabold px-7 py-3 rounded-full hover:bg-brand-primary hover:text-white transition-all duration-300 shadow-sm text-sm">
+                <a href="apply.html" class="bg-brand-yellow text-brand-primary font-extrabold px-7 py-3 rounded-full hover:bg-brand-primary hover:text-white transition-all duration-300 shadow-sm text-sm">
                     Registrasi Sekarang
                 </a>
             </div>
@@ -196,6 +191,8 @@ const navbarTemplate = `
                     <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform duration-300" id="admissions-mobile-icon"></i>
                 </button>
                 <div id="admissions-mobile" class="mobile-accordion-content bg-gray-50/80 px-3 pb-3 space-y-1.5 border-t border-gray-100/60">
+                    <a href="apply.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-pen-to-square w-5 text-center text-brand-yellow"></i> Apply (Pendaftaran)</a>
+                    <a href="school-visit.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-school w-5 text-center text-brand-yellow"></i> School Visit</a>
                     <a href="admissions.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-book-open-reader w-5 text-center text-brand-yellow"></i> Admission Guideline</a>
                 </div>
             </div>
@@ -233,7 +230,7 @@ const navbarTemplate = `
         </div>
 
         <div class="p-6 border-t border-gray-100 bg-gray-50/50 shrink-0">
-            <a href="#form-section" onclick="closeMobileMenu()" class="flex items-center justify-center gap-2.5 w-full bg-brand-yellow text-brand-primary font-extrabold px-6 py-4 rounded-full shadow-md hover:bg-brand-primary hover:text-white transition-all duration-300 text-sm">
+            <a href="apply.html" onclick="closeMobileMenu()" class="flex items-center justify-center gap-2.5 w-full bg-brand-yellow text-brand-primary font-extrabold px-6 py-4 rounded-full shadow-md hover:bg-brand-primary hover:text-white transition-all duration-300 text-sm">
                 <span>Registrasi Sekarang</span> <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
@@ -263,7 +260,7 @@ const footerTemplate = `
                         <li><a href="index.html" class="hover:text-white transition">Beranda Utama</a></li>
                         <li><a href="about.html" class="hover:text-white transition">Tentang Kami</a></li>
                         <li><a href="admissions.html" class="hover:text-white transition">Alur Pendaftaran</a></li>
-                        <li><a href="#" class="hover:text-white transition">Biaya Sekolah</a></li>
+                        <li><a href="school-visit.html" class="hover:text-white transition">School Visit</a></li>
                         <li><a href="karir.html" class="hover:text-white transition">Karir</a></li>
                     </ul>
                 </div>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Visit - Sekolah Terpadu Sedaya Bintang</title>
+    
+    <!-- Memuat Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Konfigurasi Tailwind Terpusat -->
+    <script src="js/tailwind-config.js"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Global Terpadu -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CSS Khusus Halaman School Visit (Modular & Rapi) -->
+    <link rel="stylesheet" href="css/school-visit.css">
+</head>
+<body id="top" data-page="admissions" class="bg-brand-gray font-sans text-gray-800 antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
+
+    <!-- Navbar & Mobile Drawer Otomatis Terinjeksi dari components.js -->
+    <div id="app-navbar"></div>
+
+    <main>
+        <!-- MAIN SECTION: SPLIT SCREEN BOOKING -->
+        <section class="relative pt-6 pb-16 lg:pt-12 lg:pb-24 overflow-hidden bg-brand-gray">
+            
+            <!-- Subtle Background Decorations -->
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 z-0 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-yellow/10 rounded-full blur-[60px] translate-y-1/3 -translate-x-1/3 z-0 pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <!-- Minimalist Hero Header -->
+                <div class="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
+                    <span class="inline-block py-1.5 px-4 rounded-xl bg-white border border-gray-200 text-brand-primary text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
+                        <i class="fa-regular fa-calendar-check mr-1 text-brand-yellow"></i> Reservasi Kunjungan
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-primary mb-4 leading-tight">Melihat Langsung<br class="hidden sm:block"> Adalah Mempercayai.</h1>
+                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Jelajahi fasilitas eksklusif kami, diskusikan masa depan pendidikan si kecil, dan rasakan langsung lingkungan belajar yang suportif di Sedaya Bintang.</p>
+                </div>
+
+                <!-- The Split Screen Layout -->
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                    
+                    <!-- LEFT COLUMN: Tour Highlights -->
+                    <div class="w-full lg:w-4/12 flex flex-col gap-6">
+                        
+                        <div class="bg-brand-primary rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 shadow-floating text-white relative overflow-hidden h-full">
+                            <!-- Deco -->
+                            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+                            <div class="absolute top-8 right-8 text-6xl text-white/5"><i class="fa-solid fa-map-location-dot"></i></div>
+                            
+                            <h3 class="text-xl font-bold mb-6 relative z-10">Agenda Kunjungan Anda</h3>
+                            
+                            <div class="space-y-6 relative z-10">
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-brand-yellow">
+                                        <i class="fa-solid fa-building-flag"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm mb-1 text-white">Tur Fasilitas Eksklusif</h4>
+                                        <p class="text-xs text-gray-300 leading-relaxed">Mengunjungi Spacelab, Roof Garden, dan area bermain (Playground) dengan panduan staf kami.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-brand-yellow">
+                                        <i class="fa-solid fa-comments"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm mb-1 text-white">Konsultasi Akademik</h4>
+                                        <p class="text-xs text-gray-300 leading-relaxed">Diskusi tatap muka mengenai penerapan Budi Pekerti, Trilingual, dan kerangka STEAM.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-brand-yellow">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm mb-1 text-white">Observasi Suasana</h4>
+                                        <p class="text-xs text-gray-300 leading-relaxed">Merasakan langsung sirkulasi udara alami dan lingkungan belajar yang dirancang khusus.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 pt-6 border-t border-white/20 relative z-10">
+                                <p class="text-[10px] text-gray-300 font-medium">
+                                    <i class="fa-solid fa-circle-info text-brand-yellow mr-1"></i>
+                                    Demi kenyamanan dan keamanan, sesi kunjungan dibatasi menjadi 4 tanggal per bulan dengan kuota terbatas.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT COLUMN: The Booking Interface (Card System) -->
+                    <div class="w-full lg:w-8/12">
+                        <div class="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-xl relative z-10">
+                            <h2 class="text-2xl font-extrabold text-brand-primary mb-2">Formulir Reservasi</h2>
+                            <p class="text-sm text-gray-500 mb-8 font-medium">Pilih jadwal kunjungan kampus yang tersedia di bulan ini.</p>
+                            
+                            <form id="visit-form" onsubmit="sendVisitToWhatsApp(event)" class="space-y-8">
+                                
+                                <!-- STEP 1: Data Diri -->
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-6 h-6 rounded-md bg-brand-primary text-white text-xs font-bold flex items-center justify-center">1</div>
+                                        <h3 class="font-bold text-brand-primary text-sm uppercase tracking-wide">Data Pengunjung</h3>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <input type="text" id="v-parent" required class="input-field w-full px-4 py-3 rounded-lg sm:rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:border-brand-primary text-sm text-gray-800" placeholder="Nama Orang Tua *">
+                                        </div>
+                                        <div>
+                                            <input type="text" id="v-child" required class="input-field w-full px-4 py-3 rounded-lg sm:rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:border-brand-primary text-sm text-gray-800" placeholder="Nama Ananda *">
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <!-- Tanggal Lahir -->
+                                        <div>
+                                            <div class="relative">
+                                                <input type="date" id="v-dob" required class="input-field w-full px-4 py-3 rounded-lg sm:rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:border-brand-primary text-sm text-gray-800 cursor-pointer text-gray-500">
+                                                <p class="text-[10px] text-gray-400 mt-1 absolute -bottom-4 left-1">*Tanggal Lahir Ananda</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <select id="v-grade" required class="input-field w-full px-4 py-3 rounded-lg sm:rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:border-brand-primary text-sm text-gray-800 cursor-pointer appearance-none">
+                                                <option value="" disabled selected>Minat Jenjang *</option>
+                                                <option value="KB (Kelompok Bermain)">KB (Kelompok Bermain)</option>
+                                                <option value="TK A">TK A</option>
+                                                <option value="TK B">TK B</option>
+                                                <option value="SD Kelas 1">SD Kelas 1</option>
+                                            </select>
+                                        </div>
+                                        <div class="relative sm:col-span-2">
+                                            <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                                                <i class="fa-brands fa-whatsapp text-gray-400"></i>
+                                            </div>
+                                            <input type="tel" id="v-phone" required class="input-field w-full pl-10 pr-4 py-3 rounded-lg sm:rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:border-brand-primary text-sm text-gray-800" placeholder="Nomor WhatsApp Aktif *">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 2: Tanggal (4 Cards System) -->
+                                <div class="space-y-4 pt-4 border-t border-gray-100">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-6 h-6 rounded-md bg-brand-primary text-white text-xs font-bold flex items-center justify-center">2</div>
+                                        <h3 class="font-bold text-brand-primary text-sm uppercase tracking-wide">Pilih Tanggal Kunjungan</h3>
+                                        <span class="ml-auto text-[10px] font-bold text-brand-red bg-red-50 px-2 py-1 rounded">Sisa 3 Sesi Bulan Ini</span>
+                                    </div>
+                                    
+                                    <!-- The 4 Cards Grid -->
+                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                        <!-- Card 1 (Past/Disabled/Full) -->
+                                        <div class="select-card disabled rounded-lg sm:rounded-xl p-3 text-center h-[100px] flex flex-col justify-center relative">
+                                            <div class="absolute top-2 right-2 text-[8px] font-bold bg-brand-red text-white px-1.5 py-0.5 rounded uppercase">Penuh</div>
+                                            <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Sabtu</div>
+                                            <div class="text-2xl sm:text-3xl font-extrabold text-gray-400 line-through decoration-2 decoration-brand-red opacity-70">10</div>
+                                            <div class="text-[10px] font-bold text-gray-400 mt-1">Okt 2026</div>
+                                        </div>
+
+                                        <!-- Card 2 (Available) -->
+                                        <div class="select-card rounded-lg sm:rounded-xl p-3 text-center h-[100px] flex flex-col justify-center date-card" onclick="selectCard(this, 'date', '17 Okt 2026')">
+                                            <i class="fa-solid fa-circle-check check-icon"></i>
+                                            <div class="text-[10px] font-bold text-brand-primary uppercase tracking-widest mb-1 transition-colors duration-300">Sabtu</div>
+                                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-primary transition-colors duration-300">17</div>
+                                            <div class="text-[10px] font-bold text-gray-500 mt-1 transition-colors duration-300">Okt 2026</div>
+                                        </div>
+
+                                        <!-- Card 3 (Available) -->
+                                        <div class="select-card rounded-lg sm:rounded-xl p-3 text-center h-[100px] flex flex-col justify-center date-card" onclick="selectCard(this, 'date', '24 Okt 2026')">
+                                            <i class="fa-solid fa-circle-check check-icon"></i>
+                                            <div class="text-[10px] font-bold text-brand-primary uppercase tracking-widest mb-1 transition-colors duration-300">Sabtu</div>
+                                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-primary transition-colors duration-300">24</div>
+                                            <div class="text-[10px] font-bold text-gray-500 mt-1 transition-colors duration-300">Okt 2026</div>
+                                        </div>
+
+                                        <!-- Card 4 (Available) -->
+                                        <div class="select-card rounded-lg sm:rounded-xl p-3 text-center h-[100px] flex flex-col justify-center date-card" onclick="selectCard(this, 'date', '31 Okt 2026')">
+                                            <i class="fa-solid fa-circle-check check-icon"></i>
+                                            <div class="text-[10px] font-bold text-brand-primary uppercase tracking-widest mb-1 transition-colors duration-300">Sabtu</div>
+                                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-primary transition-colors duration-300">31</div>
+                                            <div class="text-[10px] font-bold text-gray-500 mt-1 transition-colors duration-300">Okt 2026</div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="v-date" required>
+                                    <p id="error-date" class="text-[10px] text-brand-red hidden">Mohon pilih salah satu tanggal kunjungan di atas.</p>
+                                </div>
+
+                                <!-- STEP 3: Sesi Waktu -->
+                                <div class="space-y-4 pt-4 border-t border-gray-100">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-6 h-6 rounded-md bg-brand-primary text-white text-xs font-bold flex items-center justify-center">3</div>
+                                        <h3 class="font-bold text-brand-primary text-sm uppercase tracking-wide">Pilih Sesi Waktu</h3>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <!-- Sesi Pagi -->
+                                        <div class="select-card rounded-lg sm:rounded-xl p-4 text-center time-card flex flex-col items-center gap-2" onclick="selectCard(this, 'time', 'Pagi (09.00 - 11.00)')">
+                                            <i class="fa-solid fa-circle-check check-icon"></i>
+                                            <i class="fa-regular fa-sun text-xl text-brand-yellow mb-1"></i>
+                                            <div>
+                                                <div class="font-bold text-brand-primary text-sm transition-colors duration-300">Sesi Pagi</div>
+                                                <div class="text-xs text-gray-500 mt-0.5 transition-colors duration-300">09.00 - 11.00 WIB</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sesi Siang -->
+                                        <div class="select-card rounded-lg sm:rounded-xl p-4 text-center time-card flex flex-col items-center gap-2" onclick="selectCard(this, 'time', 'Siang (13.00 - 15.00)')">
+                                            <i class="fa-solid fa-circle-check check-icon"></i>
+                                            <i class="fa-solid fa-cloud-sun text-xl text-brand-yellow mb-1"></i>
+                                            <div>
+                                                <div class="font-bold text-brand-primary text-sm transition-colors duration-300">Sesi Siang</div>
+                                                <div class="text-xs text-gray-500 mt-0.5 transition-colors duration-300">13.00 - 15.00 WIB</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="v-time" required>
+                                    <p id="error-time" class="text-[10px] text-brand-red hidden">Mohon pilih salah satu sesi waktu di atas.</p>
+                                </div>
+                                
+                                <!-- Submit Button -->
+                                <div class="pt-6 mt-6 border-t border-gray-100">
+                                    <button type="submit" class="btn-wa-fill w-full bg-[#25D366] text-white font-extrabold px-6 py-4 rounded-lg sm:rounded-xl text-sm sm:text-base flex items-center justify-center gap-2 group shadow-[0_5px_15px_rgba(37,211,102,0.3)]">
+                                        Konfirmasi Jadwal via WhatsApp <i class="fa-brands fa-whatsapp text-xl group-hover:scale-110 transition-transform ml-1"></i>
+                                    </button>
+                                    <p class="text-[10px] text-center text-gray-400 mt-3 font-medium px-4">
+                                        Tim Admisi kami akan memverifikasi ketersediaan kuota pada sesi yang Anda pilih dan membalas pesan Anda.
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: MAP & LOGISTIC -->
+        <section class="py-16 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <h2 class="text-2xl font-extrabold text-brand-primary mb-2">Panduan Kedatangan</h2>
+                    <p class="text-sm text-gray-500 font-medium">Berada di dalam kawasan terintegrasi Summarecon Bandung.</p>
+                </div>
+                
+                <div class="bg-brand-gray rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 border border-gray-100 flex flex-col md:flex-row gap-6 items-center shadow-sm">
+                    <!-- Map Dummy / Visual -->
+                    <div class="w-full md:w-1/2 h-[250px] bg-gray-200 rounded-lg sm:rounded-xl overflow-hidden relative border border-gray-300">
+                        <img src="https://images.pexels.com/photos/1519088/pexels-photo-1519088.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover opacity-60 mix-blend-multiply" alt="Lokasi Sekolah Terpadu Sedaya Bintang">
+                        <div class="absolute inset-0 bg-brand-primary/10"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-md flex items-center justify-center text-brand-red text-2xl shadow-xl animate-bounce">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Info Alamat -->
+                    <div class="w-full md:w-1/2 pl-0 md:pl-4">
+                        <h3 class="text-lg font-bold text-brand-primary mb-2">Sekolah Terpadu Sedaya Bintang</h3>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Jalan Gedebage Utama GBU 009,<br>
+                            Kel. Cisaranten Kidul, Kec. Gedebage,<br>
+                            Kota Bandung, Jawa Barat 40295
+                        </p>
+                        <a href="https://maps.google.com/?q=Sekolah+Terpadu+Sedaya+Bintang+Gedebage+Bandung" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-4 text-sm font-bold text-brand-primary hover:text-brand-yellow transition-colors">
+                            Buka Petunjuk Arah di Google Maps <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Otomatis Terinjeksi dari components.js -->
+    <div id="app-footer"></div>
+
+    <!-- Script Global Komponen & Aplikasi -->
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Script Khusus Halaman School Visit (Modular & Rapi) -->
+    <script src="js/school-visit.js"></script>
+</body>
+</html>
