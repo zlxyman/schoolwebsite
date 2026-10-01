@@ -408,6 +408,77 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    /* --- 12B. PRESCHOOL HERO INTERACTIVE CHARACTER LOGIC --- */
+    const heroCharContainer = document.getElementById('hero-character-container');
+    const heroCharVideo = document.getElementById('hero-character-video');
+    if (heroCharContainer && heroCharVideo) {
+        let isCharHovering = false;
+        let charLoopTimeout = null;
+
+        heroCharVideo.muted = true;
+        heroCharVideo.playsInline = true;
+
+        const playCharAnimation = () => {
+            heroCharVideo.currentTime = 0;
+            const playPromise = heroCharVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {});
+            }
+        };
+
+        // 1. Jalankan animasi sekali saat halaman pertama kali dibuka
+        const tryInitialPlay = () => {
+            const p = heroCharVideo.play();
+            if (p !== undefined) {
+                p.catch(() => {
+                    const playOnGesture = () => {
+                        heroCharVideo.play().catch(() => {});
+                        document.removeEventListener('click', playOnGesture);
+                        document.removeEventListener('touchstart', playOnGesture);
+                    };
+                    document.addEventListener('click', playOnGesture, { once: true });
+                    document.addEventListener('touchstart', playOnGesture, { once: true });
+                });
+            }
+        };
+
+        if (heroCharVideo.readyState >= 2) {
+            tryInitialPlay();
+        } else {
+            heroCharVideo.addEventListener('loadeddata', tryInitialPlay, { once: true });
+        }
+
+        // Saat animasi selesai: jika tidak sedang di-hover cursor, berhenti (tidak looping).
+        heroCharVideo.addEventListener('ended', () => {
+            if (isCharHovering) {
+                clearTimeout(charLoopTimeout);
+                charLoopTimeout = setTimeout(() => {
+                    if (isCharHovering) {
+                        playCharAnimation();
+                    }
+                }, 800);
+            }
+        });
+
+        // 2. Saat kursor diarahkan ke karakter (hover), jalankan animasi lagi
+        heroCharContainer.addEventListener('mouseenter', () => {
+            isCharHovering = true;
+            clearTimeout(charLoopTimeout);
+            playCharAnimation();
+        });
+
+        heroCharContainer.addEventListener('mouseleave', () => {
+            isCharHovering = false;
+            clearTimeout(charLoopTimeout);
+        });
+
+        // 3. Dukungan layar sentuh (mobile/tablet) saat karakter disentuh
+        heroCharContainer.addEventListener('click', () => {
+            clearTimeout(charLoopTimeout);
+            playCharAnimation();
+        });
+    }
+
     /* --- 13. BUDI PEKERTI LOGIC --- */
     window.switchBaktiImage = function(index) {
         const items = document.querySelectorAll('.interactive-list-item');

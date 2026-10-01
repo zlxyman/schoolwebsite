@@ -68,6 +68,83 @@
 .floating-card, .floating-element { animation: float 6s ease-in-out infinite; }
 .animate-float { animation: float 6s ease-in-out infinite; }
 
+/* --- ATOMIC ORBIT ANIMATIONS (PRESCHOOL HERO) --- */
+@keyframes orbit-cw {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes orbit-ccw {
+    from { transform: translate(-50%, -50%) rotate(360deg); }
+    to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* Gradasi transparan di bagian bawah ~25% agar tidak bulat utuh */
+.atomic-orbits-wrapper {
+    -webkit-mask-image: linear-gradient(to bottom, #000000 0%, #000000 62%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.12) 88%, transparent 97%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000000 0%, #000000 62%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.12) 88%, transparent 97%, transparent 100%);
+}
+
+/* 1. Cincin Paling Luar (Biru Sedaya) - Putar Kiri / CCW */
+.atomic-ring-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 90%;
+    border-radius: 9999px;
+    border: 2px solid rgba(29, 68, 134, 0.7);
+    box-shadow: 0 0 16px rgba(29, 68, 134, 0.2);
+    animation: orbit-ccw 26s linear infinite;
+    transform-origin: center center;
+}
+
+/* 2. Cincin Tengah (Orange Sedaya) - Putar Kanan / CW, Jarak Equidistant */
+.atomic-ring-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 68%;
+    height: 68%;
+    border-radius: 9999px;
+    border: 2px solid rgba(245, 158, 11, 0.7);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.2);
+    animation: orbit-cw 19s linear infinite;
+    transform-origin: center center;
+}
+
+/* 3. Cincin Paling Dalam (Merah Sedaya) - Putar Kiri / CCW, Jarak Equidistant */
+.atomic-ring-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 46%;
+    height: 46%;
+    border-radius: 9999px;
+    border: 2px solid rgba(210, 35, 42, 0.7);
+    box-shadow: 0 0 16px rgba(210, 35, 42, 0.2);
+    animation: orbit-ccw 14s linear infinite;
+    transform-origin: center center;
+}
+
+/* Posisi Presisi Dot di Lingkaran Orbit */
+.atomic-spoke {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform-origin: center center;
+}
+.atomic-dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+}
+
 @keyframes pulse-glow {
     0%, 100% { transform: scale(1); opacity: 0.3; }
     50% { transform: scale(1.2); opacity: 0.6; }

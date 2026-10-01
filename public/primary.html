@@ -28,57 +28,105 @@
     <div id="app-navbar"></div>
 
     <main>
-        <!-- 1. HERO SECTION (SD Focus + 3D Character) -->
-        <section class="relative pt-12 lg:pt-20 pb-0 overflow-visible bg-brand-gray hero-container">
-            <!-- Background Glow -->
+        <!-- 1. HERO SECTION (SD Focus + Interactive 3D Character & Atomic Orbits) -->
+        <section class="relative pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-16 lg:pb-20 overflow-hidden bg-brand-gray">
+            <!-- Background Glow & Grid Pattern -->
             <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                <div class="absolute top-[20%] -left-[10%] w-[300px] h-[300px] bg-brand-primary rounded-full filter blur-[120px] opacity-10 animate-glow"></div>
-                <div class="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-brand-yellow rounded-full filter blur-[120px] opacity-20 animate-glow" style="animation-delay: 2s;"></div>
+                <div class="absolute top-[10%] right-[-10%] w-[300px] lg:w-[600px] h-[300px] lg:h-[600px] bg-brand-yellow rounded-full filter blur-[100px] lg:blur-[150px] opacity-20 animate-glow"></div>
+                <div class="absolute bottom-[20%] left-[-5%] w-[200px] lg:w-[400px] h-[200px] lg:h-[400px] bg-brand-primary rounded-full filter blur-[100px] lg:blur-[120px] opacity-10"></div>
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNlN2U1ZTQiLz48L3N2Zz4=')] opacity-50 z-0"></div>
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center min-h-[520px] lg:min-h-[620px]">
                     
                     <!-- Kiri: Teks -->
-                    <div class="lg:col-span-6 lg:pb-28 text-center lg:text-left z-20">
-                        <span class="inline-block bg-white border border-gray-200 text-brand-primary text-[10px] lg:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest mb-4 shadow-sm">
+                    <div class="text-center lg:text-left z-20 pt-4 lg:pt-0">
+                        <span class="inline-block bg-white text-brand-primary font-extrabold text-[10px] lg:text-xs tracking-widest uppercase px-3.5 py-1.5 rounded-full shadow-sm mb-4 lg:mb-5 border border-gray-100">
                             Primary School (SD Usia 6-12)
                         </span>
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] mb-5 text-brand-primary">
-                            Pengembangan Daya <br/>
-                            <span class="text-brand-yellow block mt-1">Berpikir Kritis</span>
+                        
+                        <h1 class="text-[32px] sm:text-5xl lg:text-[60px] font-extrabold tracking-tight leading-tight lg:leading-[1.1] mb-4 lg:mb-6 text-brand-primary">
+                            Pengembangan Daya <br class="hidden lg:block"/>
+                            <span class="text-brand-yellow">Berpikir Kritis</span> Dimulai di Sini.
                         </h1>
-                        <p class="text-base lg:text-lg text-gray-600 mb-8 font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                            Memadukan pendidikan budi pekerti, penguasaan trilingual, dan pendekatan STEAM.
+                        
+                        <p class="text-sm lg:text-lg text-gray-600 mb-8 font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                            Memadukan pendidikan budi pekerti berlandaskan Di Zi Gui, penguasaan trilingual sejak dini, kurikulum Pearson Edexcel iPrimary, dan pendekatan STEAM.
                         </p>
                         
                         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="w-full sm:w-auto bg-brand-primary text-white font-bold px-8 py-3.5 rounded-full shadow-[0_10px_30px_rgba(29,68,134,0.3)] hover:shadow-[0_15px_40px_rgba(29,68,134,0.4)] hover:bg-[#15346b] transition-all transform hover:-translate-y-1 text-sm lg:text-base text-center">
+                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-primary text-white font-bold px-6 py-3 rounded-full shadow-[0_10px_30px_rgba(29,68,134,0.25)] hover:shadow-[0_15px_40px_rgba(29,68,134,0.35)] hover:bg-[#15346b] transition-all transform hover:-translate-y-1 text-base lg:text-lg">
+                                <i class="fa-solid fa-paper-plane text-xl lg:text-2xl"></i>
                                 Daftar Sekarang
                             </a>
-                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="w-full sm:w-auto bg-white border-2 border-brand-primary text-brand-primary font-bold px-8 py-3 rounded-full hover:bg-brand-gray transition-colors text-sm lg:text-base text-center btn-outline-fill">
-                                Unduh E-Brosur
+                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 btn-outline-fill border-2 border-brand-primary text-brand-primary font-bold px-6 py-2.5 rounded-full text-base lg:text-lg bg-white">
+                                <i class="fa-solid fa-download text-lg"></i>
+                                E-Brosur
                             </a>
                         </div>
                     </div>
 
-                    <!-- Kanan: Karakter 3D (1000x1400px) -->
-                    <div class="lg:col-span-6 relative flex justify-center lg:justify-end items-end h-[350px] sm:h-[450px] lg:h-[600px] mt-8 lg:mt-0">
-                        <!-- Base Podium/Shadow Visual -->
-                        <div class="absolute bottom-0 w-[80%] h-12 bg-black/10 blur-xl rounded-[100%] z-0"></div>
+                    <!-- Karakter 3D Animasi SD & Struktur Orbit Atom (Kanan/Bawah) -->
+                    <div class="relative flex justify-center items-center h-[390px] sm:h-[480px] md:h-[520px] lg:h-[580px] xl:h-[620px] mt-6 sm:mt-10 lg:mt-0 z-20">
                         
-                        <img src="assets/images/karakter-3d-hero-primary.webp" 
-                             alt="Murid SD Sedaya Bintang" 
-                             class="pop-out-image relative z-10 w-auto h-full max-h-[120%] lg:max-h-[110%] object-contain object-bottom drop-shadow-2xl scale-[0.85] sm:scale-100 origin-bottom">
-                        
-                        <!-- Floating Elements -->
-                        <div class="absolute top-6 sm:top-1/4 right-0 lg:-right-4 bg-white/90 backdrop-blur px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-lg sm:rounded-2xl shadow-xl border border-gray-100 z-20 flex items-center gap-2 sm:gap-3 animate-float" style="animation-delay: 1s;">
-                            <div class="w-8 h-8 rounded-full bg-[#e8f0fe] flex items-center justify-center text-[#1a73e8]"><i class="fa-solid fa-microscope"></i></div>
-                            <span class="font-bold text-gray-800 text-xs lg:text-sm">Science</span>
+                        <!-- 1. Struktur Garis Atom 3 Warna Sedaya (Luar Biru, Tengah Orange, Dalam Merah) -->
+                        <div class="atomic-orbits-wrapper absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] sm:w-[460px] sm:h-[460px] md:w-[500px] md:h-[500px] lg:w-[580px] lg:h-[580px] xl:w-[620px] xl:h-[620px] pointer-events-none z-0">
+                            <!-- Garis Paling Luar (Biru Sedaya - Putar Kiri / CCW, 3 Dots) -->
+                            <div class="atomic-ring-outer">
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(0deg);">
+                                    <div class="atomic-dot w-3.5 h-3.5 sm:w-4 sm:h-4 bg-[#1d4486] border border-white/90 shadow-[0_0_12px_rgba(29,68,134,0.9),0_0_4px_#93c5fd]"></div>
+                                </div>
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(120deg);">
+                                    <div class="atomic-dot w-3.5 h-3.5 sm:w-4 sm:h-4 bg-[#1d4486] border border-white/90 shadow-[0_0_12px_rgba(29,68,134,0.9),0_0_4px_#93c5fd]"></div>
+                                </div>
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(240deg);">
+                                    <div class="atomic-dot w-3.5 h-3.5 sm:w-4 sm:h-4 bg-[#1d4486] border border-white/90 shadow-[0_0_12px_rgba(29,68,134,0.9),0_0_4px_#93c5fd]"></div>
+                                </div>
+                            </div>
+
+                            <!-- Garis Tengah (Orange Sedaya - Putar Kanan / CW, 3 Dots) -->
+                            <div class="atomic-ring-middle">
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(40deg);">
+                                    <div class="atomic-dot w-3.5 h-3.5 sm:w-4 sm:h-4 bg-[#f59e0b] border border-white/90 shadow-[0_0_12px_#f59e0b,0_0_4px_#ffffff]"></div>
+                                </div>
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(160deg);">
+                                    <div class="atomic-dot w-3.5 h-3.5 sm:w-4 sm:h-4 bg-[#f59e0b] border border-white/90 shadow-[0_0_12px_#f59e0b,0_0_4px_#ffffff]"></div>
+                                </div>
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(280deg);">
+                                    <div class="atomic-dot w-3.5 h-3.5 sm:w-4 sm:h-4 bg-[#f59e0b] border border-white/90 shadow-[0_0_12px_#f59e0b,0_0_4px_#ffffff]"></div>
+                                </div>
+                            </div>
+
+                            <!-- Garis Paling Dalam (Merah Sedaya - Putar Kiri / CCW, 3 Dots) -->
+                            <div class="atomic-ring-inner">
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(80deg);">
+                                    <div class="atomic-dot w-3 h-3 sm:w-3.5 sm:h-3.5 bg-[#d2232a] border border-white/90 shadow-[0_0_12px_#d2232a,0_0_4px_#ffffff]"></div>
+                                </div>
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(200deg);">
+                                    <div class="atomic-dot w-3 h-3 sm:w-3.5 sm:h-3.5 bg-[#d2232a] border border-white/90 shadow-[0_0_12px_#d2232a,0_0_4px_#ffffff]"></div>
+                                </div>
+                                <div class="atomic-spoke" style="transform: translate(-50%, -50%) rotate(320deg);">
+                                    <div class="atomic-dot w-3 h-3 sm:w-3.5 sm:h-3.5 bg-[#d2232a] border border-white/90 shadow-[0_0_12px_#d2232a,0_0_4px_#ffffff]"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="absolute bottom-1/4 left-0 lg:-left-8 bg-white/90 backdrop-blur px-4 py-2.5 rounded-2xl shadow-xl border border-gray-100 z-20 flex items-center gap-3 animate-float" style="animation-delay: 2.5s;">
-                            <div class="w-8 h-8 rounded-full bg-[#fce8e6] flex items-center justify-center text-[#d93025]"><i class="fa-solid fa-comments"></i></div>
-                            <span class="font-bold text-gray-800 text-xs lg:text-sm">Trilingual 42%</span>
+
+                        <!-- 2. Podium Bayangan Lembut di Bawah Kaki Karakter -->
+                        <div class="absolute bottom-1 sm:bottom-3 left-1/2 -translate-x-1/2 w-[60%] max-w-[260px] h-8 bg-black/15 blur-lg rounded-[100%] z-0 pointer-events-none"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] bg-brand-yellow/15 rounded-full filter blur-[50px] pointer-events-none z-0"></div>
+
+                        <!-- 3. Wadah Animasi Karakter Interaktif SD -->
+                        <div id="hero-character-container" class="relative z-10 w-auto h-full max-h-full flex items-center justify-center cursor-pointer group select-none">
+                            <video id="hero-character-video"
+                                src="assets/images/video-hero-index-2.webm"
+                                poster="assets/images/karakter-3d-hero-primary.webp"
+                                muted
+                                playsinline
+                                preload="auto"
+                                class="w-auto h-full max-h-full object-contain object-bottom drop-shadow-2xl transition-transform duration-300 group-hover:scale-[1.03] origin-bottom pointer-events-auto">
+                            </video>
                         </div>
                     </div>
 

@@ -177,16 +177,6 @@ const gamesPreviewData = [
         badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
         directLink: 'vocab-minigame.html',
         image: 'https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png'
-    },
-    {
-        id: 'demo-3d',
-        title: '3D Spatial Demo',
-        tag: 'WebGL Spasial',
-        difficulty: 'Eksperimen Interaktif',
-        description: 'Simulasi koordinasi visual spasial secara mulus di peramban tanpa instalasi apa pun, mengenalkan keajaiban grafis komputer real-time.',
-        badgeColor: 'bg-rose-500/20 text-rose-400 border-rose-500/30',
-        directLink: 'demo-3d-mini-game.html',
-        image: 'https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Racing%20Car.png'
     }
 ];
 
