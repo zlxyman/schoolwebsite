@@ -19,6 +19,10 @@
 
     <!-- Memanggil CSS Global -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Preload Foto Kepala Sekolah agar transisi pertama langsung instan dan mulus -->
+    <link rel="preload" as="image" href="assets/images/head-of-school.jpg">
+    <link rel="preload" as="image" href="assets/images/guru-sedaya-bintang.jpg">
 </head>
 <body id="top" data-page="about" class="bg-brand-light font-sans text-gray-800 antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
     <!-- Navbar & Mobile Menu akan muncul di sini secara otomatis -->
@@ -26,7 +30,7 @@
 
     <!-- KONTEN UTAMA HALAMAN -->
     <main>
-        <!-- ==================== 1. HERO SECTION ==================== -->
+        <!-- ==================== 1. HERO SECTION (ORIGINAL) ==================== -->
         <section class="relative pt-8 pb-16 lg:pt-20 lg:pb-32 overflow-hidden bg-brand-light">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center max-w-3xl mx-auto">
@@ -36,8 +40,8 @@
                         Sekolah Terpadu Sedaya Bintang adalah institusi pendidikan yang berdedikasi untuk mengembangkan potensi setiap anak secara holistik.
                     </p>
                     <div class="flex justify-center gap-4">
-                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="bg-brand-primary text-white font-bold px-6 py-3 rounded-full hover:bg-[#15346b] transition-colors">Daftar Sekarang</a>
-                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="border-2 border-brand-primary text-brand-primary font-bold px-6 py-3 rounded-full hover:bg-brand-primary hover:text-white transition-colors">Sejarah Kami</a>
+                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="bg-brand-primary text-white font-bold px-6 py-3 rounded-full hover:bg-[#15346b] transition-colors shadow-sm">Daftar Sekarang</a>
+                        <a href="#pilar-section" class="border-2 border-brand-primary text-brand-primary font-bold px-6 py-3 rounded-full hover:bg-brand-primary hover:text-white transition-colors">Tiga Pilar ACT</a>
                     </div>
                 </div>
             </div>
@@ -52,57 +56,85 @@
             </div>
         </section>
 
-        <!-- ==================== 2. SAMBUTAN KEPALA SEKOLAH ==================== -->
-        <section class="py-16 lg:py-24 bg-white relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <!-- ==================== 2. SAMBUTAN KEPALA SEKOLAH (INTERAKTIF BERGANTIAN - FOTO 3:4 PORTRAIT - UI/UX 2025-2026) ==================== -->
+        <section class="py-14 lg:py-20 bg-white relative overflow-hidden">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header (Bersih & Fokus) -->
+                <div class="text-center max-w-xl mx-auto mb-8 sm:mb-12">
+                    <span class="text-xs font-extrabold text-brand-yellow uppercase tracking-widest mb-1.5 block">Kepemimpinan Sekolah</span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary tracking-tight">
+                        Sambutan Kepala Sekolah
+                    </h2>
+                </div>
+
+                <!-- Showcase Canvas: Rasio Foto 3:4 Portrait & Transisi Fade Otomatis Antar Jenjang -->
+                <div id="kepsek-showcase" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-gradient-to-br from-slate-50 via-white to-amber-50/20 p-6 sm:p-8 lg:p-12 rounded-3xl border border-gray-200/70 shadow-sm relative overflow-hidden">
                     
-                    <!-- Gambar Kepsek -->
-                    <div class="lg:col-span-5 relative">
-                        <!-- Glow background -->
-                        <div class="absolute inset-0 bg-brand-yellow rounded-full filter blur-[80px] opacity-20 transform -translate-x-10 translate-y-10 z-0"></div>
-                        <div id="kepsek-img-wrapper" class="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-gray-100 z-10 group transition-opacity duration-500">
-                            <img id="kepsek-img" src="assets/images/head-of-school.jpg" alt="Head of School" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out">
-                            <!-- Name Tag overlay -->
-                            <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-gray-100">
-                                <h4 id="kepsek-name" class="font-bold text-brand-primary text-base lg:text-lg">Dr. Ibu Kepala Sekolah</h4>
-                                <p id="kepsek-title" class="text-xs lg:text-sm text-gray-500 font-medium">Head of KB-TK, Sedaya Bintang</p>
+                    <!-- FOTO KEPALA SEKOLAH (Rasio 3:4 Portrait Terkurasi) -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        <div class="relative w-full max-w-[280px] sm:max-w-[310px]">
+                            <!-- Glow Halus di Belakang Foto -->
+                            <div class="absolute -inset-2 bg-gradient-to-tr from-brand-primary/10 via-brand-yellow/15 to-transparent rounded-3xl filter blur-lg opacity-80 pointer-events-none"></div>
+
+                            <!-- Frame 3:4 Portrait with Layered Hardware Cross-Fade -->
+                            <div id="kepsek-stage-photo" class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-slate-100 group">
+                                <!-- Foto KB-TK (Layer 0 - Dr. Ibu Kepala Sekolah) -->
+                                <img id="kepsek-img-0" src="assets/images/head-of-school.jpg" alt="Dr. Ibu Kepala Sekolah - KB-TK" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 ease-in-out opacity-100 group-hover:scale-105">
+                                <!-- Foto SD (Layer 1 - SD Principal) -->
+                                <img id="kepsek-img-1" src="assets/images/guru-sedaya-bintang.jpg" alt="Bapak Kepala Sekolah - SD" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 ease-in-out opacity-0 group-hover:scale-105">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none z-10"></div>
+
+                                <!-- Glass Name Plate Badge di Atas Foto -->
+                                <div class="absolute bottom-3.5 left-3.5 right-3.5 bg-white/95 backdrop-blur-md px-4 py-3 rounded-xl border border-white/80 shadow-md z-20">
+                                    <h4 id="kepsek-name" class="font-extrabold text-brand-primary text-sm sm:text-base leading-snug transition-opacity duration-300">Dr. Ibu Kepala Sekolah</h4>
+                                    <p id="kepsek-role" class="text-xs text-brand-yellow font-bold mt-0.5 transition-opacity duration-300">Head of Preschool & Kindergarten</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Teks Sambutan -->
-                    <div class="lg:col-span-7 relative z-10 flex flex-col justify-center">
-                        <i class="fa-solid fa-quote-left text-6xl lg:text-8xl text-gray-100 absolute -top-4 lg:-top-10 -left-4 lg:-left-10 -z-10"></i>
-                        
-                        <h2 class="text-sm font-extrabold text-brand-yellow uppercase tracking-widest mb-3">Sambutan Hangat</h2>
-                        <div id="kepsek-text-wrapper" class="transition-opacity duration-500">
-                            <h3 id="kepsek-quote" class="text-2xl lg:text-4xl font-extrabold text-brand-primary mb-6 leading-tight">
-                                "Usia dini adalah masa emas untuk membentuk bahasa dan karakter anak — tugas kami mendampingi mereka di masa ini."
-                            </h3>
-                            
-                            <div class="space-y-4 text-sm lg:text-base text-gray-600 leading-relaxed mb-8">
-                                <p id="kepsek-p1">
-                                    Pendidikan anak usia dini merupakan masa emas perkembangan otak. Pada masa ini, anak memiliki kelenturan tinggi untuk menyerap bahasa dan nilai kehidupan.
-                                </p>
-                                <p id="kepsek-p2">
-                                    Kami menitikberatkan pendidikan Budi Pekerti berlandaskan Di Zi Gui dan 10 Nilai Moral, membekali trilingual secara interaktif, dan mengasah nalar kritis lewat STEAM.
-                                </p>
+                    <!-- KONTEN SAMBUTAN RINGKAS & INSPIRATIF -->
+                    <div class="lg:col-span-7 relative z-10">
+                        <div id="kepsek-stage-text" class="transition-all duration-300 ease-out">
+                            <!-- Kicker & Kutipan -->
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-7 h-7 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center text-xs">
+                                    <i class="fa-solid fa-quote-left"></i>
+                                </span>
+                                <span id="kepsek-kicker" class="text-xs font-extrabold text-brand-primary uppercase tracking-wider">
+                                    Sambutan · Jenjang KB-TK
+                                </span>
                             </div>
-                        </div>
-                        
-                        <div>
-                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="btn-outline-fill inline-block border-2 border-brand-primary text-brand-primary font-bold px-7 py-3 lg:px-8 lg:py-3.5 rounded-full text-center text-sm lg:text-base mt-2">
-                                Lihat Panduan Pendaftaran
-                            </a>
+
+                            <!-- Headline Singkat & Tegas -->
+                            <h3 id="kepsek-quote" class="text-xl sm:text-2xl font-extrabold text-brand-primary mb-3.5 leading-snug">
+                                "Tumbuh Bahagia, Berkarakter Mulia"
+                            </h3>
+
+                            <!-- Isi Pesan Ringkas (Padat, Hangat, Tanpa Tombol di Bawahnya) -->
+                            <p id="kepsek-p1" class="text-sm sm:text-base text-gray-600 leading-relaxed font-medium">
+                                Kami mendampingi masa emas setiap anak dengan penuh kasih dan keteladanan budi pekerti, agar mereka tumbuh bahagia, berkarakter luhur, dan mencintai proses belajar.
+                            </p>
+
+                            <!-- Indikator Transisi Otomatis Halus & Konsisten -->
+                            <div class="flex items-center gap-2 mt-6 pt-5 border-t border-gray-150/70">
+                                <button type="button" onclick="window.selectKepsek && window.selectKepsek(0)" id="kepsek-dot-0" aria-label="Lihat Sambutan KB-TK" class="h-1.5 w-8 rounded-full bg-brand-primary transition-all duration-500 cursor-pointer focus:outline-none"></button>
+                                <button type="button" onclick="window.selectKepsek && window.selectKepsek(1)" id="kepsek-dot-1" aria-label="Lihat Sambutan SD" class="h-1.5 w-2.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-500 cursor-pointer focus:outline-none"></button>
+                                <span id="kepsek-level-badge" class="ml-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                                    Preschool & Kindergarten (KB-TK)
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                 </div>
+
             </div>
         </section>
 
-        <!-- ==================== 3. HERITAGE & FOUNDATION (INTERACTIVE TABS) ==================== -->
+        <!-- ==================== 3. HERITAGE & FOUNDATION (ORIGINAL INTERACTIVE TABS) ==================== -->
         <section id="heritage-section" class="py-16 lg:py-24 bg-brand-gray border-t border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10 lg:mb-16">
@@ -129,17 +161,27 @@
                         <span class="inline-block bg-brand-yellow text-brand-primary font-extrabold text-xs px-3 py-1 rounded-full mb-4">50 Tahun Dedikasi</span>
                         <h3 class="text-2xl lg:text-3xl font-extrabold text-brand-primary mb-4 leading-tight">Bagian dari PT Summarecon Agung Tbk</h3>
                         <p class="text-sm lg:text-base text-gray-600 mb-6 leading-relaxed">
-                            PT Summarecon Agung Tbk mewujudkan visinya melalui dedikasi di bidang pendidikan. Sekolah ini berada dalam satu kawasan terintegrasi Summarecon Bandung bersama fasilitas kesehatan seperti Rumah Sakit Santo Borromeus.
+                            Sedaya Bintang adalah sekolah terpadu yang didirikan oleh Summarecon Agung, menekankan budi pekerti sebagai dasar pengembangan keterampilan dan pengetahuan siswa.
                         </p>
                         <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="text-brand-primary font-bold inline-flex items-center gap-2 hover:text-brand-yellow transition-colors group">
                             Jelajahi Kampus Bandung <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
-                    <div class="order-1 lg:order-2 relative rounded-xl overflow-hidden aspect-[4/3] lg:aspect-video bg-gray-100">
-                        <img src="assets/images/lokasi-summarecon-bandung.jpg" alt="Summarecon Bandung" class="w-full h-full object-cover">
-                        <!-- Overlay Badge -->
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md font-bold text-brand-primary text-xs lg:text-sm">
-                            <i class="fa-solid fa-map-location-dot text-brand-red mr-1"></i> Summarecon Bandung
+                    <!-- Video Kawasan Summarecon (Format Embed Player YouTube - Bukan GIF) -->
+                    <div class="order-1 lg:order-2 relative rounded-2xl overflow-hidden aspect-video bg-slate-900 shadow-xl border-2 border-white/80 group">
+                        <!-- IFRAME YOUTUBE: Anda dapat mengganti link src YouTube kapan saja di bawah ini -->
+                        <iframe 
+                            id="summarecon-youtube-frame"
+                            class="w-full h-full border-0 rounded-2xl" 
+                            src="https://www.youtube-nocookie.com/embed/Zz_C_jD289w?rel=0&modestbranding=1" 
+                            title="Video Profil Kawasan Summarecon Bandung - Sekolah Terpadu Sedaya Bintang" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                        <!-- Overlay Glass Badge Summarecon Bandung -->
+                        <div class="pointer-events-none absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-lg border border-white/80 font-bold text-brand-primary text-xs flex items-center gap-1.5 z-10">
+                            <i class="fa-solid fa-map-location-dot text-brand-red"></i>
+                            <span>Summarecon Bandung</span>
                         </div>
                     </div>
                 </div>
@@ -163,67 +205,101 @@
             </div>
         </section>
 
-        <!-- ==================== 4. TIGA PILAR (BENTO GRID) ==================== -->
+        <!-- ==================== 4. TIGA PILAR (SLIDER - SHADOW AMAN TANPA TERPOTONG) ==================== -->
         <section id="pilar-section" class="py-16 lg:py-24 bg-white relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-2xl lg:text-4xl font-extrabold text-brand-primary mb-3">Tiga Pilar Utama Sekolah</h2>
-                <p class="text-sm lg:text-base text-gray-500 font-medium mb-12 lg:mb-16 max-w-2xl mx-auto">Pendekatan pendidikan untuk membentuk kompetensi inti ACT (Attitude, Communication, Thinking) pada murid.</p>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 text-left">
-                    
-                    <!-- Pilar 1: Budi Pekerti -->
-                    <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-red/5 rounded-bl-[100px] -z-10 group-hover:bg-brand-red/10 transition-colors"></div>
-                        <div class="w-14 h-14 lg:w-16 lg:h-16 bg-brand-gray rounded-2xl flex items-center justify-center mb-6 relative">
-                            <div class="absolute inset-0 bg-brand-red rounded-full filter blur-[15px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                            <span class="text-3xl relative z-10 drop-shadow-md group-hover:scale-110 transition-transform">❤️</span>
-                        </div>
-                        <h3 class="text-xl lg:text-2xl font-bold text-brand-primary mb-3">Budi Pekerti <span class="font-normal text-lg ml-1 text-gray-400">德行</span></h3>
-                        <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-1">
-                            Pendidikan Budi Pekerti berlandaskan Di Zi Gui, diwujudkan lewat 10 Nilai Moral dalam interaksi sehari-hari dan program Hari Bakti.
-                        </p>
-                        <ul class="text-xs lg:text-sm text-gray-500 font-medium space-y-2 mt-auto pt-4 border-t border-gray-50">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Hormat & Berbakti</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Terbuka Semua Agama</li>
-                        </ul>
+                <!-- Section Header with Navigation Controls -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-6 text-center md:text-left">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-extrabold text-brand-yellow uppercase tracking-widest mb-1.5 block">Kompetensi Inti ACT</span>
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary tracking-tight">Tiga Pilar Utama Sekolah</h2>
+                        <p class="text-sm lg:text-base text-gray-500 font-medium mt-2">Pendekatan pendidikan untuk membentuk karakter, komunikasi, dan kecerdasan analitis murid.</p>
                     </div>
 
-                    <!-- Pilar 2: Trilingual -->
-                    <div class="bg-white rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-bl-[100px] -z-10 group-hover:bg-brand-primary/10 transition-colors"></div>
-                        <div class="w-14 h-14 lg:w-16 lg:h-16 bg-brand-gray rounded-2xl flex items-center justify-center mb-6 relative">
-                            <div class="absolute inset-0 bg-brand-primary rounded-full filter blur-[15px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                            <span class="text-3xl relative z-10 drop-shadow-md group-hover:scale-110 transition-transform">🌏</span>
-                        </div>
-                        <h3 class="text-xl lg:text-2xl font-bold text-brand-primary mb-3">Trilingual</h3>
-                        <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-1">
-                            Penggunaan tiga bahasa pengantar (Indonesia, Inggris, Mandarin) secara interaktif. Pada jenjang KB dan TK, persentase penggunaan Bahasa Mandarin adalah 70%.
-                        </p>
-                        <ul class="text-xs lg:text-sm text-gray-500 font-medium space-y-2 mt-auto pt-4 border-t border-gray-50">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-primary"></i> 1 Guru Native Mandarin di Kelas</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-primary"></i> 2 Guru Pendamping (ID & EN)</li>
-                        </ul>
-                    </div>
-
-                    <!-- Pilar 3: STEAM -->
-                    <div class="md:col-span-2 lg:col-span-1 bg-white rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group flex flex-col relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/10 rounded-bl-[100px] -z-10 group-hover:bg-brand-yellow/20 transition-colors"></div>
-                        <div class="w-14 h-14 lg:w-16 lg:h-16 bg-brand-gray rounded-2xl flex items-center justify-center mb-6 relative">
-                            <div class="absolute inset-0 bg-brand-yellow rounded-full filter blur-[15px] opacity-40 group-hover:opacity-60 transition-opacity"></div>
-                            <span class="text-3xl relative z-10 drop-shadow-md group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">🚀</span>
-                        </div>
-                        <h3 class="text-xl lg:text-2xl font-bold text-brand-primary mb-3">STEAM</h3>
-                        <p class="text-sm text-gray-600 mb-4 leading-relaxed flex-1">
-                            Pendekatan berbasis proyek yang memadukan Kurikulum Nasional dengan Pearson Edexcel iPrimary, serta menggunakan Framework Matematika Singapura dari Dr. Yeap Ban Har.
-                        </p>
-                        <ul class="text-xs lg:text-sm text-gray-500 font-medium space-y-2 mt-auto pt-4 border-t border-gray-50">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-yellow"></i> Metode Learning Corners (Prof. Lin Pei Rong)</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-yellow"></i> Keterampilan 4C Abad ke-21</li>
-                        </ul>
+                    <!-- Navigation Buttons (Slide Controls - Mobile/Tablet Only) -->
+                    <div class="flex lg:hidden items-center justify-center md:justify-end gap-3 shrink-0">
+                        <button onclick="scrollPilar('left')" aria-label="Slide sebelumnya" class="w-11 h-11 rounded-full border-2 border-gray-200 bg-white flex items-center justify-center text-gray-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-200 shadow-sm hover:shadow group focus:outline-none">
+                            <i class="fa-solid fa-arrow-left text-sm group-hover:-translate-x-0.5 transition-transform"></i>
+                        </button>
+                        <button onclick="scrollPilar('right')" aria-label="Slide berikutnya" class="w-11 h-11 rounded-full border-2 border-gray-200 bg-white flex items-center justify-center text-gray-600 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-200 shadow-sm hover:shadow group focus:outline-none">
+                            <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-0.5 transition-transform"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="mt-12 lg:mt-16 text-center">
+                <!-- Viewport: Di Desktop tampil statis 3 kolom (tanpa geser), di Mobile/Tablet tetap slider interaktif snap-x. Shadow atas-bawah aman dan utuh. -->
+                <div class="relative -mx-4 sm:-mx-6 lg:mx-0">
+                    <div id="pilar-slider" class="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none gap-6 lg:gap-8 pt-6 pb-12 sm:pt-8 sm:pb-14 px-4 sm:px-6 lg:px-0 hide-scrollbar scroll-smooth">
+                        
+                        <!-- Pilar 1: Budi Pekerti -->
+                        <div class="snap-center lg:snap-align-none shrink-0 lg:shrink w-[84vw] sm:w-[360px] lg:w-auto bg-white rounded-3xl p-7 lg:p-9 shadow-[0_12px_35px_-8px_rgba(26,54,93,0.08)] hover:shadow-[0_24px_50px_-10px_rgba(26,54,93,0.16)] transition-all duration-500 transform hover:-translate-y-2 border border-gray-150 group flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-red/5 rounded-bl-[100px] -z-10 group-hover:bg-brand-red/10 transition-colors"></div>
+                            <div>
+                                <div class="w-14 h-14 lg:w-16 lg:h-16 bg-brand-gray rounded-2xl flex items-center justify-center mb-6 relative">
+                                    <div class="absolute inset-0 bg-brand-red rounded-full filter blur-[15px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                                    <span class="text-3xl relative z-10 drop-shadow-md group-hover:scale-110 transition-transform">❤️</span>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-bold text-brand-primary mb-3">Budi Pekerti <span class="font-normal text-lg ml-1 text-gray-400">德行</span></h3>
+                                <p class="text-sm text-gray-600 mb-5 leading-relaxed">
+                                    Pendidikan Budi Pekerti berlandaskan Di Zi Gui, diwujudkan lewat 10 Nilai Moral dalam interaksi sehari-hari dan program Hari Bakti.
+                                </p>
+                            </div>
+                            <ul class="text-xs lg:text-sm text-gray-500 font-medium space-y-2.5 pt-4 border-t border-gray-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Hormat & Berbakti</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-red"></i> Terbuka Semua Agama</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pilar 2: Trilingual -->
+                        <div class="snap-center lg:snap-align-none shrink-0 lg:shrink w-[84vw] sm:w-[360px] lg:w-auto bg-white rounded-3xl p-7 lg:p-9 shadow-[0_12px_35px_-8px_rgba(26,54,93,0.08)] hover:shadow-[0_24px_50px_-10px_rgba(26,54,93,0.16)] transition-all duration-500 transform hover:-translate-y-2 border border-gray-150 group flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 rounded-bl-[100px] -z-10 group-hover:bg-brand-primary/10 transition-colors"></div>
+                            <div>
+                                <div class="w-14 h-14 lg:w-16 lg:h-16 bg-brand-gray rounded-2xl flex items-center justify-center mb-6 relative">
+                                    <div class="absolute inset-0 bg-brand-primary rounded-full filter blur-[15px] opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                                    <span class="text-3xl relative z-10 drop-shadow-md group-hover:scale-110 transition-transform">🌏</span>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-bold text-brand-primary mb-3">Trilingual</h3>
+                                <p class="text-sm text-gray-600 mb-5 leading-relaxed">
+                                    Penggunaan tiga bahasa pengantar (Indonesia, Inggris, Mandarin) secara interaktif. Pada jenjang KB dan TK, persentase penggunaan Bahasa Mandarin adalah 70%.
+                                </p>
+                            </div>
+                            <ul class="text-xs lg:text-sm text-gray-500 font-medium space-y-2.5 pt-4 border-t border-gray-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-primary"></i> 1 Guru Native Mandarin di Kelas</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-primary"></i> 2 Guru Pendamping (ID & EN)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pilar 3: STEAM -->
+                        <div class="snap-center lg:snap-align-none shrink-0 lg:shrink w-[84vw] sm:w-[360px] lg:w-auto bg-white rounded-3xl p-7 lg:p-9 shadow-[0_12px_35px_-8px_rgba(26,54,93,0.08)] hover:shadow-[0_24px_50px_-10px_rgba(26,54,93,0.16)] transition-all duration-500 transform hover:-translate-y-2 border border-gray-150 group flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow/10 rounded-bl-[100px] -z-10 group-hover:bg-brand-yellow/20 transition-colors"></div>
+                            <div>
+                                <div class="w-14 h-14 lg:w-16 lg:h-16 bg-brand-gray rounded-2xl flex items-center justify-center mb-6 relative">
+                                    <div class="absolute inset-0 bg-brand-yellow rounded-full filter blur-[15px] opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                                    <span class="text-3xl relative z-10 drop-shadow-md group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">🚀</span>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-bold text-brand-primary mb-3">STEAM</h3>
+                                <p class="text-sm text-gray-600 mb-5 leading-relaxed">
+                                    Pendekatan berbasis proyek yang memadukan Kurikulum Nasional dengan Pearson Edexcel iPrimary, serta Framework Matematika Singapura.
+                                </p>
+                            </div>
+                            <ul class="text-xs lg:text-sm text-gray-500 font-medium space-y-2.5 pt-4 border-t border-gray-100">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-yellow"></i> Learning Corners (Prof. Lin Pei Rong)</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-yellow"></i> Keterampilan 4C Abad ke-21</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Slider Pagination Dots Indicator (Mobile/Tablet Only) -->
+                <div class="flex lg:hidden justify-center items-center gap-2 mb-10" id="pilar-dots">
+                    <button onclick="goToPilar(0)" class="w-8 h-2 rounded-full bg-brand-primary transition-all duration-300 pilar-dot" aria-label="Slide 1: Budi Pekerti"></button>
+                    <button onclick="goToPilar(1)" class="w-2.5 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pilar-dot" aria-label="Slide 2: Trilingual"></button>
+                    <button onclick="goToPilar(2)" class="w-2.5 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pilar-dot" aria-label="Slide 3: STEAM"></button>
+                </div>
+
+                <div class="text-center">
                     <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="inline-flex items-center justify-center bg-brand-yellow text-brand-primary font-bold px-8 py-4 lg:px-10 lg:py-4 rounded-full shadow-lg hover:bg-brand-primary hover:text-white transition-all transform hover:-translate-y-1 text-sm lg:text-base w-full sm:w-auto gap-3">
                         <i class="fa-solid fa-book-bookmark"></i> Pelajari Metode Belajar Kami
                     </a>
@@ -231,7 +307,7 @@
             </div>
         </section>
 
-        <!-- ==================== 5. BRIDGING FASILITAS ==================== -->
+        <!-- ==================== 6. BRIDGING FASILITAS (ORIGINAL) ==================== -->
         <section id="fasilitas-section" class="py-16 lg:py-24 bg-brand-gray">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 lg:mb-12 gap-6">
@@ -288,7 +364,7 @@
             </div>
         </section>
 
-        <!-- ==================== 6. BRIDGING BIAYA SEKOLAH ==================== -->
+        <!-- ==================== 6. BRIDGING BIAYA SEKOLAH (ORIGINAL) ==================== -->
         <section id="bridging-biaya" class="py-16 lg:py-24 bg-white relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="bg-brand-gray border border-gray-100 rounded-3xl p-6 lg:p-12 relative overflow-hidden shadow-sm">
@@ -317,8 +393,8 @@
                                 </div>
                             </div>
 
-                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="bg-brand-primary text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#15346b] transition-colors inline-block text-sm">
-                                <i class="fa-solid fa-file-invoice-dollar mr-2"></i> Cek Rincian Biaya Sekolah
+                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="bg-brand-primary text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#15346b] transition-all inline-flex items-center gap-2.5 text-sm shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                                <i class="fa-brands fa-whatsapp text-lg text-[#25D366]"></i> Cek Rincian Biaya Sekolah
                             </a>
                         </div>
                         
@@ -330,7 +406,7 @@
             </div>
         </section>
 
-        <!-- ==================== 7. FINAL CTA (KUNJUNGI KAMPUS) ==================== -->
+        <!-- ==================== 7. FINAL CTA (ORIGINAL) ==================== -->
         <section class="relative py-32 bg-gray-900 flex items-center justify-center min-h-[450px]">
             <div class="absolute inset-0 z-0">
                 <img src="assets/images/kampus-gedung-utama.jpg" alt="Campus Building" class="w-full h-full object-cover">
@@ -357,7 +433,6 @@
     <div id="app-footer"></div>
 
     <!-- Memanggil JS Global -->
-    <!-- PERHATIAN: Pastikan file js/components.js dimuat lebih dulu dari js/app.js -->
     <script src="js/components.js"></script>
     <script src="js/app.js"></script>
 

@@ -125,7 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
         const selectedTab = document.getElementById('tab-' + tabId);
-        if(selectedTab) selectedTab.classList.add('active');
+        if(selectedTab) {
+            selectedTab.classList.add('active');
+            const vid = selectedTab.querySelector('video');
+            if (vid) vid.play().catch(() => {});
+        }
         
         if(tabId === 'summarecon') {
             if(bg) bg.style.left = '4px';
@@ -610,55 +614,174 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', window.animateProgressBars);
     window.animateProgressBars();
 
-    const principalData = [
+    /* --- 12. ABOUT KEPSEK AUTO FADE TRANSITION --- */
+    const kepsekList = [
         {
             name: "Dr. Ibu Kepala Sekolah",
-            title: "Head of KB-TK, Sedaya Bintang",
-            quote: '"Usia dini adalah masa emas untuk membentuk bahasa dan karakter anak — tugas kami mendampingi mereka di masa ini."',
-            p1: "Pendidikan anak usia dini merupakan masa emas perkembangan otak. Pada masa ini, anak memiliki kelenturan tinggi untuk menyerap bahasa dan nilai kehidupan.",
-            p2: "Kami menitikberatkan pendidikan Budi Pekerti berlandaskan Di Zi Gui dan 10 Nilai Moral, membekali trilingual secara interaktif, dan mengasah nalar kritis lewat STEAM.",
+            role: "Head of Preschool & Kindergarten",
+            level: "Preschool & Kindergarten (KB-TK)",
+            age: "Usia 2 – 6 Tahun",
+            kicker: "Sambutan · Jenjang KB-TK",
+            quote: '"Tumbuh Bahagia, Berkarakter Mulia"',
+            p1: "Kami mendampingi masa emas setiap anak dengan penuh kasih dan keteladanan budi pekerti, agar mereka tumbuh bahagia, berkarakter luhur, dan mencintai proses belajar.",
             img: "assets/images/head-of-school.jpg"
         },
         {
             name: "Bapak Kepala Sekolah",
-            title: "Head of SD, Sedaya Bintang",
-            quote: '"Karakter yang kuat dan cara berpikir yang kritis adalah bekal utama murid untuk masa depan."',
-            p1: "Di tingkat dasar, kami membekali murid dengan kompetensi akademik yang kokoh tanpa meninggalkan nilai moral dan budi pekerti.",
-            p2: "Kurikulum Nasional yang dipadukan dengan ACT (Attitude, Communication, Thinking) dan lingkungan Trilingual mempersiapkan anak untuk masa depan yang lebih luas.",
+            role: "Head of Primary School",
+            level: "Primary School (SD)",
+            age: "Usia 6 – 12 Tahun",
+            kicker: "Sambutan · Jenjang SD",
+            quote: '"Cerdas Bernalar, Kokoh Berkarakter"',
+            p1: "Kami membimbing murid mengasah daya nalar kritis dan kreativitas belajar, berlandaskan nilai moral yang kuat untuk menyongsong masa depan dunia global.",
             img: "assets/images/guru-sedaya-bintang.jpg"
         }
     ];
-    
-    let currentPrincipalIndex = 0;
-    const kepsekImgEl = document.getElementById("kepsek-img");
-    const kepsekNameEl = document.getElementById("kepsek-name");
-    const kepsekTitleEl = document.getElementById("kepsek-title");
-    const kepsekQuoteEl = document.getElementById("kepsek-quote");
-    const kepsekP1El = document.getElementById("kepsek-p1");
-    const kepsekP2El = document.getElementById("kepsek-p2");
-    const kepsekImgWrapper = document.getElementById("kepsek-img-wrapper");
-    const kepsekTextWrapper = document.getElementById("kepsek-text-wrapper");
 
-    if(kepsekImgEl && kepsekTextWrapper) {
-        setInterval(() => {
-            kepsekImgWrapper.style.opacity = '0';
-            kepsekTextWrapper.style.opacity = '0';
-            
-            setTimeout(() => {
-                currentPrincipalIndex = (currentPrincipalIndex + 1) % principalData.length;
-                const data = principalData[currentPrincipalIndex];
+    // Preload assets langsung di memori browser agar transisi pertama tidak buffering
+    kepsekList.forEach(item => {
+        const preImg = new Image();
+        preImg.src = item.img;
+    });
+
+    let currentKepsekIndex = 0;
+    let kepsekAutoTimer = null;
+    const KEPSEK_INTERVAL_MS = 4500; // Konsisten 4.5 detik dari awal buka web
+
+    function applyKepsekSlide(index) {
+        currentKepsekIndex = index;
+        const data = kepsekList[index];
+        if (!data) return;
+
+        const img0 = document.getElementById('kepsek-img-0');
+        const img1 = document.getElementById('kepsek-img-1');
+        const textContainer = document.getElementById('kepsek-stage-text');
+        const nameEl = document.getElementById('kepsek-name');
+        const roleEl = document.getElementById('kepsek-role');
+        const kickerEl = document.getElementById('kepsek-kicker');
+        const quoteEl = document.getElementById('kepsek-quote');
+        const p1El = document.getElementById('kepsek-p1');
+        const dot0 = document.getElementById('kepsek-dot-0');
+        const dot1 = document.getElementById('kepsek-dot-1');
+        const badgeEl = document.getElementById('kepsek-level-badge');
+
+        // 1. Hardware-accelerated cross-fade foto (langsung transisi tanpa tunggu download gambar)
+        if (img0 && img1) {
+            if (index === 0) {
+                img0.classList.remove('opacity-0');
+                img0.classList.add('opacity-100');
+                img1.classList.remove('opacity-100');
+                img1.classList.add('opacity-0');
+            } else {
+                img1.classList.remove('opacity-0');
+                img1.classList.add('opacity-100');
+                img0.classList.remove('opacity-100');
+                img0.classList.add('opacity-0');
+            }
+        }
+
+        // 2. Smooth text fade
+        if (textContainer) textContainer.style.opacity = '0';
+        if (nameEl) nameEl.style.opacity = '0';
+        if (roleEl) roleEl.style.opacity = '0';
+
+        setTimeout(() => {
+            if (nameEl) nameEl.textContent = data.name;
+            if (roleEl) roleEl.textContent = data.role;
+            if (kickerEl) kickerEl.textContent = data.kicker;
+            if (quoteEl) quoteEl.textContent = data.quote;
+            if (p1El) p1El.textContent = data.p1;
+            if (badgeEl) badgeEl.textContent = data.level;
+
+            if (dot0 && dot1) {
+                if (index === 0) {
+                    dot0.className = "h-1.5 w-8 rounded-full bg-brand-primary transition-all duration-500 cursor-pointer focus:outline-none";
+                    dot1.className = "h-1.5 w-2.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-500 cursor-pointer focus:outline-none";
+                } else {
+                    dot1.className = "h-1.5 w-8 rounded-full bg-brand-primary transition-all duration-500 cursor-pointer focus:outline-none";
+                    dot0.className = "h-1.5 w-2.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-500 cursor-pointer focus:outline-none";
+                }
+            }
+
+            if (textContainer) textContainer.style.opacity = '1';
+            if (nameEl) nameEl.style.opacity = '1';
+            if (roleEl) roleEl.style.opacity = '1';
+        }, 180);
+    }
+
+    function startKepsekAutoFade() {
+        if (kepsekAutoTimer) clearInterval(kepsekAutoTimer);
+        kepsekAutoTimer = setInterval(() => {
+            const nextIndex = (currentKepsekIndex + 1) % kepsekList.length;
+            applyKepsekSlide(nextIndex);
+        }, KEPSEK_INTERVAL_MS);
+    }
+
+    // Navigasi manual lewat dot jika ingin langsung melihat jenjang lain
+    window.selectKepsek = function(idx) {
+        applyKepsekSlide(idx);
+        startKepsekAutoFade(); // Reset interval agar tetap konsisten 4.5 detik
+    };
+
+    const kepsekShowcase = document.getElementById('kepsek-showcase');
+    if (kepsekShowcase) {
+        startKepsekAutoFade();
+    }
+
+    /* --- 13. ABOUT TIGA PILAR SLIDER --- */
+    window.scrollPilar = function(direction) {
+        const slider = document.getElementById('pilar-slider');
+        if (!slider) return;
+        const card = slider.querySelector('.snap-center');
+        const scrollAmount = card ? (card.offsetWidth + 24) : 400;
+        if (direction === 'left') {
+            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    };
+
+    window.goToPilar = function(index) {
+        const slider = document.getElementById('pilar-slider');
+        if (!slider) return;
+        const cards = slider.querySelectorAll('.snap-center');
+        if (cards[index]) {
+            const cardLeft = cards[index].offsetLeft;
+            const sliderLeft = slider.offsetLeft;
+            slider.scrollTo({ left: cardLeft - sliderLeft, behavior: 'smooth' });
+        }
+    };
+
+    const pilarSlider = document.getElementById('pilar-slider');
+    const pilarDots = document.querySelectorAll('.pilar-dot');
+    if (pilarSlider && pilarDots.length > 0) {
+        let pilarScrollTimeout;
+        pilarSlider.addEventListener('scroll', () => {
+            clearTimeout(pilarScrollTimeout);
+            pilarScrollTimeout = setTimeout(() => {
+                const scrollLeft = pilarSlider.scrollLeft;
+                const cards = pilarSlider.querySelectorAll('.snap-center');
+                if (cards.length === 0) return;
                 
-                kepsekImgEl.src = data.img;
-                kepsekNameEl.textContent = data.name;
-                kepsekTitleEl.textContent = data.title;
-                kepsekQuoteEl.textContent = data.quote;
-                kepsekP1El.textContent = data.p1;
-                kepsekP2El.textContent = data.p2;
-                
-                kepsekImgWrapper.style.opacity = '1';
-                kepsekTextWrapper.style.opacity = '1';
-            }, 500);
-        }, 5000);
+                let activeIndex = 0;
+                let minDiff = Infinity;
+                cards.forEach((card, idx) => {
+                    const diff = Math.abs((card.offsetLeft - pilarSlider.offsetLeft) - scrollLeft);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        activeIndex = idx;
+                    }
+                });
+
+                pilarDots.forEach((dot, idx) => {
+                    if (idx === activeIndex) {
+                        dot.className = "w-8 h-2 rounded-full bg-brand-primary transition-all duration-300 pilar-dot";
+                    } else {
+                        dot.className = "w-2.5 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pilar-dot";
+                    }
+                });
+            }, 50);
+        });
     }
 
 });
@@ -892,5 +1015,56 @@ document.addEventListener('DOMContentLoaded', () => {
             if (modal && !modal.classList.contains('hidden')) {
                 window.closeTestimonialModal();
             }
+            const heroModal = document.getElementById('hero-photo-modal');
+            if (heroModal && heroModal.classList.contains('opacity-100')) {
+                window.closeHeroPhotoModal();
+            }
         }
     });
+
+    // Hero Roll Film Photo Modal Lightbox
+    window.openHeroPhotoModal = function(imageSrc, title) {
+        const modal = document.getElementById('hero-photo-modal');
+        const box = document.getElementById('hero-photo-modal-box');
+        const img = document.getElementById('hero-modal-img');
+        const titleEl = document.getElementById('hero-modal-title');
+        
+        if (!modal || !img) return;
+        
+        img.src = imageSrc;
+        if (titleEl) titleEl.textContent = title || 'Galeri Sedaya Bintang';
+        
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100', 'pointer-events-auto');
+        if (box) {
+            box.classList.remove('scale-95');
+            box.classList.add('scale-100');
+        }
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeHeroPhotoModal = function() {
+        const modal = document.getElementById('hero-photo-modal');
+        const box = document.getElementById('hero-photo-modal-box');
+        
+        if (!modal) return;
+        
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        if (box) {
+            box.classList.remove('scale-100');
+            box.classList.add('scale-95');
+        }
+        document.body.style.overflow = '';
+    };
+
+    // Close when clicking modal backdrop
+    const heroPhotoModal = document.getElementById('hero-photo-modal');
+    if (heroPhotoModal) {
+        heroPhotoModal.addEventListener('click', (e) => {
+            if (e.target === heroPhotoModal) {
+                window.closeHeroPhotoModal();
+            }
+        });
+    }
+

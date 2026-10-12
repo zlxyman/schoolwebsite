@@ -15,7 +15,12 @@ app.all('/health', (req, res) => {
 
 // Serve static files from the public directory with automatic html extension resolution
 app.use(express.static(path.join(__dirname, 'public'), {
-  extensions: ['html', 'htm']
+  extensions: ['html', 'htm'],
+  setHeaders: (res, path) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+  }
 }));
 
 // Fallback to index.html for unrecognized routes

@@ -2,7 +2,7 @@
 const navbarTemplate = `
     <!-- HEADER & NAVBAR MODERN MINIMALIS -->
     <header class="bg-white/95 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50 transition-all duration-300" id="main-header">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 lg:h-24 relative flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 lg:h-20 relative flex justify-between items-center">
             
             <div class="flex-shrink-0 flex items-center">
                 <a href="index.html" class="logo-home-link group relative flex items-center gap-2.5 focus:outline-none transition-transform duration-200 active:scale-95" title="Kembali ke Beranda">
@@ -11,11 +11,25 @@ const navbarTemplate = `
                 </a>
             </div>
 
-            <nav class="hidden lg:flex flex-1 justify-center space-x-8 h-full items-center z-50">
+            <nav class="hidden lg:flex flex-1 justify-center space-x-7 h-full items-center z-50">
                 <div class="nav-item group h-full flex items-center cursor-pointer">
-                    <div id="nav-about" class="relative h-full flex items-center">
-                        <a href="about.html" class="text-sm font-bold text-gray-700 group-hover:text-brand-primary transition-colors">About</a>
+                    <div id="nav-about" class="relative h-full flex items-center gap-1.5 text-sm font-bold text-gray-700 group-hover:text-brand-primary transition-colors">
+                        About <i class="fa-solid fa-angle-down text-[11px] mt-0.5 transition-transform duration-300 group-hover:rotate-180"></i>
                         <span class="nav-underline"></span>
+                    </div>
+                    <div class="mega-menu absolute top-[100%] left-1/2 w-[540px] max-w-[90vw] bg-white shadow-2xl rounded-b-2xl border border-gray-100 overflow-hidden pt-2 pb-6">
+                        <div class="px-8 pt-4 grid grid-cols-2 gap-4">
+                            <a href="about.html" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
+                                <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-school text-lg"></i></div>
+                                <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">Tentang Kami</div>
+                                <div class="text-[11px] text-gray-500 leading-tight">Profil, visi misi, & kepemimpinan sekolah.</div>
+                            </a>
+                            <a href="prestasi-siswa.html" class="block group/link p-4 rounded-2xl border border-transparent hover:border-gray-100 hover:bg-gray-50 transition-all duration-300">
+                                <div class="w-10 h-10 bg-brand-gray rounded-xl flex items-center justify-center mb-3 group-hover/link:bg-brand-primary group-hover/link:text-white text-brand-primary transition-all"><i class="fa-solid fa-trophy text-lg"></i></div>
+                                <div class="font-bold text-brand-primary mb-1 group-hover/link:text-brand-yellow transition-colors">Prestasi Siswa</div>
+                                <div class="text-[11px] text-gray-500 leading-tight">Galeri medali & rekam jejak juara murid.</div>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
@@ -180,10 +194,16 @@ const navbarTemplate = `
                 <span class="mobile-nav-icon w-8 h-8 rounded-lg bg-gray-100 text-gray-500 flex items-center justify-center text-sm"><i class="fa-solid fa-house"></i></span>
                 <span>Beranda Utama</span>
             </a>
-            <a href="about.html" id="mnav-about" onclick="closeMobileMenu()" class="mobile-nav-link flex items-center gap-3 py-3.5 px-4 rounded-xl font-bold text-gray-700 hover:text-brand-primary hover:bg-brand-gray transition-all duration-200">
-                <span class="mobile-nav-icon w-8 h-8 rounded-lg bg-gray-100 text-gray-500 flex items-center justify-center text-sm"><i class="fa-solid fa-circle-info"></i></span>
-                <span>About</span>
-            </a>
+            <div class="rounded-xl border border-gray-100 overflow-hidden bg-white">
+                <button id="mnav-about" class="mobile-nav-link w-full flex justify-between items-center py-3.5 px-4 font-bold text-gray-700 hover:text-brand-primary transition-all duration-200" onclick="toggleMobileAccordion('about-mobile')">
+                    <div class="flex items-center gap-3"><span class="w-8 h-8 rounded-lg bg-brand-gray text-brand-primary flex items-center justify-center text-sm"><i class="fa-solid fa-circle-info"></i></span><span>About</span></div>
+                    <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform duration-300" id="about-mobile-icon"></i>
+                </button>
+                <div id="about-mobile" class="mobile-accordion-content bg-gray-50/80 px-3 pb-3 space-y-1.5 border-t border-gray-100/60">
+                    <a href="about.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-school w-5 text-center text-brand-yellow"></i> Tentang Kami</a>
+                    <a href="prestasi-siswa.html" class="text-xs font-semibold text-gray-600 hover:text-brand-primary flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-white transition-colors"><i class="fa-solid fa-trophy w-5 text-center text-brand-yellow"></i> Prestasi Siswa</a>
+                </div>
+            </div>
             
             <div class="rounded-xl border border-gray-100 overflow-hidden bg-white">
                 <button id="mnav-admissions" class="mobile-nav-link w-full flex justify-between items-center py-3.5 px-4 font-bold text-gray-700 hover:text-brand-primary transition-all duration-200" onclick="toggleMobileAccordion('admissions-mobile')">
@@ -258,7 +278,7 @@ const footerTemplate = `
                     <div class="bg-white p-2.5 rounded-xl inline-block mb-4 lg:mb-6">
                         <img src="logo-horizontal-sekolah.png" onerror="this.src='https://placehold.co/400x120/ffffff/1d4486?text=SEDAYA+BINTANG'" alt="Logo Sedaya Bintang" class="h-8 lg:h-10 w-auto">
                     </div>
-                    <p class="text-gray-300 text-xs lg:text-sm leading-relaxed mb-6">-</p>
+                    <p class="text-gray-300 text-xs lg:text-sm leading-relaxed mb-6">Sekolah Terpadu Sedaya Bintang Merupakan Sekolah Terpadu untuk jenjang KB-TK, SD, SMP dan SMA yang beraflisiasi dengan sekolah terpadu pahoa dan dibawah naungan PT. Summarecon Agung Tbk.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-primary transition-colors text-sm"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-primary transition-colors text-sm"><i class="fa-brands fa-youtube"></i></a>
@@ -278,7 +298,7 @@ const footerTemplate = `
                 <div>
                     <h4 class="text-brand-yellow font-bold text-base lg:text-lg mb-4 lg:mb-6">Kampus Bandung</h4>
                     <ul class="space-y-2 lg:space-y-3 text-xs lg:text-sm text-gray-300">
-                        <li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-1 text-brand-red"></i><span>Jl. Boulevard Summarecon Bandung No. 1</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-location-dot mt-1 text-brand-red"></i><span>Jl. Gedebage Utama Kel Blok GBU/009, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat 40295</span></li>
                         <li class="flex items-center gap-3"><i class="fa-solid fa-phone text-brand-red"></i><span>+62 22 1234 5678</span></li>
                     </ul>
                 </div>
@@ -298,31 +318,117 @@ const footerTemplate = `
     </footer>`;
 
 const easyTouchTemplate = `
-    <!-- EASY TOUCH FAB -->
-    <div id="easy-touch-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-    <div id="easy-touch-wrapper" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 flex items-center justify-center w-14 h-14 transform transition-all duration-300 origin-bottom-right" style="z-index: 9999; position: fixed !important;">
+    <!-- 2025/2026 IPHONE DYNAMIC LIQUID GLASS FLOATING UI (EASY BUTTON) -->
+    <div id="easy-touch-backdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-[90] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="easy-touch-wrapper" class="fixed bottom-4 right-4 md:bottom-7 md:right-7 flex flex-col items-end transform transition-all duration-300 origin-bottom-right" style="z-index: 9999; position: fixed !important;">
         
-        <div id="easy-touch-menu" class="absolute inset-0 z-0 pointer-events-none">
-            <!-- Item 1: Top (WhatsApp) -->
-            <a href="https://wa.me/6281234567890" target="_blank" class="easy-item absolute top-1 left-1 w-12 h-12 bg-white text-blue-500 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.15)] border border-gray-100 flex items-center justify-center transform transition-all duration-300 opacity-0 scale-50 pointer-events-none group" data-tx="" data-ty="-translate-y-16">
-                <i class="fa-brands fa-whatsapp text-xl"></i>
-                <span class="absolute right-14 bg-white text-slate-800 px-3 py-1.5 rounded-lg text-xs font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">WhatsApp</span>
-            </a>
-            <!-- Item 2: Top Left (Mini Games) -->
-            <a href="games.html" class="easy-item absolute top-1 left-1 w-12 h-12 bg-white text-blue-500 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.15)] border border-gray-100 flex items-center justify-center transform transition-all duration-300 opacity-0 scale-50 pointer-events-none group" data-tx="-translate-x-12" data-ty="-translate-y-12">
-                <i class="fa-solid fa-gamepad text-xl"></i>
-                <span class="absolute right-14 bg-white text-slate-800 px-3 py-1.5 rounded-lg text-xs font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Mini Games</span>
-            </a>
-            <!-- Item 3: Left (Beranda) -->
-            <a href="index.html" class="easy-item absolute top-1 left-1 w-12 h-12 bg-white text-blue-500 rounded-full shadow-[0_4px_15px_rgba(0,0,0,0.15)] border border-gray-100 flex items-center justify-center transform transition-all duration-300 opacity-0 scale-50 pointer-events-none group" data-tx="-translate-x-16" data-ty="">
-                <i class="fa-solid fa-house text-xl"></i>
-                <span class="absolute right-14 bg-white text-slate-800 px-3 py-1.5 rounded-lg text-xs font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Beranda</span>
-            </a>
+        <!-- Expanded iPhone Liquid Glass Dynamic Dock Panel -->
+        <div id="easy-touch-menu" class="iphone-glass-dock rounded-3xl p-4 sm:p-5 mb-3 w-[310px] sm:w-[340px] opacity-0 translate-y-6 scale-95 pointer-events-none transition-all duration-300 origin-bottom-right shadow-2xl relative overflow-hidden">
+            <!-- Ambient Sheen Glow -->
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-yellow/20 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-brand-primary/15 rounded-full blur-2xl pointer-events-none"></div>
+
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/60 relative z-10">
+                <div class="flex items-center gap-2">
+                    <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></div>
+                    <span class="text-xs font-black uppercase tracking-wider text-brand-primary">Akses Cepat 2026</span>
+                </div>
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Online • Siap Bantu</span>
+            </div>
+
+            <!-- Action Items List -->
+            <div class="space-y-2 relative z-10">
+                <!-- Item 1: WhatsApp Admisi -->
+                <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20konsultasi%20pendaftaran." target="_blank" rel="noopener noreferrer" class="easy-item iphone-glass-item flex items-center justify-between p-2.5 sm:p-3 rounded-2xl group transition-all duration-200 block">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white flex items-center justify-center shadow-md border border-white/40 group-hover:scale-105 transition-transform shrink-0">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs font-extrabold text-gray-900 group-hover:text-emerald-700 transition-colors">Chat Tim Admisi</div>
+                            <div class="text-[10px] text-gray-500 font-medium">Konsultasi langsung via WhatsApp</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition-all"></i>
+                </a>
+
+                <!-- Item 2: Registrasi Siswa Baru -->
+                <a href="apply.html" class="easy-item iphone-glass-item flex items-center justify-between p-2.5 sm:p-3 rounded-2xl group transition-all duration-200 block">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-yellow to-amber-500 text-brand-primary flex items-center justify-center shadow-md border border-white/40 group-hover:scale-105 transition-transform shrink-0">
+                            <i class="fa-solid fa-pen-to-square text-sm"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs font-extrabold text-gray-900 group-hover:text-brand-primary transition-colors">Registrasi Siswa Baru</div>
+                            <div class="text-[10px] text-gray-500 font-medium">Formulir online KB-TK & SD</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand-primary group-hover:translate-x-0.5 transition-all"></i>
+                </a>
+
+                <!-- Item 3: School Visit -->
+                <a href="school-visit.html" class="easy-item iphone-glass-item flex items-center justify-between p-2.5 sm:p-3 rounded-2xl group transition-all duration-200 block">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-primary to-[#15346b] text-white flex items-center justify-center shadow-md border border-white/40 group-hover:scale-105 transition-transform shrink-0">
+                            <i class="fa-solid fa-school text-sm"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs font-extrabold text-gray-900 group-hover:text-brand-primary transition-colors">Jadwal School Visit</div>
+                            <div class="text-[10px] text-gray-500 font-medium">Tur langsung fasilitas Summarecon</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand-primary group-hover:translate-x-0.5 transition-all"></i>
+                </a>
+
+                <!-- Item 4: Mini Games ACT -->
+                <a href="games.html" class="easy-item iphone-glass-item flex items-center justify-between p-2.5 sm:p-3 rounded-2xl group transition-all duration-200 block">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex items-center justify-center shadow-md border border-white/40 group-hover:scale-105 transition-transform shrink-0">
+                            <i class="fa-solid fa-gamepad text-sm"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs font-extrabold text-gray-900 group-hover:text-purple-600 transition-colors">Mini Games Edukasi</div>
+                            <div class="text-[10px] text-gray-500 font-medium">Tebak Hanzi & Sains ACT</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-purple-600 group-hover:translate-x-0.5 transition-all"></i>
+                </a>
+
+                <!-- Item 5: Beranda Utama -->
+                <a href="index.html" class="easy-item iphone-glass-item flex items-center justify-between p-2.5 sm:p-3 rounded-2xl group transition-all duration-200 block">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700 flex items-center justify-center shadow-sm border border-white/60 group-hover:scale-105 transition-transform shrink-0">
+                            <i class="fa-solid fa-house text-sm"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-xs font-extrabold text-gray-900 group-hover:text-brand-primary transition-colors">Beranda Utama</div>
+                            <div class="text-[10px] text-gray-500 font-medium">Halaman muka sekolah</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-400 group-hover:text-brand-primary group-hover:translate-x-0.5 transition-all"></i>
+                </a>
+            </div>
         </div>
         
-        <button id="easy-touch-btn" class="w-14 h-14 bg-brand-primary text-white rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.3)] border-2 border-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 relative overflow-hidden group z-10">
-            <i class="fa-solid fa-layer-group text-xl transition-transform duration-300 relative z-10" id="easy-touch-icon"></i>
-            <div class="absolute inset-0 bg-white/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 origin-center z-0"></div>
+        <!-- Trigger Button: iPhone 2026 Liquid Glass Capsule Pill with Icon & Text -->
+        <button id="easy-touch-btn" aria-label="Buka Menu Akses Cepat" class="iphone-glass-pill animate-glass-sheen flex items-center gap-2.5 sm:gap-3 py-2 px-3.5 sm:py-2.5 sm:px-4 rounded-full text-brand-primary font-bold group cursor-pointer focus:outline-none z-10">
+            <!-- Icon Squircle -->
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-primary text-white flex items-center justify-center shadow-md relative overflow-hidden shrink-0 group-hover:bg-[#15346b] transition-colors">
+                <i id="easy-touch-icon" class="fa-solid fa-layer-group text-sm transition-transform duration-300"></i>
+            </div>
+            <!-- Text & Subtitle -->
+            <div class="flex flex-col text-left">
+                <div class="flex items-center gap-1.5">
+                    <span id="easy-touch-label" class="text-xs sm:text-sm font-black tracking-tight text-brand-primary leading-none">Akses Cepat</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                </div>
+                <span class="text-[9px] sm:text-[10px] text-gray-500 font-semibold tracking-normal mt-0.5">Bantuan & Menu</span>
+            </div>
+            <!-- Arrow / Close Indicator -->
+            <div class="w-5 h-5 rounded-full bg-gray-100/80 flex items-center justify-center ml-0.5 text-gray-500 group-hover:text-brand-primary transition-colors">
+                <i id="easy-touch-chevron" class="fa-solid fa-chevron-up text-[10px] transition-transform duration-300"></i>
+            </div>
         </button>
     </div>
 
@@ -398,7 +504,8 @@ function loadComponents() {
     }
 
     if (currentPage) {
-        const activeNav = document.getElementById('nav-' + currentPage);
+        const targetNavId = (currentPage === 'prestasi') ? 'nav-about' : ('nav-' + currentPage);
+        const activeNav = document.getElementById(targetNavId);
         if (activeNav) {
             // Ubah class agar ada garis bawah biru aktifnya sesuai desain ori
             activeNav.className = "relative h-full flex items-center gap-1.5 text-sm font-bold text-brand-primary transition-colors";
@@ -420,54 +527,79 @@ function loadComponents() {
         }
     }
 
-    // INIT EASY TOUCH FAB
+    // INIT EASY TOUCH FAB (2025/2026 IPHONE LIQUID GLASS)
     const easyBtn = document.getElementById('easy-touch-btn');
     const easyBackdrop = document.getElementById('easy-touch-backdrop');
+    const easyMenu = document.getElementById('easy-touch-menu');
     const easyIcon = document.getElementById('easy-touch-icon');
+    const easyChevron = document.getElementById('easy-touch-chevron');
+    const easyLabel = document.getElementById('easy-touch-label');
     
-    if(easyBtn && easyBackdrop && easyIcon) {
+    if(easyBtn && easyBackdrop && easyMenu) {
         let isEasyOpen = false;
         
-        function toggleEasyTouch() {
-            isEasyOpen = !isEasyOpen;
-            const items = document.querySelectorAll('.easy-item');
+        function openEasyTouch() {
+            isEasyOpen = true;
+            easyBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            easyBackdrop.classList.add('opacity-100', 'pointer-events-auto');
             
-            if(isEasyOpen) {
-                easyBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-                easyBackdrop.classList.add('opacity-100', 'pointer-events-auto');
-                
+            easyMenu.classList.remove('opacity-0', 'translate-y-6', 'scale-95', 'pointer-events-none');
+            easyMenu.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto');
+            
+            if(easyIcon) {
                 easyIcon.classList.remove('fa-layer-group');
-                easyIcon.classList.add('fa-xmark', 'rotate-90');
-                
-                items.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.remove('opacity-0', 'scale-50', 'pointer-events-none');
-                        item.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
-                        if(item.dataset.tx) item.classList.add(item.dataset.tx);
-                        if(item.dataset.ty) item.classList.add(item.dataset.ty);
-                    }, index * 50);
-                });
-            } else {
-                easyBackdrop.classList.add('opacity-0', 'pointer-events-none');
-                easyBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
-                
-                easyIcon.classList.remove('fa-xmark', 'rotate-90');
+                easyIcon.classList.add('fa-xmark');
+            }
+            if(easyChevron) {
+                easyChevron.classList.add('rotate-180');
+            }
+            if(easyLabel) {
+                easyLabel.textContent = "Tutup Menu";
+            }
+        }
+
+        function closeEasyTouch() {
+            isEasyOpen = false;
+            easyBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            easyBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+            
+            easyMenu.classList.add('opacity-0', 'translate-y-6', 'scale-95', 'pointer-events-none');
+            easyMenu.classList.remove('opacity-100', 'translate-y-0', 'scale-100', 'pointer-events-auto');
+            
+            if(easyIcon) {
+                easyIcon.classList.remove('fa-xmark');
                 easyIcon.classList.add('fa-layer-group');
-                
-                Array.from(items).reverse().forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('opacity-0', 'scale-50', 'pointer-events-none');
-                        item.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
-                        if(item.dataset.tx) item.classList.remove(item.dataset.tx);
-                        if(item.dataset.ty) item.classList.remove(item.dataset.ty);
-                    }, index * 50);
-                });
+            }
+            if(easyChevron) {
+                easyChevron.classList.remove('rotate-180');
+            }
+            if(easyLabel) {
+                easyLabel.textContent = "Akses Cepat";
+            }
+        }
+
+        function toggleEasyTouch() {
+            if(isEasyOpen) {
+                closeEasyTouch();
+            } else {
+                openEasyTouch();
             }
         }
 
         easyBtn.addEventListener('click', toggleEasyTouch);
-        easyBackdrop.addEventListener('click', () => {
-            if(isEasyOpen) toggleEasyTouch();
+        easyBackdrop.addEventListener('click', closeEasyTouch);
+
+        // Tutup saat menekan tombol Escape di keyboard
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape' && isEasyOpen) closeEasyTouch();
+        });
+
+        // Tutup otomatis saat salah satu link diklik
+        const menuLinks = easyMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeEasyTouch();
+            });
         });
     }
 }

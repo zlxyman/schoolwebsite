@@ -1,0 +1,336 @@
+/* ==========================================================================
+   HALAMAN GALERI PRESTASI - SEKOLAH TERPADU SEDAYA BINTANG
+   File: public/css/prestasi.css
+   Style persis sesuai file referensi galeri-prestasi-v7:
+   - 3D Hero Perspective Marquee Plane
+   - Collectible Cards UI (Border putih, PNG shifted left, Gradient 40%, Glassmorphism)
+   - 3D Pop-Up Modal (Rotasi Y, Outside Glow, Confetti)
+   - Scroll Reveal
+   ========================================================================== */
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- 1. 3D CINEMATIC FILM ROLL HERO (ROLL FILM BERJALAN DENGAN PATH DINAMIS) --- */
+.hero-film-canvas {
+    position: absolute;
+    inset: -35% -15%;
+    z-index: 0;
+    overflow: hidden;
+    perspective: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4.5rem;
+    pointer-events: none;
+    background-color: #08162f;
+}
+
+/* Film Strip 1: Angled Dynamic Path (Top Wave) */
+.film-stream-upper {
+    transform: rotateX(24deg) rotateY(-14deg) rotateZ(-8deg) scale(1.22);
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 30px 45px rgba(0, 0, 0, 0.7));
+}
+
+/* Film Strip 2: Angled Dynamic Counter-Path (Bottom Wave) */
+.film-stream-lower {
+    transform: rotateX(18deg) rotateY(16deg) rotateZ(7deg) scale(1.22);
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 30px 45px rgba(0, 0, 0, 0.7));
+}
+
+/* Authentic 35mm Filmstrip Track with Perforations */
+.film-track {
+    position: relative;
+    background: #020617;
+    padding: 26px 0;
+    border-top: 3.5px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 3.5px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+    display: flex;
+    width: max-content;
+    will-change: transform;
+}
+
+/* Sprocket Holes Film Atas & Bawah */
+.film-track::before,
+.film-track::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 12px;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 6px,
+        rgba(255, 255, 255, 0.82) 6px,
+        rgba(255, 255, 255, 0.82) 18px,
+        transparent 18px,
+        transparent 28px
+    );
+    z-index: 20;
+    pointer-events: none;
+}
+.film-track::before { top: 6px; }
+.film-track::after { bottom: 6px; }
+
+/* Infinite Film Motion */
+.film-roll-left {
+    animation: filmScrollLeft 48s linear infinite;
+}
+
+.film-roll-right {
+    animation: filmScrollRight 52s linear infinite;
+}
+
+@keyframes filmScrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes filmScrollRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* Individual Film Frame (Slide Film) */
+.film-frame {
+    position: relative;
+    width: 270px;
+    height: 180px;
+    margin: 0 16px;
+    background: #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3.5px solid #0f172a;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+@media (min-width: 640px) {
+    .film-frame {
+        width: 310px;
+        height: 205px;
+        margin: 0 22px;
+    }
+}
+
+.film-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.15) brightness(0.95);
+    transition: all 0.5s ease;
+}
+
+/* Film Frame Meta Label */
+.film-frame-label {
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    font-size: 8.5px;
+    font-weight: 800;
+    color: #ffcb05;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(3, 7, 18, 0.8);
+    padding: 2.5px 7px;
+    border-radius: 4px;
+    z-index: 10;
+    border: 1px solid rgba(255, 203, 5, 0.3);
+}
+
+.film-frame-number {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    font-size: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 800;
+    color: #ffffff;
+    background: rgba(3, 7, 18, 0.8);
+    padding: 2.5px 6px;
+    border-radius: 4px;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Bottom Caption on Film Frame */
+.film-frame-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 10px 8px 10px;
+    background: linear-gradient(to top, rgba(3, 7, 18, 0.96) 0%, rgba(3, 7, 18, 0.6) 65%, transparent 100%);
+    z-index: 10;
+}
+
+/* Overlay Film Roll Hero: Radial gradient agar teks di depan tetap kontras tinggi */
+.hero-film-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: radial-gradient(
+        circle at 50% 48%,
+        rgba(8, 22, 47, 0.55) 0%,
+        rgba(8, 22, 47, 0.86) 55%,
+        rgba(8, 22, 47, 0.98) 100%
+    );
+    pointer-events: none;
+}
+
+/* --- 2. EXACT CARD UI REPLICATION --- */
+.card-container {
+    background-color: #ffffff; /* Basicnya putih */
+    border-radius: 1.75rem; /* Rounded mirip referensi */
+    padding: 0.75rem; /* Jarak dari pinggir putih ke isi */
+    /* Border putih, shadow tipis awal, shadow tebal saat hover */
+    border: 2px solid #ffffff; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex; flex-direction: column; cursor: pointer;
+    height: 100%;
+}
+.card-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Shadow membesar */
+}
+
+/* Header dalam Card */
+.card-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+}
+.card-organizer {
+    font-size: 0.65rem; font-weight: 800; color: #6b7280; 
+    text-transform: uppercase; letter-spacing: 0.05em; 
+    max-width: 70%; line-height: 1.4;
+}
+.card-arrow-btn {
+    width: 2.25rem; height: 2.25rem; border-radius: 50%;
+    background-color: #f9fafb; border: 1px solid #f3f4f6;
+    display: flex; align-items: center; justify-content: center;
+    color: #1d4486; transition: all 0.2s; flex-shrink: 0;
+}
+.card-container:hover .card-arrow-btn {
+    background-color: #1d4486; color: white;
+}
+
+/* Inner Photo Area */
+.card-inner {
+    position: relative; flex-grow: 1; min-height: 320px;
+    border-radius: 1.25rem; overflow: hidden;
+    background-color: #fdfdfd;
+}
+
+/* PNG Photo Positioned Left */
+.card-photo {
+    position: absolute; bottom: 0; left: -10%; /* Digeser agak kiri */
+    width: 110%; /* Diperbesar sedikit kompensasi geser */
+    height: 95%; object-fit: contain; object-position: bottom left;
+    z-index: 10;
+}
+
+/* Gradient Overlay (Only Bottom 30-40%) */
+.card-gradient-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;
+    z-index: 20; pointer-events: none;
+}
+
+/* Gradient Colors Based on Medal */
+.grad-gold { background: linear-gradient(to top, rgba(253,224,71,0.9) 0%, rgba(253,224,71,0.5) 40%, transparent 100%); }
+.grad-silver { background: linear-gradient(to top, rgba(209,213,219,0.9) 0%, rgba(209,213,219,0.5) 40%, transparent 100%); }
+.grad-bronze { background: linear-gradient(to top, rgba(253,186,116,0.9) 0%, rgba(253,186,116,0.5) 40%, transparent 100%); }
+.grad-special { background: linear-gradient(to top, rgba(147,197,253,0.9) 0%, rgba(147,197,253,0.5) 40%, transparent 100%); }
+
+/* Medals (Right Side, Larger) */
+.card-medals {
+    position: absolute; top: 1rem; right: 0.75rem;
+    z-index: 30; display: flex; flex-direction: column; gap: 0.75rem;
+}
+.medal-circle {
+    width: 3.5rem; height: 3.5rem;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.75rem;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+.medal-circle:hover { transform: scale(1.1); }
+
+/* Background for medals */
+.bg-medal-gold { background-color: #fef9c3; }
+.bg-medal-silver { background-color: #ffffff; }
+.bg-medal-bronze { background-color: #ffedd5; }
+.bg-medal-special { background-color: #eff6ff; }
+
+/* True Glassmorphism Box */
+.glass-box {
+    position: absolute; bottom: 0.75rem; left: 0.75rem; right: 0.75rem;
+    z-index: 40;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-radius: 1.25rem;
+    padding: 0.875rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.9), 0 4px 12px rgba(0,0,0,0.05);
+}
+.glass-icon {
+    width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,1), 0 2px 5px rgba(0,0,0,0.05);
+    flex-shrink: 0; font-size: 1.25rem;
+}
+
+/* --- 3. 3D POP-UP MODAL (FIXED CLOSE OUTSIDE & GLOW) --- */
+.modal-backdrop {
+    opacity: 0; pointer-events: none; 
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(10, 21, 38, 0.85); transition: opacity 0.4s ease;
+}
+.modal-backdrop.show { opacity: 1; pointer-events: auto; }
+
+.modal-3d-wrapper { perspective: 2000px; position: relative; z-index: 100; width: 100%; max-width: 56rem; }
+.modal-card {
+    transform: rotateY(-90deg) scale(0.7);
+    opacity: 0; transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-style: preserve-3d; box-shadow: 0 40px 80px rgba(0,0,0,0.6); position: relative; z-index: 10; 
+}
+.modal-backdrop.show .modal-card { transform: rotateY(0deg) scale(1); opacity: 1; }
+
+/* Powerful Glow Out-of-Bounds */
+.modal-glow {
+    position: absolute; top: 50%; left: 50%; width: 160%; height: 160%;
+    transform: translate(-50%, -50%); border-radius: 50%; filter: blur(90px);
+    opacity: 0; z-index: 1; transition: all 0.8s ease; pointer-events: none; 
+}
+.modal-backdrop.show .modal-glow { opacity: 1; animation: rotateGlow 12s linear infinite; }
+@keyframes rotateGlow {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+    50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.1); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+}
+
+.glow-gold { background: radial-gradient(circle, rgba(250,204,21,0.6) 0%, rgba(234,179,8,0.2) 60%, transparent 80%); }
+.glow-silver { background: radial-gradient(circle, rgba(209,213,219,0.6) 0%, rgba(156,163,175,0.2) 60%, transparent 80%); }
+.glow-bronze { background: radial-gradient(circle, rgba(249,115,22,0.6) 0%, rgba(194,65,12,0.2) 60%, transparent 80%); }
+.glow-special { background: radial-gradient(circle, rgba(56,189,248,0.6) 0%, rgba(14,165,233,0.2) 60%, transparent 80%); }
+
+/* Confetti */
+#confetti-container { position: fixed; inset: 0; pointer-events: none; z-index: 200; overflow: hidden; }
+.confetti-piece { position: absolute; top: -20px; width: 12px; height: 24px; opacity: 0; }
+@keyframes confettiFall {
+    0% { transform: translateY(0) rotateX(0) rotateY(0); opacity: 1; }
+    100% { transform: translateY(120vh) rotateX(720deg) rotateY(360deg); opacity: 0; }
+}
+
+.modal-portrait-frame { aspect-ratio: 3/4; }
