@@ -1,0 +1,10 @@
+{
+  "liveServer.settings.root": "/public",
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.pruneOnFetch": true,
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": false
+}
