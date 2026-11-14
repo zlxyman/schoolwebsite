@@ -67,6 +67,18 @@ Preview lokal: pemilik kadang membuka `public/index.html` dengan Live Server di 
 - Buat `public/_headers` berisi `X-Robots-Tag: noindex` untuk semua path, supaya draft tidak masuk Google.
 
 ## Kualitas & keamanan (sebelum serah terima ke IT)
+Audit WAJIB baris per baris di semua file (HTML, CSS, JS, server.js, package.json, .vscode).
+Pakai standar eksternal, bukan penilaian sendiri. Sebelum audit, cek ulang di web apakah ada versi
+yang lebih baru dari daftar ini (per 14 Nov 2026), dan pakai yang terbaru:
+- Keamanan: OWASP Top 10:2025 (final Jan 2026) dan OWASP ASVS 5.0.0 (minimal Level 1, Level 2 untuk
+  form/data pribadi). Setiap temuan ditulis dengan kode standarnya (contoh: A02:2025, ASVS V3.4.1).
+- Header HTTP: panduan Mozilla HTTP Observatory / MDN Web Security.
+- Aksesibilitas: WCAG 2.2 level AA (rekomendasi W3C terbaru; WCAG 3 masih draft, jangan dipakai).
+- Kualitas & performa: Google Lighthouse dan Core Web Vitals; validasi HTML dengan validator W3C.
+- Dependensi: `npm audit` untuk package.json; cek versi semua library CDN terhadap CVE yang diketahui.
+- Rahasia: pindai seluruh repo (termasuk riwayat git) untuk API key, token, URL Apps Script.
+- Tulis hasilnya di `docs/audit-kode.md`: per file, per baris, tingkat bahaya (kritis/tinggi/sedang/rendah),
+  kode standar, dan cara memperbaiki. Tutup dengan daftar yang LULUS dan yang BELUM.
 - Tidak boleh ada API key, token, password, atau URL rahasia (misal URL Apps Script) di kode front-end.
 - Semua script/style dari CDN pakai versi yang dikunci + atribut `integrity` (SRI) + `crossorigin`, atau disimpan lokal.
 - Tailwind lewat CDN hanya untuk development; untuk produksi siapkan build CSS statis.
