@@ -48,7 +48,8 @@ Preview lokal: pemilik kadang membuka `public/index.html` dengan Live Server di 
 
 ## Ikon 3D
 - Ikon 3D ada di `public/assets/images/icons/`. Ikon core values (Budi Pekerti, Trilingual, STEAM)
-  berupa PNG bergerak (APNG, loop mulus) buatan `tools/animasi-ikon.py`, plus versi diam `-diam.png`.
+  berupa PNG bergerak (APNG, loop mulus) hasil video Gemini/Veo yang diubah dengan
+  `tools/video-ke-apng.py`, plus versi diam `-diam.png`.
 - Pasang dengan `<picture>`: sumber `-diam.png` untuk `(prefers-reduced-motion: reduce)`, selain itu APNG.
   Contoh:
   `<picture><source srcset="assets/images/icons/ikon-steam-diam.png" media="(prefers-reduced-motion: reduce)">`
