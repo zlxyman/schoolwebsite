@@ -4,6 +4,7 @@ Tempel di claude.ai/code (repo zlxyman/schoolwebsite). Model: Fable 5.2 (gratis 
 
 ```
 Baca CLAUDE.md dan docs/gaya-bahasa.md, ikuti semua aturannya. Muat skill task-observer dulu.
+Kerjakan di branch baru, jangan push ke main.
 
 Kerjakan berurutan tanpa menunggu saya:
 1. Audit seluruh public/ (semua halaman + mini game) baris per baris pakai standar eksternal
@@ -13,8 +14,8 @@ Kerjakan berurutan tanpa menunggu saya:
    Catat di docs/audit-kode.md dan docs/daftar-aset.md.
 2. Perbaiki semua temuan, mulai dari yang paling berdampak. Hero index.html jangan diubah.
    Animasi .webm kartu Jenjang jangan sampai rusak.
-3. Pasang ikon 3D dari public/assets/images/icons/ dengan animasi loop sesuai CLAUDE.md,
-   ganti emoji dari repo luar.
+3. Pasang ikon 3D core values dari public/assets/images/icons/ sesuai bagian "Ikon 3D"
+   di CLAUDE.md (versi diam dulu kalau versi bergerak belum ada), ganti semua emoji dari repo luar.
 4. Jalankan bagian "Inisiatif proaktif": tulis docs/usulan-pengembangan.md dan kerjakan
    perbaikan kecil yang aman.
 5. Verifikasi dengan screenshot 375/768/1440px, review ulang (code-review + /security-review),

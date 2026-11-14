@@ -47,15 +47,22 @@ Preview lokal: pemilik kadang membuka `public/index.html` dengan Live Server di 
 - Semua `<img>` wajib punya `alt` berbahasa Indonesia, `width`/`height`, dan `loading="lazy"` (kecuali gambar hero).
 
 ## Ikon 3D
-- Ikon 3D ada di `public/assets/images/icons/`. Ikon core values (Budi Pekerti, Trilingual, STEAM)
-  berupa PNG bergerak (APNG, loop mulus) hasil video Gemini/Veo yang diubah dengan
-  `tools/video-ke-apng.py`, plus versi diam `-diam.png`.
-- Pasang dengan `<picture>`: sumber `-diam.png` untuk `(prefers-reduced-motion: reduce)`, selain itu APNG.
-  Contoh:
+- Ikon 3D ada di `public/assets/images/icons/`. Desain yang sudah disetujui pemilik:
+  Budi Pekerti (tangan dan hati), Trilingual (bubble chat 中 dan Aa), STEAM (roket dan bintang).
+  Jangan membuat atau menggambar ulang ikon sendiri, pakai file dari pemilik.
+- Nama file: `ikon-budi-pekerti`, `ikon-trilingual`, `ikon-steam`.
+  Versi diam: `<nama>-diam.png`. Versi bergerak (APNG, loop mulus): `<nama>.png`,
+  dibuat dari video Gemini/Veo dengan `tools/video-ke-apng.py`.
+- Selama versi bergerak belum ada, pasang versi diam saja dengan `<img>` biasa.
+  Kalau versi bergerak sudah ada, pasang dengan `<picture>`: sumber `-diam.png` untuk
+  `(prefers-reduced-motion: reduce)`, selain itu APNG. Contoh:
   `<picture><source srcset="assets/images/icons/ikon-steam-diam.png" media="(prefers-reduced-motion: reduce)">`
   `<img src="assets/images/icons/ikon-steam.png" width="160" height="160" alt="Ikon STEAM" loading="lazy"></picture>`
-- Ukuran tampil 160px (file 320px untuk layar tajam). Jangan tambah animasi CSS lain di ikon APNG.
-- Bendera (Mandarin, Inggris, Indonesia) berupa bola 3D diam; animasinya menyusul.
+- Kalau file ikon belum ada di folder, jangan berhenti: siapkan tempatnya, catat di laporan,
+  dan kerjakan tugas lain.
+- Ukuran tampil 160px (file minimal 320px untuk layar tajam). File besar diperkecil ke 320px tanpa
+  mengubah rasio. Jangan tambah animasi CSS lain di ikon APNG.
+- Bendera (Mandarin, Inggris, Indonesia) sudah ada: `bendera-*-3d.webp`, bola 3D diam.
 - Jangan pakai ikon emoji 3D dari repo orang lain lagi; ganti dengan ikon di folder icons.
 
 ## Inisiatif proaktif (wajib, walau tidak diminta)
