@@ -78,9 +78,9 @@ Budi Pekerti, Trilingual, STEAM disebut "core values".
    10 Nilai Moral dan Nilai Di Zi Gui adalah dua hal berbeda. Jangan disamakan atau digabung.
 2. **Trilingual**: urutan WAJIB Bahasa Mandarin, Bahasa Inggris, Bahasa Indonesia.
 3. **STEAM**
-   - Dr. Yeap Ban Har: Framework Singapura untuk Matematika dan Six Elements of Teaching
-     (Exploration, Structured Discussion, Polishing, Key Question, Turning Point, Summing Up).
-     Jangan tulis dia sebagai "pencetus" framework Singapura.
+   - Tulis persis: "Framework Singapura untuk Matematika dan Six Elements of Teaching dari Dr. Yeap Ban Har".
+     Six Elements of Teaching: Exploration, Structured Discussion, Polishing, Key Question,
+     Turning Point, Summing Up. Jangan tulis dia sebagai "pencetus" framework Singapura.
    - Prof. Lin Pei Rong: metode Learning Corner. Intinya metode mengajar, tapi ikut memengaruhi
      tata ruang kelas: kelas KB dan TK punya beberapa mini corner karena menerapkan metode ini.
      SD tidak punya mini corner.

@@ -51,8 +51,8 @@ Preview lokal: pemilik kadang membuka `public/index.html` dengan Live Server di 
 - Pelajari juga semua file di `docs/contoh-konten/` (konten terbaru yang sudah disetujui pemilik:
   caption, script, materi). File terbaru paling diutamakan. Tiru nada dan pilihan katanya.
 - Teks di halaman yang sudah direvisi (semua halaman kecuali mini game) adalah contoh suara Sedaya.
-- Kalau pemilik mengoreksi bahasa di PR, tambahkan aturannya ke "Catatan Koreksi" di `docs/gaya-bahasa.md`
-  supaya kesalahan yang sama tidak terulang.
+- Kalau pemilik mengoreksi bahasa di PR, masukkan aturannya langsung ke bagian yang sesuai di
+  `docs/gaya-bahasa.md` (tanpa bagian catatan terpisah) supaya kesalahan yang sama tidak terulang.
 - Cari dan perbaiki di SEMUA halaman (termasuk mini game): kata "Hanzi" yang menempel pada Budi Pekerti,
   semua kata di "Daftar hitam" gaya-bahasa.md (termasuk "siswa" → "murid"),
   urutan Trilingual yang bukan Mandarin-Inggris-Indonesia, istilah "kompetensi inti", sebutan "event"
