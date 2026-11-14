@@ -57,6 +57,16 @@ seimbang antara akademik dan karakter, "Mari bergabung bersama kami",
 ajaran klasik, berpijak (pakai "berpegang teguh"), pertanyaan kunci, diajarkan pula,
 rumah kedua, pendidik berpengalaman (pakai "tenaga pendidik profesional dan ahli").
 
+**Ajakan & pembuka**: "Temukan", "Jelajahi" (pakai "cari tahu"), "Yuk", "Ayo",
+"sekarang juga" (cukup "Daftar sekarang", tanpa "juga").
+
+**Pujian berlebihan**: kreatif dan inovatif, luar biasa, istimewa,
+terlengkap (tulis "fasilitas yang lengkap").
+
+**Janji masa depan**: versi terbaik dirinya, bekal masa depan (pakai "persiapkan masa depan").
+
+**Istilah kaku**: peserta didik (pakai "murid"), berbasis, proyek, singkatan "KBM".
+
 **Kata penghubung kaku**: senantiasa, sejatinya, dalam rangka, guna,
 wadah dan sarana (pakai "tempat").
 
@@ -70,7 +80,8 @@ wadah dan sarana (pakai "tempat").
 ## Boleh dipakai (sudah disetujui pemilik)
 optimal, membekali, mewujudkan, memfasilitasi, pemimpin masa depan, potensi terbaik anak,
 belajar dengan menyenangkan, interaktif, aktif, menanamkan nilai, mengasah, berkolaborasi,
-aman dan nyaman, perjalanan belajar, melalui pendekatan.
+aman dan nyaman, perjalanan belajar, melalui pendekatan, Selamat datang di, ramah anak,
+sejak usia dini, tumbuh dan berkembang, proses pembelajaran.
 
 ## Core values
 Budi Pekerti, Trilingual, STEAM disebut "core values".

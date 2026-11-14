@@ -46,6 +46,29 @@ Preview lokal: pemilik kadang membuka `public/index.html` dengan Live Server di 
 - Format WebP. Nama file huruf kecil pakai tanda hubung, tanpa spasi dan tanpa underscore (contoh: `steam-robotik.webp`).
 - Semua `<img>` wajib punya `alt` berbahasa Indonesia, `width`/`height`, dan `loading="lazy"` (kecuali gambar hero).
 
+## Ikon 3D
+- Ikon 3D core values dan bendera ada di `public/assets/images/icons/` (WebP transparan).
+- Semua ikon 3D diberi animasi loop yang mulus dengan CSS (melayang naik-turun pelan + sedikit
+  miring + bayangan ikut mengecil/membesar), durasi 3–4 detik, `ease-in-out`, `infinite`, tanpa
+  patah di titik ulang. Pakai `transform` saja (bukan top/left) supaya ringan.
+- Tiap ikon dalam satu baris diberi jeda (`animation-delay`) berbeda supaya tidak bergerak serempak.
+- Wajib berhenti total kalau pengguna mengaktifkan `prefers-reduced-motion`.
+- Jangan pakai ikon emoji 3D dari repo orang lain lagi; ganti dengan ikon di folder icons.
+
+## Inisiatif proaktif (wajib, walau tidak diminta)
+Setiap sesi, cari dan cek sendiri hal yang berguna untuk website sekolah, lalu tulis di
+`docs/usulan-pengembangan.md` (urut dari dampak terbesar, sertakan sumber eksternal):
+- SEO: judul & meta description tiap halaman, Open Graph untuk share WhatsApp/IG, `sitemap.xml`,
+  `robots.txt`, data terstruktur schema.org (`School`/`EducationalOrganization`, `LocalBusiness`).
+- Favicon & ikon aplikasi lengkap, halaman 404 yang ramah, tautan rusak.
+- Performa: ukuran gambar, lazy loading, font, skor Lighthouse di HP.
+- Kemudahan admisi: tombol hubungi kami yang mudah ditemukan, peta lokasi, jam operasional.
+- Pengukuran: rekomendasi Google Analytics 4 + Search Console + banner persetujuan cookie
+  (jangan dipasang tanpa persetujuan pemilik).
+- Visual: kekurangan konsistensi, bagian yang terasa kosong atau terlalu ramai.
+Perbaikan kecil yang aman langsung dikerjakan dan dicatat. Yang besar atau butuh biaya/akun baru
+hanya diusulkan.
+
 ## Gaya bahasa konten
 - WAJIB baca `docs/gaya-bahasa.md` sebelum menulis/mengubah teks apa pun.
 - Pelajari juga semua file di `docs/contoh-konten/` (konten terbaru yang sudah disetujui pemilik:
