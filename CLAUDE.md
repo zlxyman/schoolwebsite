@@ -47,12 +47,14 @@ Preview lokal: pemilik kadang membuka `public/index.html` dengan Live Server di 
 - Semua `<img>` wajib punya `alt` berbahasa Indonesia, `width`/`height`, dan `loading="lazy"` (kecuali gambar hero).
 
 ## Ikon 3D
-- Ikon 3D core values dan bendera ada di `public/assets/images/icons/` (WebP transparan).
-- Semua ikon 3D diberi animasi loop yang mulus dengan CSS (melayang naik-turun pelan + sedikit
-  miring + bayangan ikut mengecil/membesar), durasi 3–4 detik, `ease-in-out`, `infinite`, tanpa
-  patah di titik ulang. Pakai `transform` saja (bukan top/left) supaya ringan.
-- Tiap ikon dalam satu baris diberi jeda (`animation-delay`) berbeda supaya tidak bergerak serempak.
-- Wajib berhenti total kalau pengguna mengaktifkan `prefers-reduced-motion`.
+- Ikon 3D ada di `public/assets/images/icons/`. Ikon core values (Budi Pekerti, Trilingual, STEAM)
+  berupa PNG bergerak (APNG, loop mulus) buatan `tools/animasi-ikon.py`, plus versi diam `-diam.png`.
+- Pasang dengan `<picture>`: sumber `-diam.png` untuk `(prefers-reduced-motion: reduce)`, selain itu APNG.
+  Contoh:
+  `<picture><source srcset="assets/images/icons/ikon-steam-diam.png" media="(prefers-reduced-motion: reduce)">`
+  `<img src="assets/images/icons/ikon-steam.png" width="160" height="160" alt="Ikon STEAM" loading="lazy"></picture>`
+- Ukuran tampil 160px (file 320px untuk layar tajam). Jangan tambah animasi CSS lain di ikon APNG.
+- Bendera (Mandarin, Inggris, Indonesia) berupa bola 3D diam; animasinya menyusul.
 - Jangan pakai ikon emoji 3D dari repo orang lain lagi; ganti dengan ikon di folder icons.
 
 ## Inisiatif proaktif (wajib, walau tidak diminta)
