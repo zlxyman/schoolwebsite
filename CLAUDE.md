@@ -15,6 +15,8 @@ Preview lokal: pemilik kadang membuka `public/index.html` dengan Live Server di 
   Kalau bentrok dengan `docs/gaya-bahasa.md`, yang menang selalu gaya-bahasa.md.
 - **find-skills**: kalau butuh kemampuan yang belum ada, cari skill dulu. Jangan pasang skill baru
   tanpa mencatatnya di laporan.
+- **caveman**: selalu aktif untuk balasan chat ke pemilik: langsung ke inti, tanpa basa-basi.
+  TIDAK berlaku untuk teks website, dokumen, laporan, dan pesan commit (itu tetap kalimat lengkap).
 - Plugin resmi (lihat `.claude/settings.json`): code-review dan security-guidance.
 
 ## Struktur & pola halaman (wajib diikuti)
