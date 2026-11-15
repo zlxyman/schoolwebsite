@@ -14,6 +14,8 @@ Kalau pemilik mengoreksi bahasa, masukkan aturannya langsung ke bagian yang sesu
 - Utamakan **"si kecil"**. Kata **"anak"** hanya untuk definisi (contoh: "KB-K untuk anak usia 2–3 tahun").
 - Pakai **"murid"**, bukan "siswa".
 - Pakai **"berbudi pekerti"**, bukan "berkarakter".
+- Di formulir pakai **"anak"**, bukan "ananda" (contoh: "Nama Lengkap Anak").
+- Untuk kemampuan si kecil pakai **"dilatih"**, bukan "dipakai" (contoh: "Mandarin, Inggris, dan Indonesia dilatih setiap hari.").
 
 ## Panjang teks
 - Sub headline (teks kecil di bawah judul section/halaman/hero): **1 kalimat, maksimal 8 kata.**
@@ -38,6 +40,7 @@ Cek setiap teks terhadap daftar ini. Kalau ketemu, ganti dengan kata sehari-hari
   (Nama game "Hanzi Master" boleh tetap: itu game huruf Mandarin.)
 - "siswa", "kompetensi inti", "berkarakter".
 - "Sinergi" dalam bentuk apa pun, termasuk judul "Sinergi Pembelajaran ACT" yang wajib diganti.
+- "Kampus pertama", "kawasan terintegrasi Summarecon", "kota terpadu". Cukup tulis "Summarecon Bandung".
 
 **Kata sifat**: holistik, komprehensif, maksimal, inovatif, transformatif, revolusioner,
 berkualitas tinggi, kelas dunia, world-class, cemerlang, gemilang,
@@ -84,7 +87,7 @@ aman dan nyaman, perjalanan belajar, melalui pendekatan, Selamat datang di, rama
 sejak usia dini, tumbuh dan berkembang, proses pembelajaran.
 
 ## Core values
-Budi Pekerti, Trilingual, STEAM disebut "core values".
+Budi Pekerti, Trilingual, STEAM disebut "core values", tanpa kata "tiga" (tulis "Core Values Kami", bukan "Tiga Core Values").
 1. **Budi Pekerti**: pembeda utama Sedaya Bintang.
    10 Nilai Moral dan Nilai Di Zi Gui adalah dua hal berbeda. Jangan disamakan atau digabung.
 2. **Trilingual**: urutan WAJIB Bahasa Mandarin, Bahasa Inggris, Bahasa Indonesia.
@@ -106,11 +109,14 @@ Budi Pekerti, Trilingual, STEAM disebut "core values".
   KB-K (2–3 thn), KB-B (3–4 thn), TK A (4–5 thn), TK B (5–6 thn), SD (mulai 6–7 thn).
 - SMP dan SMA BELUM buka. Jangan ditulis seolah sudah menerima murid.
 - Lokasi: Summarecon Bandung. Summarecon Bogor masih rencana.
+- Sekolah Terpadu Pahoa cukup disebut di Tentang Kami (bagian latar belakang sekolah). Jangan diulang di halaman lain.
 - Angka, nama orang, tanggal, biaya: jangan mengarang. Kalau tidak ada datanya, tulis
   `[PERLU DATA: ...]` dan catat di laporan.
 
 ## Pendaftaran & kunjungan
 - Website hanya memberi info pendaftaran, lalu mengajak "hubungi kami".
+- Tombol ajakan daftar ("Daftar Sekarang", "Isi Formulir Sekarang", dll) ditulis **"Info Pendaftaran"**.
+  Di halaman Admissions sendiri, tombolnya "Hubungi Kami".
 - JANGAN jelaskan proses internal (beli formulir di admission, commitment fee, dll).
 - School tour, school visit, trial class, open house ditulis sebagai ajakan berkunjung/mencoba.
   Jangan sebut "event" ke pembaca.
