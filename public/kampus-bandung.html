@@ -65,7 +65,7 @@
                     
                     <!-- Sisi Kiri: Informasi Hero -->
                     <div class="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1">
-                        <span class="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold tracking-wider uppercase mb-4 border border-brand-primary/20 backdrop-blur-md w-fit mx-auto lg:mx-0">
+                        <span class="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full bg-brand-primary/10 text-brand-primary text-sm font-bold tracking-wider uppercase mb-4 border border-brand-primary/20 backdrop-blur-md w-fit mx-auto lg:mx-0">
                             <i class="fa-solid fa-school text-brand-primary"></i> Kampus Pertama
                         </span>
                         
@@ -74,10 +74,10 @@
                         </h1>
                         
                         <p class="text-base text-gray-600 mb-6 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-                            Sekolah Terpadu Sedaya Bintang berada di dalam kawasan kota terpadu Summarecon Bandung, Gedebage, Bandung Timur.
+                            Berada di kawasan Summarecon Bandung, Gedebage.
                         </p>
                         
-                        <div class="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 font-semibold mb-8 bg-white/80 border border-gray-200/80 rounded-xl p-3 sm:p-4 max-w-xl shadow-xs backdrop-blur-xs mx-auto lg:mx-0 text-left">
+                        <div class="flex items-start gap-2.5 text-base text-gray-700 font-semibold mb-8 bg-white/80 border border-gray-200/80 rounded-xl p-3 sm:p-4 max-w-xl shadow-xs backdrop-blur-xs mx-auto lg:mx-0 text-left">
                             <i class="fa-solid fa-location-dot text-brand-red text-base mt-0.5 shrink-0"></i>
                             <span>Jl. Gedebage Utama Kel Blok GBU/009, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat 40295</span>
                         </div>
@@ -94,11 +94,8 @@
 
                     <!-- Sisi Kanan: Foto Gedung Sekolah Placeholder -->
                     <div class="w-full lg:w-1/2 order-1 lg:order-2">
-                        <div class="w-full aspect-[4/3] rounded-3xl border-2 border-dashed border-gray-300 bg-gray-100 flex flex-col items-center justify-center p-6 text-center shadow-inner">
-                            <div class="w-14 h-14 rounded-2xl bg-white shadow-xs flex items-center justify-center text-gray-400 mb-3 border border-gray-200">
-                                <i class="fa-solid fa-camera text-2xl"></i>
-                            </div>
-                            <span class="text-xs sm:text-sm text-gray-500 font-medium">Foto: gedung sekolah tampak depan</span>
+                        <div class="w-full aspect-[4/3] rounded-3xl overflow-hidden bg-gray-100 shadow-xl">
+                            <img src="assets/images/hero-sekolah-utama.webp" alt="Suasana kelas di Sekolah Terpadu Sedaya Bintang" class="w-full h-full object-cover" width="1600" height="1067" fetchpriority="high" decoding="async">
                         </div>
                     </div>
 
@@ -112,11 +109,11 @@
                 
                 <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8 lg:mb-12">
                     <h2 class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-1.5 sm:mb-3">Lokasi yang Mudah Dijangkau</h2>
-                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Terhubung langsung dengan tol dan dekat stasiun kereta cepat.</p>
+                    <p class="text-base text-gray-600 font-medium leading-relaxed">Dekat gerbang tol dan stasiun kereta cepat.</p>
                 </div>
 
-                <!-- 2x2 di Mobile & Tablet (grid-cols-2), Rata 1 Baris di Desktop (lg:grid-cols-4) -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 lg:gap-5">
+                <!-- 1 kolom di HP, 2x2 di tablet, 1 baris di desktop -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5 lg:gap-5">
                     
                     <!-- Kartu 1: Akses Tol -->
                     <div class="feature-card bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4.5 lg:p-6 border border-gray-100 shadow-xs sm:shadow-sm flex flex-col justify-between h-full col-span-1">
@@ -129,8 +126,8 @@
                                     <i class="fa-solid fa-location-arrow text-xs"></i> Akses Tol
                                 </span>
                             </div>
-                            <h3 class="text-xs sm:text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Akses Tol Gedebage</h3>
-                            <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Gerbang Tol Gedebage KM 149 Padaleunyi terhubung langsung dengan kawasan Summarecon.</p>
+                            <h3 class="text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Akses Tol Gedebage</h3>
+                            <p class="text-base text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Gerbang Tol Gedebage KM 149 Padaleunyi terhubung langsung dengan kawasan Summarecon.</p>
                         </div>
                         <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-xs text-brand-primary/80 font-medium sm:font-semibold">
                             <i class="fa-solid fa-circle-check text-brand-yellow text-xs shrink-0"></i>
@@ -149,8 +146,8 @@
                                     <i class="fa-solid fa-bolt text-xs"></i> Whoosh
                                 </span>
                             </div>
-                            <h3 class="text-xs sm:text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Stasiun Whoosh</h3>
-                            <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Dekat Stasiun Tegalluar, memudahkan perjalanan cepat Bandung–Jakarta.</p>
+                            <h3 class="text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Stasiun Whoosh</h3>
+                            <p class="text-base text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Dekat Stasiun Tegalluar, memudahkan perjalanan cepat Bandung–Jakarta.</p>
                         </div>
                         <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-xs text-brand-primary/80 font-medium sm:font-semibold">
                             <i class="fa-solid fa-bolt text-brand-yellow text-xs shrink-0"></i>
@@ -169,8 +166,8 @@
                                     <i class="fa-solid fa-map-pin text-xs"></i> Fasilitas
                                 </span>
                             </div>
-                            <h3 class="text-xs sm:text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Fasilitas Sekitar</h3>
-                            <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Dekat Mall Summarecon Bandung, RS Santo Borromeus, dan Masjid Al Jabbar.</p>
+                            <h3 class="text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Fasilitas Sekitar</h3>
+                            <p class="text-base text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Dekat Mall Summarecon Bandung, RS Santo Borromeus, dan Masjid Al Jabbar.</p>
                         </div>
                         <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-xs text-brand-primary/80 font-medium sm:font-semibold">
                             <i class="fa-solid fa-building text-brand-yellow text-xs shrink-0"></i>
@@ -189,8 +186,8 @@
                                     <i class="fa-solid fa-shield text-xs"></i> Keamanan
                                 </span>
                             </div>
-                            <h3 class="text-xs sm:text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Kawasan Tertata</h3>
-                            <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Ruang terbuka hijau asri dengan tata kelola profesional dan security 24 jam.</p>
+                            <h3 class="text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Kawasan Tertata</h3>
+                            <p class="text-base text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Ruang terbuka hijau asri dengan tata kelola profesional dan security 24 jam.</p>
                         </div>
                         <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-xs text-brand-primary/80 font-medium sm:font-semibold">
                             <i class="fa-solid fa-tree text-brand-yellow text-xs shrink-0"></i>
@@ -214,22 +211,22 @@
                             <i class="fa-solid fa-camera"></i> Galeri Fasilitas
                         </div>
                         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-2">Suasana Kampus</h2>
-                        <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Gedung tiga lantai dengan fasilitas belajar dan bermain ramah anak.</p>
+                        <p class="text-base text-gray-600 font-medium leading-relaxed">Gedung tiga lantai dengan fasilitas ramah anak.</p>
                     </div>
 
                     <!-- Tombol Navigasi Slider Panah (Mobile, Tablet, Desktop) -->
                     <div class="flex items-center gap-2.5 shrink-0">
-                        <button id="suasana-prev" aria-label="Geser ke kiri" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-gray-200 bg-white text-brand-primary shadow-xs hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all flex items-center justify-center cursor-pointer active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed">
-                            <i class="fa-solid fa-arrow-left text-xs sm:text-sm"></i>
+                        <button type="button" id="suasana-prev" aria-label="Geser ke kiri" class="w-11 h-11 rounded-full border border-gray-200 bg-white text-brand-primary shadow-xs hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all flex items-center justify-center cursor-pointer active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-arrow-left text-base"></i>
                         </button>
-                        <button id="suasana-next" aria-label="Geser ke kanan" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-gray-200 bg-white text-brand-primary shadow-xs hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all flex items-center justify-center cursor-pointer active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed">
-                            <i class="fa-solid fa-arrow-right text-xs sm:text-sm"></i>
+                        <button type="button" id="suasana-next" aria-label="Geser ke kanan" class="w-11 h-11 rounded-full border border-gray-200 bg-white text-brand-primary shadow-xs hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all flex items-center justify-center cursor-pointer active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-arrow-right text-base"></i>
                         </button>
                     </div>
                 </div>
 
                 <!-- Track Slider (Carousel Responsif di HP, Tablet, dan Desktop - Tanpa Clipping & Ukuran Box Seragam) -->
-                <div id="suasana-slider" class="flex items-stretch gap-4 sm:gap-5 lg:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pt-4 pb-10">
+                <div id="suasana-slider" role="region" aria-label="Foto suasana kampus" tabindex="0" class="flex items-stretch gap-4 sm:gap-5 lg:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pt-4 pb-10">
                     
                     <!-- Slide 1: SPACELAB -->
                     <div class="slider-card shrink-0 snap-start w-[82vw] max-w-[300px] sm:w-[320px] md:w-[360px] lg:w-[380px] flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group">
@@ -238,7 +235,7 @@
                         </div>
                         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-start">
                             <h3 class="font-bold text-base sm:text-lg text-brand-primary mb-1 sm:mb-1.5">SPACELAB</h3>
-                            <p class="text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Laboratorium STEAM untuk eksplorasi dan percobaan.</p>
+                            <p class="text-base text-gray-600 font-medium leading-relaxed">Laboratorium STEAM untuk eksplorasi dan percobaan.</p>
                         </div>
                     </div>
 
@@ -249,7 +246,7 @@
                         </div>
                         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-start">
                             <h3 class="font-bold text-base sm:text-lg text-brand-primary mb-1 sm:mb-1.5">Kolam Renang</h3>
-                            <p class="text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Untuk kegiatan olahraga siswa di dalam area sekolah.</p>
+                            <p class="text-base text-gray-600 font-medium leading-relaxed">Untuk kegiatan olahraga murid di dalam area sekolah.</p>
                         </div>
                     </div>
 
@@ -260,7 +257,7 @@
                         </div>
                         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-start">
                             <h3 class="font-bold text-base sm:text-lg text-brand-primary mb-1 sm:mb-1.5">Playground</h3>
-                            <p class="text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Area bermain untuk jenjang KB dan TK.</p>
+                            <p class="text-base text-gray-600 font-medium leading-relaxed">Area bermain untuk jenjang KB dan TK.</p>
                         </div>
                     </div>
 
@@ -270,22 +267,22 @@
                             <div class="w-12 h-12 rounded-xl bg-white shadow-xs flex items-center justify-center text-gray-400 mb-2 border border-gray-200">
                                 <i class="fa-solid fa-book-open text-xl"></i>
                             </div>
-                            <span class="text-xs text-gray-500 font-medium">Foto: perpustakaan</span>
+                            <span class="text-sm text-gray-600 font-medium">Foto perpustakaan menyusul</span>
                         </div>
                         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-start">
                             <h3 class="font-bold text-base sm:text-lg text-brand-primary mb-1 sm:mb-1.5">Perpustakaan</h3>
-                            <p class="text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Ruang baca untuk membiasakan siswa membaca sejak dini.</p>
+                            <p class="text-base text-gray-600 font-medium leading-relaxed">Ruang baca untuk membiasakan murid membaca sejak dini.</p>
                         </div>
                     </div>
 
                 </div>
 
                 <!-- Indikator Dots Pagination Slider -->
-                <div id="suasana-dots" class="flex justify-center items-center gap-2 mt-1 mb-7">
-                    <button class="w-7 h-2.5 rounded-full bg-brand-primary transition-all duration-300 cursor-pointer" aria-label="Slide 1"></button>
-                    <button class="w-2.5 h-2.5 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 cursor-pointer" aria-label="Slide 2"></button>
-                    <button class="w-2.5 h-2.5 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 cursor-pointer" aria-label="Slide 3"></button>
-                    <button class="w-2.5 h-2.5 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 cursor-pointer" aria-label="Slide 4"></button>
+                <div id="suasana-dots" class="flex justify-center items-center gap-2 mt-1 mb-7" aria-hidden="true">
+                    <span class="block w-7 h-2.5 rounded-full bg-brand-primary transition-all duration-300"></span>
+                    <span class="block w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300"></span>
+                    <span class="block w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300"></span>
+                    <span class="block w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300"></span>
                 </div>
 
                 <div class="text-center">
@@ -306,23 +303,23 @@
                         <i class="fa-solid fa-graduation-cap"></i> Kurikulum & Nilai
                     </div>
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-2 sm:mb-3">Satu Sistem Pendidikan</h2>
-                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Berafiliasi dengan Sekolah Terpadu Pahoa yang unggul.</p>
+                    <p class="text-base text-gray-600 font-medium leading-relaxed">Berafiliasi dengan Sekolah Terpadu Pahoa yang unggul.</p>
                 </div>
 
                 <!-- 2 di Atas, 1 di Bawah & di Tengah pada Mobile/Tab (rasio sama persis), Rata 1 Baris di Desktop (lg:flex-nowrap) -->
                 <div class="flex flex-wrap lg:flex-nowrap justify-center gap-3 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
                     
                     <!-- Kartu 1: Budi Pekerti -->
-                    <a href="budi-pekerti.html" class="block w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.75rem)] lg:w-auto lg:flex-1 mt-8 sm:mt-10 lg:mt-14">
+                    <a href="budi-pekerti.html" class="block w-full sm:w-[calc(50%-0.75rem)] lg:w-auto lg:flex-1 mt-8 sm:mt-10 lg:mt-14">
                         <div class="relative bg-white rounded-xl lg:rounded-2xl p-3.5 sm:p-6 lg:p-8 pt-10 sm:pt-12 lg:pt-16 shadow-xs hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group h-full flex flex-col justify-end">
                             <div class="absolute -top-7 sm:-top-10 lg:-top-14 left-3 sm:left-6 lg:left-8 w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28 flex justify-center items-center">
                                 <div class="absolute inset-0 bg-brand-red rounded-full filter blur-[15px] opacity-20 group-hover:opacity-50 group-hover:scale-125 transition-all duration-500"></div>
-                                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" alt="Budi Pekerti" class="relative z-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 object-contain drop-shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" alt="Ikon Budi Pekerti" width="96" height="96" loading="lazy" decoding="async" class="relative z-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 object-contain drop-shadow-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
                             </div>
                             <div class="flex justify-between items-end gap-1.5 sm:gap-2 mt-auto">
                                 <div class="text-left flex-1">
-                                    <h3 class="text-xs sm:text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">Budi Pekerti</h3>
-                                    <p class="text-sm lg:text-sm text-gray-600 leading-tight">Di Zi Gui & 10 Nilai Moral</p>
+                                    <h3 class="text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">Budi Pekerti</h3>
+                                    <p class="text-base text-gray-600 leading-tight">10 Nilai Moral dan nilai Di Zi Gui</p>
                                 </div>
                                 <div class="w-7 h-7 sm:w-9 sm:h-9 lg:w-12 lg:h-12 shrink-0 rounded-full bg-brand-gray flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors cursor-pointer">
                                     <i class="fa-solid fa-arrow-right text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
@@ -332,16 +329,16 @@
                     </a>
 
                     <!-- Kartu 2: Trilingual -->
-                    <a href="tribahasa.html" class="block w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.75rem)] lg:w-auto lg:flex-1 mt-8 sm:mt-10 lg:mt-14">
+                    <a href="tribahasa.html" class="block w-full sm:w-[calc(50%-0.75rem)] lg:w-auto lg:flex-1 mt-8 sm:mt-10 lg:mt-14">
                         <div class="relative bg-white rounded-xl lg:rounded-2xl p-3.5 sm:p-6 lg:p-8 pt-10 sm:pt-12 lg:pt-16 shadow-xs hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group h-full flex flex-col justify-end">
                             <div class="absolute -top-7 sm:-top-10 lg:-top-14 left-3 sm:left-6 lg:left-8 w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28 flex justify-center items-center">
                                 <div class="absolute inset-0 bg-brand-primary rounded-full filter blur-[15px] opacity-20 group-hover:opacity-50 group-hover:scale-125 transition-all duration-500"></div>
-                                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Globe%20Showing%20Asia-Australia.png" alt="Trilingual" class="relative z-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 object-contain drop-shadow-2xl transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">
+                                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Globe%20Showing%20Asia-Australia.png" alt="Ikon Trilingual" width="96" height="96" loading="lazy" decoding="async" class="relative z-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 object-contain drop-shadow-2xl transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500">
                             </div>
                             <div class="flex justify-between items-end gap-1.5 sm:gap-2 mt-auto">
                                 <div class="text-left flex-1">
-                                    <h3 class="text-xs sm:text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">Trilingual</h3>
-                                    <p class="text-sm lg:text-sm text-gray-600 leading-tight">Bahasa Indonesia, Inggris, Mandarin</p>
+                                    <h3 class="text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">Trilingual</h3>
+                                    <p class="text-base text-gray-600 leading-tight">Bahasa Mandarin, Inggris, dan Indonesia</p>
                                 </div>
                                 <div class="w-7 h-7 sm:w-9 sm:h-9 lg:w-12 lg:h-12 shrink-0 rounded-full bg-brand-gray flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors cursor-pointer">
                                     <i class="fa-solid fa-arrow-right text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
@@ -351,16 +348,16 @@
                     </a>
 
                     <!-- Kartu 3: STEAM (Rasio & Ukuran Sama Persis, Terpusat di Tengah Bawah pada Mobile/Tab) -->
-                    <a href="steam.html" class="block w-[calc(50%-0.375rem)] sm:w-[calc(50%-0.75rem)] lg:w-auto lg:flex-1 mt-8 sm:mt-10 lg:mt-14">
+                    <a href="steam.html" class="block w-full sm:w-[calc(50%-0.75rem)] lg:w-auto lg:flex-1 mt-8 sm:mt-10 lg:mt-14">
                         <div class="relative bg-white rounded-xl lg:rounded-2xl p-3.5 sm:p-6 lg:p-8 pt-10 sm:pt-12 lg:pt-16 shadow-xs hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group h-full flex flex-col justify-end">
                             <div class="absolute -top-7 sm:-top-10 lg:-top-14 left-3 sm:left-6 lg:left-8 w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28 flex justify-center items-center">
                                 <div class="absolute inset-0 bg-brand-yellow rounded-full filter blur-[15px] opacity-40 group-hover:opacity-70 group-hover:scale-125 transition-all duration-500"></div>
-                                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="STEAM" class="relative z-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 object-contain drop-shadow-2xl transform group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500">
+                                <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Ikon STEAM" width="96" height="96" loading="lazy" decoding="async" class="relative z-10 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 object-contain drop-shadow-2xl transform group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500">
                             </div>
                             <div class="flex justify-between items-end gap-1.5 sm:gap-2 mt-auto">
                                 <div class="text-left flex-1">
-                                    <h3 class="text-xs sm:text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">STEAM</h3>
-                                    <p class="text-sm lg:text-sm text-gray-600 leading-tight">Framework Singapura Dr. Yeap Ban Har</p>
+                                    <h3 class="text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">STEAM</h3>
+                                    <p class="text-base text-gray-600 leading-tight">Belajar lewat praktik langsung</p>
                                 </div>
                                 <div class="w-7 h-7 sm:w-9 sm:h-9 lg:w-12 lg:h-12 shrink-0 rounded-full bg-brand-gray flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors cursor-pointer">
                                     <i class="fa-solid fa-arrow-right text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
@@ -380,7 +377,7 @@
                 
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Pertanyaan Umum</h2>
-                    <p class="text-base text-gray-600 font-medium leading-relaxed">Hal yang sering ditanyakan orang tua tentang kampus ini.</p>
+                    <p class="text-base text-gray-600 font-medium leading-relaxed">Hal yang sering ditanyakan orang tua.</p>
                 </div>
 
                 <div class="max-w-3xl mx-auto space-y-3">
@@ -391,7 +388,7 @@
                             <span>Jenjang apa saja yang sudah dibuka di kampus ini?</span>
                             <i class="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition-transform shrink-0"></i>
                         </summary>
-                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
+                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-base text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
                             KB, TK, dan SD. Jenjang SMP dan SMA akan dibuka secara bertahap.
                         </div>
                     </details>
@@ -402,8 +399,8 @@
                             <span>Apakah kelas KB dan TK memakai AC?</span>
                             <i class="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition-transform shrink-0"></i>
                         </summary>
-                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
-                            Tidak. Kelas KB dan TK dibuat tanpa pendingin ruangan. Gedungnya punya banyak bukaan, sehingga cahaya alami dan sirkulasi udara bisa dimanfaatkan secara maksimal.
+                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-base text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
+                            Tidak. Kelas KB dan TK dibuat tanpa pendingin ruangan. Gedungnya punya banyak bukaan, sehingga cahaya alami dan udara segar mudah masuk.
                         </div>
                     </details>
 
@@ -413,7 +410,7 @@
                             <span>Bagaimana akses dari luar Bandung?</span>
                             <i class="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition-transform shrink-0"></i>
                         </summary>
-                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
+                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-base text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
                             Lewat Gerbang Tol Gedebage KM 149 di ruas Tol Padaleunyi. Dari Jakarta, bisa juga naik Kereta Cepat Whoosh dan turun di Stasiun Tegalluar, yang berada di sebelah kawasan Summarecon Bandung.
                         </div>
                     </details>
@@ -424,7 +421,7 @@
                             <span>Apakah bisa melihat sekolah sebelum mendaftar?</span>
                             <i class="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition-transform shrink-0"></i>
                         </summary>
-                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
+                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-base text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
                             Bisa. Jadwalkan kunjungan melalui halaman <a href="school-visit.html" class="text-brand-primary underline font-semibold hover:text-brand-yellow transition-colors">School Visit</a>.
                         </div>
                     </details>
@@ -435,7 +432,7 @@
                             <span>Bagaimana cara mendaftar?</span>
                             <i class="fa-solid fa-chevron-down text-xs text-gray-400 group-open:rotate-180 transition-transform shrink-0"></i>
                         </summary>
-                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
+                        <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-base text-gray-600 font-medium leading-relaxed border-t border-gray-100/80 pt-4">
                             Informasi pendaftaran ada di halaman <a href="admissions.html" class="text-brand-primary underline font-semibold hover:text-brand-yellow transition-colors">Admissions</a>.
                         </div>
                     </details>
@@ -473,8 +470,8 @@
                                         <i class="fa-solid fa-location-dot"></i>
                                     </div>
                                     <div>
-                                        <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Alamat</div>
-                                        <div class="text-xs sm:text-sm font-semibold text-gray-800 leading-relaxed">Jl. Gedebage Utama Kel Blok GBU/009, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat 40295</div>
+                                        <div class="text-sm font-bold text-gray-600 uppercase tracking-wider mb-0.5">Alamat</div>
+                                        <div class="text-base font-semibold text-gray-800 leading-relaxed">Jl. Gedebage Utama Kel Blok GBU/009, Rancabolang, Kec. Gedebage, Kota Bandung, Jawa Barat 40295</div>
                                     </div>
                                 </div>
 
@@ -483,8 +480,8 @@
                                         <i class="fa-brands fa-whatsapp text-lg"></i>
                                     </div>
                                     <div>
-                                        <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">WhatsApp</div>
-                                        <a href="https://wa.me/6281389772288" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold text-gray-800 hover:text-green-600 transition-colors">+62 813-8977-2288</a>
+                                        <div class="text-sm font-bold text-gray-600 uppercase tracking-wider mb-0.5">WhatsApp</div>
+                                        <a href="https://wa.me/6281389772288" target="_blank" rel="noopener noreferrer" class="inline-flex items-center min-h-[44px] text-base font-semibold text-gray-800 hover:text-green-600 transition-colors">+62 813-8977-2288</a>
                                     </div>
                                 </div>
 
@@ -493,17 +490,17 @@
                                         <i class="fa-solid fa-envelope"></i>
                                     </div>
                                     <div>
-                                        <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Email</div>
-                                        <a href="mailto:info.sekolah@sedayabintang.sch.id" class="text-xs sm:text-sm font-semibold text-gray-800 hover:text-brand-primary transition-colors">info.sekolah@sedayabintang.sch.id</a>
+                                        <div class="text-sm font-bold text-gray-600 uppercase tracking-wider mb-0.5">Email</div>
+                                        <a href="mailto:info.sekolah@sedayabintang.sch.id" class="inline-block py-2.5 [overflow-wrap:anywhere] text-base font-semibold text-gray-800 hover:text-brand-primary transition-colors">info.sekolah@sedayabintang.sch.id</a>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="flex flex-col gap-3">
-                                <a href="https://www.google.com/maps/search/?api=1&query=Sekolah%20Terpadu%20Sedaya%20Bintang%20Summarecon%20Bandung" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-brand-primary text-white font-bold px-6 py-3.5 rounded-xl hover:bg-[#15346b] transition-all text-xs sm:text-sm shadow-sm">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sekolah%20Terpadu%20Sedaya%20Bintang%20Summarecon%20Bandung" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-brand-primary text-white font-bold px-6 py-3.5 rounded-xl hover:bg-[#15346b] transition-all text-base shadow-sm">
                                     <i class="fa-solid fa-map-location-dot"></i> <span>Buka di Google Maps</span>
                                 </a>
-                                <a href="https://wa.me/6281389772288" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 border-2 border-green-600 text-green-700 font-bold px-6 py-3.5 rounded-xl hover:bg-green-600 hover:text-white transition-all text-xs sm:text-sm">
+                                <a href="https://wa.me/6281389772288" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 border-2 border-green-600 text-green-700 font-bold px-6 py-3.5 rounded-xl hover:bg-green-600 hover:text-white transition-all text-base">
                                     <i class="fa-brands fa-whatsapp text-base"></i> <span>Chat WhatsApp</span>
                                 </a>
                             </div>
@@ -571,122 +568,7 @@
     <script src="js/app.js"></script>
 
     <!-- Script Slider Suasana Kampus (Mobile, Tablet, Desktop) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const slider = document.getElementById('suasana-slider');
-            const prevBtn = document.getElementById('suasana-prev');
-            const nextBtn = document.getElementById('suasana-next');
-            const dotsContainer = document.getElementById('suasana-dots');
-
-            if (!slider) return;
-
-            const cards = slider.querySelectorAll('.slider-card');
-            const dots = dotsContainer ? dotsContainer.querySelectorAll('button') : [];
-
-            function getScrollStep() {
-                if (cards.length > 0) {
-                    const style = window.getComputedStyle(cards[0]);
-                    const marginRight = parseFloat(style.marginRight) || 16;
-                    return cards[0].offsetWidth + marginRight;
-                }
-                return 320;
-            }
-
-            function updateSliderState() {
-                const scrollLeft = slider.scrollLeft;
-                const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-                if (prevBtn) {
-                    const isAtStart = scrollLeft <= 10;
-                    prevBtn.disabled = isAtStart;
-                    prevBtn.style.opacity = isAtStart ? '0.35' : '1';
-                    prevBtn.style.cursor = isAtStart ? 'not-allowed' : 'pointer';
-                }
-
-                if (nextBtn) {
-                    const isAtEnd = scrollLeft >= maxScroll - 10;
-                    nextBtn.disabled = isAtEnd;
-                    nextBtn.style.opacity = isAtEnd ? '0.35' : '1';
-                    nextBtn.style.cursor = isAtEnd ? 'not-allowed' : 'pointer';
-                }
-
-                // Hitung slide aktif untuk pagination dots
-                let activeIdx = 0;
-                let minDiff = Infinity;
-                cards.forEach((card, idx) => {
-                    const cardOffset = card.offsetLeft - slider.offsetLeft;
-                    const diff = Math.abs(cardOffset - scrollLeft);
-                    if (diff < minDiff) {
-                        minDiff = diff;
-                        activeIdx = idx;
-                    }
-                });
-
-                dots.forEach((dot, idx) => {
-                    if (idx === activeIdx) {
-                        dot.className = "w-7 h-2.5 rounded-full bg-brand-primary transition-all duration-300 cursor-pointer";
-                    } else {
-                        dot.className = "w-2.5 h-2.5 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 cursor-pointer";
-                    }
-                });
-            }
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', function() {
-                    slider.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
-                });
-            }
-
-            if (nextBtn) {
-                nextBtn.addEventListener('click', function() {
-                    slider.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
-                });
-            }
-
-            dots.forEach((dot, idx) => {
-                dot.addEventListener('click', function() {
-                    if (cards[idx]) {
-                        const targetLeft = cards[idx].offsetLeft - slider.offsetLeft;
-                        slider.scrollTo({ left: targetLeft, behavior: 'smooth' });
-                    }
-                });
-            });
-
-            // Mouse drag-to-scroll support untuk desktop
-            let isDown = false;
-            let startX;
-            let scrollStartLeft;
-
-            slider.addEventListener('mousedown', (e) => {
-                isDown = true;
-                slider.classList.add('cursor-grabbing');
-                startX = e.pageX - slider.offsetLeft;
-                scrollStartLeft = slider.scrollLeft;
-            });
-
-            slider.addEventListener('mouseleave', () => {
-                isDown = false;
-                slider.classList.remove('cursor-grabbing');
-            });
-
-            slider.addEventListener('mouseup', () => {
-                isDown = false;
-                slider.classList.remove('cursor-grabbing');
-            });
-
-            slider.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 1.5;
-                slider.scrollLeft = scrollStartLeft - walk;
-            });
-
-            slider.addEventListener('scroll', updateSliderState, { passive: true });
-            window.addEventListener('resize', updateSliderState);
-            setTimeout(updateSliderState, 100);
-        });
-    </script>
+    <script src="js/kampus-bandung.js"></script>
 
 </body>
 </html>
