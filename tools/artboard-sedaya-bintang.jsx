@@ -715,6 +715,4 @@ for (var b = 0; b < DATA.length; b++) {
 }
 // hapus layer kosong bawaan dokumen (kalau ada)
 try { for (var i = doc.layers.length - 1; i >= 0; i--) { var L = doc.layers[i]; if (L.typename === "ArtLayer" && L.name === "Layer 1") L.remove(); } } catch (e) {}
-alert("Selesai: " + jumlah + " artboard dibuat.
-Satu baris = satu halaman website.
-Export: File > Export > Artboards to Files.");
+alert("Selesai: " + jumlah + " artboard dibuat. Satu baris = satu halaman website. Export: File > Export > Artboards to Files.");
