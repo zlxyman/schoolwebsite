@@ -1,11 +1,11 @@
 // Sedaya Bintang - membuat artboard gambar website (Photoshop 2021 ke atas)
 // Cara pakai: Photoshop > File > Scripts > Browse... > pilih file ini.
-// Satu baris = satu halaman website. Nama artboard = nama file gambar.
+// Satu kolom = satu halaman website, gambar urut ke bawah. Ikon dan karakter 3D tidak dibuat.
 #target photoshop
 app.preferences.rulerUnits = Units.PIXELS;
 var DATA = [
  [
-  "00-semua-halaman",
+  "00-semua",
   [
    [
     "00-semua-01-logo-sekolah",
@@ -33,84 +33,84 @@ var DATA = [
     463
    ],
    [
-    "01-beranda-04-hero-sekolah-utama",
+    "01-beranda-04-galeri-slide-1",
     1000,
     750
    ],
    [
-    "01-beranda-05-murid-kb-menggambar",
-    800,
-    800
-   ],
-   [
-    "01-beranda-06-partner-sekolah-pahoa",
-    800,
-    800
-   ],
-   [
-    "01-beranda-07-hero-sekolah-utama",
-    800,
-    800
-   ],
-   [
-    "01-beranda-08-latar-sma",
-    800,
-    800
-   ],
-   [
-    "01-beranda-09-testimoni-video-1",
-    800,
-    450
-   ],
-   [
-    "01-beranda-10-avatar-testimoni-1",
-    800,
-    800
-   ],
-   [
-    "01-beranda-11-testimoni-video-2",
-    800,
-    450
-   ],
-   [
-    "01-beranda-12-avatar-testimoni-2",
-    800,
-    800
-   ],
-   [
-    "01-beranda-13-testimoni-video-3",
-    800,
-    450
-   ],
-   [
-    "01-beranda-14-avatar-testimoni-3",
-    800,
-    800
-   ],
-   [
-    "01-beranda-15-testimoni-video-4",
-    800,
-    450
-   ],
-   [
-    "01-beranda-16-avatar-testimoni-4",
-    800,
-    800
-   ],
-   [
-    "01-beranda-17-kampus-gedung-utama",
-    2600,
-    914
-   ],
-   [
-    "01-beranda-18-lingkungan-belajar-menyenangkan",
+    "01-beranda-05-galeri-slide-2",
     1000,
     750
    ],
    [
-    "01-beranda-19-murid-kolaborasi-kelas",
+    "01-beranda-06-galeri-slide-3",
     1000,
     750
+   ],
+   [
+    "01-beranda-07-jenjang-kb-tk",
+    1200,
+    400
+   ],
+   [
+    "01-beranda-08-jenjang-sd",
+    1200,
+    400
+   ],
+   [
+    "01-beranda-09-jenjang-smp",
+    1200,
+    400
+   ],
+   [
+    "01-beranda-10-jenjang-sma",
+    1200,
+    400
+   ],
+   [
+    "01-beranda-11-testimoni-video-1",
+    800,
+    450
+   ],
+   [
+    "01-beranda-12-avatar-testimoni-1",
+    200,
+    200
+   ],
+   [
+    "01-beranda-13-testimoni-video-2",
+    800,
+    450
+   ],
+   [
+    "01-beranda-14-avatar-testimoni-2",
+    200,
+    200
+   ],
+   [
+    "01-beranda-15-testimoni-video-3",
+    800,
+    450
+   ],
+   [
+    "01-beranda-16-avatar-testimoni-3",
+    200,
+    200
+   ],
+   [
+    "01-beranda-17-testimoni-video-4",
+    800,
+    450
+   ],
+   [
+    "01-beranda-18-avatar-testimoni-4",
+    200,
+    200
+   ],
+   [
+    "01-beranda-19-banner-kunjungi-kampus",
+    2560,
+    1440
    ]
   ]
  ],
@@ -159,8 +159,8 @@ var DATA = [
    ],
    [
     "02-tentang-kami-09-kampus-gedung-utama",
-    2600,
-    926
+    2560,
+    1440
    ]
   ]
  ],
@@ -299,8 +299,8 @@ var DATA = [
   [
    [
     "06-budi-pekerti-01-kebersamaan-murid-orangtua",
-    2600,
-    1219
+    2560,
+    1440
    ],
    [
     "06-budi-pekerti-02-budi-pekerti-cuci-kaki-orangtua",
@@ -328,52 +328,52 @@ var DATA = [
     1125
    ],
    [
-    "06-budi-pekerti-07-popup-nilai-etika-sopan-santun",
+    "06-budi-pekerti-07-popup-etika-sopan-santun",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-08-popup-nilai-hormat-kepada-yang-tua",
+    "06-budi-pekerti-08-popup-hormat-kepada-yang-tua",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-09-popup-nilai-welas-asih",
+    "06-budi-pekerti-09-popup-welas-asih",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-10-popup-nilai-bersih-dan-jujur",
+    "06-budi-pekerti-10-popup-bersih-dan-jujur",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-11-popup-nilai-perasaan-malu",
+    "06-budi-pekerti-11-popup-perasaan-malu",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-12-popup-nilai-terpercaya",
+    "06-budi-pekerti-12-popup-terpercaya",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-13-popup-nilai-bakti-kepada-orang-tua",
+    "06-budi-pekerti-13-popup-bakti-kepada-orang-tua",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-14-popup-nilai-bijaksana-arif",
+    "06-budi-pekerti-14-popup-bijaksana-arif",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-15-popup-nilai-kebenaran-keadilan",
+    "06-budi-pekerti-15-popup-kebenaran-keadilan",
     1000,
     750
    ],
    [
-    "06-budi-pekerti-16-popup-nilai-kesetiaan",
+    "06-budi-pekerti-16-popup-kesetiaan",
     1000,
     750
    ],
@@ -424,8 +424,8 @@ var DATA = [
   [
    [
     "07-trilingual-01-kebersamaan-murid-orangtua",
-    2600,
-    1231
+    2560,
+    1440
    ],
    [
     "07-trilingual-02-guru-sedaya-bintang",
@@ -529,8 +529,8 @@ var DATA = [
    ],
    [
     "09-fasilitas-12-kampus-gedung-utama",
-    2600,
-    918
+    2560,
+    1440
    ]
   ]
  ],
@@ -634,53 +634,53 @@ var DATA = [
   [
    [
     "12-admissions-01-kebersamaan-murid-orangtua",
-    2600,
-    1188
+    2560,
+    1440
    ],
    [
     "12-admissions-02-kampus-gedung-utama",
-    2600,
-    959
+    2560,
+    1440
    ]
   ]
  ],
  [
-  "14-school-visit",
+  "13-school-visit",
   [
    [
-    "14-school-visit-01-lokasi-summarecon-bandung",
+    "13-school-visit-01-lokasi-summarecon-bandung",
     1200,
     675
    ]
   ]
  ],
  [
-  "15-karir",
+  "14-karir",
   [
    [
-    "15-karir-01-karir-hero-kolaborasi",
-    2600,
-    1073
+    "14-karir-01-karir-hero-kolaborasi",
+    2560,
+    1440
    ],
    [
-    "15-karir-02-karir-diskusi-kolaboratif",
+    "14-karir-02-karir-diskusi-kolaboratif",
     800,
     500
    ],
    [
-    "15-karir-03-karir-fasilitas-modern",
+    "14-karir-03-karir-fasilitas-modern",
     800,
     500
    ],
    [
-    "15-karir-04-karir-area-hijau",
+    "14-karir-04-karir-area-hijau",
     800,
     500
    ]
   ]
  ]
 ];
-var JARAK_X = 200, JARAK_Y = 600;
+var JARAK_X = 800, JARAK_Y = 300;
 
 function buatArtboard(nama, x, y, w, h) {
     var desc = new ActionDescriptor();
@@ -701,18 +701,18 @@ function buatArtboard(nama, x, y, w, h) {
 }
 
 var doc = app.documents.add(UnitValue(2560, "px"), UnitValue(1440, "px"), 72, "Gambar Website Sedaya Bintang", NewDocumentMode.RGB, DocumentFill.TRANSPARENT);
-var y = 0, jumlah = 0;
+// Satu kolom = satu halaman website. Gambar disusun ke bawah sesuai urutan di halaman.
+var x = 0, jumlah = 0;
 for (var b = 0; b < DATA.length; b++) {
-    var x = 0, tinggiBaris = 0, isi = DATA[b][1];
+    var y = 0, lebarKolom = 0, isi = DATA[b][1];
     for (var a = 0; a < isi.length; a++) {
         var nama = isi[a][0], w = isi[a][1], h = isi[a][2];
         buatArtboard(nama, x, y, w, h);
-        x += w + JARAK_X;
-        if (h > tinggiBaris) tinggiBaris = h;
+        y += h + JARAK_Y;
+        if (w > lebarKolom) lebarKolom = w;
         jumlah++;
     }
-    y += tinggiBaris + JARAK_Y;
+    x += lebarKolom + JARAK_X;
 }
-// hapus layer kosong bawaan dokumen (kalau ada)
 try { for (var i = doc.layers.length - 1; i >= 0; i--) { var L = doc.layers[i]; if (L.typename === "ArtLayer" && L.name === "Layer 1") L.remove(); } } catch (e) {}
-alert("Selesai: " + jumlah + " artboard dibuat. Satu baris = satu halaman website. Export: File > Export > Artboards to Files.");
+alert("Selesai: " + jumlah + " artboard dibuat. Satu kolom = satu halaman website, urut ke bawah. Export: File > Export > Artboards to Files.");
