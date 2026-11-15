@@ -19,17 +19,21 @@
     opacity: 0; visibility: hidden; transform: translate(-50%, 15px); 
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none;
 }
-.nav-item:hover .mega-menu { 
+.nav-item:hover .mega-menu,
+.nav-item:focus-within .mega-menu,
+.nav-item.terbuka .mega-menu {
     opacity: 1; visibility: visible; transform: translate(-50%, 0); pointer-events: auto;
 }
 
 /* Animasi Underline pada Navigasi Utama */
 .nav-underline {
-    position: absolute; bottom: -6px; left: 50%; width: 0; height: 3px;
+    position: absolute; bottom: 0; left: 50%; width: 0; height: 3px;
     background-color: #1d4486; transition: all 0.3s ease-in-out;
     transform: translateX(-50%); border-radius: 4px;
 }
-.nav-item:hover .nav-underline { width: 100%; }
+.nav-item:hover .nav-underline,
+.nav-item:focus-within .nav-underline,
+.nav-aktif .nav-underline { width: 100%; }
 
 /* Mobile Accordion & Drawer */
 .mobile-accordion-content {
@@ -678,3 +682,73 @@
 }
 
 
+
+
+/* ==========================================================================
+   AKSESIBILITAS & DASAR GLOBAL
+   ========================================================================== */
+
+/* Cincin fokus yang selalu terlihat saat memakai keyboard (WCAG 2.4.7) */
+:focus-visible {
+    outline: 3px solid #1d4486;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+.bg-brand-primary :focus-visible,
+.bg-brand-dark :focus-visible,
+.fokus-terang :focus-visible,
+.fokus-terang:focus-visible {
+    outline-color: #ffcb05;
+}
+main:focus { outline: none; }
+
+/* Warna sorotan teks mengikuti warna sekolah */
+::selection { background-color: #1d4486; color: #ffffff; }
+
+/* Tautan "Lewati ke isi halaman" untuk pengguna keyboard */
+.skip-link {
+    position: absolute; left: 1rem; top: -4rem; z-index: 200;
+    background: #1d4486; color: #ffffff; font-weight: 700;
+    padding: 0.75rem 1.25rem; border-radius: 0.75rem;
+    transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Tombol Akses Cepat: disembunyikan saat menu HP terbuka atau saat mengisi formulir */
+.easy-touch-wrapper.tersembunyi,
+.menu-terbuka .easy-touch-wrapper { opacity: 0; pointer-events: none; }
+
+/* Saklar dua pilihan (halaman Tentang Kami) */
+#switch-bg { left: 4px; }
+#switch-bg.switch-kanan { left: 50%; }
+
+/* Titik orbit di hero Preschool/Primary (pengganti atribut style) */
+.atom-putar-0 { transform: translate(-50%, -50%) rotate(0deg); }
+.atom-putar-40 { transform: translate(-50%, -50%) rotate(40deg); }
+.atom-putar-80 { transform: translate(-50%, -50%) rotate(80deg); }
+.atom-putar-120 { transform: translate(-50%, -50%) rotate(120deg); }
+.atom-putar-160 { transform: translate(-50%, -50%) rotate(160deg); }
+.atom-putar-200 { transform: translate(-50%, -50%) rotate(200deg); }
+.atom-putar-240 { transform: translate(-50%, -50%) rotate(240deg); }
+.atom-putar-280 { transform: translate(-50%, -50%) rotate(280deg); }
+.atom-putar-320 { transform: translate(-50%, -50%) rotate(320deg); }
+
+/* Pola titik halus (pengganti atribut style) */
+.pola-titik { background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px; }
+
+/* Area sentuh minimal 44px untuk tombol kecil (titik slider, tombol ikon) tanpa mengubah tampilannya */
+.sasaran-44 { position: relative; }
+.sasaran-44::after { content: ''; position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); }
+
+/* Menghormati pengaturan "kurangi gerakan" di perangkat pengunjung (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .film-track-left, .film-track-right { animation: none !important; }
+}
