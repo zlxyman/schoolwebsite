@@ -3,6 +3,7 @@
 {
   "name": "schoolwebsite",
   "compatibility_date": "2026-06-01",
+  "previews": {},
   "assets": {
     "directory": "./public",
     "not_found_handling": "404-page"
