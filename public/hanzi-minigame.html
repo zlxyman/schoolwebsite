@@ -2,17 +2,33 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Susun Hanzi - Dark Mode Edition</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/hanzi-minigame-config.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanzi Master | Mini Games Sedaya Bintang</title>
+    <meta name="description" content="Susun huruf Mandarin goresan demi goresan.">
+    <link rel="canonical" href="https://sedayabintang.sch.id/hanzi-minigame.html">
+    <meta name="theme-color" content="#1d4486">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- Pratinjau saat tautan dibagikan (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sekolah Terpadu Sedaya Bintang">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:title" content="Hanzi Master | Mini Games Sedaya Bintang">
+    <meta property="og:description" content="Susun huruf Mandarin goresan demi goresan.">
+    <meta property="og:url" content="https://sedayabintang.sch.id/hanzi-minigame.html">
+    <meta property="og:image" content="https://sedayabintang.sch.id/assets/images/og-sedaya-bintang.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Font, ikon, dan gaya. Semua disimpan lokal (tanpa CDN). tailwind.css dimuat paling akhir. -->
+    <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/hanzi-minigame.css">
+    <link rel="stylesheet" href="css/tailwind.css">
 </head>
-<body class="w-screen h-[100dvh] flex flex-col relative font-sans">
+<body id="top" class="w-screen h-[100dvh] flex flex-col relative font-sans">
     
     <!-- Background Decor (Glows) -->
     <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
@@ -38,7 +54,7 @@
         <p class="text-slate-400 mb-10 text-sm lg:text-lg font-medium leading-relaxed max-w-lg px-4">
             Pengalaman premium merakit aksara Mandarin. Perhatikan cahaya goresan yang muncul pada kanvas, lalu pilih bentuk yang tepat.
         </p>
-        <button onclick="startHanziGame()" class="bg-sky-500 text-white font-extrabold px-10 lg:px-14 py-4 lg:py-5 rounded-2xl shadow-[0_0_30px_rgba(56,189,248,0.4)] hover:bg-sky-400 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(56,189,248,0.6)] active:translate-y-1 active:shadow-none transition-all text-lg lg:text-xl flex items-center gap-3">
+        <button data-aksi="startHanziGame" class="bg-sky-500 text-white font-extrabold px-10 lg:px-14 py-4 lg:py-5 rounded-2xl shadow-[0_0_30px_rgba(56,189,248,0.4)] hover:bg-sky-400 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(56,189,248,0.6)] active:translate-y-1 active:shadow-none transition-all text-lg lg:text-xl flex items-center gap-3">
             Mulai Bermain <i class="fa-solid fa-play"></i>
         </button>
     </div>
@@ -52,7 +68,7 @@
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-sky-500/5 blur-[100px] rounded-full pointer-events-none"></div>
 
             <div class="text-center mb-4 lg:mb-8 z-10">
-                <span class="inline-block py-1 px-4 rounded-full bg-slate-800 border border-slate-700 text-sky-400 text-[10px] lg:text-xs font-bold tracking-widest uppercase shadow-sm mb-2">
+                <span class="inline-block py-1 px-4 rounded-full bg-slate-800 border border-slate-700 text-sky-400 text-xs lg:text-xs font-bold tracking-widest uppercase shadow-sm mb-2">
                     <i class="fa-solid fa-eye animate-pulse mr-1"></i> Perhatikan Goresan
                 </span>
             </div>
@@ -103,7 +119,7 @@
                 
                 <div class="inline-block bg-slate-800/80 border border-slate-700 px-8 py-3 rounded-full text-lg lg:text-xl text-slate-200 font-bold mb-10 shadow-inner" id="hanzi-result-meaning"></div>
 
-                <button id="hanzi-next-btn" onclick="nextHanziWord()" class="bg-white text-slate-900 font-black px-8 py-4 lg:py-5 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:bg-slate-200 hover:-translate-y-1 transition-all w-full flex items-center justify-center gap-3 text-lg">
+                <button id="hanzi-next-btn" data-aksi="nextHanziWord" class="bg-white text-slate-900 font-black px-8 py-4 lg:py-5 rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:bg-slate-200 hover:-translate-y-1 transition-all w-full flex items-center justify-center gap-3 text-lg">
                     Lanjut Kata Berikutnya <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>

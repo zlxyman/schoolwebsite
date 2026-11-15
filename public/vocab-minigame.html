@@ -2,16 +2,33 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mandarin Vocab Master</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/vocab-minigame-config.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebak Kosakata | Mini Games Sedaya Bintang</title>
+    <meta name="description" content="Tebak arti kosakata Mandarin dari gambar.">
+    <link rel="canonical" href="https://sedayabintang.sch.id/vocab-minigame.html">
+    <meta name="theme-color" content="#1d4486">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- Pratinjau saat tautan dibagikan (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sekolah Terpadu Sedaya Bintang">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:title" content="Tebak Kosakata | Mini Games Sedaya Bintang">
+    <meta property="og:description" content="Tebak arti kosakata Mandarin dari gambar.">
+    <meta property="og:url" content="https://sedayabintang.sch.id/vocab-minigame.html">
+    <meta property="og:image" content="https://sedayabintang.sch.id/assets/images/og-sedaya-bintang.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Font, ikon, dan gaya. Semua disimpan lokal (tanpa CDN). tailwind.css dimuat paling akhir. -->
+    <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/vocab-minigame.css">
+    <link rel="stylesheet" href="css/tailwind.css">
 </head>
-<body class="h-screen w-screen relative flex flex-col items-center justify-center">
+<body id="top" class="h-screen w-screen relative flex flex-col items-center justify-center">
 
     <div class="ambient-light bg-blue-600 w-[300px] h-[300px] top-[-10%] left-[-10%]"></div>
     <div class="ambient-light bg-purple-600 w-[400px] h-[400px] bottom-[-20%] right-[-10%]"></div>
@@ -39,7 +56,7 @@
             <h1 class="text-3xl md:text-4xl font-black text-white mb-2 tracking-tight">Tebak Kosa Kata</h1>
             <p class="text-slate-400 font-medium mb-10 text-sm md:text-base">Uji penguasaan kosa kata Mandarin kamu dengan menebak arti dari gambar yang muncul!</p>
             
-            <button onclick="startGame()" class="w-full bg-game-primary text-white font-black py-4 rounded-2xl text-lg shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:bg-blue-400 transition-all hover:scale-105 active:scale-95 flex justify-center items-center gap-3 group">
+            <button data-aksi="startGame" class="w-full bg-game-primary text-white font-black py-4 rounded-2xl text-lg shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:bg-blue-400 transition-all hover:scale-105 active:scale-95 flex justify-center items-center gap-3 group">
                 MULAI GAME <i class="fa-solid fa-play group-hover:translate-x-1 transition-transform"></i>
             </button>
         </div>
@@ -87,7 +104,7 @@
                 <div id="end-score" class="text-6xl font-black text-game-accent mt-2"></div>
             </div>
 
-            <button onclick="startGame()" class="w-full bg-white text-game-panel font-black py-4 rounded-2xl text-lg shadow-xl hover:bg-slate-200 transition-all hover:scale-105 active:scale-95 flex justify-center items-center gap-3 group">
+            <button data-aksi="startGame" class="w-full bg-white text-game-panel font-black py-4 rounded-2xl text-lg shadow-xl hover:bg-slate-200 transition-all hover:scale-105 active:scale-95 flex justify-center items-center gap-3 group">
                 <i class="fa-solid fa-rotate-right group-hover:-rotate-180 transition-transform duration-500"></i> MAIN LAGI
             </button>
         </div>

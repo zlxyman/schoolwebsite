@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karir - Sekolah Terpadu Sedaya Bintang</title>
-    
-    <!-- Memuat Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Konfigurasi Tailwind -->
-    <script src="js/tailwind-config.js"></script>
-    
-    <!-- Google Fonts: Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome untuk Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Karir | Sekolah Terpadu Sedaya Bintang</title>
+    <meta name="description" content="Lowongan guru dan staf di Sekolah Terpadu Sedaya Bintang, Summarecon Bandung. Lihat posisi yang dibuka dan cara melamar.">
+    <link rel="canonical" href="https://sedayabintang.sch.id/karir.html">
+    <meta name="theme-color" content="#1d4486">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <!-- Memanggil CSS Global -->
+    <!-- Pratinjau saat tautan dibagikan (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sekolah Terpadu Sedaya Bintang">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:title" content="Karir | Sekolah Terpadu Sedaya Bintang">
+    <meta property="og:description" content="Lowongan guru dan staf di Sekolah Terpadu Sedaya Bintang, Summarecon Bandung. Lihat posisi yang dibuka dan cara melamar.">
+    <meta property="og:url" content="https://sedayabintang.sch.id/karir.html">
+    <meta property="og:image" content="https://sedayabintang.sch.id/assets/images/og-sedaya-bintang.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Font, ikon, dan gaya. Semua disimpan lokal (tanpa CDN). tailwind.css dimuat paling akhir. -->
+    <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tailwind.css">
 </head>
 
 <!-- Tidak menggunakan data-page karena halaman Karir tidak ada di Navbar utama -->
@@ -33,11 +40,11 @@
         <section class="relative pt-16 pb-20 lg:pt-28 lg:pb-32 overflow-hidden bg-brand-gray flex items-center">
             <div class="absolute inset-0 z-0">
                 <!-- Background Image dengan Overlay Navy -->
-                <img src="assets/images/karir-hero-kolaborasi.jpg" alt="Kolaborasi Sedaya Bintang" class="w-full h-full object-cover grayscale opacity-40">
+                <img src="assets/images/karir-hero-kolaborasi.webp" alt="Kolaborasi Sedaya Bintang" class="w-full h-full object-cover grayscale opacity-40" width="1600" height="1067" decoding="async">
                 <div class="absolute inset-0 bg-brand-primary/90"></div>
                 <!-- Glow Effect -->
                 <div class="absolute top-[-10%] right-[-5%] w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] bg-brand-yellow rounded-full filter blur-[100px] lg:blur-[150px] opacity-30 animate-glow"></div>
-                <div class="absolute bottom-[-10%] left-[-5%] w-[300px] h-[300px] bg-brand-red rounded-full filter blur-[100px] opacity-20 animate-glow" style="animation-delay: 2s;"></div>
+                <div class="absolute bottom-[-10%] left-[-5%] w-[300px] h-[300px] bg-brand-red rounded-full filter blur-[100px] opacity-20 animate-glow [animation-delay:2s]"></div>
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -45,7 +52,7 @@
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white tracking-tight leading-[1.2] mb-4 lg:mb-6">
                     Karir di Sekolah Terpadu Sedaya Bintang
                 </h1>
-                <p class="text-sm lg:text-lg text-gray-200 mb-8 lg:mb-10 font-medium max-w-2xl mx-auto leading-relaxed">
+                <p class="text-base lg:text-lg text-gray-200 mb-8 lg:mb-10 font-medium max-w-2xl mx-auto leading-relaxed">
                     Kami mengundang tenaga pendidik dan tenaga kependidikan yang berdedikasi pada Budi Pekerti, Trilingual, dan STEAM.
                 </p>
                 <a href="#lowongan" class="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary font-extrabold px-6 py-3.5 lg:px-8 lg:py-4 rounded-full shadow-xl hover:bg-white transition-all transform hover:-translate-y-1 text-sm lg:text-base">
@@ -65,7 +72,7 @@
                             <i class="fa-solid fa-heart text-lg sm:text-xl lg:text-2xl text-brand-red group-hover:text-brand-yellow transition-colors"></i>
                         </div>
                         <h3 class="text-xs sm:text-base lg:text-lg font-extrabold text-brand-primary mb-1 sm:mb-2 leading-snug break-words">Budaya ACT</h3>
-                        <p class="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-normal sm:leading-relaxed">Budaya kerja yang selaras dengan kompetensi ACT (Attitude, Communication, Thinking).</p>
+                        <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed">Budaya kerja yang selaras dengan kompetensi ACT (Attitude, Communication, Thinking).</p>
                     </div>
 
                     <!-- Card 2 -->
@@ -74,7 +81,7 @@
                             <i class="fa-solid fa-earth-asia text-lg sm:text-xl lg:text-2xl text-brand-primary group-hover:text-brand-yellow transition-colors"></i>
                         </div>
                         <h3 class="text-xs sm:text-base lg:text-lg font-extrabold text-brand-primary mb-1 sm:mb-2 leading-snug break-words">Multikultural</h3>
-                        <p class="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-normal sm:leading-relaxed">Berkolaborasi dengan tenaga pendidik profesional dan native speaker.</p>
+                        <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed">Berkolaborasi dengan tenaga pendidik profesional dan native speaker.</p>
                     </div>
 
                     <!-- Card 3 -->
@@ -83,7 +90,7 @@
                             <i class="fa-solid fa-laptop-code text-lg sm:text-xl lg:text-2xl text-brand-primary group-hover:text-brand-yellow transition-colors"></i>
                         </div>
                         <h3 class="text-xs sm:text-base lg:text-lg font-extrabold text-brand-primary mb-1 sm:mb-2 leading-snug break-words">Fasilitas Kampus</h3>
-                        <p class="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-normal sm:leading-relaxed">Lingkungan kerja terintegrasi di kawasan Summarecon Bandung.</p>
+                        <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed">Lingkungan kerja terintegrasi di kawasan Summarecon Bandung.</p>
                     </div>
 
                     <!-- Card 4 -->
@@ -92,7 +99,7 @@
                             <i class="fa-solid fa-arrow-trend-up text-lg sm:text-xl lg:text-2xl text-brand-primary group-hover:text-brand-yellow transition-colors"></i>
                         </div>
                         <h3 class="text-xs sm:text-base lg:text-lg font-extrabold text-brand-primary mb-1 sm:mb-2 leading-snug break-words">Pengembangan Profesional</h3>
-                        <p class="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-normal sm:leading-relaxed">Pelatihan kompetensi berkelanjutan melalui pendekatan lesson study.</p>
+                        <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed">Pelatihan kompetensi berkelanjutan melalui pendekatan lesson study.</p>
                     </div>
 
                 </div>
@@ -105,7 +112,7 @@
                 <div class="mb-8 lg:mb-12 flex justify-between items-end">
                     <div>
                         <h2 class="text-2xl lg:text-4xl font-extrabold text-brand-primary mb-2">Lingkungan Kerja</h2>
-                        <p class="text-sm lg:text-base text-gray-500 font-medium">Budaya kerja dan pengembangan tenaga pendidik.</p>
+                        <p class="text-base lg:text-base text-gray-500 font-medium">Budaya kerja dan pengembangan tenaga pendidik.</p>
                     </div>
                 </div>
 
@@ -114,33 +121,33 @@
                     
                     <div class="flex-none w-[85vw] sm:w-[400px] snap-center bg-white rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 overflow-hidden group">
                         <div class="h-[250px] relative overflow-hidden bg-gray-200">
-                            <img src="assets/images/karir-diskusi-kolaboratif.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Diskusi Kolaboratif">
+                            <img src="assets/images/karir-diskusi-kolaboratif.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Diskusi Kolaboratif" width="800" height="534" loading="lazy" decoding="async">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 right-4 text-white">
                                 <h3 class="font-bold text-lg">Kolaborasi Antar Divisi</h3>
-                                <p class="text-xs text-gray-200 mt-1">Kerja sama antar tenaga pendidik dalam kegiatan belajar mengajar.</p>
+                                <p class="text-sm text-gray-200 mt-1">Kerja sama antar tenaga pendidik dalam kegiatan belajar mengajar.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex-none w-[85vw] sm:w-[400px] snap-center bg-white rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 overflow-hidden group">
                         <div class="h-[250px] relative overflow-hidden bg-gray-200">
-                            <img src="assets/images/karir-fasilitas-modern.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Fasilitas Modern">
+                            <img src="assets/images/karir-fasilitas-modern.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Fasilitas Modern" width="800" height="533" loading="lazy" decoding="async">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 right-4 text-white">
                                 <h3 class="font-bold text-lg">Ruang Belajar Interaktif</h3>
-                                <p class="text-xs text-gray-200 mt-1">Fasilitas kegiatan belajar mengajar.</p>
+                                <p class="text-sm text-gray-200 mt-1">Fasilitas kegiatan belajar mengajar.</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex-none w-[85vw] sm:w-[400px] snap-center bg-white rounded-xl lg:rounded-2xl shadow-sm border border-gray-100 overflow-hidden group">
                         <div class="h-[250px] relative overflow-hidden bg-gray-200">
-                            <img src="assets/images/karir-area-hijau.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Area Hijau">
+                            <img src="assets/images/karir-area-hijau.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Area Hijau" width="800" height="1200" loading="lazy" decoding="async">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 right-4 text-white">
                                 <h3 class="font-bold text-lg">Kampus Nyaman</h3>
-                                <p class="text-xs text-gray-200 mt-1">Pemanfaatan ruang fisik sekolah.</p>
+                                <p class="text-sm text-gray-200 mt-1">Pemanfaatan ruang fisik sekolah.</p>
                             </div>
                         </div>
                     </div>
@@ -155,16 +162,16 @@
                 
                 <div class="text-center mb-10 lg:mb-12">
                     <h2 class="text-2xl lg:text-4xl font-extrabold text-brand-primary mb-4">Peluang Karir Terbuka</h2>
-                    <p class="text-sm lg:text-base text-gray-600">Pilih kategori yang sesuai dengan keahlian dan passion Anda.</p>
+                    <p class="text-base lg:text-base text-gray-600">Pilih kategori yang sesuai dengan keahlian dan passion Anda.</p>
                 </div>
 
                 <!-- Tab Switcher -->
                 <div class="flex justify-center mb-10 lg:mb-14">
                     <div class="bg-brand-gray p-1.5 rounded-full inline-flex shadow-inner border border-gray-100">
-                        <button id="btn-akademik" onclick="switchTab('akademik')" class="tab-btn active px-6 py-2.5 lg:px-10 lg:py-3 rounded-full text-sm lg:text-base font-bold text-gray-500 hover:text-brand-primary">
+                        <button id="btn-akademik" data-aksi="switchTab" data-arg="akademik" class="tab-btn active px-6 py-2.5 lg:px-10 lg:py-3 rounded-full text-sm lg:text-base font-bold text-gray-500 hover:text-brand-primary">
                             <i class="fa-solid fa-graduation-cap mr-2"></i> Tim Akademik
                         </button>
-                        <button id="btn-officer" onclick="switchTab('officer')" class="tab-btn px-6 py-2.5 lg:px-10 lg:py-3 rounded-full text-sm lg:text-base font-bold text-gray-500 hover:text-brand-primary">
+                        <button id="btn-officer" data-aksi="switchTab" data-arg="officer" class="tab-btn px-6 py-2.5 lg:px-10 lg:py-3 rounded-full text-sm lg:text-base font-bold text-gray-500 hover:text-brand-primary">
                             <i class="fa-solid fa-user-tie mr-2"></i> Tim Officer
                         </button>
                     </div>
@@ -188,7 +195,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl lg:text-3xl font-extrabold text-brand-primary mb-2">Alur Rekrutmen</h2>
-                    <p class="text-sm text-gray-500">Tahapan rekrutmen tenaga pendidik dan kependidikan.</p>
+                    <p class="text-base text-gray-500">Tahapan rekrutmen tenaga pendidik dan kependidikan.</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
@@ -201,7 +208,7 @@
                             <i class="fa-solid fa-file-arrow-up text-2xl lg:text-3xl"></i>
                         </div>
                         <h4 class="font-bold text-brand-primary mb-1">Kirim Lamaran</h4>
-                        <p class="text-xs text-gray-500 px-4">Penyerahan dokumen lamaran pekerjaan.</p>
+                        <p class="text-sm text-gray-500 px-4">Penyerahan dokumen lamaran pekerjaan.</p>
                     </div>
                     <!-- Step 2 -->
                     <div class="relative z-10 text-center">
@@ -209,7 +216,7 @@
                             <i class="fa-solid fa-brain text-2xl lg:text-3xl"></i>
                         </div>
                         <h4 class="font-bold text-brand-primary mb-1">Psikotes & Review</h4>
-                        <p class="text-xs text-gray-500 px-4">Evaluasi kompetensi.</p>
+                        <p class="text-sm text-gray-500 px-4">Evaluasi kompetensi.</p>
                     </div>
                     <!-- Step 3 -->
                     <div class="relative z-10 text-center">
@@ -217,7 +224,7 @@
                             <i class="fa-solid fa-comments text-2xl lg:text-3xl"></i>
                         </div>
                         <h4 class="font-bold text-brand-primary mb-1">Wawancara & Demo</h4>
-                        <p class="text-xs text-gray-500 px-4">Simulasi mengajar atau tes kemampuan teknis.</p>
+                        <p class="text-sm text-gray-500 px-4">Simulasi mengajar atau tes kemampuan teknis.</p>
                     </div>
                     <!-- Step 4 -->
                     <div class="relative z-10 text-center">
@@ -225,7 +232,7 @@
                             <i class="fa-solid fa-handshake text-2xl lg:text-3xl"></i>
                         </div>
                         <h4 class="font-bold text-brand-primary mb-1">Offering & Onboarding</h4>
-                        <p class="text-xs text-gray-500 px-4">Tahap orientasi bagi staf dan guru baru.</p>
+                        <p class="text-sm text-gray-500 px-4">Tahap orientasi bagi staf dan guru baru.</p>
                     </div>
                 </div>
             </div>
@@ -239,7 +246,7 @@
                     <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-red rounded-full filter blur-[80px] opacity-30 transform -translate-x-1/2 translate-y-1/2"></div>
                     
                     <h3 class="text-2xl lg:text-3xl font-extrabold text-white mb-3 relative z-10">Informasi Karir</h3>
-                    <p class="text-sm lg:text-base text-gray-300 mb-8 max-w-2xl mx-auto relative z-10">
+                    <p class="text-base lg:text-base text-gray-300 mb-8 max-w-2xl mx-auto relative z-10">
                         Kami menerima informasi resume Anda untuk kebutuhan pembukaan posisi di waktu mendatang.
                     </p>
                     <a href="mailto:hrd@sedayabintang.sch.id" class="inline-block bg-brand-yellow text-brand-primary font-bold px-8 py-3.5 lg:py-4 rounded-full shadow-lg hover:bg-white transition-colors relative z-10 text-sm lg:text-base">

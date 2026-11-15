@@ -5,31 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kampus Summarecon Bandung | Sekolah Terpadu Sedaya Bintang</title>
     <meta name="description" content="Kampus pertama Sekolah Terpadu Sedaya Bintang di kawasan Summarecon Bandung, Gedebage. Akses Tol Gedebage KM 149 dan dekat Stasiun Whoosh Tegalluar.">
-    
-    <!-- Memuat Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Konfigurasi Tailwind Terpusat -->
-    <script src="js/tailwind-config.js"></script>
-    
-    <!-- CSS Global Terpadu -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="canonical" href="https://sedayabintang.sch.id/kampus-bandung.html">
+    <meta name="theme-color" content="#1d4486">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <!-- Schema.org Structured Data (JSON-LD) -->
+    <!-- Pratinjau saat tautan dibagikan (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sekolah Terpadu Sedaya Bintang">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:title" content="Kampus Summarecon Bandung | Sekolah Terpadu Sedaya Bintang">
+    <meta property="og:description" content="Kampus pertama Sekolah Terpadu Sedaya Bintang di kawasan Summarecon Bandung, Gedebage. Akses Tol Gedebage KM 149 dan dekat Stasiun Whoosh Tegalluar.">
+    <meta property="og:url" content="https://sedayabintang.sch.id/kampus-bandung.html">
+    <meta property="og:image" content="https://sedayabintang.sch.id/assets/images/og-sedaya-bintang.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Font, ikon, dan gaya. Semua disimpan lokal (tanpa CDN). tailwind.css dimuat paling akhir. -->
+    <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tailwind.css">
+
+    <!-- Data terstruktur untuk Google (schema.org) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "School",
       "name": "Sekolah Terpadu Sedaya Bintang - Kampus Summarecon Bandung",
-      "url": "https://sedayabintang.sch.id",
+      "url": "https://sedayabintang.sch.id/kampus-bandung.html",
       "telephone": "+62 813-8977-2288",
       "email": "info.sekolah@sedayabintang.sch.id",
+      "image": "https://sedayabintang.sch.id/assets/images/og-sedaya-bintang.jpg",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Jl. Gedebage Utama Kel Blok GBU/009, Rancabolang, Kec. Gedebage",
@@ -51,7 +58,7 @@
         <section class="relative pt-10 pb-16 lg:pt-20 lg:pb-28 overflow-hidden bg-brand-blue/30 reveal">
             <!-- Background Blobs -->
             <div class="shape-blob bg-brand-primary w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] top-[-80px] left-[-80px] opacity-10"></div>
-            <div class="shape-blob bg-brand-yellow w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bottom-[-40px] right-[-40px] opacity-20" style="animation-delay: 2s;"></div>
+            <div class="shape-blob bg-brand-yellow w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bottom-[-40px] right-[-40px] opacity-20 [animation-delay:2s]"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div class="flex flex-col lg:flex-row gap-10 lg:gap-12 items-center">
@@ -66,7 +73,7 @@
                             Kampus Summarecon Bandung
                         </h1>
                         
-                        <p class="text-sm sm:text-base text-gray-600 mb-6 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        <p class="text-base text-gray-600 mb-6 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
                             Sekolah Terpadu Sedaya Bintang berada di dalam kawasan kota terpadu Summarecon Bandung, Gedebage, Bandung Timur.
                         </p>
                         
@@ -105,7 +112,7 @@
                 
                 <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8 lg:mb-12">
                     <h2 class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-1.5 sm:mb-3">Lokasi yang Mudah Dijangkau</h2>
-                    <p class="text-xs sm:text-base text-gray-600 font-medium leading-relaxed">Terhubung langsung dengan tol dan dekat stasiun kereta cepat.</p>
+                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Terhubung langsung dengan tol dan dekat stasiun kereta cepat.</p>
                 </div>
 
                 <!-- 2x2 di Mobile & Tablet (grid-cols-2), Rata 1 Baris di Desktop (lg:grid-cols-4) -->
@@ -118,15 +125,15 @@
                                 <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-lg sm:rounded-xl bg-brand-blue text-brand-primary flex items-center justify-center text-xs sm:text-base lg:text-lg shrink-0 transition-colors">
                                     <i class="fa-solid fa-road"></i>
                                 </div>
-                                <span class="inline-flex items-center gap-1 text-[9px] sm:text-[11px] font-semibold text-brand-primary bg-brand-blue/90 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
-                                    <i class="fa-solid fa-location-arrow text-[8px] sm:text-[10px]"></i> Akses Tol
+                                <span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-primary bg-brand-blue/90 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
+                                    <i class="fa-solid fa-location-arrow text-xs"></i> Akses Tol
                                 </span>
                             </div>
                             <h3 class="text-xs sm:text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Akses Tol Gedebage</h3>
-                            <p class="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Gerbang Tol Gedebage KM 149 Padaleunyi terhubung langsung dengan kawasan Summarecon.</p>
+                            <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Gerbang Tol Gedebage KM 149 Padaleunyi terhubung langsung dengan kawasan Summarecon.</p>
                         </div>
-                        <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-brand-primary/80 font-medium sm:font-semibold">
-                            <i class="fa-solid fa-circle-check text-brand-yellow text-[10px] sm:text-xs shrink-0"></i>
+                        <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-xs text-brand-primary/80 font-medium sm:font-semibold">
+                            <i class="fa-solid fa-circle-check text-brand-yellow text-xs shrink-0"></i>
                             <span class="truncate">Akses langsung kawasan</span>
                         </div>
                     </div>
@@ -138,15 +145,15 @@
                                 <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-lg sm:rounded-xl bg-brand-blue text-brand-primary flex items-center justify-center text-xs sm:text-base lg:text-lg shrink-0 transition-colors">
                                     <i class="fa-solid fa-train-subway"></i>
                                 </div>
-                                <span class="inline-flex items-center gap-1 text-[9px] sm:text-[11px] font-semibold text-brand-primary bg-brand-blue/90 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
-                                    <i class="fa-solid fa-bolt text-[8px] sm:text-[10px]"></i> Whoosh
+                                <span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-primary bg-brand-blue/90 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
+                                    <i class="fa-solid fa-bolt text-xs"></i> Whoosh
                                 </span>
                             </div>
                             <h3 class="text-xs sm:text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Stasiun Whoosh</h3>
-                            <p class="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Dekat Stasiun Tegalluar, memudahkan perjalanan cepat Bandung–Jakarta.</p>
+                            <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Dekat Stasiun Tegalluar, memudahkan perjalanan cepat Bandung–Jakarta.</p>
                         </div>
-                        <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-brand-primary/80 font-medium sm:font-semibold">
-                            <i class="fa-solid fa-bolt text-brand-yellow text-[10px] sm:text-xs shrink-0"></i>
+                        <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-xs text-brand-primary/80 font-medium sm:font-semibold">
+                            <i class="fa-solid fa-bolt text-brand-yellow text-xs shrink-0"></i>
                             <span class="truncate">Cepat Bandung–Jakarta</span>
                         </div>
                     </div>
@@ -158,15 +165,15 @@
                                 <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-lg sm:rounded-xl bg-brand-blue text-brand-primary flex items-center justify-center text-xs sm:text-base lg:text-lg shrink-0 transition-colors">
                                     <i class="fa-solid fa-shop"></i>
                                 </div>
-                                <span class="inline-flex items-center gap-1 text-[9px] sm:text-[11px] font-semibold text-brand-primary bg-brand-blue/90 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
-                                    <i class="fa-solid fa-map-pin text-[8px] sm:text-[10px]"></i> Fasilitas
+                                <span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-primary bg-brand-blue/90 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
+                                    <i class="fa-solid fa-map-pin text-xs"></i> Fasilitas
                                 </span>
                             </div>
                             <h3 class="text-xs sm:text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Fasilitas Sekitar</h3>
-                            <p class="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Dekat Mall Summarecon Bandung, RS Santo Borromeus, dan Masjid Al Jabbar.</p>
+                            <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Dekat Mall Summarecon Bandung, RS Santo Borromeus, dan Masjid Al Jabbar.</p>
                         </div>
-                        <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-brand-primary/80 font-medium sm:font-semibold">
-                            <i class="fa-solid fa-building text-brand-yellow text-[10px] sm:text-xs shrink-0"></i>
+                        <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-xs text-brand-primary/80 font-medium sm:font-semibold">
+                            <i class="fa-solid fa-building text-brand-yellow text-xs shrink-0"></i>
                             <span class="truncate">Mall, RS & Masjid</span>
                         </div>
                     </div>
@@ -178,15 +185,15 @@
                                 <div class="icon-circle w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-lg sm:rounded-xl bg-brand-blue text-brand-primary flex items-center justify-center text-xs sm:text-base lg:text-lg shrink-0 transition-colors">
                                     <i class="fa-solid fa-shield-halved"></i>
                                 </div>
-                                <span class="inline-flex items-center gap-1 text-[9px] sm:text-[11px] font-semibold text-brand-primary bg-brand-blue/90 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
-                                    <i class="fa-solid fa-shield text-[8px] sm:text-[10px]"></i> Keamanan
+                                <span class="inline-flex items-center gap-1 text-xs font-semibold text-brand-primary bg-brand-blue/90 px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full whitespace-nowrap">
+                                    <i class="fa-solid fa-shield text-xs"></i> Keamanan
                                 </span>
                             </div>
                             <h3 class="text-xs sm:text-base lg:text-lg font-bold text-brand-primary mb-1 sm:mb-1.5 leading-snug">Kawasan Tertata</h3>
-                            <p class="text-[11px] sm:text-xs lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Ruang terbuka hijau asri dengan tata kelola profesional dan security 24 jam.</p>
+                            <p class="text-sm lg:text-sm text-gray-600 leading-normal sm:leading-relaxed font-normal sm:font-medium">Ruang terbuka hijau asri dengan tata kelola profesional dan security 24 jam.</p>
                         </div>
-                        <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-brand-primary/80 font-medium sm:font-semibold">
-                            <i class="fa-solid fa-tree text-brand-yellow text-[10px] sm:text-xs shrink-0"></i>
+                        <div class="mt-2.5 sm:mt-3 pt-2 sm:pt-2.5 border-t border-gray-100 flex items-center gap-1 sm:gap-1.5 text-xs text-brand-primary/80 font-medium sm:font-semibold">
+                            <i class="fa-solid fa-tree text-brand-yellow text-xs shrink-0"></i>
                             <span class="truncate">Asri & aman 24 jam</span>
                         </div>
                     </div>
@@ -207,7 +214,7 @@
                             <i class="fa-solid fa-camera"></i> Galeri Fasilitas
                         </div>
                         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-2">Suasana Kampus</h2>
-                        <p class="text-xs sm:text-base text-gray-600 font-medium leading-relaxed">Gedung tiga lantai dengan fasilitas belajar dan bermain ramah anak.</p>
+                        <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Gedung tiga lantai dengan fasilitas belajar dan bermain ramah anak.</p>
                     </div>
 
                     <!-- Tombol Navigasi Slider Panah (Mobile, Tablet, Desktop) -->
@@ -227,33 +234,33 @@
                     <!-- Slide 1: SPACELAB -->
                     <div class="slider-card shrink-0 snap-start w-[82vw] max-w-[300px] sm:w-[320px] md:w-[360px] lg:w-[380px] flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group">
                         <div class="w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                            <img src="assets/images/fasilitas-spacelab.jpg" alt="SPACELAB" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="assets/images/fasilitas-spacelab.webp" alt="SPACELAB" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width="800" height="533" loading="lazy" decoding="async">
                         </div>
                         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-start">
                             <h3 class="font-bold text-base sm:text-lg text-brand-primary mb-1 sm:mb-1.5">SPACELAB</h3>
-                            <p class="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Laboratorium STEAM untuk eksplorasi dan percobaan.</p>
+                            <p class="text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Laboratorium STEAM untuk eksplorasi dan percobaan.</p>
                         </div>
                     </div>
 
                     <!-- Slide 2: Kolam Renang -->
                     <div class="slider-card shrink-0 snap-start w-[82vw] max-w-[300px] sm:w-[320px] md:w-[360px] lg:w-[380px] flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group">
                         <div class="w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                            <img src="assets/images/fasilitas-kolam-renang.jpg" alt="Kolam Renang" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="assets/images/fasilitas-kolam-renang.webp" alt="Kolam Renang" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width="800" height="600" loading="lazy" decoding="async">
                         </div>
                         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-start">
                             <h3 class="font-bold text-base sm:text-lg text-brand-primary mb-1 sm:mb-1.5">Kolam Renang</h3>
-                            <p class="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Untuk kegiatan olahraga siswa di dalam area sekolah.</p>
+                            <p class="text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Untuk kegiatan olahraga siswa di dalam area sekolah.</p>
                         </div>
                     </div>
 
                     <!-- Slide 3: Playground Indoor -->
                     <div class="slider-card shrink-0 snap-start w-[82vw] max-w-[300px] sm:w-[320px] md:w-[360px] lg:w-[380px] flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group">
                         <div class="w-full aspect-[4/3] overflow-hidden bg-gray-200">
-                            <img src="assets/images/fasilitas-playground-indoor.jpg" alt="Playground" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="assets/images/fasilitas-playground-indoor.webp" alt="Playground" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width="800" height="1200" loading="lazy" decoding="async">
                         </div>
                         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-start">
                             <h3 class="font-bold text-base sm:text-lg text-brand-primary mb-1 sm:mb-1.5">Playground</h3>
-                            <p class="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Area bermain untuk jenjang KB dan TK.</p>
+                            <p class="text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Area bermain untuk jenjang KB dan TK.</p>
                         </div>
                     </div>
 
@@ -267,7 +274,7 @@
                         </div>
                         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-start">
                             <h3 class="font-bold text-base sm:text-lg text-brand-primary mb-1 sm:mb-1.5">Perpustakaan</h3>
-                            <p class="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Ruang baca untuk membiasakan siswa membaca sejak dini.</p>
+                            <p class="text-sm text-gray-600 font-medium leading-relaxed min-h-[2.75rem] sm:min-h-[3.25rem]">Ruang baca untuk membiasakan siswa membaca sejak dini.</p>
                         </div>
                     </div>
 
@@ -299,7 +306,7 @@
                         <i class="fa-solid fa-graduation-cap"></i> Kurikulum & Nilai
                     </div>
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-2 sm:mb-3">Satu Sistem Pendidikan</h2>
-                    <p class="text-xs sm:text-base text-gray-600 font-medium leading-relaxed">Berafiliasi dengan Sekolah Terpadu Pahoa yang unggul.</p>
+                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Berafiliasi dengan Sekolah Terpadu Pahoa yang unggul.</p>
                 </div>
 
                 <!-- 2 di Atas, 1 di Bawah & di Tengah pada Mobile/Tab (rasio sama persis), Rata 1 Baris di Desktop (lg:flex-nowrap) -->
@@ -315,10 +322,10 @@
                             <div class="flex justify-between items-end gap-1.5 sm:gap-2 mt-auto">
                                 <div class="text-left flex-1">
                                     <h3 class="text-xs sm:text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">Budi Pekerti</h3>
-                                    <p class="text-[10px] sm:text-xs lg:text-sm text-gray-600 leading-tight">Di Zi Gui & 10 Nilai Moral</p>
+                                    <p class="text-sm lg:text-sm text-gray-600 leading-tight">Di Zi Gui & 10 Nilai Moral</p>
                                 </div>
                                 <div class="w-7 h-7 sm:w-9 sm:h-9 lg:w-12 lg:h-12 shrink-0 rounded-full bg-brand-gray flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors cursor-pointer">
-                                    <i class="fa-solid fa-arrow-right text-[10px] sm:text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+                                    <i class="fa-solid fa-arrow-right text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -334,10 +341,10 @@
                             <div class="flex justify-between items-end gap-1.5 sm:gap-2 mt-auto">
                                 <div class="text-left flex-1">
                                     <h3 class="text-xs sm:text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">Trilingual</h3>
-                                    <p class="text-[10px] sm:text-xs lg:text-sm text-gray-600 leading-tight">Bahasa Indonesia, Inggris, Mandarin</p>
+                                    <p class="text-sm lg:text-sm text-gray-600 leading-tight">Bahasa Indonesia, Inggris, Mandarin</p>
                                 </div>
                                 <div class="w-7 h-7 sm:w-9 sm:h-9 lg:w-12 lg:h-12 shrink-0 rounded-full bg-brand-gray flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors cursor-pointer">
-                                    <i class="fa-solid fa-arrow-right text-[10px] sm:text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+                                    <i class="fa-solid fa-arrow-right text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -353,10 +360,10 @@
                             <div class="flex justify-between items-end gap-1.5 sm:gap-2 mt-auto">
                                 <div class="text-left flex-1">
                                     <h3 class="text-xs sm:text-lg lg:text-2xl font-bold text-brand-primary mb-0.5 sm:mb-1">STEAM</h3>
-                                    <p class="text-[10px] sm:text-xs lg:text-sm text-gray-600 leading-tight">Framework Singapura Dr. Yeap Ban Har</p>
+                                    <p class="text-sm lg:text-sm text-gray-600 leading-tight">Framework Singapura Dr. Yeap Ban Har</p>
                                 </div>
                                 <div class="w-7 h-7 sm:w-9 sm:h-9 lg:w-12 lg:h-12 shrink-0 rounded-full bg-brand-gray flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors cursor-pointer">
-                                    <i class="fa-solid fa-arrow-right text-[10px] sm:text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+                                    <i class="fa-solid fa-arrow-right text-xs lg:text-base -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -373,7 +380,7 @@
                 
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Pertanyaan Umum</h2>
-                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Hal yang sering ditanyakan orang tua tentang kampus ini.</p>
+                    <p class="text-base text-gray-600 font-medium leading-relaxed">Hal yang sering ditanyakan orang tua tentang kampus ini.</p>
                 </div>
 
                 <div class="max-w-3xl mx-auto space-y-3">
@@ -444,7 +451,7 @@
                 
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Lokasi dan Kontak</h2>
-                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Kunjungi atau hubungi tim sekolah.</p>
+                    <p class="text-base text-gray-600 font-medium leading-relaxed">Kunjungi atau hubungi tim sekolah.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -518,10 +525,10 @@
                     <div class="absolute inset-0 rounded-xl lg:rounded-3xl overflow-hidden pointer-events-none z-0">
                         <div class="absolute -top-24 -left-24 w-80 h-80 bg-brand-yellow rounded-full filter blur-[100px] opacity-15"></div>
                         <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-brand-blue rounded-full filter blur-[100px] opacity-15"></div>
-                        <i class="fa-solid fa-star text-brand-yellow/30 text-lg absolute top-10 left-1/4 animate-float" style="animation-delay: 0s;"></i>
-                        <i class="fa-solid fa-star text-brand-yellow/40 text-sm absolute bottom-12 left-1/3 animate-float" style="animation-delay: 1.5s;"></i>
-                        <i class="fa-solid fa-star text-brand-yellow/30 text-base absolute top-16 right-1/4 animate-float" style="animation-delay: 3s;"></i>
-                        <i class="fa-solid fa-star text-brand-yellow/50 text-xs absolute bottom-16 right-1/6 animate-float" style="animation-delay: 2s;"></i>
+                        <i class="fa-solid fa-star text-brand-yellow/30 text-lg absolute top-10 left-1/4 animate-float [animation-delay:0s]"></i>
+                        <i class="fa-solid fa-star text-brand-yellow/40 text-sm absolute bottom-12 left-1/3 animate-float [animation-delay:1.5s]"></i>
+                        <i class="fa-solid fa-star text-brand-yellow/30 text-base absolute top-16 right-1/4 animate-float [animation-delay:3s]"></i>
+                        <i class="fa-solid fa-star text-brand-yellow/50 text-xs absolute bottom-16 right-1/6 animate-float [animation-delay:2s]"></i>
                     </div>
 
                     <!-- Lapisan Isi -->
@@ -530,7 +537,7 @@
                         <!-- Kolom Kiri: Teks dan Tombol -->
                         <div class="lg:col-span-7 text-center lg:text-left py-2 lg:py-10">
                             <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white mb-4 leading-tight">Lihat Langsung Suasana Kampus</h2>
-                            <p class="text-sm sm:text-base lg:text-lg text-white/80 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">Jadwalkan kunjungan dan berkeliling sekolah bersama tim sekolah.</p>
+                            <p class="text-base lg:text-lg text-white/80 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">Jadwalkan kunjungan dan berkeliling sekolah bersama tim sekolah.</p>
                             
                             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                                 <a href="school-visit.html" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-7 py-3.5 sm:py-4 rounded-xl shadow-md hover:bg-white transition-all transform hover:-translate-y-1 text-sm font-sans">
@@ -545,7 +552,7 @@
                         <!-- Kolom Kanan: Karakter 3D -->
                         <div class="lg:col-span-5 relative flex items-end justify-center pt-4 lg:pt-0">
                             <div class="relative w-full max-w-xs sm:max-w-sm lg:max-w-none flex items-end justify-center lg:-mt-16 xl:-mt-24">
-                                <img src="assets/images/karakter-3d-hero-index.webp" alt="Guru dan Murid Sedaya Bintang" class="relative z-10 w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[440px] object-contain drop-shadow-2xl">
+                                <img src="assets/images/karakter-3d-hero-index.webp" alt="Guru dan Murid Sedaya Bintang" class="relative z-10 w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[440px] object-contain drop-shadow-2xl" width="1400" height="1200" loading="lazy" decoding="async">
                             </div>
                         </div>
 
