@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admission Guideline - Sekolah Terpadu Sedaya Bintang</title>
-    
-    <!-- Memuat Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Konfigurasi Tailwind -->
-    <script src="js/tailwind-config.js"></script>
+    <title>Info Pendaftaran | Sekolah Terpadu Sedaya Bintang</title>
+    <meta name="description" content="Info pendaftaran murid baru KB, TK, dan SD Sekolah Terpadu Sedaya Bintang. Lihat alurnya, siapkan dokumen, lalu hubungi tim admisi.">
+    <link rel="canonical" href="https://sedayabintang.sch.id/admissions.html">
+    <meta name="theme-color" content="#1d4486">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <!-- Google Fonts: Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome untuk Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Pratinjau saat tautan dibagikan (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sekolah Terpadu Sedaya Bintang">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:title" content="Info Pendaftaran | Sekolah Terpadu Sedaya Bintang">
+    <meta property="og:description" content="Info pendaftaran murid baru KB, TK, dan SD Sekolah Terpadu Sedaya Bintang. Lihat alurnya, siapkan dokumen, lalu hubungi tim admisi.">
+    <meta property="og:url" content="https://sedayabintang.sch.id/admissions.html">
+    <meta property="og:image" content="https://sedayabintang.sch.id/assets/images/og-sedaya-bintang.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Memanggil CSS Global -->
+    <!-- Font, ikon, dan gaya. Semua disimpan lokal (tanpa CDN). tailwind.css dimuat paling akhir. -->
+    <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tailwind.css">
 </head>
 
 <!-- Menambahkan data-page="admissions" agar menu navbar otomatis menyala -->
@@ -31,28 +38,28 @@
         <!-- SECTION 1: HERO BANNER (Warm & Welcoming) -->
         <section class="relative h-[65vh] min-h-[450px] lg:min-h-[550px] flex items-center overflow-hidden bg-brand-primary">
             <div class="absolute inset-0 z-0">
-                <img src="assets/images/kebersamaan-murid-orangtua.jpg" alt="Orang tua dan Anak" class="w-full h-full object-cover object-top opacity-70">
+                <img src="assets/images/kebersamaan-murid-orangtua.webp" alt="" class="w-full h-full object-cover object-top opacity-70" width="1600" height="1067" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-r from-brand-primary/95 via-brand-primary/70 to-transparent mix-blend-multiply"></div>
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div class="max-w-2xl text-center lg:text-left pt-10">
-                    <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-brand-yellow text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 backdrop-blur-md">
+                    <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-brand-yellow text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 backdrop-blur-md">
                         <i class="fa-solid fa-route"></i> Alur Pendaftaran
                     </span>
                     <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-[56px] font-extrabold tracking-tight leading-[1.2] mb-4 sm:mb-6 text-white">
                         Penerimaan <br class="hidden lg:block"/>
                         <span class="text-brand-yellow">Murid Baru</span>
                     </h1>
-                    <p class="text-sm sm:text-base lg:text-lg text-gray-200 mb-8 sm:mb-10 font-medium leading-relaxed">
-                        Panduan pendaftaran murid baru Sekolah Terpadu Sedaya Bintang. Tim kami siap mendampingi di setiap tahapan.
+                    <p class="text-base lg:text-lg text-gray-200 mb-8 sm:mb-10 font-medium leading-relaxed">
+                        Info pendaftaran murid baru KB, TK, SD.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="#" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:bg-white transition-all transform hover:-translate-y-1 text-sm sm:text-base">
-                            <i class="fa-solid fa-pen-to-square"></i> Mulai Pendaftaran Online
+                        <a href="apply.html" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl shadow-lg hover:bg-white transition-all transform hover:-translate-y-1 text-sm sm:text-base">
+                            <i class="fa-solid fa-pen-to-square"></i> Mulai Pendaftaran
                         </a>
-                        <a href="kurikulum.html" class="inline-flex justify-center items-center gap-2 bg-transparent border-2 border-white/40 text-white font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl hover:bg-white hover:text-brand-primary hover:border-white transition-all text-sm sm:text-base backdrop-blur-md">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Tim Admission
+                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20tentang%20pendaftaran." target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-transparent border-2 border-white/40 text-white font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl hover:bg-white hover:text-brand-primary hover:border-white transition-all text-sm sm:text-base backdrop-blur-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Tim Admisi
                         </a>
                     </div>
                 </div>
@@ -61,154 +68,80 @@
 
         </section>
 
-        <!-- SECTION 2: 7 LANGKAH PENDAFTARAN (Interactive Journey Map) -->
+        <!-- SECTION 2: ALUR PENDAFTARAN (ringkas, tanpa proses internal) -->
         <section class="py-16 lg:py-24 bg-brand-gray relative z-20 overflow-hidden">
             <div class="shape-blob bg-brand-primary/10 w-[400px] h-[400px] top-[10%] left-[-100px] animate-blob"></div>
-            <div class="shape-blob bg-brand-yellow/20 w-[300px] h-[300px] bottom-[20%] right-[-50px] animate-blob" style="animation-delay: 3s;"></div>
+            <div class="shape-blob bg-brand-yellow/20 w-[300px] h-[300px] bottom-[20%] right-[-50px] animate-blob [animation-delay:3s]"></div>
 
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-16 lg:mb-24 reveal">
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Tujuh Tahap Pendaftaran</h2>
-                    
-                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-2xl mx-auto">
-                        Proses pendaftaran yang terstruktur bagi calon murid baru.
-                    </p>
-                    <div class="inline-flex bg-white rounded-full p-1 shadow-sm border border-gray-200 mt-6 relative" id="admission-toggle">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Alur Pendaftaran</h2>
+                    <p class="text-base text-gray-600 font-medium max-w-2xl mx-auto">Empat langkah, didampingi tim admisi.</p>
+                    <div class="inline-flex bg-white rounded-full p-1 shadow-sm border border-gray-200 mt-6 relative" id="admission-toggle" role="group" aria-label="Pilih jenjang">
                         <div class="absolute left-1 top-1 w-[calc(50%-4px)] h-[calc(100%-8px)] bg-brand-yellow rounded-full transition-transform duration-300 ease-out z-0" id="admission-indicator"></div>
-                        <button class="relative z-10 px-6 py-2 text-sm font-bold text-brand-primary w-32 transition-colors duration-300" onclick="switchAdmissionFlow('kbtk')">KB-TK</button>
-                        <button class="relative z-10 px-6 py-2 text-sm font-bold text-gray-500 w-32 transition-colors duration-300" onclick="switchAdmissionFlow('sd')">SD</button>
+                        <button type="button" aria-pressed="true" class="relative z-10 px-6 py-2.5 min-h-[44px] text-sm font-bold text-brand-primary w-32 transition-colors duration-300" data-aksi="switchAdmissionFlow" data-arg="kbtk">KB-TK</button>
+                        <button type="button" aria-pressed="false" class="relative z-10 px-6 py-2.5 min-h-[44px] text-sm font-bold text-gray-600 w-32 transition-colors duration-300" data-aksi="switchAdmissionFlow" data-arg="sd">SD</button>
                     </div>
                 </div>
 
-                <div class="relative py-4">
-                    <!-- Timeline Line -->
-                    <div class="timeline-line"></div>
+                <ol class="relative py-4">
+                    <div class="timeline-line" aria-hidden="true"></div>
 
-                    <!-- Step 1 -->
-                    <div class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
+                    <li class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
                         <div class="hidden lg:block lg:w-5/12"></div>
-                        <!-- Number Bubble (Center on Desktop, Left on Mobile) -->
-                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-primary flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0">
-                            1
-                        </div>
+                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-primary flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0 " aria-hidden="true">1</div>
                         <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-0 lg:pr-12 text-left lg:text-right">
-                            <div class="timeline-card left-side bg-white p-4 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
-                                <div class="absolute -top-6 -right-6 lg:-left-6 text-6xl text-brand-primary/5 rotate-12"><i class="fa-solid fa-file-signature"></i></div>
-                                <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Membeli Formulir Pendaftaran</h3>
-                                <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                    Mengisi data dasar calon murid serta memenuhi biaya administrasi formulir pendaftaran.
-                                </p>
+                            <div class="timeline-card left-side bg-white p-5 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute -top-6 -right-6 lg:-left-6 text-6xl text-brand-primary/5 rotate-12" aria-hidden="true"><i class="fa-solid fa-file-signature"></i></div>
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Isi Pendataan Awal</h3>
+                                <p class="text-base text-gray-600 leading-relaxed">Isi formulir singkat berisi data calon murid.</p>
+                                <a href="apply.html" class="inline-flex items-center gap-2 min-h-[44px] mt-2 font-bold text-brand-primary underline underline-offset-4">Buka formulir <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </li>
 
-                    <!-- Step 2 -->
-                    <div class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
+                    <li class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
                         <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-12 lg:pr-0 order-2">
-                            <div class="timeline-card right-side bg-white p-4 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
-                                <div class="absolute -top-6 -right-6 text-6xl text-brand-yellow/10 -rotate-12"><i class="fa-solid fa-users-viewfinder"></i></div>
+                            <div class="timeline-card right-side bg-white p-5 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute -top-6 -right-6 text-6xl text-brand-yellow/10 -rotate-12" aria-hidden="true"><i class="fa-solid fa-comments"></i></div>
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Konsultasi lewat WhatsApp</h3>
+                                <p class="text-base text-gray-600 leading-relaxed">Tim admisi menghubungi Anda dan menjawab pertanyaan.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-yellow flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0 order-1" aria-hidden="true">2</div>
+                        <div class="hidden lg:block lg:w-5/12 order-3"></div>
+                    </li>
+
+                    <li class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
+                        <div class="hidden lg:block lg:w-5/12"></div>
+                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-red flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0 " aria-hidden="true">3</div>
+                        <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-0 lg:pr-12 text-left lg:text-right">
+                            <div class="timeline-card left-side bg-white p-5 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute -top-6 -right-6 lg:-left-6 text-6xl text-brand-primary/5 rotate-12" aria-hidden="true"><i class="fa-solid fa-users-viewfinder"></i></div>
                                 <div id="obs-kbtk">
-                                    <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Observasi & Wawancara (KB-TK)</h3>
-                                    <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                        Pemetaan kesiapan motorik, psikologis, dan kemampuan bahasa anak melalui interaksi dan bermain, serta penyelarasan visi pendidikan bersama orang tua.
-                                    </p>
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Observasi (KB-TK)</h3>
+                                <p class="text-base text-gray-600 leading-relaxed">Si kecil bermain bersama guru. Orang tua berbincang dengan tim sekolah.</p>
                                 </div>
-                                <div id="obs-sd" style="display: none;">
-                                    <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Tes Pemetaan & Wawancara (SD)</h3>
-                                    <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                        Evaluasi kesiapan akademis dasar dan wawancara untuk menyelaraskan nilai pendidikan bersama orang tua.
-                                    </p>
+                                <div id="obs-sd" class="hidden">
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Observasi (SD)</h3>
+                                <p class="text-base text-gray-600 leading-relaxed">Calon murid mengikuti tes pemetaan. Orang tua berbincang dengan tim sekolah.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-yellow flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0 order-1">
-                            2
-                        </div>
-                        <div class="hidden lg:block lg:w-5/12 order-3"></div>
-                    </div>
+                    </li>
 
-                    <!-- Step 3 -->
-                    <div class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
-                        <div class="hidden lg:block lg:w-5/12"></div>
-                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-primary flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0">
-                            3
-                        </div>
-                        <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-0 lg:pr-12 text-left lg:text-right">
-                            <div class="timeline-card left-side bg-white p-4 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
-                                <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Pengumuman Hasil</h3>
-                                <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                    Penyampaian hasil observasi dan wawancara oleh tim admisi sekolah.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
+                    <li class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
                         <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-12 lg:pr-0 order-2">
-                            <div class="timeline-card right-side bg-white p-4 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
-                                <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Memperoleh Letter of Offering</h3>
-                                <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                    Penerimaan dokumen penawaran pendidikan resmi (Letter of Offering) dari yayasan.
-                                </p>
+                            <div class="timeline-card right-side bg-white p-5 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute -top-6 -right-6 text-6xl text-brand-yellow/10 -rotate-12" aria-hidden="true"><i class="fa-solid fa-award"></i></div>
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Resmi Menjadi Murid</h3>
+                                <p class="text-base text-gray-600 leading-relaxed">Tim admisi mendampingi sampai si kecil resmi terdaftar.</p>
                             </div>
                         </div>
-                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-primary flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0 order-1">
-                            4
-                        </div>
+                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-primary flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0 order-1" aria-hidden="true"><i class="fa-solid fa-star text-brand-yellow"></i></div>
                         <div class="hidden lg:block lg:w-5/12 order-3"></div>
-                    </div>
-
-                    <!-- Step 5 -->
-                    <div class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
-                        <div class="hidden lg:block lg:w-5/12"></div>
-                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-brand-red text-white flex items-center justify-center z-10 step-number font-extrabold shadow-lg ml-2 sm:ml-4 lg:ml-0 border-4 border-white">
-                            5
-                        </div>
-                        <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-0 lg:pr-12 text-left lg:text-right">
-                            <div class="timeline-card left-side bg-brand-red/5 p-4 sm:p-8 border border-brand-red/20 shadow-sm relative overflow-hidden">
-                                <h3 class="text-base sm:text-xl font-bold text-brand-red mb-2"><i class="fa-solid fa-lock text-sm"></i> Membayar Commitment Fee</h3>
-                                <p class="text-[11px] sm:text-sm text-gray-700 leading-relaxed">
-                                    Pembayaran Commitment Fee dilunasi paling lambat pada akhir bulan diterbitkannya Letter of Offering.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 6 -->
-                    <div class="timeline-item relative mb-12 lg:mb-16 reveal flex justify-start lg:justify-between items-center w-full">
-                        <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-12 lg:pr-0 order-2">
-                            <div class="timeline-card right-side bg-white p-4 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden">
-                                <h3 class="text-base sm:text-xl font-bold text-brand-primary mb-2">Pelunasan Biaya Pendaftaran</h3>
-                                <p class="text-[11px] sm:text-sm text-gray-600 leading-relaxed">
-                                    Pelunasan biaya pendaftaran awal sesuai jadwal yang telah ditentukan.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-brand-primary flex items-center justify-center z-10 step-number text-brand-primary font-extrabold shadow-md ml-2 sm:ml-4 lg:ml-0 order-1">
-                            6
-                        </div>
-                        <div class="hidden lg:block lg:w-5/12 order-3"></div>
-                    </div>
-
-                    <!-- Step 7 -->
-                    <div class="timeline-item relative reveal flex justify-start lg:justify-between items-center w-full">
-                        <div class="hidden lg:block lg:w-5/12"></div>
-                        <div class="absolute left-0 lg:left-1/2 -translate-x-0 lg:-translate-x-1/2 w-14 h-14 rounded-full bg-brand-primary text-brand-yellow flex items-center justify-center z-10 step-number font-extrabold shadow-glow-primary border-4 border-white ml-1 sm:ml-3 lg:ml-0">
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <div class="w-full lg:w-5/12 pl-16 sm:pl-20 lg:pl-0 lg:pr-12 text-left lg:text-right">
-                            <div class="timeline-card left-side bg-brand-primary p-4 sm:p-8 shadow-glow-primary relative overflow-hidden">
-                                <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
-                                <h3 class="text-base sm:text-xl font-bold text-brand-yellow mb-2">Resmi Terdaftar sebagai Murid</h3>
-                                <p class="text-[11px] sm:text-sm text-gray-200 leading-relaxed font-light">
-                                    Calon murid mendapatkan Nomor Induk Murid (NIS) dan terdaftar secara resmi.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -220,10 +153,10 @@
                     <!-- Left: Persiapan Mindset & Observasi -->
                     <div class="bg-brand-gray rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-12 border border-gray-100 flex flex-col justify-between group">
                         <div>
-                            <span class="inline-block py-1 px-3 rounded-full bg-white border border-gray-200 text-brand-primary text-[10px] sm:text-xs font-bold uppercase mb-4">Tahap ke-2</span>
+                            <span class="inline-block py-1 px-3 rounded-full bg-white border border-gray-200 text-brand-primary text-xs font-bold uppercase mb-4">Langkah ke-3</span>
                             <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-primary mb-4 leading-tight">Tahap Observasi</h2>
-                            <p class="text-sm text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                                Observasi bertujuan memetakan kesiapan anak mengikuti kegiatan belajar mengajar di sekolah.
+                            <p class="text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+                                Observasi membantu sekolah mengenal kesiapan si kecil.
                             </p>
                             
                             <div class="space-y-4 mb-8">
@@ -231,21 +164,21 @@
                                     <div class="w-8 h-8 rounded-full bg-brand-yellow/20 text-[#d49900] flex items-center justify-center shrink-0 mt-0.5"><i class="fa-regular fa-clock text-sm"></i></div>
                                     <div>
                                         <h4 class="font-bold text-brand-primary text-sm">Hadir Tepat Waktu</h4>
-                                        <p class="text-xs text-gray-500 mt-1">Hadir tepat waktu sesuai jadwal agar anak dapat beradaptasi terlebih dahulu.</p>
+                                        <p class="text-sm text-gray-500 mt-1">Hadir tepat waktu supaya si kecil sempat beradaptasi dulu.</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div class="w-8 h-8 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-hand-holding-heart text-sm"></i></div>
                                     <div>
                                         <h4 class="font-bold text-brand-primary text-sm">Keterbukaan Orang Tua</h4>
-                                        <p class="text-xs text-gray-500 mt-1">Menyampaikan kebiasaan dan kondisi kesehatan anak secara terbuka kepada tim sekolah.</p>
+                                        <p class="text-sm text-gray-500 mt-1">Ceritakan kebiasaan dan kondisi kesehatan si kecil kepada tim sekolah.</p>
                                     </div>
                                 </div>
                                 <div class="flex items-start gap-4">
                                     <div class="w-8 h-8 rounded-full bg-brand-red/10 text-brand-red flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-comments text-sm"></i></div>
                                     <div>
-                                        <h4 class="font-bold text-brand-primary text-sm">Penyelarasan Visi</h4>
-                                        <p class="text-xs text-gray-500 mt-1">Penyelarasan visi dan misi pendidikan sekolah dengan harapan orang tua.</p>
+                                        <h4 class="font-bold text-brand-primary text-sm">Berbincang dengan Sekolah</h4>
+                                        <p class="text-sm text-gray-500 mt-1">Berbincang tentang harapan orang tua dan cara belajar di sekolah.</p>
                                     </div>
                                 </div>
                             </div>
@@ -258,61 +191,61 @@
                         
                         <div class="relative z-10">
                             <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-primary mb-2">Checklist Dokumen</h2>
-                            <p class="text-sm text-gray-500 mb-6">Persiapan dokumen pendaftaran yang diperlukan:</p>
+                            <p class="text-base text-gray-600 mb-6">Dokumen yang perlu disiapkan. Centang untuk catatan Anda sendiri.</p>
                             
                             <div class="space-y-2 mb-8">
                                 <label class="check-item flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-gray-100 cursor-pointer bg-white">
-                                    <input type="checkbox" class="peer hidden">
-                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#10b981] peer-checked:border-[#10b981] peer-checked:text-white">
-                                        <i class="fa-solid fa-check text-xs"></i>
+                                    <input type="checkbox" class="peer sr-only">
+                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#047857] peer-checked:border-[#047857] peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-brand-primary/40">
+                                        <i class="fa-solid fa-check text-xs" aria-hidden="true"></i>
                                     </div>
                                     <span class="text-sm sm:text-base font-bold text-gray-700 select-none">Akta Kelahiran Anak</span>
                                 </label>
                                 
                                 <label class="check-item flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-gray-100 cursor-pointer bg-white">
-                                    <input type="checkbox" class="peer hidden">
-                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#10b981] peer-checked:border-[#10b981] peer-checked:text-white">
-                                        <i class="fa-solid fa-check text-xs"></i>
+                                    <input type="checkbox" class="peer sr-only">
+                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#047857] peer-checked:border-[#047857] peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-brand-primary/40">
+                                        <i class="fa-solid fa-check text-xs" aria-hidden="true"></i>
                                     </div>
                                     <span class="text-sm sm:text-base font-bold text-gray-700 select-none">Kartu Keluarga (KK)</span>
                                 </label>
                                 
                                 <label class="check-item flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-gray-100 cursor-pointer bg-white">
-                                    <input type="checkbox" class="peer hidden">
-                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#10b981] peer-checked:border-[#10b981] peer-checked:text-white">
-                                        <i class="fa-solid fa-check text-xs"></i>
+                                    <input type="checkbox" class="peer sr-only">
+                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#047857] peer-checked:border-[#047857] peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-brand-primary/40">
+                                        <i class="fa-solid fa-check text-xs" aria-hidden="true"></i>
                                     </div>
-                                    <span class="text-sm sm:text-base font-bold text-gray-700 select-none">Kartu Identitas Anak (KIA) <span class="text-[10px] font-normal text-gray-400 ml-1">*Jika ada</span></span>
+                                    <span class="text-sm sm:text-base font-bold text-gray-700 select-none">Kartu Identitas Anak (KIA) <span class="text-xs font-normal text-gray-400 ml-1">*Jika ada</span></span>
                                 </label>
 
                                 <label class="check-item flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-gray-100 cursor-pointer bg-white">
-                                    <input type="checkbox" class="peer hidden">
-                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#10b981] peer-checked:border-[#10b981] peer-checked:text-white">
-                                        <i class="fa-solid fa-check text-xs"></i>
+                                    <input type="checkbox" class="peer sr-only">
+                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#047857] peer-checked:border-[#047857] peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-brand-primary/40">
+                                        <i class="fa-solid fa-check text-xs" aria-hidden="true"></i>
                                     </div>
                                     <span class="text-sm sm:text-base font-bold text-gray-700 select-none">KTP Orang Tua / Wali</span>
                                 </label>
 
                                 <label class="check-item flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-gray-100 cursor-pointer bg-white">
-                                    <input type="checkbox" class="peer hidden">
-                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#10b981] peer-checked:border-[#10b981] peer-checked:text-white">
-                                        <i class="fa-solid fa-check text-xs"></i>
+                                    <input type="checkbox" class="peer sr-only">
+                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#047857] peer-checked:border-[#047857] peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-brand-primary/40">
+                                        <i class="fa-solid fa-check text-xs" aria-hidden="true"></i>
                                     </div>
                                     <span class="text-sm sm:text-base font-bold text-gray-700 select-none">Pas Foto Anak Terbaru</span>
                                 </label>
 
                                 <label class="check-item flex items-center gap-3 p-3 sm:p-4 rounded-xl border border-gray-100 cursor-pointer bg-white">
-                                    <input type="checkbox" class="peer hidden">
-                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#10b981] peer-checked:border-[#10b981] peer-checked:text-white">
-                                        <i class="fa-solid fa-check text-xs"></i>
+                                    <input type="checkbox" class="peer sr-only">
+                                    <div class="check-icon w-6 h-6 rounded border-2 border-gray-300 flex items-center justify-center text-transparent peer-checked:bg-[#047857] peer-checked:border-[#047857] peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-brand-primary/40">
+                                        <i class="fa-solid fa-check text-xs" aria-hidden="true"></i>
                                     </div>
-                                    <span class="text-sm sm:text-base font-bold text-gray-700 select-none">Buku Rapor Sebelumnya <span class="text-[10px] font-normal text-gray-400 ml-1">*Bagi pindahan/SD</span></span>
+                                    <span class="text-sm sm:text-base font-bold text-gray-700 select-none">Buku Rapor Sebelumnya <span class="text-xs font-normal text-gray-400 ml-1">*Bagi pindahan/SD</span></span>
                                 </label>
                             </div>
                         </div>
                         
                         <div class="relative z-10 pt-4 border-t border-gray-100">
-                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="inline-flex items-center gap-2 bg-brand-primary text-white font-bold px-6 py-2.5 rounded-full hover:bg-brand-yellow hover:text-brand-primary transition-colors text-sm shadow-md mt-6">
+                            <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-primary text-white font-bold px-6 py-2.5 rounded-full hover:bg-brand-yellow hover:text-brand-primary transition-colors text-sm shadow-md mt-6">
                                 <i class="fa-brands fa-whatsapp text-lg"></i> Info Pendaftaran & Biaya
                             </a>
                         </div>
@@ -327,40 +260,40 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10 lg:mb-14">
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Pertanyaan Umum</h2>
-                    <p class="text-sm sm:text-base text-gray-500 font-medium max-w-xl mx-auto">Informasi umum bagi calon orang tua murid.</p>
+                    <p class="text-base text-gray-500 font-medium max-w-xl mx-auto">Yang sering ditanyakan orang tua.</p>
                 </div>
 
                 <!-- Horizontal Scroll Snapping Cards for Mobile, Grid for Desktop -->
-                <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-6 hide-scrollbar lg:grid lg:grid-cols-3 lg:overflow-visible">
+                <div tabindex="0" role="group" aria-label="Pertanyaan umum, geser ke samping" class="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-6 hide-scrollbar lg:grid lg:grid-cols-3 lg:overflow-visible">
                     
                     <div class="flex-none w-[85vw] sm:w-[350px] lg:w-auto snap-center bg-white rounded-2xl p-4 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full">
                         <div class="w-12 h-12 bg-brand-yellow/20 rounded-full flex items-center justify-center text-brand-primary mb-4 group-hover:scale-110 transition-transform text-xl"><i class="fa-regular fa-comment-dots"></i></div>
                         <h3 class="font-bold text-brand-primary text-base sm:text-lg mb-3 leading-tight">"Anak saya belum bisa Mandarin, apakah bisa mengikuti?"</h3>
-                        <p class="text-[11px] sm:text-sm text-gray-600 flex-1 leading-relaxed">
-                            Tentu bisa! Sekolah menerapkan metode imersi, yaitu pembiasaan bahasa secara bertahap melalui aktivitas bermain sehari-hari di kelas, bukan hafalan paksa. Anak usia dini menyerap bahasa baru secara natural.
+                        <p class="text-sm text-gray-600 flex-1 leading-relaxed">
+                            Tentu bisa. Si kecil dibiasakan mendengar dan memakai Bahasa Mandarin sedikit demi sedikit lewat kegiatan bermain di kelas, bukan hafalan.
                         </p>
                     </div>
 
                     <div class="flex-none w-[85vw] sm:w-[350px] lg:w-auto snap-center bg-white rounded-2xl p-4 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full">
                         <div class="w-12 h-12 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary mb-4 group-hover:scale-110 transition-transform text-xl"><i class="fa-solid fa-child-reaching"></i></div>
                         <h3 class="font-bold text-brand-primary text-base sm:text-lg mb-3 leading-tight">"Bagaimana jika anak belum terbiasa berpisah dari orang tua?"</h3>
-                        <p class="text-[11px] sm:text-sm text-gray-600 flex-1 leading-relaxed">
-                            Hal ini sangat umum terjadi pada jenjang KB dan TK. Guru-guru kami terlatih untuk memberikan pendampingan khusus di masa orientasi agar transisi anak berjalan dengan aman dan menyenangkan.
+                        <p class="text-sm text-gray-600 flex-1 leading-relaxed">
+                            Ini wajar di jenjang KB dan TK. Guru mendampingi si kecil di masa awal supaya merasa aman dan nyaman.
                         </p>
                     </div>
 
                     <div class="flex-none w-[85vw] sm:w-[350px] lg:w-auto snap-center bg-white rounded-2xl p-4 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow group flex flex-col h-full">
                         <div class="w-12 h-12 bg-brand-red/10 rounded-full flex items-center justify-center text-brand-red mb-4 group-hover:scale-110 transition-transform text-xl"><i class="fa-solid fa-yin-yang"></i></div>
                         <h3 class="font-bold text-brand-primary text-base sm:text-lg mb-3 leading-tight">"Apakah Pendidikan Budi Pekerti bertentangan dengan agama?"</h3>
-                        <p class="text-[11px] sm:text-sm text-gray-600 flex-1 leading-relaxed">
-                            Sama sekali tidak. Pendidikan Budi Pekerti berlandaskan Di Zi Gui dan 10 Nilai Moral, fokusnya murni pada nilai etika universal (seperti menghormati orang tua dan kejujuran). Sekolah kami terbuka dan merangkul murid dari semua agama.
+                        <p class="text-sm text-gray-600 flex-1 leading-relaxed">
+                            Tidak. Budi Pekerti berisi 10 Nilai Moral dan Nilai Di Zi Gui, seperti menghormati orang tua dan jujur. Sekolah terbuka untuk murid dari semua agama.
                         </p>
                     </div>
 
                 </div>
 
                 <div class="text-center mt-6">
-                    <a href="#" class="text-brand-primary font-bold text-sm sm:text-base hover:text-brand-yellow transition-colors underline underline-offset-4 decoration-2">Baca Semua Pertanyaan Umum (FAQ)</a>
+                    <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20tentang%20pendaftaran." target="_blank" rel="noopener noreferrer" class="text-brand-primary font-bold text-sm sm:text-base hover:text-brand-yellow transition-colors underline underline-offset-4 decoration-2">Tanya langsung ke tim admisi</a>
                 </div>
             </div>
         </section>
@@ -372,9 +305,9 @@
                 <div class="absolute -left-20 -bottom-20 text-[250px] text-brand-primary/10 rotate-45 select-none pointer-events-none z-0"><i class="fa-solid fa-ticket"></i></div>
 
                 <div class="w-full md:w-1/2 relative z-10 text-center md:text-left">
-                    <span class="inline-block py-1 px-3 rounded-full bg-brand-primary text-white text-[10px] font-bold tracking-wider uppercase mb-4 shadow-sm">Pendaftaran Terbuka</span>
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-primary text-white text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">Pendaftaran Terbuka</span>
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-primary mb-4 leading-tight">Tahun Ajaran <br/> 2027/2028</h2>
-                    <p class="text-brand-primary/80 font-medium text-sm sm:text-base max-w-sm mx-auto md:mx-0">
+                    <p class="text-brand-primary/80 font-medium text-base max-w-sm mx-auto md:mx-0">
                         Uang Pangkal yang dibayarkan mencakup masa studi kelanjutan jenjang murid.
                     </p>
                 </div>
@@ -384,19 +317,19 @@
                         <div class="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-tags text-xl"></i></div>
                         <div>
                             <h4 class="font-bold text-brand-primary text-base">Pendaftaran TA 2027/2028</h4>
-                            <p class="text-xs text-gray-500">Telah dibuka penerimaan murid baru.</p>
+                            <p class="text-sm text-gray-500">Penerimaan murid baru sudah dibuka.</p>
                         </div>
                     </div>
                     <div class="bg-white/90 backdrop-blur rounded-2xl p-5 shadow-sm border border-white flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full bg-blue-100 text-brand-primary flex items-center justify-center shrink-0"><i class="fa-solid fa-people-roof text-xl"></i></div>
                         <div>
                             <h4 class="font-bold text-brand-primary text-base">Program Keluarga (Siblings)</h4>
-                            <p class="text-xs text-gray-500">Keringanan Biaya Pendidikan bagi keluarga dengan lebih dari satu anak.</p>
+                            <p class="text-sm text-gray-500">Keringanan Biaya Pendidikan bagi keluarga dengan lebih dari satu anak.</p>
                         </div>
                     </div>
                     
                     <div class="mt-2">
-                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" class="w-full inline-flex justify-center items-center gap-2 bg-brand-primary text-white font-bold px-6 py-4 rounded-2xl hover:bg-[#15346b] transition-all shadow-md text-sm sm:text-base group">
+                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="w-full inline-flex justify-center items-center gap-2 bg-brand-primary text-white font-bold px-6 py-4 rounded-2xl hover:bg-[#15346b] transition-all shadow-md text-sm sm:text-base group">
                             Lihat Rincian Biaya Pendidikan <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
@@ -407,17 +340,16 @@
         <!-- SECTION 6: FINAL CTA -->
         <section class="relative py-24 sm:py-32 bg-gray-900 flex items-center justify-center min-h-[400px]">
             <div class="absolute inset-0 z-0">
-                <img src="assets/images/kampus-gedung-utama.jpg" alt="Campus Building" class="w-full h-full object-cover">
+                <img src="assets/images/kampus-gedung-utama.webp" alt="" class="w-full h-full object-cover" width="1200" height="857" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-brand-primary/90 mix-blend-multiply"></div>
             </div>
 
             <div class="relative z-10 text-center px-4 max-w-3xl">
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white mb-3 sm:mb-5 leading-tight">Bergabung Bersama Kami</h2>
-                <p class="text-[11px] sm:text-sm lg:text-base text-gray-300 font-medium mb-8 sm:mb-10 max-w-xl mx-auto">Hubungi tim admisi kami untuk memperoleh informasi mengenai kuota pendaftaran.</p>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white mb-3 sm:mb-5 leading-tight">Mulai Pendaftaran</h2>
+                <p class="text-sm lg:text-base text-gray-300 font-medium mb-8 sm:mb-10 max-w-xl mx-auto">Hubungi tim admisi untuk info pendaftaran.</p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 lg:gap-5">
-                    <a href="apply.html" class="bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-full shadow-xl hover:bg-white transition-colors text-center text-sm lg:text-base">
-                        Mulai Isi Formulir Sekarang
+                    <a href="apply.html" class="bg-brand-yellow text-brand-primary font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-full shadow-xl hover:bg-white transition-colors text-center text-sm lg:text-base">Isi Formulir Pendaftaran
                     </a>
                     <a href="school-visit.html" class="border-2 border-white/50 text-white font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl sm:rounded-full hover:bg-white hover:text-brand-primary hover:border-white transition-colors text-center text-sm lg:text-base">
                         <i class="fa-solid fa-building mr-2"></i> Jadwalkan School Visit

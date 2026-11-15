@@ -1,22 +1,19 @@
-function switchAdmissionFlow(level) {
+/* Halaman Admissions: saklar jenjang KB-TK / SD pada langkah observasi. */
+window.SedayaAksi.switchAdmissionFlow = (level) => {
     const indicator = document.getElementById('admission-indicator');
-    const buttons = document.getElementById('admission-toggle').querySelectorAll('button');
+    const toggle = document.getElementById('admission-toggle');
     const obsKbtk = document.getElementById('obs-kbtk');
     const obsSd = document.getElementById('obs-sd');
-    
-    if (level === 'kbtk') {
-        indicator.style.transform = 'translateX(0)';
-        buttons[0].classList.replace('text-gray-500', 'text-brand-primary');
-        buttons[1].classList.replace('text-brand-primary', 'text-gray-500');
-        
-        obsKbtk.style.display = 'block';
-        obsSd.style.display = 'none';
-    } else {
-        indicator.style.transform = 'translateX(100%)';
-        buttons[0].classList.replace('text-brand-primary', 'text-gray-500');
-        buttons[1].classList.replace('text-gray-500', 'text-brand-primary');
-        
-        obsKbtk.style.display = 'none';
-        obsSd.style.display = 'block';
-    }
-}
+    if (!indicator || !toggle || !obsKbtk || !obsSd) return;
+
+    const sd = level === 'sd';
+    indicator.classList.toggle('translate-x-full', sd);
+    toggle.querySelectorAll('button').forEach(btn => {
+        const aktif = (btn.dataset.arg === 'sd') === sd;
+        btn.setAttribute('aria-pressed', String(aktif));
+        btn.classList.toggle('text-brand-primary', aktif);
+        btn.classList.toggle('text-gray-600', !aktif);
+    });
+    obsKbtk.classList.toggle('hidden', sd);
+    obsSd.classList.toggle('hidden', !sd);
+};
