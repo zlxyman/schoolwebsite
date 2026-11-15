@@ -7,7 +7,10 @@ Kalau pemilik mengoreksi bahasa, masukkan aturannya langsung ke bagian yang sesu
 ## Nada
 - Sangat mudah dimengerti orang awam yang tidak paham dunia pendidikan.
 - Natural, tidak lebay, tidak berbelit-belit. Tidak slengean dan tidak murahan.
-- Kalimat pendek. Satu ide per kalimat. Hindari istilah teknis pendidikan.
+- Kalimat pendek. Satu ide per kalimat. Hindari istilah teknis pendidikan
+  (contoh yang diganti: "karakteristik perkembangan anak" jadi "usia si kecil",
+  "kompetensi kelulusan" jadi "standar", "observasional" jadi "lewat pengamatan").
+- Nama jenjang selalu "KB dan TK" dan "SD", bukan "Preschool", "Kindergarten", "Primary School".
 - Kata serapan boleh, asal sangat umum dan langsung dipahami (contoh: core values, trial class).
 
 ## Sapaan
@@ -41,6 +44,10 @@ Cek setiap teks terhadap daftar ini. Kalau ketemu, ganti dengan kata sehari-hari
 - "siswa", "kompetensi inti", "berkarakter".
 - "Sinergi" dalam bentuk apa pun, termasuk judul "Sinergi Pembelajaran ACT" yang wajib diganti.
 - "Kampus pertama", "kawasan terintegrasi Summarecon", "kota terpadu". Cukup tulis "Summarecon Bandung".
+- "Imersi" / "metode imersi". Tulis "dibiasakan berbahasa lewat kegiatan sehari-hari".
+- "Penutur asli". Tulis "guru native".
+- Nama aplikasi "Quintal". Tulis "Learning Management System (LMS)" atau "LMS".
+- Nama "RS Santo Borromeus" cukup di halaman Kampus Bandung (akses sekitar). Di tempat lain tulis "rumah sakit ternama".
 
 **Kata sifat**: holistik, komprehensif, maksimal, inovatif, transformatif, revolusioner,
 berkualitas tinggi, kelas dunia, world-class, cemerlang, gemilang,
