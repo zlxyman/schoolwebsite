@@ -1,0 +1,10 @@
+// Pengaturan Cloudflare Workers: website ini statis, jadi cukup sajikan isi folder public/.
+// Header tambahan (misal X-Robots-Tag noindex selama draft) diatur di public/_headers.
+{
+  "name": "schoolwebsite",
+  "compatibility_date": "2026-06-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
