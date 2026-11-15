@@ -69,3 +69,7 @@ html, body { overflow-x: hidden; width: 100%; position: relative; }
 
 .teacher-box { transition: all 0.4s ease; }
 .teacher-box:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(29,68,134,0.1); }
+
+/* Batang porsi Bahasa Mandarin: terisi saat terlihat di layar */
+#prog-1.terisi { width: 70%; }
+#prog-2.terisi { width: 42%; }
