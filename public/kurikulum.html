@@ -3,29 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurikulum | Sekolah Terpadu Sedaya Bintang</title>
-    <meta name="description" content="Kurikulum Nasional dan Pearson Edexcel iPrimary di Sekolah Terpadu Sedaya Bintang, dengan core values Budi Pekerti, Trilingual, dan STEAM.">
-    <link rel="canonical" href="https://sedayabintang.sch.id/kurikulum.html">
-    <meta name="theme-color" content="#1d4486">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>Kurikulum & Akademik - Sekolah Terpadu Sedaya Bintang</title>
+    
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Konfigurasi Tailwind -->
+    <script src="js/tailwind-config.js"></script>
 
-    <!-- Pratinjau saat tautan dibagikan (WhatsApp, Instagram, Facebook) -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Sekolah Terpadu Sedaya Bintang">
-    <meta property="og:locale" content="id_ID">
-    <meta property="og:title" content="Kurikulum | Sekolah Terpadu Sedaya Bintang">
-    <meta property="og:description" content="Kurikulum Nasional dan Pearson Edexcel iPrimary di Sekolah Terpadu Sedaya Bintang, dengan core values Budi Pekerti, Trilingual, dan STEAM.">
-    <meta property="og:url" content="https://sedayabintang.sch.id/kurikulum.html">
-    <meta property="og:image" content="https://sedayabintang.sch.id/assets/images/og-sedaya-bintang.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Font, ikon, dan gaya. Semua disimpan lokal (tanpa CDN). tailwind.css dimuat paling akhir. -->
-    <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <!-- Memanggil CSS Global -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/tailwind.css">
 </head>
 
 <!-- Menambahkan data-page="programs" agar menu navbar "Programs" otomatis menyala -->
@@ -40,40 +33,44 @@
         <section class="relative pt-8 pb-16 lg:pt-16 lg:pb-28 overflow-hidden bg-brand-gray/30">
             <!-- Abstract Shapes UI Depth -->
             <div class="shape-blob bg-brand-blue w-[300px] h-[300px] top-[-50px] right-[10%] lg:w-[600px] lg:h-[600px] lg:top-[-150px] lg:right-[5%]"></div>
-            <div class="shape-blob bg-brand-yellow w-[200px] h-[200px] bottom-[10%] left-[-5%] opacity-30 lg:w-[400px] lg:h-[400px] [animation-delay:2s]"></div>
+            <div class="shape-blob bg-brand-yellow w-[200px] h-[200px] bottom-[10%] left-[-5%] opacity-30 lg:w-[400px] lg:h-[400px]" style="animation-delay: 2s;"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                 
-                <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white text-brand-primary text-xs font-bold tracking-wider uppercase mb-6 sm:mb-8 border border-gray-100 shadow-sm">
+                <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white text-brand-primary text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-6 sm:mb-8 border border-gray-100 shadow-sm">
                     <i class="fa-solid fa-book-bookmark text-brand-yellow"></i> Program & Akademik
                 </span>
                 
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight leading-[1.2] lg:leading-[1.15] mb-4 sm:mb-6 text-brand-primary max-w-4xl mx-auto">
-                    Kurikulum Nasional <br class="hidden sm:block"/> dan Internasional
+                    Kurikulum Komprehensif <br class="hidden sm:block"/> Berstandar <span class="text-brand-yellow">Global.</span>
                 </h1>
                 
-                <p class="text-base lg:text-lg text-gray-600 mb-8 sm:mb-12 font-medium leading-relaxed max-w-3xl mx-auto">
-                    Dua kurikulum, tiga core values.
+                <p class="text-sm sm:text-base lg:text-lg text-gray-600 mb-8 sm:mb-12 font-medium leading-relaxed max-w-3xl mx-auto">
+                    Memadukan pendidikan budi pekerti, penguasaan trilingual, dan pendekatan STEAM untuk membentuk keterampilan abad ke-21.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sm:mb-16">
                     <!-- Button 1 Primary (Konsultasi) -->
-                    <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20tentang%20pendaftaran." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-primary text-white font-bold px-8 py-3.5 lg:px-10 lg:py-4 rounded-xl lg:rounded-2xl shadow-soft hover:shadow-glow-primary hover:bg-[#15346b] transition-all transform hover:-translate-y-1 text-sm lg:text-base">
-                        Tanya Tim Admisi
+                    <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-brand-primary text-white font-bold px-8 py-3.5 lg:px-10 lg:py-4 rounded-xl lg:rounded-2xl shadow-soft hover:shadow-glow-primary hover:bg-[#15346b] transition-all transform hover:-translate-y-1 text-sm lg:text-base">
+                        Jadwalkan Konsultasi Akademik
                     </a>
                     
                     <!-- Button 2 Secondary (Download PDF Full - REQUESTED) -->
-                    <a href="#jenjang" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white text-brand-primary border-2 border-brand-primary font-bold px-8 py-3 lg:px-10 lg:py-3.5 rounded-xl lg:rounded-2xl hover:bg-brand-primary hover:text-white transition-all transform hover:-translate-y-1 text-sm lg:text-base group">
-                        <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
-                        Lihat per Jenjang
+                    <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white text-brand-primary border-2 border-brand-primary font-bold px-8 py-3 lg:px-10 lg:py-3.5 rounded-xl lg:rounded-2xl hover:bg-brand-primary hover:text-white transition-all transform hover:-translate-y-1 text-sm lg:text-base group">
+                        <i class="fa-solid fa-file-pdf text-brand-red group-hover:text-white transition-colors"></i>
+                        Download Full Syllabus PDF
                     </a>
                 </div>
 
                 <!-- Dynamic Hero Image / Video Placeholder -->
-                <div class="relative w-full max-w-5xl mx-auto aspect-video rounded-3xl lg:rounded-3xl overflow-hidden shadow-2xl border-4 lg:border-8 border-white bg-gray-200 group">
-                    <img src="assets/images/murid-kolaborasi-kelas.webp" alt="Murid bekerja sama di kelas" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" width="800" height="533" decoding="async">
+                <div class="relative w-full max-w-5xl mx-auto h-[250px] sm:h-[400px] lg:h-[550px] rounded-3xl lg:rounded-3xl overflow-hidden shadow-2xl border-4 lg:border-8 border-white bg-gray-200 group">
+                    <img src="assets/images/murid-kolaborasi-kelas.jpg" alt="Murid Aktif Berkolaborasi" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
                     <div class="absolute inset-0 bg-brand-primary mix-blend-overlay opacity-20"></div>
                     
+                    <!-- Play Button / Indicator for Interactive Vibe -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center cursor-pointer hover:bg-white hover:text-brand-primary text-white transition-all play-btn-pulse">
+                        <i class="fa-solid fa-play text-xl sm:text-2xl ml-1"></i>
+                    </div>
                 </div>
 
             </div>
@@ -83,9 +80,9 @@
         <section class="py-16 lg:py-24 bg-white relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10 sm:mb-16">
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary">Dua Kurikulum Berjalan Bersama</h2>
-                    <p class="text-base text-gray-500 mt-3 font-medium max-w-2xl mx-auto">
-                        Kurikulum Nasional dan Pearson Edexcel iPrimary.
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary">Kurikulum Berstandar Global</h2>
+                    <p class="text-sm sm:text-base text-gray-500 mt-3 font-medium max-w-2xl mx-auto">
+                        Murid memenuhi standar kompetensi kelulusan nasional serta mendapatkan kompetensi internasional.
                     </p>
                 </div>
 
@@ -99,7 +96,7 @@
                             <i class="fa-solid fa-flag text-2xl"></i>
                         </div>
                         <h3 class="text-xl sm:text-2xl font-bold text-brand-primary mb-3 z-10">Kurikulum Nasional</h3>
-                        <p class="text-base text-gray-600 leading-relaxed font-medium z-10 flex-1">
+                        <p class="text-sm text-gray-600 leading-relaxed font-medium z-10 flex-1">
                             Memastikan standar kompetensi dari Kementerian Pendidikan Republik Indonesia terpenuhi, termasuk nilai kebangsaan dan Bahasa Indonesia.
                         </p>
                     </div>
@@ -111,7 +108,7 @@
                             <i class="fa-solid fa-globe text-2xl"></i>
                         </div>
                         <h3 class="text-xl sm:text-2xl font-bold mb-3 z-10">Pearson Edexcel iPrimary</h3>
-                        <p class="text-base text-gray-200 leading-relaxed font-light z-10 flex-1">
+                        <p class="text-sm text-gray-200 leading-relaxed font-light z-10 flex-1">
                             Kurikulum Pearson Edexcel iPrimary berbahasa Inggris untuk mata pelajaran English, Science, dan Computing.
                         </p>
                     </div>
@@ -121,8 +118,8 @@
                 <!-- Holistic Study Infographic Area -->
                 <div class="bg-white rounded-2xl sm:rounded-3xl border border-gray-100 shadow-xl p-6 sm:p-10 lg:p-16 relative overflow-hidden">
                     <div class="text-center mb-10">
-                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-brand-primary mb-2">5 Sisi Perkembangan Si Kecil</h3>
-                        <p class="text-sm text-gray-500 font-medium">Kelimanya dilatih bersama.</p>
+                        <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-brand-primary mb-2">5 Dimensi Pendidikan Holistik</h3>
+                        <p class="text-xs sm:text-sm text-gray-500 font-medium">Pengembangan seimbang pada kelima dimensi anak.</p>
                     </div>
                     
                     <div class="grid grid-cols-2 md:grid-cols-5 gap-4 lg:gap-6 text-center">
@@ -132,35 +129,35 @@
                                 <i class="fa-solid fa-brain text-2xl lg:text-3xl"></i>
                             </div>
                             <h4 class="font-bold text-brand-primary text-sm mb-1">Intelektual</h4>
-                            <p class="text-sm text-gray-500 leading-tight">Sains, logika, matematika, dan bahasa.</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 leading-tight">Intelektual: penguasaan sains, logika, matematika, dan bahasa.</p>
                         </div>
                         <div class="flex flex-col items-center">
                             <div class="w-16 h-16 lg:w-20 lg:h-20 bg-brand-yellow/20 rounded-full flex items-center justify-center text-[#d49900] mb-4 transition-transform hover:scale-110">
                                 <i class="fa-solid fa-face-smile text-2xl lg:text-3xl"></i>
                             </div>
                             <h4 class="font-bold text-brand-primary text-sm mb-1">Emosional</h4>
-                            <p class="text-sm text-gray-500 leading-tight">Mengelola perasaan dan tidak mudah menyerah.</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 leading-tight">Emosional: kematangan regulasi diri dan ketahanan mental.</p>
                         </div>
                         <div class="flex flex-col items-center md:col-span-1 col-span-2">
                             <div class="w-16 h-16 lg:w-20 lg:h-20 bg-brand-red/10 rounded-full flex items-center justify-center text-brand-red mb-4 transition-transform hover:scale-110">
                                 <i class="fa-solid fa-hands-holding text-2xl lg:text-3xl"></i>
                             </div>
                             <h4 class="font-bold text-brand-primary text-sm mb-1">Spiritual</h4>
-                            <p class="text-sm text-gray-500 leading-tight">Nilai moral dan kejujuran.</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 leading-tight">Spiritual: penyerapan nilai moral dan integritas.</p>
                         </div>
                         <div class="flex flex-col items-center">
                             <div class="w-16 h-16 lg:w-20 lg:h-20 bg-green-50 rounded-full flex items-center justify-center text-green-600 mb-4 transition-transform hover:scale-110">
                                 <i class="fa-solid fa-people-arrows text-2xl lg:text-3xl"></i>
                             </div>
                             <h4 class="font-bold text-brand-primary text-sm mb-1">Sosial</h4>
-                            <p class="text-sm text-gray-500 leading-tight">Berkolaborasi dan peduli pada teman.</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 leading-tight">Sosial: kemampuan berkolaborasi dan empati.</p>
                         </div>
                         <div class="flex flex-col items-center">
                             <div class="w-16 h-16 lg:w-20 lg:h-20 bg-orange-50 rounded-full flex items-center justify-center text-orange-500 mb-4 transition-transform hover:scale-110">
                                 <i class="fa-solid fa-person-running text-2xl lg:text-3xl"></i>
                             </div>
                             <h4 class="font-bold text-brand-primary text-sm mb-1">Fisik</h4>
-                            <p class="text-sm text-gray-500 leading-tight">Kebugaran dan motorik si kecil.</p>
+                            <p class="text-[10px] sm:text-xs text-gray-500 leading-tight">Fisik: pengembangan kebugaran jasmani dan motorik anak.</p>
                         </div>
 
                     </div>
@@ -173,27 +170,27 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 sm:mb-16">
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary">Kegiatan Belajar Sesuai Jenjang</h2>
-                    <p class="text-base text-gray-500 mt-3 font-medium">Kegiatan belajar disesuaikan dengan usia si kecil.</p>
+                    <p class="text-sm sm:text-base text-gray-500 mt-3 font-medium">Kegiatan belajar mengajar disesuaikan dengan karakteristik perkembangan anak.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                     
                     <!-- KB - TK Bridging Card -->
                     <div class="bg-white rounded-2xl sm:rounded-3xl border border-gray-100 shadow-sm overflow-hidden flex flex-col group hover-lift">
-                        <div class="aspect-video w-full overflow-hidden relative">
-                            <img src="assets/images/kurikulum-preschool-kindergarten.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Kegiatan murid KB dan TK" width="800" height="533" loading="lazy" decoding="async">
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-brand-primary">Usia 2–6 tahun</div>
+                        <div class="h-[200px] sm:h-[280px] w-full overflow-hidden relative">
+                            <img src="assets/images/kurikulum-preschool-kindergarten.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Preschool & Kindergarten">
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-brand-primary">Golden Age (2-6 Tahun)</div>
                         </div>
                         <div class="p-4 sm:p-5 lg:p-10 flex flex-col flex-1">
                             <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-3">Preschool & Kiddy</h3>
-                            <p class="text-base text-gray-600 mb-6 flex-1 font-medium leading-relaxed">
-                                Si kecil melatih motorik dan bahasa, serta eksplorasi lewat metode Learning Corner (Prof. Lin Pei Rong).
+                            <p class="text-sm text-gray-600 mb-6 flex-1 font-medium leading-relaxed">
+                                Pengembangan motorik dan bahasa secara interaktif, serta eksplorasi lewat Learning Corners (Prof. Lin Pei Rong).
                             </p>
                             
                             <!-- CTA CONNECT TO PRESCHOOL PAGE -->
                             <div>
-                                <a href="preschool.html" class="inline-flex items-center gap-2 bg-brand-gray text-brand-primary font-bold px-6 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm hover:bg-brand-primary hover:text-white transition-colors w-full sm:w-auto justify-center border border-gray-200 hover:border-brand-primary">
-                                    Lihat Program KB dan TK <i class="fa-solid fa-arrow-right-long ml-1"></i>
+                                <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-gray text-brand-primary font-bold px-6 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm hover:bg-brand-primary hover:text-white transition-colors w-full sm:w-auto justify-center border border-gray-200 hover:border-brand-primary">
+                                    Pelajari Program Preschool <i class="fa-solid fa-arrow-right-long ml-1"></i>
                                 </a>
                             </div>
                         </div>
@@ -201,20 +198,20 @@
 
                     <!-- SD Bridging Card -->
                     <div class="bg-white rounded-2xl sm:rounded-3xl border border-gray-100 shadow-sm overflow-hidden flex flex-col group hover-lift">
-                        <div class="aspect-video w-full overflow-hidden relative">
-                            <img src="assets/images/partner-sekolah-pahoa.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Kegiatan murid SD" width="800" height="533" loading="lazy" decoding="async">
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-brand-primary">Mulai usia 6–7 tahun</div>
+                        <div class="h-[200px] sm:h-[280px] w-full overflow-hidden relative">
+                            <img src="assets/images/partner-sekolah-pahoa.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Primary School">
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-brand-primary">Usia Dasar (6-12 Tahun)</div>
                         </div>
                         <div class="p-4 sm:p-5 lg:p-10 flex flex-col flex-1">
                             <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-3">Primary School</h3>
-                            <p class="text-base text-gray-600 mb-6 flex-1 font-medium leading-relaxed">
-                                Belajar dengan Pearson Edexcel iPrimary, serta Framework Singapura untuk Matematika dan Six Elements of Teaching dari Dr. Yeap Ban Har.
+                            <p class="text-sm text-gray-600 mb-6 flex-1 font-medium leading-relaxed">
+                                Pembelajaran akademik terstruktur melalui kurikulum Pearson Edexcel dan Framework Matematika Singapura dari Dr. Yeap Ban Har.
                             </p>
                             
                             <!-- CTA CONNECT TO PRIMARY PAGE -->
                             <div>
-                                <a href="primary.html" class="inline-flex items-center gap-2 bg-brand-gray text-brand-primary font-bold px-6 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm hover:bg-brand-primary hover:text-white transition-colors w-full sm:w-auto justify-center border border-gray-200 hover:border-brand-primary">
-                                    Lihat Program SD <i class="fa-solid fa-arrow-right-long ml-1"></i>
+                                <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-gray text-brand-primary font-bold px-6 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm hover:bg-brand-primary hover:text-white transition-colors w-full sm:w-auto justify-center border border-gray-200 hover:border-brand-primary">
+                                    Pelajari Program Primary <i class="fa-solid fa-arrow-right-long ml-1"></i>
                                 </a>
                             </div>
                         </div>
@@ -228,7 +225,7 @@
         <section class="py-16 lg:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10 sm:mb-14">
-                    <span class="inline-block py-1 px-3 rounded-full bg-brand-yellow/20 text-[#d49900] text-xs font-bold tracking-wider uppercase mb-3">Cara Belajar</span>
+                    <span class="inline-block py-1 px-3 rounded-full bg-brand-yellow/20 text-[#d49900] text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-3">Signature Methods</span>
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary">Pendekatan Pembelajaran</h2>
                 </div>
 
@@ -236,35 +233,35 @@
                     
                     <!-- Left Column (Menu / Tabs) -->
                     <div class="w-full lg:w-4/12 flex flex-col gap-2">
-                        <button type="button" aria-pressed="true" class="method-tab active text-left p-4 sm:p-5 rounded-r-xl lg:rounded-r-2xl flex items-center gap-4 bg-brand-gray" data-aksi="switchMethod" data-arg="0">
+                        <button class="method-tab active text-left p-4 sm:p-5 rounded-r-xl lg:rounded-r-2xl flex items-center gap-4 bg-brand-gray" onclick="switchMethod(0, this)">
                             <div class="tab-icon w-10 h-10 shrink-0 bg-brand-primary rounded-lg flex items-center justify-center text-white shadow-sm transition-all text-lg scale-110"><i class="fa-solid fa-calculator"></i></div>
                             <div>
-                                <div class="tab-title font-bold text-brand-primary text-sm sm:text-base mb-1 transition-colors">Matematika Framework Singapura</div>
-                                <div class="text-xs text-gray-500">Six Elements of Teaching</div>
+                                <div class="tab-title font-bold text-brand-primary text-sm sm:text-base mb-1 transition-colors">Framework Matematika Singapura.</div>
+                                <div class="text-[10px] sm:text-xs text-gray-500">Framework Dr. Yeap Ban Har</div>
                             </div>
                         </button>
 
-                        <button type="button" aria-pressed="false" class="method-tab text-left p-4 sm:p-5 rounded-r-xl lg:rounded-r-2xl flex items-center gap-4" data-aksi="switchMethod" data-arg="1">
+                        <button class="method-tab text-left p-4 sm:p-5 rounded-r-xl lg:rounded-r-2xl flex items-center gap-4" onclick="switchMethod(1, this)">
                             <div class="tab-icon w-10 h-10 shrink-0 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 transition-all text-lg"><i class="fa-solid fa-puzzle-piece"></i></div>
                             <div>
-                                <div class="tab-title font-semibold text-gray-600 text-sm sm:text-base mb-1 transition-colors">Metode Learning Corner</div>
-                                <div class="text-xs text-gray-500">Untuk KB dan TK</div>
+                                <div class="tab-title font-semibold text-gray-600 text-sm sm:text-base mb-1 transition-colors">Metode Learning Corners (Prof. Lin Pei Rong) untuk anak usia dini.</div>
+                                <div class="text-[10px] sm:text-xs text-gray-500">Bermain mandiri terarah (KB/TK)</div>
                             </div>
                         </button>
 
-                        <button type="button" aria-pressed="false" class="method-tab text-left p-4 sm:p-5 rounded-r-xl lg:rounded-r-2xl flex items-center gap-4" data-aksi="switchMethod" data-arg="2">
+                        <button class="method-tab text-left p-4 sm:p-5 rounded-r-xl lg:rounded-r-2xl flex items-center gap-4" onclick="switchMethod(2, this)">
                             <div class="tab-icon w-10 h-10 shrink-0 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 transition-all text-lg"><i class="fa-solid fa-lightbulb"></i></div>
                             <div>
-                                <div class="tab-title font-semibold text-gray-600 text-sm sm:text-base mb-1 transition-colors">Keterampilan 4C</div>
-                                <div class="text-xs text-gray-500">Berpikir, berkarya, bekerja sama</div>
+                                <div class="tab-title font-semibold text-gray-600 text-sm sm:text-base mb-1 transition-colors">Keterampilan Abad 21 (4C).</div>
+                                <div class="text-[10px] sm:text-xs text-gray-500">Kebutuhan esensial Abad-21</div>
                             </div>
                         </button>
 
-                        <button type="button" aria-pressed="false" class="method-tab text-left p-4 sm:p-5 rounded-r-xl lg:rounded-r-2xl flex items-center gap-4" data-aksi="switchMethod" data-arg="3">
+                        <button class="method-tab text-left p-4 sm:p-5 rounded-r-xl lg:rounded-r-2xl flex items-center gap-4" onclick="switchMethod(3, this)">
                             <div class="tab-icon w-10 h-10 shrink-0 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 transition-all text-lg"><i class="fa-solid fa-chalkboard-user"></i></div>
                             <div>
-                                <div class="tab-title font-semibold text-gray-600 text-sm sm:text-base mb-1 transition-colors">Lesson Study untuk Guru</div>
-                                <div class="text-xs text-gray-500">Guru terus belajar</div>
+                                <div class="tab-title font-semibold text-gray-600 text-sm sm:text-base mb-1 transition-colors">Lesson Study bagi tenaga pendidik.</div>
+                                <div class="text-[10px] sm:text-xs text-gray-500">Peningkatan kualitas guru berkala</div>
                             </div>
                         </button>
                     </div>
@@ -275,33 +272,36 @@
                         <!-- Panel 0: Singapore Math -->
                         <div id="method-panel-0" class="tab-content-panel active bg-brand-gray rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 h-full flex flex-col justify-center border border-gray-100 shadow-sm">
                             <div class="flex items-center gap-3 mb-4">
-                                <span class="bg-brand-yellow/30 text-[#b58300] text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">STEAM</span>
+                                <span class="bg-brand-yellow/30 text-[#b58300] text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">Pilar STEAM</span>
                             </div>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">Framework Singapura untuk Matematika</h3>
-                            <p class="text-base text-gray-600 leading-relaxed font-medium mb-6">
-                                Matematika memakai Framework Singapura untuk Matematika dan Six Elements of Teaching dari Dr. Yeap Ban Har: Exploration, Structured Discussion, Polishing, Key Question, Turning Point, Summing Up.
+                            <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">Pendekatan Matematika Singapura</h3>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed font-medium mb-6">
+                                Pembelajaran matematika mengadopsi Framework Singapura melalui pendekatan Concrete-Pictorial-Abstract (CPA) dan model batang.
                             </p>
                             <!-- Visual/Video Placeholder inside tab -->
-                            <div class="relative w-full aspect-video bg-gray-200 rounded-2xl overflow-hidden mt-auto">
-                                <img src="assets/images/kurikulum-singapore-math.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Murid belajar matematika dengan benda nyata" width="800" height="497" loading="lazy" decoding="async">
+                            <div class="relative w-full h-40 sm:h-56 bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer mt-auto">
+                                <img src="assets/images/kurikulum-singapore-math.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Singapore Math">
+                                <div class="absolute inset-0 bg-brand-primary/30 flex items-center justify-center">
+                                    <div class="bg-white text-brand-primary rounded-full px-4 py-2 text-xs font-bold flex items-center gap-2 shadow-lg group-hover:bg-brand-yellow transition-colors"><i class="fa-solid fa-play"></i> Lihat Penerapan CPA</div>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Panel 1: Learning Corners -->
                         <div id="method-panel-1" class="tab-content-panel bg-brand-gray rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 h-full flex flex-col justify-center border border-gray-100 shadow-sm">
                             <div class="flex items-center gap-3 mb-4">
-                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">Khusus KB - TK</span>
+                                <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">Khusus KB - TK</span>
                             </div>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">Metode Learning Corner</h3>
-                            <p class="text-base text-gray-600 leading-relaxed font-medium mb-6">
-                                Metode Learning Corner dari Prof. Lin Pei Rong. Kelas KB dan TK punya beberapa mini corner, tempat si kecil eksplorasi sesuai minatnya.
+                            <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">Metode Learning Corners</h3>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed font-medium mb-6">
+                                Penerapan Metode Learning Corners (Prof. Lin Pei Rong) untuk memfasilitasi eksplorasi minat anak secara mandiri.
                             </p>
                             <div class="grid grid-cols-3 gap-3 mt-auto">
-                                <img src="assets/images/guru-sedaya-bintang.webp" class="w-full aspect-[4/3] object-cover rounded-xl" alt="Guru mendampingi murid di mini corner" width="800" height="1200" loading="lazy" decoding="async">
-                                <img src="assets/images/kurikulum-preschool-kindergarten.webp" class="w-full aspect-[4/3] object-cover rounded-xl" alt="Mini corner di kelas" width="800" height="533" loading="lazy" decoding="async">
-                                <div class="w-full aspect-[4/3] bg-brand-primary rounded-xl flex flex-col items-center justify-center text-white p-2 text-center">
+                                <img src="assets/images/guru-sedaya-bintang.jpg" class="w-full h-24 sm:h-32 object-cover rounded-xl" alt="Corner 1">
+                                <img src="assets/images/kurikulum-preschool-kindergarten.jpg" class="w-full h-24 sm:h-32 object-cover rounded-xl" alt="Corner 2">
+                                <div class="w-full h-24 sm:h-32 bg-brand-primary rounded-xl flex flex-col items-center justify-center text-white p-2 text-center">
                                     <i class="fa-solid fa-shapes text-xl mb-1 text-brand-yellow"></i>
-                                    <span class="text-xs font-bold">Eksplorasi Mandiri</span>
+                                    <span class="text-[9px] sm:text-[10px] font-bold">Eksplorasi Mandiri</span>
                                 </div>
                             </div>
                         </div>
@@ -309,11 +309,11 @@
                         <!-- Panel 2: 4C -->
                         <div id="method-panel-2" class="tab-content-panel bg-brand-gray rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 h-full flex flex-col justify-center border border-gray-100 shadow-sm">
                             <div class="flex items-center gap-3 mb-4">
-                                <span class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">4C</span>
+                                <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">Global Standard</span>
                             </div>
-                            <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">Keterampilan 4C</h3>
-                            <p class="text-base text-gray-600 leading-relaxed font-medium mb-6">
-                                Murid dilatih Critical Thinking, Creativity, Collaboration, dan Communication.
+                            <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">Keterampilan Abad-21 (4C)</h3>
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed font-medium mb-6">
+                                Proses pendidikan bermuara pada penguasaan kompetensi Critical Thinking, Creativity, Collaboration, dan Communication.
                             </p>
                             <div class="flex flex-wrap gap-3 mt-auto">
                                 <span class="px-4 py-2 bg-white rounded-lg text-sm font-bold text-gray-700 border border-gray-200 shadow-sm"><i class="fa-solid fa-brain text-brand-primary mr-2"></i>Critical Thinking</span>
@@ -326,14 +326,14 @@
                         <!-- Panel 3: Lesson Study -->
                         <div id="method-panel-3" class="tab-content-panel bg-brand-gray rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 h-full flex flex-col justify-center border border-gray-100 shadow-sm">
                             <div class="flex items-center gap-3 mb-4">
-                                <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">Kualitas Pengajar</span>
+                                <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">Kualitas Pengajar</span>
                             </div>
                             <h3 class="text-2xl sm:text-3xl font-bold text-brand-primary mb-4">Pengembangan Profesional Guru</h3>
-                            <p class="text-base text-gray-600 leading-relaxed font-medium mb-6">
+                            <p class="text-sm sm:text-base text-gray-600 leading-relaxed font-medium mb-6">
                                 Pengembangan profesional guru berkelanjutan melalui pendekatan lesson study.
                             </p>
                             <div class="mt-auto p-4 bg-white rounded-xl border-l-4 border-brand-primary">
-                                <p class="text-sm text-gray-500 italic">Peningkatan kualitas pengajaran yang berkesinambungan.</p>
+                                <p class="text-xs sm:text-sm text-gray-500 italic">Peningkatan kualitas pengajaran yang berkesinambungan.</p>
                             </div>
                         </div>
 
@@ -345,8 +345,8 @@
         <!-- SECTION 5: KURIKULUM YANG HIDUP DALAM 3 PILAR (Bridging ke Page Pilar) -->
         <section id="pilar-bawah" class="py-16 lg:py-24 bg-brand-gray/50 border-t border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Tiga Core Values</h2>
-                <p class="text-base text-gray-500 font-medium mb-12 sm:mb-16 max-w-2xl mx-auto">Budi Pekerti, Trilingual, dan STEAM.</p>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-primary mb-3">Tiga Pilar Sekolah</h2>
+                <p class="text-sm sm:text-base text-gray-500 font-medium mb-12 sm:mb-16 max-w-2xl mx-auto">Sekolah Terpadu Sedaya Bintang memiliki pilar Budi Pekerti, Trilingual, dan STEAM.</p>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
                     
@@ -355,10 +355,10 @@
                         <div class="w-16 h-16 bg-brand-red/10 text-brand-red rounded-full flex items-center justify-center text-2xl mb-5">
                             <i class="fa-solid fa-heart"></i>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Budi Pekerti</h3>
-                        <p class="text-sm text-gray-500 mb-6 flex-1 px-2">10 Nilai Moral, Nilai Di Zi Gui, dan program Hari Bakti.</p>
-                        <a href="budi-pekerti.html" class="text-brand-primary font-bold text-xs sm:text-sm hover:text-brand-red transition-colors inline-flex items-center gap-2 group">
-                            Eksplorasi Budi Pekerti <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                        <h4 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Pilar Budi Pekerti</h4>
+                        <p class="text-xs sm:text-sm text-gray-500 mb-6 flex-1 px-2">Pendidikan karakter berlandaskan Di Zi Gui dan 10 Nilai Moral, lewat program Hari Bakti.</p>
+                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="text-brand-primary font-bold text-xs sm:text-sm hover:text-brand-red transition-colors inline-flex items-center gap-2 group">
+                            Eksplorasi Program <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
 
@@ -368,10 +368,10 @@
                         <div class="w-16 h-16 bg-brand-blue text-brand-primary rounded-full flex items-center justify-center text-2xl mb-5">
                             <i class="fa-solid fa-earth-asia"></i>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Trilingual</h3>
-                        <p class="text-sm text-gray-500 mb-6 flex-1 px-2">Bahasa Mandarin, Inggris, dan Indonesia, bersama guru native.</p>
-                        <a href="tribahasa.html" class="text-brand-primary font-bold text-xs sm:text-sm hover:text-brand-yellow transition-colors inline-flex items-center gap-2 group">
-                            Eksplorasi Trilingual <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                        <h4 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Pilar Trilingual</h4>
+                        <p class="text-xs sm:text-sm text-gray-500 mb-6 flex-1 px-2">Pembelajaran bahasa secara interaktif dengan keterlibatan guru native.</p>
+                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="text-brand-primary font-bold text-xs sm:text-sm hover:text-brand-yellow transition-colors inline-flex items-center gap-2 group">
+                            Eksplorasi Metode Imersi <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
 
@@ -380,17 +380,17 @@
                         <div class="w-16 h-16 bg-brand-yellow/20 text-[#d49900] rounded-full flex items-center justify-center text-2xl mb-5">
                             <i class="fa-solid fa-flask"></i>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">STEAM</h3>
-                        <p class="text-sm text-gray-500 mb-6 flex-1 px-2">Belajar lintas mata pelajaran lewat eksplorasi.</p>
-                        <a href="steam.html" class="text-brand-primary font-bold text-xs sm:text-sm hover:text-[#d49900] transition-colors inline-flex items-center gap-2 group">
-                            Eksplorasi STEAM <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                        <h4 class="text-lg sm:text-xl font-bold text-brand-primary mb-2">Pilar STEAM</h4>
+                        <p class="text-xs sm:text-sm text-gray-500 mb-6 flex-1 px-2">Pembelajaran berbasis proyek lintas mata pelajaran dengan pendekatan STEAM.</p>
+                        <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="text-brand-primary font-bold text-xs sm:text-sm hover:text-[#d49900] transition-colors inline-flex items-center gap-2 group">
+                            Eksplorasi Pendekatan <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="mt-12 sm:mt-16 text-center">
-                    <a href="school-visit.html" class="inline-flex items-center justify-center bg-brand-primary text-white font-bold px-8 py-4 lg:px-10 lg:py-4 rounded-full shadow-lg hover:bg-brand-yellow hover:text-brand-primary transition-all transform hover:-translate-y-1 text-sm lg:text-base w-full sm:w-auto gap-3">
-                        <i class="fa-solid fa-book-bookmark"></i> Jadwalkan School Visit
+                    <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20mengenai%20rincian%20biaya%20pendidikan." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-brand-primary text-white font-bold px-8 py-4 lg:px-10 lg:py-4 rounded-full shadow-lg hover:bg-brand-yellow hover:text-brand-primary transition-all transform hover:-translate-y-1 text-sm lg:text-base w-full sm:w-auto gap-3">
+                        <i class="fa-solid fa-book-bookmark"></i> Pelajari Metode Belajar Kami
                     </a>
                 </div>
             </div>
@@ -404,8 +404,8 @@
 
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4 sm:mb-6 leading-tight">Informasi Kurikulum</h2>
-                <p class="text-base text-gray-300 font-medium mb-10 sm:mb-12 max-w-2xl mx-auto">
-                    Hubungi tim kami untuk info mata pelajaran.
+                <p class="text-sm sm:text-base text-gray-300 font-medium mb-10 sm:mb-12 max-w-2xl mx-auto">
+                    Hubungi tim kami untuk mengetahui detail mata pelajaran dan evaluasi sekolah.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 lg:gap-5">
@@ -414,8 +414,8 @@
                             <i class="fa-brands fa-whatsapp text-brand-primary text-lg"></i> Info Kurikulum via WA
                         </a>
                     
-                    <a href="https://wa.me/6281389772288?text=Halo%20Admin%20Sekolah%20Terpadu%20Sedaya%20Bintang,%20saya%20ingin%20bertanya%20tentang%20pendaftaran." target="_blank" rel="noopener noreferrer" class="border-2 border-brand-yellow text-brand-yellow font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl hover:bg-brand-yellow hover:text-brand-primary transition-colors text-center text-sm lg:text-base inline-flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Tanya Tim Admisi
+                    <a href="#" class="border-2 border-brand-yellow text-brand-yellow font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl hover:bg-brand-yellow hover:text-brand-primary transition-colors text-center text-sm lg:text-base inline-flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Chat Tim Akademik
                     </a>
                 </div>
             </div>

@@ -52,16 +52,16 @@ const steamDetailsData = {
         icon: 'fa-flask',
         color: 'text-brand-primary',
         bgColor: 'bg-blue-50',
-        summary: 'Mendorong rasa ingin tahu alami si kecil dengan mengamati fenomena sekitar, menguji dugaan sederhana, dan mencatat hasil pengamatan sesuai yang dilihat.',
+        summary: 'Mendorong rasa ingin tahu alami si kecil dengan mengamati fenomena sekitar, menguji dugaan sederhana, dan mencatat hasil pengamatan berbasis fakta nyata.',
         preschool: 'Eksplorasi sensorik, pengenalan siklus tanaman di Roof Garden, mengenal sifat air, bayangan, dan pengamatan cuaca harian.',
         primary: 'Penerapan kurikulum Pearson Edexcel iPrimary Science: metode ilmiah terstruktur, ekosistem, materi dan perubahannya, serta eksperimen laboratorium sederhana.',
-        activity: 'Kegiatan "Detektif Tanaman" dan simulasi daur air sederhana di kelas.'
+        activity: 'Proyek "Detektif Tanaman" dan simulasi daur air sederhana di kelas.'
     },
     technology: {
         title: 'Technology (Teknologi & Literasi Digital)',
         badge: 'Literasi & Tanggung Jawab',
         icon: 'fa-microchip',
-        color: 'text-amber-700',
+        color: 'text-brand-yellow',
         bgColor: 'bg-amber-50',
         summary: 'Mengenalkan perangkat komputasi sebagai media berkarya dan sarana mengolah informasi secara aman, cerdas, dan bertanggung jawab sejak dini.',
         preschool: 'Pengenalan pola algoritma unplugged (tanpa layar), konsep sebab-akibat sederhana melalui teka-teki logika fisik.',
@@ -75,7 +75,7 @@ const steamDetailsData = {
         color: 'text-amber-600',
         bgColor: 'bg-amber-50',
         summary: 'Melatih kemampuan si kecil merencanakan, merancang, menguji, dan memperbaiki model fisik saat mencari jalan keluar untuk suatu masalah praktis.',
-        preschool: 'Membangun jembatan balok kayu, memahami keseimbangan benda, menguji daya apung benda dengan alat peraga.',
+        preschool: 'Membangun jembatan balok kayu, memahami keseimbangan benda, menguji daya apung material dengan alat peraga Montessori.',
         primary: 'Desain konstruksi ramah lingkungan, membuat purwarupa miniatur ramah beban (contoh: kincir angin mini atau menara tahan guncangan sederhana).',
         activity: 'Tantangan "Rancang Wadah Telur Tahan Jatuh" menggunakan bahan daur ulang.'
     },
@@ -92,11 +92,11 @@ const steamDetailsData = {
     },
     mathematics: {
         title: 'Mathematics (Matematika & Nalar Terstruktur)',
-        badge: 'Framework Singapura',
+        badge: 'Singapore Math Framework',
         icon: 'fa-calculator',
         color: 'text-brand-primary',
         bgColor: 'bg-slate-100',
-        summary: 'Memakai Framework Singapura untuk Matematika dan Six Elements of Teaching dari Dr. Yeap Ban Har. Si kecil belajar bertahap dari benda nyata, gambar, lalu simbol (CPA).',
+        summary: 'Mengadopsi Framework Matematika Singapura oleh Dr. Yeap Ban Har melalui pendekatan bertahap CPA (Concrete - Pictorial - Abstract) untuk pemahaman konsep mendalam tanpa hafalan buta.',
         preschool: 'Mengenal bilangan melalui benda nyata (manik-manik, kubus bertumpuk), klasifikasi ukuran, dan perbandingan bentuk geometris.',
         primary: 'Pemecahan soal cerita dengan model drawing bar, logika pecahan, analisis pola data, dan penerapan hitungan dalam kehidupan sehari-hari.',
         activity: 'Simulasi mini market kelas untuk menghitung kembalian dan pemodelan pecahan dengan balok peraga.'
@@ -106,40 +106,41 @@ const steamDetailsData = {
 function initSteamModal() {
     const modal = document.getElementById('steam-detail-modal');
     if (!modal) return;
-    const AKSI = window.SedayaAksi;
-    const Modal = window.SedayaModal;
 
-    AKSI.closeSteamDetail = () => {
-        modal.classList.remove('opacity-100', 'pointer-events-auto');
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        Modal.tutup(modal);
-    };
-
-    AKSI.openSteamDetail = (key) => {
+    window.openSteamDetail = function(key) {
         const data = steamDetailsData[key];
         if (!data) return;
 
-        document.getElementById('modal-element-title').textContent = data.title;
-        document.getElementById('modal-element-badge').textContent = data.badge;
-        document.getElementById('modal-element-summary').textContent = data.summary;
-        document.getElementById('modal-element-preschool').textContent = data.preschool;
-        document.getElementById('modal-element-primary').textContent = data.primary;
-        document.getElementById('modal-element-activity').textContent = data.activity;
+        document.getElementById('modal-element-title').innerText = data.title;
+        document.getElementById('modal-element-badge').innerText = data.badge;
+        document.getElementById('modal-element-summary').innerText = data.summary;
+        document.getElementById('modal-element-preschool').innerText = data.preschool;
+        document.getElementById('modal-element-primary').innerText = data.primary;
+        document.getElementById('modal-element-activity').innerText = data.activity;
 
         const iconEl = document.getElementById('modal-element-icon');
         if (iconEl) {
             iconEl.className = `w-14 h-14 rounded-2xl flex items-center justify-center text-2xl ${data.bgColor} ${data.color}`;
-            iconEl.innerHTML = `<i class="fa-solid ${data.icon}" aria-hidden="true"></i>`;
+            iconEl.innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
         }
 
         modal.classList.remove('opacity-0', 'pointer-events-none');
         modal.classList.add('opacity-100', 'pointer-events-auto');
-        Modal.buka(modal, AKSI.closeSteamDetail);
+        document.body.style.overflow = 'hidden';
     };
 
-    // Klik latar gelap = tutup
+    window.closeSteamDetail = function() {
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+    };
+
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) AKSI.closeSteamDetail();
+        if (e.target === modal) window.closeSteamDetail();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') window.closeSteamDetail();
     });
 }
 
@@ -149,10 +150,10 @@ function initSteamModal() {
 const gamesPreviewData = [
     {
         id: 'steam-explorer',
-        title: 'Astro Logic',
+        title: 'STEAM Astro Logic',
         tag: 'Logika & Sains 3D',
         difficulty: 'Usia 5 - 12 Tahun',
-        description: 'Si kecil menyusun langkah astronot sampai ke bintang. Melatih logika dan kesabaran.',
+        description: 'Tantangan memecahkan teka-teki logika rotasi aliran energi dan ruang spasial 3D. Melatih kesabaran, nalar analitis, dan daya prediksi si kecil.',
         badgeColor: 'bg-sky-500/20 text-sky-400 border-sky-500/30',
         directLink: 'steam-minigame.html',
         image: 'https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png'
@@ -161,18 +162,18 @@ const gamesPreviewData = [
         id: 'hanzi-master',
         title: 'Hanzi Master',
         tag: 'Bahasa Mandarin',
-        difficulty: 'KB, TK, dan SD',
-        description: 'Si kecil menyusun huruf Mandarin goresan demi goresan.',
+        difficulty: 'Preschool & Primary',
+        description: 'Mengenal karakter Hanzi melalui susunan goresan interaktif dengan tampilan visual modern. Si kecil belajar aksara dengan penuh rasa antusias.',
         badgeColor: 'bg-violet-500/20 text-violet-400 border-violet-500/30',
         directLink: 'hanzi-minigame.html',
         image: 'https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Artist%20Palette.png'
     },
     {
         id: 'vocab-master',
-        title: 'Tebak Kosakata',
-        tag: 'Kosakata Mandarin',
+        title: 'Vocab Master Arcade',
+        tag: 'Kosakata Multibahasa',
         difficulty: 'Semua Jenjang',
-        description: 'Si kecil menebak arti kosakata Mandarin dari gambar.',
+        description: 'Kuis ketangkasan mencocokkan arti kosakata bahasa Inggris dan Mandarin dalam format arcade yang terukur dan memicu fokus tinggi.',
         badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
         directLink: 'vocab-minigame.html',
         image: 'https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Books.png'
@@ -183,28 +184,27 @@ function initBridgingPreview() {
     const previewContainer = document.getElementById('bridge-preview-card');
     if (!previewContainer) return;
 
-    window.SedayaAksi.selectBridgeGame = (index) => {
+    window.selectBridgeGame = function(index) {
         const game = gamesPreviewData[index];
         if (!game) return;
 
         // Update tab buttons
         const tabButtons = document.querySelectorAll('.bridge-tab-btn');
         tabButtons.forEach((btn, i) => {
-            btn.setAttribute('aria-pressed', String(i === index));
             if (i === index) {
                 btn.className = 'bridge-tab-btn flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/15 border border-white/30 text-white font-bold transition-all shadow-md';
             } else {
-                btn.className = 'bridge-tab-btn flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 font-semibold transition-all';
+                btn.className = 'bridge-tab-btn flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 font-semibold transition-all';
             }
         });
 
         // Update preview content with gentle fade
         previewContainer.classList.add('opacity-40', 'scale-[0.98]');
         setTimeout(() => {
-            document.getElementById('bridge-pv-title').textContent = game.title;
-            document.getElementById('bridge-pv-tag').textContent = game.tag;
-            document.getElementById('bridge-pv-difficulty').textContent = game.difficulty;
-            document.getElementById('bridge-pv-desc').textContent = game.description;
+            document.getElementById('bridge-pv-title').innerText = game.title;
+            document.getElementById('bridge-pv-tag').innerText = game.tag;
+            document.getElementById('bridge-pv-difficulty').innerText = game.difficulty;
+            document.getElementById('bridge-pv-desc').innerText = game.description;
             document.getElementById('bridge-pv-img').src = game.image;
             document.getElementById('bridge-pv-img').alt = game.title;
             

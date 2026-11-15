@@ -1,624 +1,795 @@
-/*
- * Skrip bersama semua halaman.
- * Tidak ada onclick di HTML: tombol memakai atribut data-aksi="namaAksi" (+ data-arg),
- * lalu dijalankan dari daftar AKSI di bawah. Cara ini aman untuk Content-Security-Policy.
- */
-
-/* ---------- DATA YANG BOLEH DIUBAH PEMILIK ---------- */
-// ID video YouTube (bagian setelah "v=" pada alamat video). Selama kosong, kartu videonya disembunyikan.
-const VIDEO_YOUTUBE = {
-    hariBakti: '',   // [PERLU DATA: video dokumentasi Hari Bakti]
-    trilingual: ''   // [PERLU DATA: video kegiatan kelas Trilingual]
-};
-
-/* ---------- DAFTAR AKSI + PENANGAN KLIK ---------- */
-const AKSI = {};
-window.SedayaAksi = AKSI;
-
-document.addEventListener('click', (e) => {
-    const el = e.target.closest('[data-aksi]');
-    if (!el) return;
-    const fn = AKSI[el.dataset.aksi];
-    if (typeof fn !== 'function') return;
-    const mentah = el.dataset.arg;
-    const arg = mentah !== undefined && /^-?\d+$/.test(mentah) ? Number(mentah) : mentah;
-    fn(arg, el, e);
-});
-
-// Elemen non-tombol yang bisa diklik (role="button") juga bisa dipakai dengan Enter / Spasi
-document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    const el = e.target;
-    if (!el.matches || !el.matches('[data-aksi][role="button"]')) return;
-    e.preventDefault();
-    el.click();
-});
-
-const kurangiGerak = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* ---------- MODAL: fokus, Escape, kunci gulir ---------- */
-const Modal = (() => {
-    const tumpukan = [];
-    const BISA_FOKUS = 'a[href], button:not([disabled]), input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])';
-
-    function buka(el, tutupFn) {
-        if (!el || tumpukan.some(m => m.el === el)) return;
-        el.removeAttribute('inert');
-        tumpukan.push({ el, tutupFn, pemicu: document.activeElement });
-        document.body.style.overflow = 'hidden';
-        const tujuan = el.querySelector('[data-fokus-awal]') || el.querySelector(BISA_FOKUS) || el;
-        setTimeout(() => tujuan.focus({ preventScroll: true }), 50);
-    }
-
-    function tutup(el) {
-        const i = tumpukan.findIndex(m => m.el === el);
-        if (i === -1) return;
-        const [m] = tumpukan.splice(i, 1);
-        el.setAttribute('inert', '');
-        if (!tumpukan.length) document.body.style.overflow = '';
-        if (m.pemicu && m.pemicu.focus) m.pemicu.focus({ preventScroll: true });
-    }
-
-    document.addEventListener('keydown', (e) => {
-        const atas = tumpukan[tumpukan.length - 1];
-        if (!atas) return;
-        if (e.key === 'Escape') { atas.tutupFn(); return; }
-        if (e.key !== 'Tab') return;
-        const daftar = [...atas.el.querySelectorAll(BISA_FOKUS)].filter(x => x.offsetParent !== null);
-        if (!daftar.length) return;
-        const awal = daftar[0], akhir = daftar[daftar.length - 1];
-        if (e.shiftKey && document.activeElement === awal) { e.preventDefault(); akhir.focus(); }
-        else if (!e.shiftKey && document.activeElement === akhir) { e.preventDefault(); awal.focus(); }
-    });
-
-    return { buka, tutup };
-})();
-window.SedayaModal = Modal;
-
-// Modal bergaya ".custom-modal" (muncul dengan kelas "show"). Klik latar gelap = tutup.
-function bukaModalShow(id) {
-    const el = document.getElementById(id);
-    if (!el) return null;
-    el.classList.add('show');
-    Modal.buka(el, () => tutupModalShow(id));
-    return el;
-}
-function tutupModalShow(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.remove('show');
-    Modal.tutup(el);
-}
-const tutupJikaLatar = (id) => (arg, el, e) => {
-    if (arg === 'paksa' || e.target === document.getElementById(id)) tutupModalShow(id);
-};
-
-/* ---------- KIRIM PESAN KE WHATSAPP ADMISI ---------- */
-function bukaWhatsApp(pesan) {
-    const nomor = (window.SITUS && window.SITUS.whatsapp) || '6281389772288';
-    const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
-}
-window.bukaWhatsApp = bukaWhatsApp;
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- 1. BAYANGAN NAVBAR SAAT DIGULIR --- */
-    const header = document.getElementById('main-header');
-    if (header) {
-        const perbarui = () => header.classList.toggle('shadow-md', window.scrollY > 20);
-        window.addEventListener('scroll', perbarui, { passive: true });
-        perbarui();
-    }
+    /* --- 1. MODERN SLIDE-OVER DRAWER FOR MOBILE & TABLET --- */
+    const btn = document.getElementById('mobile-menu-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    const backdrop = document.getElementById('mobile-backdrop');
+    const closeBtn = document.getElementById('close-drawer-btn');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
 
-    /* --- 2. MUNCUL SAAT DIGULIR (.reveal) --- */
-    const reveals = document.querySelectorAll('.reveal');
-    if (reveals.length) {
-        if (kurangiGerak() || !('IntersectionObserver' in window)) {
-            reveals.forEach(el => el.classList.add('active'));
-        } else {
-            const io = new IntersectionObserver((entri) => {
-                entri.forEach(en => { if (en.isIntersecting) { en.target.classList.add('active'); io.unobserve(en.target); } });
-            }, { rootMargin: '0px 0px -80px 0px' });
-            reveals.forEach(el => io.observe(el));
+    // Make functions global so inline onclick="closeMobileMenu()" works
+    window.openMobileMenu = function() {
+        if(!drawer) return;
+        drawer.classList.remove('translate-x-full');
+        drawer.classList.add('translate-x-0');
+        if(backdrop) {
+            backdrop.classList.remove('opacity-0', 'pointer-events-none');
+            backdrop.classList.add('opacity-100', 'pointer-events-auto');
         }
-    }
-
-    /* --- 3. FORMULIR BERANDA: kirim lewat WhatsApp admisi --- */
-    const formBeranda = document.getElementById('form-beranda');
-    if (formBeranda) {
-        formBeranda.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nilai = (id) => (document.getElementById(id)?.value || '').trim();
-            const pesan =
-`Halo Tim Admisi Sekolah Terpadu Sedaya Bintang,
-
-Saya ingin bertanya tentang pendaftaran murid baru.
-
-• Nama orang tua / wali: ${nilai('fb-ortu')}
-• Nama calon murid: ${nilai('fb-anak')}
-• Nomor WhatsApp: ${nilai('fb-wa')}
-• Jenjang: ${nilai('fb-jenjang')}
-
-Terima kasih.`;
-            bukaWhatsApp(pesan);
-            const status = document.getElementById('form-beranda-status');
-            if (status) status.textContent = 'WhatsApp sedang dibuka. Tekan kirim di WhatsApp supaya pesan sampai ke tim admisi.';
-        });
-    }
-
-    /* --- 4. TAB & SAKLAR (ABOUT, PRESCHOOL, KARIR) --- */
-    AKSI.toggleSwitch = (tabId) => {
-        const bg = document.getElementById('switch-bg');
-        document.querySelectorAll('#heritage-section .tab-content').forEach(tab => tab.classList.remove('active'));
-        const selectedTab = document.getElementById('tab-' + tabId);
-        if (selectedTab) selectedTab.classList.add('active');
-        if (bg) bg.classList.toggle('switch-kanan', tabId !== 'summarecon');
-        ['summarecon', 'pahoa'].forEach(nama => {
-            const tombol = document.getElementById('switch-btn-' + nama);
-            if (!tombol) return;
-            const aktif = nama === tabId;
-            tombol.classList.toggle('text-white', aktif);
-            tombol.classList.toggle('text-gray-600', !aktif);
-            tombol.setAttribute('aria-pressed', String(aktif));
-        });
+        if(hamburgerIcon) {
+            hamburgerIcon.classList.replace('fa-bars', 'fa-xmark');
+            hamburgerIcon.classList.add('rotate-90');
+        }
+        const easyWrapper = document.getElementById('easy-touch-wrapper');
+        if(easyWrapper) {
+            easyWrapper.classList.add('opacity-0', 'pointer-events-none', 'scale-90');
+        }
+        document.body.style.overflow = 'hidden';
     };
 
-    AKSI.switchTab = (tabId) => {
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            const aktif = btn.id === 'btn-' + tabId;
-            btn.setAttribute('aria-pressed', String(aktif));
-            if (btn.id === 'btn-kb' || btn.id === 'btn-tk') {
-                btn.classList.toggle('active', aktif);
-                btn.classList.toggle('bg-brand-primary', aktif);
-                btn.classList.toggle('text-white', aktif);
-                btn.classList.toggle('border-brand-primary', aktif);
-                btn.classList.toggle('bg-gray-50', !aktif);
-                btn.classList.toggle('text-gray-600', !aktif);
-                btn.classList.toggle('border-gray-100', !aktif);
+    window.closeMobileMenu = function() {
+        if(!drawer) return;
+        drawer.classList.remove('translate-x-0');
+        drawer.classList.add('translate-x-full');
+        if(backdrop) {
+            backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+            backdrop.classList.add('opacity-0', 'pointer-events-none');
+        }
+        if(hamburgerIcon) {
+            hamburgerIcon.classList.replace('fa-xmark', 'fa-bars');
+            hamburgerIcon.classList.remove('rotate-90');
+        }
+        const easyWrapper = document.getElementById('easy-touch-wrapper');
+        if(easyWrapper) {
+            easyWrapper.classList.remove('opacity-0', 'pointer-events-none', 'scale-90');
+        }
+        document.body.style.overflow = '';
+    };
+
+    if (btn) {
+        btn.addEventListener('click', () => {
+            const isOpen = drawer.classList.contains('translate-x-0');
+            if (isOpen) closeMobileMenu(); else openMobileMenu();
+        });
+    }
+    if (closeBtn) closeBtn.addEventListener('click', closeMobileMenu);
+    if (backdrop) backdrop.addEventListener('click', closeMobileMenu);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer && drawer.classList.contains('translate-x-0')) closeMobileMenu();
+    });
+
+    /* --- 2. MOBILE ACCORDION LOGIC --- */
+    window.toggleMobileAccordion = function(id) {
+        const submenu = document.getElementById(id);
+        const iconEl = document.getElementById(id + '-icon');
+        if(!submenu) return;
+        
+        const isCurrentlyOpen = submenu.classList.contains('open');
+        document.querySelectorAll('.mobile-accordion-content').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('[id$="-mobile-icon"]').forEach(icon => icon.style.transform = 'rotate(0deg)');
+
+        if (!isCurrentlyOpen) {
+            submenu.classList.add('open');
+            if (iconEl) iconEl.style.transform = 'rotate(180deg)';
+        }
+    };
+
+    /* --- 3. FLOATING HOME BUTTON & NAVBAR SHADOW ON SCROLL --- */
+    const header = document.getElementById('main-header');
+    
+    window.addEventListener('scroll', () => {
+        // Navbar shadow
+        if(header) {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md', 'py-1');
+                header.classList.remove('py-2');
             } else {
-                btn.classList.toggle('active', aktif);
-                btn.classList.toggle('text-white', aktif);
-                btn.classList.toggle('text-gray-600', !aktif);
+                header.classList.remove('shadow-md', 'py-1');
+                header.classList.add('py-2');
+            }
+        }
+    });
+
+    /* --- 4. SUCCESS MODAL LOGIC (GLOBAL) --- */
+    window.showModal = function() {
+        const modal = document.getElementById('success-modal');
+        if(!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modal.querySelector('div').classList.remove('scale-95');
+            modal.querySelector('div').classList.add('scale-100');
+        }, 10);
+    };
+
+    window.closeModal = function() {
+        const modal = document.getElementById('success-modal');
+        if(!modal) return;
+        modal.classList.add('opacity-0');
+        modal.querySelector('div').classList.remove('scale-100');
+        modal.querySelector('div').classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }, 300);
+    };
+
+    /* --- 5. TABS LOGIC (ABOUT, PRESCHOOL, KARIR) --- */
+    
+    /* --- TOGGLE SWITCH LOGIC (ABOUT PAGE) --- */
+    window.toggleSwitch = function(tabId) {
+        const bg = document.getElementById('switch-bg');
+        const btnSumm = document.getElementById('switch-btn-summarecon');
+        const btnPahoa = document.getElementById('switch-btn-pahoa');
+        
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        const selectedTab = document.getElementById('tab-' + tabId);
+        if(selectedTab) {
+            selectedTab.classList.add('active');
+            const vid = selectedTab.querySelector('video');
+            if (vid) vid.play().catch(() => {});
+        }
+        
+        if(tabId === 'summarecon') {
+            if(bg) bg.style.left = '4px';
+            if(btnSumm) btnSumm.className = "relative z-10 w-1/2 py-3 lg:py-3.5 rounded-full text-xs sm:text-sm lg:text-base font-bold transition-colors text-white focus:outline-none flex items-center justify-center";
+            if(btnPahoa) btnPahoa.className = "relative z-10 w-1/2 py-3 lg:py-3.5 rounded-full text-xs sm:text-sm lg:text-base font-bold transition-colors text-gray-500 hover:text-brand-primary focus:outline-none flex items-center justify-center";
+        } else {
+            if(bg) bg.style.left = 'calc(50%)';
+            if(btnPahoa) btnPahoa.className = "relative z-10 w-1/2 py-3 lg:py-3.5 rounded-full text-xs sm:text-sm lg:text-base font-bold transition-colors text-white focus:outline-none flex items-center justify-center";
+            if(btnSumm) btnSumm.className = "relative z-10 w-1/2 py-3 lg:py-3.5 rounded-full text-xs sm:text-sm lg:text-base font-bold transition-colors text-gray-500 hover:text-brand-primary focus:outline-none flex items-center justify-center";
+        }
+    };
+
+    window.switchTab = function(tabId) {
+        // Cek jika halaman About (tombol ada id tab-btn-)
+        if(document.getElementById('tab-btn-' + tabId)) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            const btnSumm = document.getElementById('tab-btn-summarecon');
+            const btnPahoa = document.getElementById('tab-btn-pahoa');
+            if(btnSumm) btnSumm.className = "px-6 py-3 rounded-full text-sm lg:text-base font-bold transition-all bg-white text-gray-500 border-2 border-gray-200 hover:border-brand-primary hover:text-brand-primary";
+            if(btnPahoa) btnPahoa.className = "px-6 py-3 rounded-full text-sm lg:text-base font-bold transition-all bg-white text-gray-500 border-2 border-gray-200 hover:border-brand-primary hover:text-brand-primary";
+            
+            const selectedTab = document.getElementById('tab-' + tabId);
+            if(selectedTab) selectedTab.classList.add('active');
+            
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            if(activeBtn) activeBtn.className = "px-6 py-3 rounded-full text-sm lg:text-base font-bold transition-all bg-brand-primary text-white shadow-md border-2 border-brand-primary";
+            return;
+        }
+
+        // Cek jika halaman Karir atau Preschool (tombol ada btn-)
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            if(btn.id.includes('btn-kb') || btn.id.includes('btn-tk')) { // Preschool style
+                btn.classList.remove('active', 'bg-brand-primary', 'text-white', 'border-brand-primary');
+                btn.classList.add('bg-gray-50', 'text-gray-600', 'border-gray-100');
+            } else if(btn.id.includes('btn-akademik') || btn.id.includes('btn-officer')) { // Karir style
+                btn.classList.remove('active', 'text-white');
+                btn.classList.add('text-gray-500');
             }
         });
-        document.querySelectorAll('#content-kb, #content-tk').forEach(c => c.classList.remove('active'));
-        document.querySelectorAll('#content-akademik, #content-officer').forEach(c => c.classList.add('hidden'));
-        const isi = document.getElementById('content-' + tabId);
-        if (isi) {
-            if (isi.classList.contains('tab-content')) isi.classList.add('active');
-            else isi.classList.remove('hidden');
+        
+        document.querySelectorAll('.tab-content, #content-akademik, #content-officer').forEach(content => {
+            if(content.classList.contains('tab-content')) content.classList.remove('active');
+            else content.classList.add('hidden');
+        });
+
+        const activeBtn = document.getElementById('btn-' + tabId);
+        if(activeBtn) {
+            if(tabId === 'kb' || tabId === 'tk') {
+                activeBtn.classList.remove('bg-gray-50', 'text-gray-600', 'border-gray-100');
+                activeBtn.classList.add('active', 'bg-brand-primary', 'text-white', 'border-brand-primary');
+            } else {
+                activeBtn.classList.add('active', 'text-white');
+                activeBtn.classList.remove('text-gray-500');
+            }
+        }
+
+        const activeContent = document.getElementById('content-' + tabId);
+        if(activeContent) {
+            if(activeContent.classList.contains('tab-content')) activeContent.classList.add('active');
+            else activeContent.classList.remove('hidden');
         }
     };
 
-    /* --- 5. TAB METODE (KURIKULUM) --- */
-    AKSI.switchMethod = (index, element) => {
-        document.querySelectorAll('.tab-content-panel').forEach(panel => panel.classList.remove('active'));
-        document.querySelectorAll('.method-tab').forEach(tab => {
+    /* --- 6. VERTICAL TABS (KURIKULUM) --- */
+    window.switchMethod = function(index, element) {
+        const panels = document.querySelectorAll('.tab-content-panel');
+        panels.forEach(panel => panel.classList.remove('active'));
+        
+        const tabs = document.querySelectorAll('.method-tab');
+        tabs.forEach(tab => {
             tab.classList.remove('active', 'bg-brand-gray');
-            tab.setAttribute('aria-pressed', 'false');
             const iconDiv = tab.querySelector('.tab-icon');
-            if (iconDiv) { iconDiv.classList.replace('bg-brand-primary', 'bg-gray-100'); iconDiv.classList.replace('text-white', 'text-gray-600'); }
+            if(iconDiv) {
+                iconDiv.classList.replace('bg-brand-primary', 'bg-gray-100');
+                iconDiv.classList.replace('text-white', 'text-gray-400');
+                iconDiv.style.transform = 'scale(1)';
+            }
             const titleDiv = tab.querySelector('.tab-title');
-            if (titleDiv) { titleDiv.classList.remove('text-brand-primary', 'font-bold'); titleDiv.classList.add('text-gray-600', 'font-semibold'); }
+            if(titleDiv) {
+                titleDiv.classList.remove('text-brand-primary', 'font-bold');
+                titleDiv.classList.add('text-gray-600', 'font-semibold');
+            }
         });
+        
         const activePanel = document.getElementById(`method-panel-${index}`);
-        if (activePanel) activePanel.classList.add('active');
+        if(activePanel) activePanel.classList.add('active');
+        
         element.classList.add('active');
-        element.setAttribute('aria-pressed', 'true');
         const activeIconDiv = element.querySelector('.tab-icon');
-        if (activeIconDiv) { activeIconDiv.classList.replace('bg-gray-100', 'bg-brand-primary'); activeIconDiv.classList.replace('text-gray-600', 'text-white'); }
+        if(activeIconDiv) {
+            activeIconDiv.classList.replace('bg-gray-100', 'bg-brand-primary');
+            activeIconDiv.classList.replace('text-gray-400', 'text-white');
+            activeIconDiv.style.transform = 'scale(1.1)';
+        }
         const activeTitleDiv = element.querySelector('.tab-title');
-        if (activeTitleDiv) { activeTitleDiv.classList.replace('text-gray-600', 'text-brand-primary'); activeTitleDiv.classList.replace('font-semibold', 'font-bold'); }
+        if(activeTitleDiv) {
+            activeTitleDiv.classList.replace('text-gray-600', 'text-brand-primary');
+            activeTitleDiv.classList.replace('font-semibold', 'font-bold');
+        }
     };
 
-    /* --- 6. SARING GALERI & PERBESAR FOTO (FASILITAS) --- */
-    AKSI.filterGallery = (category, tombol) => {
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('active', 'bg-brand-primary', 'text-white');
-            btn.setAttribute('aria-pressed', 'false');
-        });
-        tombol.classList.add('active', 'bg-brand-primary', 'text-white');
-        tombol.setAttribute('aria-pressed', 'true');
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            const tampil = category === 'all' || item.getAttribute('data-category') === category;
-            item.classList.toggle('hidden-item', !tampil);
+    /* --- 7. FILTER GALLERY & LIGHTBOX (FASILITAS) --- */
+    window.filterGallery = function(category) {
+        if(event && event.currentTarget) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active', 'bg-brand-primary', 'text-white'));
+            event.currentTarget.classList.add('active', 'bg-brand-primary', 'text-white');
+        }
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.classList.remove('hidden-item');
+            } else {
+                item.classList.add('hidden-item');
+            }
         });
     };
 
-    AKSI.openLightbox = (arg, element) => {
+    window.openLightbox = function(element) {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxCaption = document.getElementById('lightbox-caption');
-        const imgElement = element.querySelector('img');
-        const titleElement = element.querySelector('h3, h4');
-        if (!lightbox || !lightboxImg || !imgElement) return;
-        lightboxImg.src = imgElement.currentSrc || imgElement.src;
-        lightboxImg.alt = imgElement.alt;
-        if (lightboxCaption && titleElement) lightboxCaption.textContent = titleElement.textContent;
-        lightbox.classList.add('active');
-        Modal.buka(lightbox, AKSI.closeLightbox);
+        if(lightbox && lightboxImg && lightboxCaption) {
+            const imgElement = element.querySelector('img');
+            const titleElement = element.querySelector('h4');
+            if(imgElement && titleElement) {
+                lightboxImg.src = imgElement.src;
+                lightboxCaption.innerText = titleElement.innerText;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
     };
 
-    AKSI.closeLightbox = () => {
+    window.closeLightbox = function() {
         const lightbox = document.getElementById('lightbox');
-        if (!lightbox) return;
-        lightbox.classList.remove('active');
-        Modal.tutup(lightbox);
+        if(lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     };
 
-    /* --- 7. TITIK SLIDER AJAKAN BERKUNJUNG (BERANDA) --- */
+    /* --- 8. SCROLL REVEAL (ADMISSION) --- */
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) reveals[i].classList.add("active");
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+
+    /* --- 9. SLIDER LOGIC & EVENT DOTS (INDEX) --- */
     const eventSlider = document.getElementById('event-slider');
     const eventDots = document.querySelectorAll('.event-dot');
     if (eventSlider && eventDots.length > 0) {
         eventSlider.addEventListener('scroll', () => {
-            let currentIndex = Math.round(eventSlider.scrollLeft / eventSlider.clientWidth);
+            const scrollLeft = eventSlider.scrollLeft;
+            const cardWidth = eventSlider.clientWidth;
+            let currentIndex = Math.round(scrollLeft / cardWidth);
             if (currentIndex >= eventDots.length) currentIndex = eventDots.length - 1;
+            
             eventDots.forEach((dot, index) => {
-                const aktif = index === currentIndex;
-                dot.classList.toggle('w-6', aktif);
-                dot.classList.toggle('bg-brand-primary', aktif);
-                dot.classList.toggle('w-2', !aktif);
-                dot.classList.toggle('bg-gray-300', !aktif);
+                if (index === currentIndex) {
+                    dot.classList.replace('w-2', 'w-6');
+                    dot.classList.replace('bg-gray-300', 'bg-brand-primary');
+                } else {
+                    dot.classList.replace('w-6', 'w-2');
+                    dot.classList.replace('bg-brand-primary', 'bg-gray-300');
+                }
             });
-        }, { passive: true });
+        });
     }
 
-    /* --- 8. GALERI BERGANTI (BERANDA) --- */
-    const slides = [
-        { title: 'Budi Pekerti Dilatih Setiap Hari', img: 'assets/images/hero-sekolah-utama.webp', alt: 'Kegiatan belajar di kelas', desc: 'Si kecil dilatih Budi Pekerti, menggunakan Bahasa Mandarin, Inggris, dan Indonesia, serta berpikir kritis melalui STEAM.' },
-        { title: 'Belajar dengan Menyenangkan', img: 'assets/images/lingkungan-belajar-menyenangkan.webp', alt: 'Suasana ruang kelas', desc: 'Ruang kelas dan fasilitas disiapkan supaya si kecil aktif bertanya, mencoba, dan bermain sambil belajar.' },
-        { title: 'Berkolaborasi Sejak Usia Dini', img: 'assets/images/murid-kolaborasi-kelas.webp', alt: 'Murid bekerja sama di kelas', desc: 'Lewat kegiatan STEAM, murid dilatih mencari jalan keluar dan bekerja sama dengan teman.' }
-    ];
-    const galleryImg = document.getElementById('gallery-img');
-    const galleryText = document.getElementById('gallery-text-container');
-    let slideAktif = 0;
+    /* --- 10. HERO IMAGE FALLBACK (INDEX) --- */
+    const heroImgFallback = document.getElementById('hero-image');
+    if(heroImgFallback) {
+        const heroUrls = [
+            "https://drive.google.com/uc?export=view&id=1GPSPrhWGTwuh3Bx_W9oQQl_50UjIHP3b",
+            "compressed_sedaya hero (2).jpg",
+            "assets/images/hero-sekolah-utama.jpg"
+        ];
+        let currentHeroIdx = 0;
+        heroImgFallback.onerror = function() {
+            currentHeroIdx++;
+            if(currentHeroIdx < heroUrls.length) {
+                heroImgFallback.src = heroUrls[currentHeroIdx];
+                if(currentHeroIdx === heroUrls.length - 1) {
+                    heroImgFallback.classList.remove('object-contain', 'drop-shadow-2xl');
+                    heroImgFallback.classList.add('object-cover', 'rounded-[32px]', 'shadow-2xl', 'border-4', 'border-white', 'mb-6');
+                }
+            }
+        };
+    }
 
-    AKSI.changeSlide = (index) => {
+    /* --- 11. INDEX MINIMALIST GALLERY SLIDER --- */
+    window.changeSlide = function(index) {
+        const imgEl = document.getElementById('gallery-img');
+        const textContainer = document.getElementById('gallery-text-container');
         const titleEl = document.getElementById('gallery-title');
         const descEl = document.getElementById('gallery-desc');
-        if (!galleryImg || !galleryText || slideAktif === index || !slides[index]) return;
-        slideAktif = index;
-        document.querySelectorAll('.slider-dot').forEach((dot, i) => {
-            const aktif = i === index;
-            dot.setAttribute('aria-current', aktif ? 'true' : 'false');
-            const batang = dot.querySelector('span');
-            if (!batang) return;
-            batang.classList.toggle('w-8', aktif);
-            batang.classList.toggle('bg-brand-primary', aktif);
-            batang.classList.toggle('w-2.5', !aktif);
-            batang.classList.toggle('bg-gray-300', !aktif);
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        
+        if (!imgEl || !textContainer || window.currentSlide === index) return; 
+        
+        // Define Slides Data inside the function or globally
+        const slides = [
+            { title: "Pembentukan Karakter Melalui Pendidikan Budi Pekerti", img: "assets/images/hero-sekolah-utama.jpg", desc: "Sekolah Terpadu Sedaya Bintang menekankan pendidikan karakter berlandaskan Di Zi Gui dan 10 Nilai Moral, penguasaan trilingual, dan daya berpikir kritis melalui STEAM." },
+            { title: "Lingkungan Belajar yang Menyenangkan", img: "assets/images/lingkungan-belajar-menyenangkan.jpg", desc: "Fasilitas modern yang dirancang khusus untuk merangsang kreativitas dan minat belajar anak. Ruang kelas interaktif memastikan setiap murid mendapatkan perhatian optimal." },
+            { title: "Kolaborasi dan Inovasi Sejak Dini", img: "assets/images/murid-kolaborasi-kelas.jpg", desc: "Melalui kurikulum STEAM, murid kami dilatih untuk memecahkan masalah, bekerja sama dalam tim, dan berinovasi menciptakan solusi untuk masa depan." }
+        ];
+
+        window.currentSlide = index;
+        imgEl.classList.add('fade-out');
+        textContainer.classList.add('fade-out');
+
+        sliderDots.forEach((dot, i) => {
+            if (i === window.currentSlide) {
+                dot.classList.replace('w-2.5', 'w-8');
+                dot.classList.replace('bg-gray-200', 'bg-brand-primary');
+            } else {
+                dot.classList.replace('w-8', 'w-2.5');
+                dot.classList.replace('bg-brand-primary', 'bg-gray-200');
+            }
         });
-        const ganti = () => {
-            galleryImg.src = slides[index].img;
-            galleryImg.alt = slides[index].alt;
-            titleEl.textContent = slides[index].title;
-            descEl.textContent = slides[index].desc;
-        };
-        if (kurangiGerak()) { ganti(); return; }
-        galleryImg.classList.add('fade-out');
-        galleryText.classList.add('fade-out');
+
         setTimeout(() => {
-            ganti();
-            galleryImg.classList.remove('fade-out');
-            galleryText.classList.remove('fade-out');
-        }, 400);
+            imgEl.src = slides[window.currentSlide].img;
+            titleEl.innerText = slides[window.currentSlide].title;
+            descEl.innerText = slides[window.currentSlide].desc;
+            
+            imgEl.classList.remove('fade-out');
+            textContainer.classList.remove('fade-out');
+            void imgEl.offsetWidth; // trigger reflow
+            imgEl.classList.add('fade-in');
+            textContainer.classList.add('fade-in');
+            
+            setTimeout(() => {
+                imgEl.classList.remove('fade-in');
+                textContainer.classList.remove('fade-in');
+            }, 500); 
+        }, 500); 
     };
 
-    if (galleryImg && galleryText && !kurangiGerak()) {
-        // Berganti otomatis, berhenti saat disorot mouse, difokus keyboard, atau tab tidak terlihat
-        const wadah = galleryImg.closest('section');
-        let jeda = false;
-        if (wadah) {
-            wadah.addEventListener('mouseenter', () => { jeda = true; });
-            wadah.addEventListener('mouseleave', () => { jeda = false; });
-            wadah.addEventListener('focusin', () => { jeda = true; });
-            wadah.addEventListener('focusout', () => { jeda = false; });
-        }
+    if (document.getElementById('gallery-img') && document.getElementById('gallery-text-container')) {
+        window.currentSlide = 0;
         setInterval(() => {
-            if (jeda || document.hidden) return;
-            AKSI.changeSlide((slideAktif + 1) % slides.length);
+            let nextSlide = (window.currentSlide + 1) % 3;
+            changeSlide(nextSlide);
         }, 6000);
     }
 
-    /* --- 9. ANIMASI KARAKTER SAAT KARTU JENJANG DISOROT (BERANDA) --- */
-    // Video hanya dimuat di perangkat ber-mouse. Di HP cukup gambar poster (hemat kuota ±6 MB).
-    const bisaHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    /* --- 12. VIDEO HOVER LOGIC --- */
     document.querySelectorAll('.hover-video-card').forEach(card => {
         const video = card.querySelector('.hover-video');
-        if (!video || !bisaHover || kurangiGerak()) return;
         let loopTimeout; let isHovering = false;
-        const muat = () => {
-            if (video.dataset.src && !video.getAttribute('src')) { video.src = video.dataset.src; video.load(); }
-        };
-        if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver((entri) => {
-                if (entri.some(en => en.isIntersecting)) { muat(); io.disconnect(); }
-            }, { rootMargin: '300px' });
-            io.observe(card);
-        } else { muat(); }
-
-        card.addEventListener('mouseenter', () => {
-            isHovering = true; clearTimeout(loopTimeout); muat();
-            const p = video.play(); if (p !== undefined) p.catch(() => {});
-        });
-        card.addEventListener('mouseleave', () => {
-            isHovering = false; clearTimeout(loopTimeout);
+        if (video) {
             video.pause(); video.currentTime = 0;
-        });
-        video.addEventListener('ended', () => {
-            if (!isHovering) return;
-            loopTimeout = setTimeout(() => {
-                if (!isHovering) return;
-                video.currentTime = 0;
-                const p = video.play(); if (p !== undefined) p.catch(() => {});
-            }, 1000);
-        });
+            card.addEventListener('mouseenter', () => {
+                isHovering = true; clearTimeout(loopTimeout);
+                const playPromise = video.play();
+                if (playPromise !== undefined) playPromise.catch(e => {});
+            });
+            card.addEventListener('mouseleave', () => {
+                isHovering = false; clearTimeout(loopTimeout);
+                video.pause(); video.currentTime = 0;
+            });
+            video.addEventListener('ended', () => {
+                if (isHovering) {
+                    loopTimeout = setTimeout(() => {
+                        if (isHovering) {
+                            video.currentTime = 0;
+                            const playPromise = video.play();
+                            if (playPromise !== undefined) playPromise.catch(e => {});
+                        }
+                    }, 1000);
+                }
+            });
+        }
     });
 
-    /* --- 10. KARAKTER HERO PRESCHOOL / PRIMARY --- */
+    /* --- 12B. PRESCHOOL HERO INTERACTIVE CHARACTER LOGIC --- */
     const heroCharContainer = document.getElementById('hero-character-container');
     const heroCharVideo = document.getElementById('hero-character-video');
-    if (heroCharContainer && heroCharVideo && !kurangiGerak()) {
+    if (heroCharContainer && heroCharVideo) {
         let isCharHovering = false;
         let charLoopTimeout = null;
+
         heroCharVideo.muted = true;
         heroCharVideo.playsInline = true;
 
         const playCharAnimation = () => {
             heroCharVideo.currentTime = 0;
-            const p = heroCharVideo.play(); if (p !== undefined) p.catch(() => {});
+            const playPromise = heroCharVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {});
+            }
         };
+
+        // 1. Jalankan animasi sekali saat halaman pertama kali dibuka
         const tryInitialPlay = () => {
             const p = heroCharVideo.play();
-            if (p !== undefined) p.catch(() => {
-                const playOnGesture = () => { heroCharVideo.play().catch(() => {}); };
-                document.addEventListener('click', playOnGesture, { once: true });
-                document.addEventListener('touchstart', playOnGesture, { once: true, passive: true });
-            });
+            if (p !== undefined) {
+                p.catch(() => {
+                    const playOnGesture = () => {
+                        heroCharVideo.play().catch(() => {});
+                        document.removeEventListener('click', playOnGesture);
+                        document.removeEventListener('touchstart', playOnGesture);
+                    };
+                    document.addEventListener('click', playOnGesture, { once: true });
+                    document.addEventListener('touchstart', playOnGesture, { once: true });
+                });
+            }
         };
-        if (heroCharVideo.readyState >= 2) tryInitialPlay();
-        else heroCharVideo.addEventListener('loadeddata', tryInitialPlay, { once: true });
 
+        if (heroCharVideo.readyState >= 2) {
+            tryInitialPlay();
+        } else {
+            heroCharVideo.addEventListener('loadeddata', tryInitialPlay, { once: true });
+        }
+
+        // Saat animasi selesai: jika tidak sedang di-hover cursor, berhenti (tidak looping).
         heroCharVideo.addEventListener('ended', () => {
-            if (!isCharHovering) return;
+            if (isCharHovering) {
+                clearTimeout(charLoopTimeout);
+                charLoopTimeout = setTimeout(() => {
+                    if (isCharHovering) {
+                        playCharAnimation();
+                    }
+                }, 800);
+            }
+        });
+
+        // 2. Saat kursor diarahkan ke karakter (hover), jalankan animasi lagi
+        heroCharContainer.addEventListener('mouseenter', () => {
+            isCharHovering = true;
             clearTimeout(charLoopTimeout);
-            charLoopTimeout = setTimeout(() => { if (isCharHovering) playCharAnimation(); }, 800);
+            playCharAnimation();
         });
-        heroCharContainer.addEventListener('mouseenter', () => { isCharHovering = true; clearTimeout(charLoopTimeout); playCharAnimation(); });
-        heroCharContainer.addEventListener('mouseleave', () => { isCharHovering = false; clearTimeout(charLoopTimeout); });
-        heroCharContainer.addEventListener('click', () => { clearTimeout(charLoopTimeout); playCharAnimation(); });
+
+        heroCharContainer.addEventListener('mouseleave', () => {
+            isCharHovering = false;
+            clearTimeout(charLoopTimeout);
+        });
+
+        // 3. Dukungan layar sentuh (mobile/tablet) saat karakter disentuh
+        heroCharContainer.addEventListener('click', () => {
+            clearTimeout(charLoopTimeout);
+            playCharAnimation();
+        });
     }
 
-    /* --- 11. BUDI PEKERTI: HARI BAKTI, 10 NILAI MORAL, DI ZI GUI --- */
-    const itemBakti = document.querySelectorAll('.interactive-list-item');
-    const pilihBakti = (index) => {
-        itemBakti.forEach((item, i) => {
-            item.classList.toggle('active', i === index);
-            item.setAttribute('aria-pressed', String(i === index));
+    /* --- 13. BUDI PEKERTI LOGIC --- */
+    window.switchBaktiImage = function(index) {
+        const items = document.querySelectorAll('.interactive-list-item');
+        items.forEach((item, i) => {
+            if (i === index) item.classList.add('active');
+            else item.classList.remove('active');
         });
-        document.querySelectorAll('.crossfade-img').forEach((img, i) => img.classList.toggle('active', i === index));
-    };
-    itemBakti.forEach((item, i) => {
-        item.addEventListener('mouseenter', () => pilihBakti(i));
-        item.addEventListener('focus', () => pilihBakti(i));
-        item.addEventListener('click', () => pilihBakti(i));
-    });
 
-    const nilaiData = [
-        { icon: "fa-user-tie", title: "Etika / Sopan Santun", desc: "Penerapan tata krama pergaulan, adab makan, cara duduk yang baik, serta etika berbicara secara santun dalam interaksi sosial sehari-hari.", example: "Si kecil dibiasakan mengucapkan 'tolong' dan 'terima kasih', serta merapikan tempat makannya sendiri.", img: "assets/images/budi-pekerti-etika-sopan-santun.webp" },
-        { icon: "fa-person-cane", title: "Hormat kepada yang Tua", desc: "Membiasakan si kecil bersikap sopan dan penuh penghargaan di hadapan guru, kakak kelas, staf sekolah, serta anggota masyarakat yang lebih tua.", example: "Si kecil belajar menyapa guru di pagi hari dan mendahulukan orang yang lebih tua saat mengantre.", img: "assets/images/hero-sekolah-utama.webp" },
-        { icon: "fa-hand-holding-heart", title: "Welas Asih", desc: "Membangun kepekaan si kecil agar peduli terhadap kesulitan sesama teman dan memperlakukan setiap makhluk hidup dengan kasih sayang.", example: "Si kecil tidak ragu membantu temannya yang terjatuh atau meminjamkan alat tulisnya tanpa diminta.", img: "assets/images/budi-pekerti-welas-asih.webp" },
-        { icon: "fa-hand-sparkles", title: "Bersih dan Jujur", desc: "Menjaga keselarasan antara kebersihan fisik (tubuh, pakaian, lingkungan) dengan kejujuran hati dalam setiap perkataan dan tindakan.", example: "Si kecil berani berkata jujur jika tidak sengaja menumpahkan air, lalu bertanggung jawab membersihkannya.", img: "assets/images/kebersamaan-murid-orangtua.webp" },
-        { icon: "fa-face-flushed", title: "Perasaan Malu", desc: "Menanamkan kepekaan pada diri si kecil agar memiliki rasa enggan dan malu apabila melakukan perbuatan yang melanggar kesepakatan kelas.", example: "Si kecil akan merasa tidak nyaman jika menyela pembicaraan orang lain dan berusaha untuk menunggu gilirannya.", img: "assets/images/budi-pekerti-kedisiplinan.webp" },
-        { icon: "fa-handshake", title: "Terpercaya", desc: "Melatih si kecil agar perkataannya selalu selaras dengan tindakan, serta dapat diandalkan dalam tugas kecil.", example: "Jika si kecil berjanji akan mengembalikan buku cerita ke raknya, ia akan menepatinya tanpa perlu diingatkan.", img: "assets/images/budi-pekerti-dapat-dipercaya.webp" },
-        { icon: "fa-house-chimney-user", title: "Bakti kepada Orang Tua", desc: "Menumbuhkan rasa cinta kasih, empati, dan kepatuhan yang tulus terhadap arahan serta kasih sayang orang tua di rumah.", example: "Si kecil menyambut hangat orang tuanya sepulang sekolah dan menceritakan harinya dengan antusias.", img: "assets/images/budi-pekerti-cuci-kaki-orangtua.webp" },
-        { icon: "fa-lightbulb", title: "Bijaksana / Arif", desc: "Melatih si kecil sejak dini untuk memilah mana hal yang membawa kebaikan bersama, serta belajar mengambil keputusan dengan tenang.", example: "Si kecil mampu memilih mainan secara adil bersama teman kelompoknya tanpa perlu merebut paksa.", img: "assets/images/program-workshop.webp" },
-        { icon: "fa-scale-balanced", title: "Kebenaran & Keadilan", desc: "Melatih sikap objektif, proporsional, menjunjung tinggi hak teman lain, dan berani membela kebenaran secara damai dan sopan.", example: "Si kecil tahu kapan harus meminta maaf jika salah, dan berani membela temannya yang diperlakukan tidak adil.", img: "assets/images/fasilitas-spacelab.webp" },
-        { icon: "fa-shield-heart", title: "Kesetiaan", desc: "Memiliki keteguhan terhadap prinsip kebenaran, serta belajar peduli untuk menjaga nama baik keluarga, sekolah, dan persahabatannya.", example: "Si kecil menjaga rahasia teman baiknya dan selalu hadir memberikan dukungan saat temannya bersedih.", img: "assets/images/guru-sedaya-bintang.webp" }
+        const images = document.querySelectorAll('.crossfade-img');
+        images.forEach((img, i) => {
+            if (i === index) img.classList.add('active');
+            else img.classList.remove('active');
+        });
+    };
+
+    window.nilaiData = [
+        { icon: "fa-user-tie", title: "Etika / Sopan Santun", desc: "Penerapan tata krama pergaulan, adab makan, cara duduk yang baik, serta etika berbicara secara santun dalam interaksi sosial sehari-hari.", example: "Si kecil dibiasakan mengucapkan 'tolong' dan 'terima kasih', serta merapikan tempat makannya sendiri.", img: "assets/images/budi-pekerti-etika-sopan-santun.jpg" },
+        { icon: "fa-person-cane", title: "Hormat kepada yang Tua", desc: "Membiasakan anak bersikap sopan dan penuh penghargaan di hadapan guru, kakak kelas, staf sekolah, serta anggota masyarakat yang lebih tua.", example: "Anak-anak belajar untuk menyapa guru di pagi hari dan mendahulukan orang yang lebih tua saat mengantre.", img: "assets/images/hero-sekolah-utama.jpg" },
+        { icon: "fa-hand-holding-heart", title: "Welas Asih", desc: "Membangun kepekaan emosional anak agar peduli terhadap kesulitan sesama teman dan memperlakukan setiap makhluk hidup dengan kasih sayang.", example: "Si kecil tidak ragu membantu temannya yang terjatuh atau meminjamkan alat tulisnya tanpa diminta.", img: "assets/images/budi-pekerti-welas-asih.jpg" },
+        { icon: "fa-hand-sparkles", title: "Bersih dan Jujur", desc: "Menjaga keselarasan antara kebersihan fisik (tubuh, pakaian, lingkungan) dengan kejujuran hati dalam setiap perkataan dan tindakan.", example: "Si kecil berani berkata jujur jika tidak sengaja menumpahkan air, lalu bertanggung jawab membersihkannya.", img: "assets/images/kebersamaan-murid-orangtua.jpg" },
+        { icon: "fa-face-flushed", title: "Perasaan Malu", desc: "Menanamkan kepekaan pada diri anak agar memiliki rasa enggan dan malu apabila melakukan perbuatan yang melanggar kesepakatan kelas.", example: "Si kecil akan merasa tidak nyaman jika menyela pembicaraan orang lain dan berusaha untuk menunggu gilirannya.", img: "assets/images/budi-pekerti-kedisiplinan.jpg" },
+        { icon: "fa-handshake", title: "Terpercaya", desc: "Membentuk integritas pribadi anak agar perkataannya selalu selaras dengan tindakan, serta dapat diandalkan dalam tugas kecil.", example: "Jika si kecil berjanji akan mengembalikan buku cerita ke raknya, ia akan menepatinya tanpa perlu diingatkan.", img: "assets/images/budi-pekerti-dapat-dipercaya.jpg" },
+        { icon: "fa-house-chimney-user", title: "Bakti kepada Orang Tua", desc: "Menumbuhkan rasa cinta kasih, empati, dan kepatuhan yang tulus terhadap arahan serta kasih sayang orang tua di rumah.", example: "Si kecil menyambut hangat orang tuanya sepulang sekolah dan menceritakan harinya dengan antusias.", img: "assets/images/budi-pekerti-cuci-kaki-orangtua.jpg" },
+        { icon: "fa-lightbulb", title: "Bijaksana / Arif", desc: "Melatih kemampuan anak sejak dini untuk memilah mana hal yang membawa kebaikan bersama, serta belajar mengambil keputusan dengan tenang.", example: "Si kecil mampu memilih mainan secara adil bersama teman kelompoknya tanpa perlu merebut paksa.", img: "assets/images/program-workshop.jpg" },
+        { icon: "fa-scale-balanced", title: "Kebenaran & Keadilan", desc: "Melatih sikap objektif, proporsional, menjunjung tinggi hak teman lain, dan berani membela kebenaran secara damai dan sopan.", example: "Si kecil tahu kapan harus meminta maaf jika salah, dan berani membela temannya yang diperlakukan tidak adil.", img: "assets/images/fasilitas-spacelab.jpg" },
+        { icon: "fa-shield-heart", title: "Kesetiaan", desc: "Memiliki keteguhan terhadap prinsip kebenaran, serta belajar peduli untuk menjaga nama baik keluarga, sekolah, dan persahabatannya.", example: "Si kecil menjaga rahasia teman baiknya dan selalu hadir memberikan dukungan saat temannya bersedih.", img: "assets/images/guru-sedaya-bintang.jpg" }
     ];
 
-    AKSI.openNilaiModal = (index) => {
-        const data = nilaiData[index];
-        if (!data || !document.getElementById('nilai-modal')) return;
-        document.getElementById('m-nilai-title').textContent = data.title;
-        document.getElementById('m-nilai-desc').textContent = data.desc;
-        document.getElementById('m-nilai-example').textContent = `"${data.example}"`;
-        const img = document.getElementById('m-nilai-img');
-        img.src = data.img; img.alt = data.title;
-        document.getElementById('m-nilai-icon').innerHTML = `<i class="fa-solid ${data.icon}" aria-hidden="true"></i>`;
-        bukaModalShow('nilai-modal');
+    window.openNilaiModal = function(index) {
+        const nModal = document.getElementById('nilai-modal');
+        if(!nModal) return;
+        const data = window.nilaiData[index];
+        document.getElementById('m-nilai-title').innerText = data.title;
+        document.getElementById('m-nilai-desc').innerText = data.desc;
+        document.getElementById('m-nilai-example').innerText = `"${data.example}"`;
+        document.getElementById('m-nilai-img').src = data.img;
+        document.getElementById('m-nilai-icon').innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
+        
+        nModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     };
-    AKSI.closeNilaiModal = tutupJikaLatar('nilai-modal');
 
-    const dzgData = [
-        { badge: "Pembuka", hanzi: "总", pinyin: "Zǒng Xù (总叙)", title: "Pendahuluan", desc: "Memaparkan urutan prioritas yang ideal: bakti dan rasa hormat ditempatkan paling utama, diikuti sikap hati-hati, cinta kasih universal, barulah mempelajari ilmu pengetahuan akademis.", example: "Guru kami selalu memastikan si kecil paham cara bersikap baik sebelum memulai pelajaran.", img: "assets/images/hero-sekolah-utama.webp" },
-        { badge: "Bab 1", hanzi: "孝", pinyin: "Rù Zé Xiào (入则孝)", title: "Bakti di Rumah", desc: "Penjelasan tentang cara si kecil merespons panggilan orang tua dengan sigap, menjaga nama baik agar keluarga tenang, serta bersikap sopan di dalam rumah.", example: "Si kecil belajar untuk menjawab panggilan mama dan papanya tanpa menunda-nunda.", img: "assets/images/budi-pekerti-cuci-kaki-orangtua.webp" },
-        { badge: "Bab 2", hanzi: "悌", pinyin: "Chū Zé Tì (出则悌)", title: "Etika Luar Rumah", desc: "Panduan praktis berinteraksi dengan saudara atau kerabat, serta menyapa orang yang lebih tua di lingkungan sosial dengan penuh keharmonisan.", example: "Si kecil terbiasa membungkuk sedikit sambil menyapa staf dan guru saat tiba di gerbang sekolah.", img: "assets/images/budi-pekerti-welas-asih.webp" },
-        { badge: "Bab 3", hanzi: "谨", pinyin: "Jǐn (谨)", title: "Kedisiplinan Hidup", desc: "Menanamkan kebiasaan manajemen waktu, bangun pagi, menjaga kerapian pakaian seragam, adab makan yang tidak berantakan, serta kehati-hatian melangkah.", example: "Si kecil mampu merapikan alat belajarnya sendiri setelah sesi metode Learning Corners selesai.", img: "assets/images/budi-pekerti-kedisiplinan.webp" },
-        { badge: "Bab 4", hanzi: "信", pinyin: "Xìn (信)", title: "Dapat Dipercaya", desc: "Melatih kejujuran lisan sejak dini, menghindari bualan atau kebohongan, menepati janji, dan membiasakan tanggung jawab atas barang pinjaman.", example: "Si kecil selalu mengembalikan krayon atau buku milik temannya tepat waktu dan mengucapkan terima kasih.", img: "assets/images/budi-pekerti-dapat-dipercaya.webp" },
-        { badge: "Bab 5", hanzi: "爱", pinyin: "Fàn Ài Zhòng (泛爱众)", title: "Cinta Kasih Sesama", desc: "Membangun empati untuk suka menolong, mencegah perilaku perundungan (bullying), dan bersikap adil terhadap teman tanpa membeda-bedakan.", example: "Si kecil mau berbagi bekal makanannya dan tidak ragu bermain dengan siapa saja di playground.", img: "assets/images/guru-sedaya-bintang.webp" },
-        { badge: "Bab 6", hanzi: "仁", pinyin: "Qīn Rén (亲仁)", title: "Mendekati yang Berbudi", desc: "Membiasakan si kecil untuk mencari lingkungan pergaulan yang sehat, mendekati sosok panutan, dan menerima nasihat yang membangun.", example: "Si kecil menjadi lebih antusias meneladani kebiasaan membaca dari teman sebangkunya yang rajin.", img: "assets/images/program-workshop.webp" },
-        { badge: "Bab 7", hanzi: "文", pinyin: "Yú Lì Xué Wén (余力学文)", title: "Belajar Ilmu", desc: "Menegaskan metode belajar yang benar setelah sikap terbentuk: belajar dengan sungguh-sungguh (mata, hati, mulut fokus) dan tidak mudah menyerah.", example: "Si kecil lebih gigih saat mencoba memecahkan blok teka-teki logika STEAM dan tidak mudah menangis saat gagal.", img: "assets/images/fasilitas-spacelab.webp" }
+    window.closeNilaiModal = function(e, force = false) {
+        const nModal = document.getElementById('nilai-modal');
+        if(!nModal) return;
+        if (force || e.target === nModal) {
+            nModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    };
+
+    window.dzgData = [
+        { badge: "Esensi", hanzi: "总", pinyin: "Zǒng Xù (总叙)", title: "Pendahuluan", desc: "Memaparkan urutan prioritas yang ideal: bakti dan rasa hormat ditempatkan paling utama, diikuti sikap hati-hati, cinta kasih universal, barulah mempelajari ilmu pengetahuan akademis.", example: "Guru kami selalu memastikan si kecil paham cara bersikap baik sebelum memulai pelajaran kognitif yang berat.", img: "assets/images/hero-sekolah-utama.jpg" },
+        { badge: "Bab 1", hanzi: "孝", pinyin: "Rù Zé Xiào (入则孝)", title: "Bakti di Rumah", desc: "Penjelasan tentang cara si kecil merespons panggilan orang tua dengan sigap, menjaga nama baik agar keluarga tenang, serta bersikap sopan di dalam rumah.", example: "Si kecil belajar untuk menjawab panggilan mama dan papanya tanpa menunda-nunda.", img: "assets/images/budi-pekerti-cuci-kaki-orangtua.jpg" },
+        { badge: "Bab 2", hanzi: "悌", pinyin: "Chū Zé Tì (出则悌)", title: "Etika Luar Rumah", desc: "Panduan praktis berinteraksi dengan saudara atau kerabat, serta menyapa orang yang lebih tua di lingkungan sosial dengan penuh keharmonisan.", example: "Si kecil terbiasa membungkuk sedikit sambil menyapa staf dan guru saat tiba di gerbang sekolah.", img: "assets/images/budi-pekerti-welas-asih.jpg" },
+        { badge: "Bab 3", hanzi: "谨", pinyin: "Jǐn (谨)", title: "Kedisiplinan Hidup", desc: "Menanamkan kebiasaan manajemen waktu, bangun pagi, menjaga kerapian pakaian seragam, adab makan yang tidak berantakan, serta kehati-hatian melangkah.", example: "Si kecil mampu merapikan alat belajarnya sendiri setelah sesi metode Learning Corners selesai.", img: "assets/images/budi-pekerti-kedisiplinan.jpg" },
+        { badge: "Bab 4", hanzi: "信", pinyin: "Xìn (信)", title: "Dapat Dipercaya", desc: "Melatih kejujuran lisan sejak dini, menghindari bualan atau kebohongan, menepati janji, dan membiasakan tanggung jawab atas barang pinjaman.", example: "Si kecil selalu mengembalikan krayon atau buku milik temannya tepat waktu dan mengucapkan terima kasih.", img: "assets/images/budi-pekerti-dapat-dipercaya.jpg" },
+        { badge: "Bab 5", hanzi: "爱", pinyin: "Fàn Ài Zhòng (泛爱众)", title: "Cinta Kasih Sesama", desc: "Membangun empati untuk suka menolong, mencegah perilaku perundungan (bullying), dan bersikap adil terhadap teman tanpa membeda-bedakan.", example: "Si kecil mau berbagi bekal makanannya dan tidak ragu bermain dengan siapa saja di playground.", img: "assets/images/guru-sedaya-bintang.jpg" },
+        { badge: "Bab 6", hanzi: "仁", pinyin: "Qīn Rén (亲仁)", title: "Mendekati yang Berbudi", desc: "Menumbuhkan kesadaran anak untuk mencari lingkungan pergaulan yang sehat, mendekati sosok panutan, dan menerima nasihat yang membangun.", example: "Si kecil menjadi lebih antusias meneladani kebiasaan membaca dari teman sebangkunya yang rajin.", img: "assets/images/program-workshop.jpg" },
+        { badge: "Bab 7", hanzi: "文", pinyin: "Yú Lì Xué Wén (余力学文)", title: "Belajar Ilmu", desc: "Menegaskan metode belajar yang benar setelah fondasi etika kuat: belajar dengan sungguh-sungguh (mata, hati, mulut fokus) dan tidak mudah menyerah.", example: "Si kecil lebih gigih saat mencoba memecahkan blok teka-teki logika STEAM dan tidak mudah menangis saat gagal.", img: "assets/images/fasilitas-spacelab.jpg" }
     ];
 
-    AKSI.openDzgModal = (index) => {
-        const data = dzgData[index];
-        if (!data || !document.getElementById('dzg-modal')) return;
+    window.openDzgModal = function(index) {
+        const dModal = document.getElementById('dzg-modal');
+        if(!dModal) return;
+        const data = window.dzgData[index];
         const mDBadge = document.getElementById('m-dzg-badge');
-        document.getElementById('m-dzg-hanzi').textContent = data.hanzi;
-        document.getElementById('m-dzg-pinyin').textContent = data.pinyin;
-        document.getElementById('m-dzg-title').textContent = data.title;
-        document.getElementById('m-dzg-desc').textContent = data.desc;
-        document.getElementById('m-dzg-example').textContent = `"${data.example}"`;
-        const img = document.getElementById('m-dzg-img');
-        img.src = data.img; img.alt = data.title;
-        mDBadge.textContent = data.badge;
-        const pembuka = data.badge === 'Pembuka';
-        mDBadge.classList.toggle('bg-brand-red', pembuka);
-        mDBadge.classList.toggle('text-white', pembuka);
-        mDBadge.classList.toggle('bg-brand-yellow', !pembuka);
-        mDBadge.classList.toggle('text-brand-primary', !pembuka);
-        bukaModalShow('dzg-modal');
-    };
-    AKSI.closeDzgModal = tutupJikaLatar('dzg-modal');
-
-    /* --- 12. VIDEO YOUTUBE (BUDI PEKERTI, TRILINGUAL) --- */
-    // Kartu video yang ID-nya belum diisi disembunyikan, supaya tidak ada tombol putar yang kosong.
-    document.querySelectorAll('[data-video]').forEach(kartu => {
-        if (!VIDEO_YOUTUBE[kartu.dataset.video]) {
-            const wadah = kartu.closest('[data-video-wadah]') || kartu;
-            wadah.hidden = true;
+        document.getElementById('m-dzg-hanzi').innerText = data.hanzi;
+        document.getElementById('m-dzg-pinyin').innerText = data.pinyin;
+        document.getElementById('m-dzg-title').innerText = data.title;
+        document.getElementById('m-dzg-desc').innerText = data.desc;
+        document.getElementById('m-dzg-example').innerText = `"${data.example}"`;
+        document.getElementById('m-dzg-img').src = data.img;
+        mDBadge.innerText = data.badge;
+        
+        if(data.badge === 'Esensi') {
+            mDBadge.classList.remove('bg-brand-yellow', 'text-brand-primary');
+            mDBadge.classList.add('bg-brand-red', 'text-white');
+        } else {
+            mDBadge.classList.remove('bg-brand-red', 'text-white');
+            mDBadge.classList.add('bg-brand-yellow', 'text-brand-primary');
         }
-    });
-    AKSI.openVideoModal = (kunci) => {
-        const vFrame = document.getElementById('youtube-frame');
-        const id = VIDEO_YOUTUBE[kunci];
-        if (!vFrame || !id || !/^[\w-]{6,20}$/.test(id)) return;
-        vFrame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
-        bukaModalShow('video-modal');
+
+        dModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     };
-    AKSI.closeVideoModal = (arg, el, e) => {
+
+    window.closeDzgModal = function(e, force = false) {
+        const dModal = document.getElementById('dzg-modal');
+        if(!dModal) return;
+        if (force || e.target === dModal) {
+            dModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    };
+
+    window.openVideoModal = function() {
         const vModal = document.getElementById('video-modal');
-        if (arg !== 'paksa' && e.target !== vModal) return;
         const vFrame = document.getElementById('youtube-frame');
-        if (vFrame) vFrame.removeAttribute('src');
-        tutupModalShow('video-modal');
+        if(!vModal || !vFrame) return;
+        vFrame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"; 
+        vModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     };
 
-    /* --- 13. BATANG PERSENTASE (TRILINGUAL) --- */
-    const prog1 = document.getElementById('prog-1');
-    const prog2 = document.getElementById('prog-2');
-    if (prog1 && prog2) {
-        const isi = () => { prog1.classList.add('terisi'); prog2.classList.add('terisi'); };
-        if (!('IntersectionObserver' in window)) isi();
-        else {
-            const io = new IntersectionObserver((entri) => { if (entri.some(en => en.isIntersecting)) { isi(); io.disconnect(); } });
-            io.observe(prog1);
+    window.closeVideoModal = function(e, force = false) {
+        const vModal = document.getElementById('video-modal');
+        const vFrame = document.getElementById('youtube-frame');
+        if(!vModal) return;
+        if (force || e.target === vModal) {
+            if(vFrame) vFrame.src = ""; 
+            vModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
         }
-    }
+    };
 
-    /* --- 14. SAMBUTAN KEPALA SEKOLAH BERGANTI (ABOUT) --- */
+    /* --- 14. TRIBAHASA PROGRESS BARS --- */
+    window.animateProgressBars = function() {
+        const prog1 = document.getElementById('prog-1');
+        const prog2 = document.getElementById('prog-2');
+        if (!prog1 || !prog2) return;
+        const rect1 = prog1.getBoundingClientRect();
+        if (rect1.top < window.innerHeight && rect1.bottom >= 0) {
+            prog1.style.width = '70%';
+            prog2.style.width = '42%';
+            window.removeEventListener('scroll', window.animateProgressBars);
+        }
+    };
+    window.addEventListener('scroll', window.animateProgressBars);
+    window.animateProgressBars();
+
+    /* --- 12. ABOUT KEPSEK AUTO FADE TRANSITION --- */
     const kepsekList = [
         {
-            name: '[PERLU DATA: nama kepala KB-TK]',
-            role: 'Kepala KB dan TK',
-            level: 'KB dan TK',
-            kicker: 'Sambutan · Jenjang KB-TK',
-            quote: '[PERLU DATA: kutipan singkat kepala KB-TK]',
-            p1: '[PERLU DATA: isi sambutan kepala KB-TK, 1–2 kalimat]'
+            name: "Dr. Ibu Kepala Sekolah",
+            role: "Head of Preschool & Kindergarten",
+            level: "Preschool & Kindergarten (KB-TK)",
+            age: "Usia 2 – 6 Tahun",
+            kicker: "Sambutan · Jenjang KB-TK",
+            quote: '"Tumbuh Bahagia, Berkarakter Mulia"',
+            p1: "Kami mendampingi masa emas setiap anak dengan penuh kasih dan keteladanan budi pekerti, agar mereka tumbuh bahagia, berkarakter luhur, dan mencintai proses belajar.",
+            img: "assets/images/head-of-school.jpg"
         },
         {
-            name: '[PERLU DATA: nama kepala SD]',
-            role: 'Kepala SD',
-            level: 'Sekolah Dasar (SD)',
-            kicker: 'Sambutan · Jenjang SD',
-            quote: '[PERLU DATA: kutipan singkat kepala SD]',
-            p1: '[PERLU DATA: isi sambutan kepala SD, 1–2 kalimat]'
+            name: "Bapak Kepala Sekolah",
+            role: "Head of Primary School",
+            level: "Primary School (SD)",
+            age: "Usia 6 – 12 Tahun",
+            kicker: "Sambutan · Jenjang SD",
+            quote: '"Cerdas Bernalar, Kokoh Berkarakter"',
+            p1: "Kami membimbing murid mengasah daya nalar kritis dan kreativitas belajar, berlandaskan nilai moral yang kuat untuk menyongsong masa depan dunia global.",
+            img: "assets/images/guru-sedaya-bintang.jpg"
         }
     ];
+
+    // Preload assets langsung di memori browser agar transisi pertama tidak buffering
+    kepsekList.forEach(item => {
+        const preImg = new Image();
+        preImg.src = item.img;
+    });
+
     let currentKepsekIndex = 0;
     let kepsekAutoTimer = null;
-    let kepsekJeda = false;
+    const KEPSEK_INTERVAL_MS = 4500; // Konsisten 4.5 detik dari awal buka web
 
     function applyKepsekSlide(index) {
         currentKepsekIndex = index;
         const data = kepsekList[index];
         if (!data) return;
-        const teks = { 'kepsek-name': data.name, 'kepsek-role': data.role, 'kepsek-kicker': data.kicker, 'kepsek-quote': data.quote, 'kepsek-p1': data.p1, 'kepsek-level-badge': data.level };
-        [0, 1].forEach(i => {
-            const img = document.getElementById('kepsek-img-' + i);
-            if (img) { img.classList.toggle('opacity-100', i === index); img.classList.toggle('opacity-0', i !== index); }
-            const dot = document.getElementById('kepsek-dot-' + i);
-            if (dot) {
-                dot.setAttribute('aria-current', i === index ? 'true' : 'false');
-                const batang = dot.querySelector('span');
-                if (batang) {
-                    batang.classList.toggle('w-8', i === index);
-                    batang.classList.toggle('bg-brand-primary', i === index);
-                    batang.classList.toggle('w-2.5', i !== index);
-                    batang.classList.toggle('bg-gray-300', i !== index);
+
+        const img0 = document.getElementById('kepsek-img-0');
+        const img1 = document.getElementById('kepsek-img-1');
+        const textContainer = document.getElementById('kepsek-stage-text');
+        const nameEl = document.getElementById('kepsek-name');
+        const roleEl = document.getElementById('kepsek-role');
+        const kickerEl = document.getElementById('kepsek-kicker');
+        const quoteEl = document.getElementById('kepsek-quote');
+        const p1El = document.getElementById('kepsek-p1');
+        const dot0 = document.getElementById('kepsek-dot-0');
+        const dot1 = document.getElementById('kepsek-dot-1');
+        const badgeEl = document.getElementById('kepsek-level-badge');
+
+        // 1. Hardware-accelerated cross-fade foto (langsung transisi tanpa tunggu download gambar)
+        if (img0 && img1) {
+            if (index === 0) {
+                img0.classList.remove('opacity-0');
+                img0.classList.add('opacity-100');
+                img1.classList.remove('opacity-100');
+                img1.classList.add('opacity-0');
+            } else {
+                img1.classList.remove('opacity-0');
+                img1.classList.add('opacity-100');
+                img0.classList.remove('opacity-100');
+                img0.classList.add('opacity-0');
+            }
+        }
+
+        // 2. Smooth text fade
+        if (textContainer) textContainer.style.opacity = '0';
+        if (nameEl) nameEl.style.opacity = '0';
+        if (roleEl) roleEl.style.opacity = '0';
+
+        setTimeout(() => {
+            if (nameEl) nameEl.textContent = data.name;
+            if (roleEl) roleEl.textContent = data.role;
+            if (kickerEl) kickerEl.textContent = data.kicker;
+            if (quoteEl) quoteEl.textContent = data.quote;
+            if (p1El) p1El.textContent = data.p1;
+            if (badgeEl) badgeEl.textContent = data.level;
+
+            if (dot0 && dot1) {
+                if (index === 0) {
+                    dot0.className = "h-1.5 w-8 rounded-full bg-brand-primary transition-all duration-500 cursor-pointer focus:outline-none";
+                    dot1.className = "h-1.5 w-2.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-500 cursor-pointer focus:outline-none";
+                } else {
+                    dot1.className = "h-1.5 w-8 rounded-full bg-brand-primary transition-all duration-500 cursor-pointer focus:outline-none";
+                    dot0.className = "h-1.5 w-2.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-all duration-500 cursor-pointer focus:outline-none";
                 }
             }
-        });
-        const wadahTeks = document.getElementById('kepsek-stage-text');
-        const isi = () => Object.entries(teks).forEach(([id, t]) => { const el = document.getElementById(id); if (el) el.textContent = t; });
-        if (kurangiGerak() || !wadahTeks) { isi(); return; }
-        wadahTeks.classList.add('opacity-0');
-        setTimeout(() => { isi(); wadahTeks.classList.remove('opacity-0'); }, 180);
+
+            if (textContainer) textContainer.style.opacity = '1';
+            if (nameEl) nameEl.style.opacity = '1';
+            if (roleEl) roleEl.style.opacity = '1';
+        }, 180);
     }
 
     function startKepsekAutoFade() {
         if (kepsekAutoTimer) clearInterval(kepsekAutoTimer);
-        if (kurangiGerak()) return;
         kepsekAutoTimer = setInterval(() => {
-            if (kepsekJeda || document.hidden) return;
-            applyKepsekSlide((currentKepsekIndex + 1) % kepsekList.length);
-        }, 6000);
+            const nextIndex = (currentKepsekIndex + 1) % kepsekList.length;
+            applyKepsekSlide(nextIndex);
+        }, KEPSEK_INTERVAL_MS);
     }
 
-    AKSI.selectKepsek = (idx) => { applyKepsekSlide(idx); startKepsekAutoFade(); };
+    // Navigasi manual lewat dot jika ingin langsung melihat jenjang lain
+    window.selectKepsek = function(idx) {
+        applyKepsekSlide(idx);
+        startKepsekAutoFade(); // Reset interval agar tetap konsisten 4.5 detik
+    };
 
     const kepsekShowcase = document.getElementById('kepsek-showcase');
     if (kepsekShowcase) {
-        kepsekShowcase.addEventListener('mouseenter', () => { kepsekJeda = true; });
-        kepsekShowcase.addEventListener('mouseleave', () => { kepsekJeda = false; });
-        kepsekShowcase.addEventListener('focusin', () => { kepsekJeda = true; });
-        kepsekShowcase.addEventListener('focusout', () => { kepsekJeda = false; });
         startKepsekAutoFade();
     }
 
-    /* --- 15. SLIDER CORE VALUES (ABOUT) --- */
-    const pilarSlider = document.getElementById('pilar-slider');
-    AKSI.scrollPilar = (direction) => {
-        if (!pilarSlider) return;
-        const card = pilarSlider.querySelector('.snap-center');
+    /* --- 13. ABOUT TIGA PILAR SLIDER --- */
+    window.scrollPilar = function(direction) {
+        const slider = document.getElementById('pilar-slider');
+        if (!slider) return;
+        const card = slider.querySelector('.snap-center');
         const scrollAmount = card ? (card.offsetWidth + 24) : 400;
-        pilarSlider.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: kurangiGerak() ? 'auto' : 'smooth' });
+        if (direction === 'left') {
+            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
     };
-    AKSI.goToPilar = (index) => {
-        if (!pilarSlider) return;
-        const cards = pilarSlider.querySelectorAll('.snap-center');
-        if (cards[index]) pilarSlider.scrollTo({ left: cards[index].offsetLeft - pilarSlider.offsetLeft, behavior: kurangiGerak() ? 'auto' : 'smooth' });
+
+    window.goToPilar = function(index) {
+        const slider = document.getElementById('pilar-slider');
+        if (!slider) return;
+        const cards = slider.querySelectorAll('.snap-center');
+        if (cards[index]) {
+            const cardLeft = cards[index].offsetLeft;
+            const sliderLeft = slider.offsetLeft;
+            slider.scrollTo({ left: cardLeft - sliderLeft, behavior: 'smooth' });
+        }
     };
+
+    const pilarSlider = document.getElementById('pilar-slider');
     const pilarDots = document.querySelectorAll('.pilar-dot');
     if (pilarSlider && pilarDots.length > 0) {
         let pilarScrollTimeout;
         pilarSlider.addEventListener('scroll', () => {
             clearTimeout(pilarScrollTimeout);
             pilarScrollTimeout = setTimeout(() => {
+                const scrollLeft = pilarSlider.scrollLeft;
                 const cards = pilarSlider.querySelectorAll('.snap-center');
-                let activeIndex = 0; let minDiff = Infinity;
+                if (cards.length === 0) return;
+                
+                let activeIndex = 0;
+                let minDiff = Infinity;
                 cards.forEach((card, idx) => {
-                    const diff = Math.abs((card.offsetLeft - pilarSlider.offsetLeft) - pilarSlider.scrollLeft);
-                    if (diff < minDiff) { minDiff = diff; activeIndex = idx; }
+                    const diff = Math.abs((card.offsetLeft - pilarSlider.offsetLeft) - scrollLeft);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        activeIndex = idx;
+                    }
                 });
+
                 pilarDots.forEach((dot, idx) => {
-                    const aktif = idx === activeIndex;
-                    dot.setAttribute('aria-current', aktif ? 'true' : 'false');
-                    const batang = dot.querySelector('span');
-                    if (!batang) return;
-                    batang.classList.toggle('w-8', aktif);
-                    batang.classList.toggle('bg-brand-primary', aktif);
-                    batang.classList.toggle('w-2.5', !aktif);
-                    batang.classList.toggle('bg-gray-300', !aktif);
+                    if (idx === activeIndex) {
+                        dot.className = "w-8 h-2 rounded-full bg-brand-primary transition-all duration-300 pilar-dot";
+                    } else {
+                        dot.className = "w-2.5 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pilar-dot";
+                    }
                 });
             }, 50);
-        }, { passive: true });
+        });
     }
 
-    /* --- 16. SLIDER CERITA ORANG TUA (BERANDA) --- */
-    AKSI.scrollTestimonial = (direction) => {
-        const slider = document.getElementById('testimonial-slider');
-        if (!slider) return;
-        const scrollAmount = slider.clientWidth > 768 ? 400 + 24 : slider.clientWidth;
-        slider.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: kurangiGerak() ? 'auto' : 'smooth' });
-    };
+});
 
-    /* --- 17. LOWONGAN (KARIR) --- */
-    const emailHRD = 'hrd@sedayabintang.sch.id';
-    // [PERLU DATA: daftar lowongan yang benar-benar dibuka. Data di bawah masih contoh.]
-    const akademikJobs = [
+/* --- KARIR LOGIC --- */
+
+        // Data Lowongan Akademik
+        const akademikJobs = [
             {
                 title: "Guru Mandarin SD (Native/Fluent)",
                 type: "Full-Time", location: "Bandung", icon: "fa-language",
@@ -634,8 +805,8 @@ Terima kasih.`;
             {
                 title: "Guru Bimbingan & Konseling (BK)",
                 type: "Full-Time", location: "Bandung", icon: "fa-hand-holding-heart",
-                desc: "Memberikan bimbingan psikologis, akademik, dan karir kepada murid, serta berkolaborasi dengan orang tua untuk perkembangan murid.",
-                req: ["Minimal S1 Bimbingan dan Konseling / Psikologi.", "Memiliki empati tinggi dan kemampuan komunikasi persuasif.", "Berpengalaman dalam menangani remaja.", "Memahami pendekatan konseling pendidikan."]
+                desc: "Memberikan bimbingan psikologis, akademik, dan karir kepada murid, serta berkolaborasi dengan orang tua untuk perkembangan holistik murid.",
+                req: ["Minimal S1 Bimbingan dan Konseling / Psikologi.", "Memiliki empati tinggi dan kemampuan komunikasi persuasif.", "Berpengalaman dalam menangani remaja.", "Memahami pendekatan konseling pendidikan modern."]
             },
             {
                 title: "Guru IPA / Sains Terpadu (SD)",
@@ -650,7 +821,9 @@ Terima kasih.`;
                 req: ["Minimal S1 PGPAUD atau Psikologi Anak.", "Menyukai dunia anak usia dini dan sabar.", "Mampu berbahasa Inggris dasar.", "Aktif, cekatan, dan memiliki inisiatif tinggi."]
             }
         ];
-    const officerJobs = [
+
+        // Data Lowongan Non-Akademik (Officer)
+        const officerJobs = [
             {
                 title: "General Affair (GA) Officer",
                 type: "Full-Time", location: "Bandung", icon: "fa-building-shield",
@@ -679,81 +852,219 @@ Terima kasih.`;
                 title: "Graphic & UI/UX Designer",
                 type: "Full-Time", location: "Bandung", icon: "fa-bezier-curve",
                 desc: "Merancang materi komunikasi visual sekolah.",
-                req: ["Minimal S1 Desain Komunikasi Visual (DKV).", "Mahir menggunakan Adobe Creative Suite, Figma, dan tools desain lainnya.", "Memiliki portofolio desain yang kuat (sertakan link).", "Kreatif, update terhadap tren desain visual edukasi."]
+                req: ["Minimal S1 Desain Komunikasi Visual (DKV).", "Mahir menggunakan Adobe Creative Suite, Figma, dan tools desain modern.", "Memiliki portofolio desain yang kuat (sertakan link).", "Kreatif, update terhadap tren desain visual edukasi."]
             }
         ];
 
-    function generateJobsHTML(jobs, awalan) {
-        return jobs.map((job, i) => `
-            <div class="job-card bg-white border border-gray-100 rounded-xl lg:rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-                <h3>
-                    <button type="button" data-aksi="toggleAccordion" aria-expanded="false" aria-controls="${awalan}-${i}" class="job-header w-full text-left p-5 lg:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 group">
-                        <span class="flex items-center gap-4 lg:gap-5">
-                            <span class="w-12 h-12 rounded-full bg-brand-gray text-brand-primary flex items-center justify-center group-hover:bg-brand-yellow transition-colors shrink-0">
-                                <i class="fa-solid ${job.icon} text-xl" aria-hidden="true"></i>
-                            </span>
-                            <span>
-                                <span class="block font-bold text-brand-primary text-base lg:text-lg">${job.title}</span>
-                                <span class="flex items-center gap-3 mt-1.5 flex-wrap">
-                                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-600 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100"><i class="fa-regular fa-clock" aria-hidden="true"></i> ${job.type}</span>
-                                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-600 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> ${job.location}</span>
-                                </span>
-                            </span>
-                        </span>
-                        <span class="sm:self-center self-end w-11 h-11 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-brand-primary text-gray-500 group-hover:text-brand-primary transition-colors shrink-0 accordion-icon">
-                            <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </h3>
-                <div id="${awalan}-${i}" class="job-accordion-content bg-gray-50" inert>
-                    <div class="job-accordion-inner">
-                        <div class="p-5 lg:p-6 lg:pt-2 border-t border-gray-100">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                                <div>
-                                    <h4 class="text-sm font-bold text-brand-primary mb-2 flex items-center gap-2"><i class="fa-solid fa-bullseye text-brand-primary" aria-hidden="true"></i> Deskripsi Pekerjaan</h4>
-                                    <p class="text-sm text-gray-700 leading-relaxed">${job.desc}</p>
+        // Fungsi Render HTML
+        function generateJobsHTML(jobs) {
+            return jobs.map((job, index) => `
+                <div class="job-card bg-white border border-gray-100 rounded-xl lg:rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <div class="job-header p-5 lg:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center cursor-pointer gap-4 group" onclick="toggleAccordion(this)">
+                        <div class="flex items-center gap-4 lg:gap-5">
+                            <div class="w-12 h-12 rounded-full bg-brand-gray text-brand-primary flex items-center justify-center group-hover:bg-brand-yellow transition-colors shrink-0">
+                                <i class="fa-solid ${job.icon} text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-brand-primary text-base lg:text-lg group-hover:text-[#15346b] transition-colors">${job.title}</h3>
+                                <div class="flex items-center gap-3 mt-1.5 flex-wrap">
+                                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
+                                        <i class="fa-regular fa-clock"></i> ${job.type}
+                                    </span>
+                                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
+                                        <i class="fa-solid fa-location-dot"></i> ${job.location}
+                                    </span>
                                 </div>
-                                <div>
-                                    <h4 class="text-sm font-bold text-brand-primary mb-2 flex items-center gap-2"><i class="fa-solid fa-list-check text-brand-primary" aria-hidden="true"></i> Kualifikasi</h4>
-                                    <ul class="text-sm text-gray-700 leading-relaxed list-disc list-outside ml-4 space-y-1">
-                                        ${job.req.map(r => `<li>${r}</li>`).join('')}
-                                    </ul>
-                                </div>
-                                <div class="md:col-span-2 flex justify-end pt-4 md:pt-6 md:border-t border-gray-200/60">
-                                    <a href="mailto:${emailHRD}?subject=${encodeURIComponent('Lamaran: ' + job.title)}" class="w-full md:w-auto text-center bg-brand-primary text-white font-bold px-8 py-3 rounded-full hover:bg-brand-dark transition-colors shadow-md text-sm">
-                                        Lamar Posisi Ini
-                                    </a>
+                            </div>
+                        </div>
+                        <div class="sm:self-center self-end w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-brand-primary text-gray-400 group-hover:text-brand-primary transition-all shrink-0 accordion-icon">
+                            <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Area Accordion -->
+                    <div class="job-accordion-content bg-gray-50">
+                        <div class="job-accordion-inner">
+                            <div class="p-5 lg:p-6 lg:pt-2 border-t border-gray-100">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 relative pb-20 lg:pb-0">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-brand-primary mb-2 flex items-center gap-2"><i class="fa-solid fa-bullseye text-brand-yellow"></i> Deskripsi Pekerjaan</h4>
+                                        <p class="text-xs lg:text-sm text-gray-600 leading-relaxed">${job.desc}</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-brand-primary mb-2 flex items-center gap-2"><i class="fa-solid fa-list-check text-brand-yellow"></i> Kualifikasi</h4>
+                                        <ul class="text-xs lg:text-sm text-gray-600 leading-relaxed list-disc list-outside ml-4 space-y-1">
+                                            ${job.req.map(r => `<li>${r}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Sticky Button Apply -->
+                                    <div class="absolute bottom-0 right-0 left-0 md:static md:col-span-2 flex justify-end mt-4 pt-4 md:pt-6 md:border-t border-gray-200/60 sticky-footer-area">
+                                        <button class="w-full md:w-auto bg-brand-primary text-white font-bold px-8 py-3 rounded-full hover:bg-[#15346b] transition-colors shadow-md text-sm">
+                                            Apply Now
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        `).join('');
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentAkademik = document.getElementById('content-akademik');
+            if (contentAkademik) { contentAkademik.innerHTML = generateJobsHTML(akademikJobs); }
+            const contentOfficer = document.getElementById('content-officer');
+            if (contentOfficer) { contentOfficer.innerHTML = generateJobsHTML(officerJobs); }
+        });
+
+        // Accordion Logic
+        window.toggleAccordion = function(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.accordion-icon i');
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+                element.classList.remove('bg-gray-50/50');
+            } else {
+                const allContents = element.closest('section').querySelectorAll('.job-accordion-content');
+                const allIcons = element.closest('section').querySelectorAll('.accordion-icon i');
+                const allHeaders = element.closest('section').querySelectorAll('.job-header');
+                
+                allContents.forEach(c => c.classList.remove('open'));
+                allIcons.forEach(i => i.style.transform = 'rotate(0deg)');
+                allHeaders.forEach(h => h.classList.remove('bg-gray-50/50'));
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+                element.classList.add('bg-gray-50/50');
+            }
+        };
+
+    // TESTIMONIAL SLIDER LOGIC
+    window.scrollTestimonial = function(direction) {
+        const slider = document.getElementById('testimonial-slider');
+        if (!slider) return;
+        const scrollAmount = slider.clientWidth > 768 ? 400 + 24 : slider.clientWidth;
+        if (direction === 'left') {
+            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    };
+
+    // TESTIMONIAL VIDEO MODAL LOGIC
+    window.openTestimonialModal = function(videoUrl) {
+        const modal = document.getElementById('testimonial-video-modal');
+        const modalContent = document.getElementById('video-modal-content');
+        const player = document.getElementById('testimonial-video-player');
+        if (!modal || !player) return;
+
+        // Set video source
+        player.src = videoUrl;
+
+        // Show modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        // Slight delay for animation
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+            player.play();
+        }, 10);
+
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeTestimonialModal = function() {
+        const modal = document.getElementById('testimonial-video-modal');
+        const modalContent = document.getElementById('video-modal-content');
+        const player = document.getElementById('testimonial-video-player');
+        if (!modal) return;
+
+        // Hide animations
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0');
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-95');
+        
+        // Pause video
+        if (player) {
+            player.pause();
+            player.currentTime = 0;
+        }
+
+        // Remove from DOM after animation
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            if (player) player.src = ""; // Clear source
+            document.body.style.overflow = '';
+        }, 300);
+    };
+
+    // Close modal on ESC key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('testimonial-video-modal');
+            if (modal && !modal.classList.contains('hidden')) {
+                window.closeTestimonialModal();
+            }
+            const heroModal = document.getElementById('hero-photo-modal');
+            if (heroModal && heroModal.classList.contains('opacity-100')) {
+                window.closeHeroPhotoModal();
+            }
+        }
+    });
+
+    // Hero Roll Film Photo Modal Lightbox
+    window.openHeroPhotoModal = function(imageSrc, title) {
+        const modal = document.getElementById('hero-photo-modal');
+        const box = document.getElementById('hero-photo-modal-box');
+        const img = document.getElementById('hero-modal-img');
+        const titleEl = document.getElementById('hero-modal-title');
+        
+        if (!modal || !img) return;
+        
+        img.src = imageSrc;
+        if (titleEl) titleEl.textContent = title || 'Galeri Sedaya Bintang';
+        
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100', 'pointer-events-auto');
+        if (box) {
+            box.classList.remove('scale-95');
+            box.classList.add('scale-100');
+        }
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeHeroPhotoModal = function() {
+        const modal = document.getElementById('hero-photo-modal');
+        const box = document.getElementById('hero-photo-modal-box');
+        
+        if (!modal) return;
+        
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        if (box) {
+            box.classList.remove('scale-100');
+            box.classList.add('scale-95');
+        }
+        document.body.style.overflow = '';
+    };
+
+    // Close when clicking modal backdrop
+    const heroPhotoModal = document.getElementById('hero-photo-modal');
+    if (heroPhotoModal) {
+        heroPhotoModal.addEventListener('click', (e) => {
+            if (e.target === heroPhotoModal) {
+                window.closeHeroPhotoModal();
+            }
+        });
     }
 
-    const contentAkademik = document.getElementById('content-akademik');
-    if (contentAkademik) contentAkademik.innerHTML = generateJobsHTML(akademikJobs, 'lowongan-akademik');
-    const contentOfficer = document.getElementById('content-officer');
-    if (contentOfficer) contentOfficer.innerHTML = generateJobsHTML(officerJobs, 'lowongan-officer');
-
-    AKSI.toggleAccordion = (arg, tombol) => {
-        const bagian = tombol.closest('section') || document;
-        const sedangBuka = tombol.getAttribute('aria-expanded') === 'true';
-        bagian.querySelectorAll('.job-header').forEach(h => {
-            h.setAttribute('aria-expanded', 'false');
-            h.classList.remove('bg-gray-50/50');
-            const isi = document.getElementById(h.getAttribute('aria-controls'));
-            if (isi) { isi.classList.remove('open'); isi.setAttribute('inert', ''); }
-            const ikon = h.querySelector('.accordion-icon i');
-            if (ikon) ikon.classList.remove('rotate-180');
-        });
-        if (sedangBuka) return;
-        tombol.setAttribute('aria-expanded', 'true');
-        tombol.classList.add('bg-gray-50/50');
-        const isi = document.getElementById(tombol.getAttribute('aria-controls'));
-        if (isi) { isi.classList.add('open'); isi.removeAttribute('inert'); }
-        const ikon = tombol.querySelector('.accordion-icon i');
-        if (ikon) ikon.classList.add('rotate-180');
-    };
-});

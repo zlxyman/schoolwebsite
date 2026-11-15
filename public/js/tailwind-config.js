@@ -1,10 +1,3 @@
-/*
- * Sumber tunggal tema Tailwind (warna brand, font, bayangan).
- * File ini TIDAK lagi dimuat browser. Dibaca oleh tailwind.config.cjs saat
- * `npm run build:css` untuk menghasilkan public/css/tailwind.css.
- * Setelah mengubah file ini atau menambah kelas Tailwind baru di HTML/JS,
- * jalankan `npm run build:css` lalu commit public/css/tailwind.css.
- */
 tailwind.config = {
     theme: {
         extend: {

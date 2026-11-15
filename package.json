@@ -1,23 +1,14 @@
 {
   "name": "schoolweb",
   "version": "1.0.0",
-  "description": "Website statis Sekolah Terpadu Sedaya Bintang",
+  "description": "Static HTML school website",
   "type": "module",
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
-    "build:css": "tailwindcss -c tailwind.config.cjs -i tools/tailwind.css -o public/css/tailwind.css --minify",
-    "watch:css": "tailwindcss -c tailwind.config.cjs -i tools/tailwind.css -o public/css/tailwind.css --watch",
-    "build": "npm run build:css"
+    "build": "echo 'No build step required'"
   },
   "dependencies": {
-    "express": "^4.21.2"
-  },
-  "private": true,
-  "devDependencies": {
-    "tailwindcss": "^3.4.19"
-  },
-  "engines": {
-    "node": ">=18"
+    "express": "^4.19.2"
   }
 }

@@ -3,32 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestasi Murid | Sekolah Terpadu Sedaya Bintang</title>
-    <meta name="description" content="Catatan prestasi dan penghargaan murid Sekolah Terpadu Sedaya Bintang.">
-    <link rel="canonical" href="https://sedayabintang.sch.id/prestasi-siswa.html">
-    <meta name="theme-color" content="#1d4486">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>Galeri Prestasi - Sekolah Terpadu Sedaya Bintang</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Pratinjau saat tautan dibagikan (WhatsApp, Instagram, Facebook) -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Sekolah Terpadu Sedaya Bintang">
-    <meta property="og:locale" content="id_ID">
-    <meta property="og:title" content="Prestasi Murid | Sekolah Terpadu Sedaya Bintang">
-    <meta property="og:description" content="Catatan prestasi dan penghargaan murid Sekolah Terpadu Sedaya Bintang.">
-    <meta property="og:url" content="https://sedayabintang.sch.id/prestasi-siswa.html">
-    <meta property="og:image" content="https://sedayabintang.sch.id/assets/images/og-sedaya-bintang.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            primary: '#1d4486',
+                            yellow: '#ffcb05',
+                            red: '#d2232a',
+                            blue: '#eaf1fb',
+                            gray: '#f9fafb',
+                            dark: '#0f2447',
+                            goldSoft: '#fde047',
+                            silverSoft: '#d1d5db',
+                            bronzeSoft: '#fdba74',
+                            specialSoft: '#93c5fd'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-    <!-- Font, ikon, dan gaya. Semua disimpan lokal (tanpa CDN). tailwind.css dimuat paling akhir. -->
-    <link rel="preload" href="assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <!-- Global CSS & Khusus Prestasi CSS (Persis File Lampiran) -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/prestasi.css">
-    <link rel="stylesheet" href="css/tailwind.css">
 </head>
-<body id="top" data-page="prestasi" class="text-gray-800 antialiased selection:bg-brand-primary selection:text-white bg-brand-gray overflow-x-hidden">
+<body data-page="prestasi" class="text-gray-800 antialiased selection:bg-brand-primary selection:text-white bg-brand-gray overflow-x-hidden">
 
     <!-- Global Navbar (About Dropdown: Tentang Kami & Prestasi Siswa) -->
     <div id="app-navbar"></div>
@@ -42,7 +56,7 @@
                 <div class="absolute inset-0 bg-[radial-gradient(120%_90%_at_75%_25%,#1d4486_0%,#133368_38%,#0c2146_72%,#07142a_100%)]"></div>
                 <!-- Ambient Cosmic Glow Spots -->
                 <div class="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full filter blur-[140px]"></div>
-                <div class="absolute bottom-[-10%] right-[10%] w-[550px] h-[550px] bg-brand-yellow/15 rounded-full filter blur-[150px] animate-pulse [animation-duration:8s]"></div>
+                <div class="absolute bottom-[-10%] right-[10%] w-[550px] h-[550px] bg-brand-yellow/15 rounded-full filter blur-[150px] animate-pulse" style="animation-duration: 8s;"></div>
                 <div class="absolute top-[30%] -left-20 w-[400px] h-[400px] bg-brand-red/10 rounded-full filter blur-[130px]"></div>
                 <!-- Star / Dot grid pattern overlay -->
                 <div class="absolute inset-0 opacity-[0.08] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
@@ -62,8 +76,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 01A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="4" role="button" tabindex="0">
-                                <img src="assets/images/fasilitas-spacelab.webp" alt="STEAM Olympiad" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="533" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(4)">
+                                <img src="assets/images/fasilitas-spacelab.jpg" alt="STEAM Olympiad" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">STEAM & Robotics Gold</span>
@@ -86,8 +100,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 02A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="5" role="button" tabindex="0">
-                                <img src="assets/images/fasilitas-lab-bahasa.webp" alt="Chinese Storytelling" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="533" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(5)">
+                                <img src="assets/images/fasilitas-lab-bahasa.jpg" alt="Chinese Storytelling" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Chinese Storytelling Juara 1</span>
@@ -110,8 +124,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 03A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="1" role="button" tabindex="0">
-                                <img src="assets/images/kurikulum-singapore-math.webp" alt="Singapore Math" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="497" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(1)">
+                                <img src="assets/images/kurikulum-singapore-math.jpg" alt="Singapore Math" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Singapore Math & Logic</span>
@@ -134,8 +148,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 04A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="0" role="button" tabindex="0">
-                                <img src="assets/images/budi-pekerti-memberikan-bunga.webp" alt="Budi Pekerti Di Zi Gui" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="533" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(0)">
+                                <img src="assets/images/budi-pekerti-memberikan-bunga.jpg" alt="Budi Pekerti Di Zi Gui" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Budi Pekerti Duta Teladan</span>
@@ -158,8 +172,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 05A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="3" role="button" tabindex="0">
-                                <img src="assets/images/fasilitas-kolam-renang.webp" alt="Renang & Akuatik" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="600" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(3)">
+                                <img src="assets/images/fasilitas-kolam-renang.jpg" alt="Renang & Akuatik" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Kejuaraan Renang Pelajar</span>
@@ -182,8 +196,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 06A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="2" role="button" tabindex="0">
-                                <img src="assets/images/lab-komputer.webp" alt="Coding Challenge" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="534" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(2)">
+                                <img src="assets/images/lab-komputer.jpg" alt="Coding Challenge" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Junior Coding & AI Challenge</span>
@@ -206,8 +220,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 01A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="4" role="button" tabindex="0">
-                                <img src="assets/images/fasilitas-spacelab.webp" alt="STEAM Olympiad" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="533" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(4)">
+                                <img src="assets/images/fasilitas-spacelab.jpg" alt="STEAM Olympiad" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">STEAM & Robotics Gold</span>
@@ -230,8 +244,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 02A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="5" role="button" tabindex="0">
-                                <img src="assets/images/fasilitas-lab-bahasa.webp" alt="Chinese Storytelling" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="533" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(5)">
+                                <img src="assets/images/fasilitas-lab-bahasa.jpg" alt="Chinese Storytelling" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Chinese Storytelling Juara 1</span>
@@ -254,8 +268,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 03A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="1" role="button" tabindex="0">
-                                <img src="assets/images/kurikulum-singapore-math.webp" alt="Singapore Math" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="497" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(1)">
+                                <img src="assets/images/kurikulum-singapore-math.jpg" alt="Singapore Math" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Singapore Math & Logic</span>
@@ -278,8 +292,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 04A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="0" role="button" tabindex="0">
-                                <img src="assets/images/budi-pekerti-memberikan-bunga.webp" alt="Budi Pekerti Di Zi Gui" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="533" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(0)">
+                                <img src="assets/images/budi-pekerti-memberikan-bunga.jpg" alt="Budi Pekerti Di Zi Gui" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Budi Pekerti Duta Teladan</span>
@@ -302,8 +316,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 05A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="3" role="button" tabindex="0">
-                                <img src="assets/images/fasilitas-kolam-renang.webp" alt="Renang & Akuatik" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="600" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(3)">
+                                <img src="assets/images/fasilitas-kolam-renang.jpg" alt="Renang & Akuatik" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Kejuaraan Renang Pelajar</span>
@@ -326,8 +340,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 06A</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="2" role="button" tabindex="0">
-                                <img src="assets/images/lab-komputer.webp" alt="Coding Challenge" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="534" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(2)">
+                                <img src="assets/images/lab-komputer.jpg" alt="Coding Challenge" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Junior Coding & AI Challenge</span>
@@ -355,8 +369,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 11B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="6" role="button" tabindex="0">
-                                <img src="assets/images/murid-kb-menggambar.webp" alt="Kaligrafi Hanzi & Lukis" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="533" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(6)">
+                                <img src="assets/images/murid-kb-menggambar.jpg" alt="Kaligrafi Hanzi & Lukis" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Kaligrafi Hanzi Juara 1</span>
@@ -379,8 +393,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 12B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="7" role="button" tabindex="0">
-                                <img src="assets/images/guru-sedaya-bintang.webp" alt="Cambridge Speech" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="1200" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(7)">
+                                <img src="assets/images/guru-sedaya-bintang.jpg" alt="Cambridge Speech" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Cambridge Speech Juara 1</span>
@@ -403,8 +417,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 13B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="2" role="button" tabindex="0">
-                                <img src="assets/images/program-workshop.webp" alt="Character Camp" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="1199" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(2)">
+                                <img src="assets/images/program-workshop.jpg" alt="Character Camp" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">STEAM Proyek Daur Ulang</span>
@@ -427,8 +441,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 14B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="3" role="button" tabindex="0">
-                                <img src="assets/images/fasilitas-lapangan-olahraga.webp" alt="Futsal Pelajar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="450" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(3)">
+                                <img src="assets/images/fasilitas-lapangan-olahraga.jpg" alt="Futsal Pelajar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Turnamen Futsal SD</span>
@@ -451,8 +465,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 15B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="1" role="button" tabindex="0">
-                                <img src="assets/images/preschool-kegiatan-1.webp" alt="Kreativitas Preschool" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="1198" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(1)">
+                                <img src="assets/images/preschool-kegiatan-1.jpg" alt="Kreativitas Preschool" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Eksplorasi Aktif Preschool</span>
@@ -475,8 +489,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 16B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="0" role="button" tabindex="0">
-                                <img src="assets/images/kelas-smart-board.webp" alt="Olimpiade Logika" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(0)">
+                                <img src="assets/images/kelas-smart-board.jpg" alt="Olimpiade Logika" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Olimpiade Logika Pelajar</span>
@@ -499,8 +513,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 11B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="6" role="button" tabindex="0">
-                                <img src="assets/images/murid-kb-menggambar.webp" alt="Kaligrafi Hanzi & Lukis" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="533" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(6)">
+                                <img src="assets/images/murid-kb-menggambar.jpg" alt="Kaligrafi Hanzi & Lukis" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Kaligrafi Hanzi Juara 1</span>
@@ -523,8 +537,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 12B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="7" role="button" tabindex="0">
-                                <img src="assets/images/guru-sedaya-bintang.webp" alt="Cambridge Speech" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="1200" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(7)">
+                                <img src="assets/images/guru-sedaya-bintang.jpg" alt="Cambridge Speech" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Cambridge Speech Juara 1</span>
@@ -547,8 +561,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 13B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="2" role="button" tabindex="0">
-                                <img src="assets/images/program-workshop.webp" alt="Character Camp" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="1199" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(2)">
+                                <img src="assets/images/program-workshop.jpg" alt="Character Camp" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">STEAM Proyek Daur Ulang</span>
@@ -571,8 +585,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 14B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="3" role="button" tabindex="0">
-                                <img src="assets/images/fasilitas-lapangan-olahraga.webp" alt="Futsal Pelajar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="450" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(3)">
+                                <img src="assets/images/fasilitas-lapangan-olahraga.jpg" alt="Futsal Pelajar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Turnamen Futsal SD</span>
@@ -595,8 +609,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 15B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="1" role="button" tabindex="0">
-                                <img src="assets/images/preschool-kegiatan-1.webp" alt="Kreativitas Preschool" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" width="800" height="1198" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(1)">
+                                <img src="assets/images/preschool-kegiatan-1.jpg" alt="Kreativitas Preschool" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Eksplorasi Aktif Preschool</span>
@@ -619,8 +633,8 @@
                                 <span class="text-[9px] font-bold text-brand-yellow">▶ 16B</span>
                                 <span class="flex items-center gap-1.5"><span class="sprocket-hole"></span><span class="sprocket-hole"></span><span class="sprocket-hole"></span></span>
                             </div>
-                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" data-aksi="openModal" data-arg="0" role="button" tabindex="0">
-                                <img src="assets/images/kelas-smart-board.webp" alt="Olimpiade Logika" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" decoding="async">
+                            <div class="film-frame-card relative w-[170px] sm:w-[210px] md:w-[250px] h-[110px] sm:h-[135px] md:h-[160px] rounded-md overflow-hidden bg-black/60 border border-white/20 group cursor-pointer" onclick="openModal(0)">
+                                <img src="assets/images/kelas-smart-board.jpg" alt="Olimpiade Logika" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-40 transition-opacity"></div>
                                 <div class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-white pointer-events-none">
                                     <span class="text-[11px] font-bold drop-shadow-md text-white truncate">Olimpiade Logika Pelajar</span>
@@ -681,13 +695,13 @@
                             <i class="fa-solid fa-award"></i>
                         </div>
                         <div>
-                            <div class="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-brand-primary/80 mb-0.5">
+                            <div class="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider text-brand-primary/80 mb-0.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow"></span> Kami Bangga Pada Kalian!
                             </div>
                             <h2 class="text-base sm:text-lg font-black text-brand-primary leading-snug">
                                 Selamat atas kerja keras, ketekunan, dan dedikasi luar biasa seluruh peserta didik.
                             </h2>
-                            <p class="text-sm text-gray-500 font-medium mt-0.5">
+                            <p class="text-xs sm:text-sm text-gray-500 font-medium mt-0.5">
                                 Setiap langkah berani dan sportivitas kalian adalah inspirasi nyata bagi kita semua.
                             </p>
                         </div>
@@ -707,7 +721,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-6 text-center md:text-left">
                     <div>
                         <h2 class="text-3xl md:text-4xl font-extrabold text-brand-primary mb-3">Rekam Jejak Apresiasi</h2>
-                        <p class="text-base text-gray-500 font-medium">Mendokumentasikan langkah demi langkah pencapaian nyata mereka.</p>
+                        <p class="text-sm md:text-base text-gray-500 font-medium">Mendokumentasikan langkah demi langkah pencapaian nyata mereka.</p>
                     </div>
                 </div>
 
@@ -727,10 +741,10 @@
                     <div class="absolute inset-0 rounded-xl lg:rounded-3xl overflow-hidden pointer-events-none z-0">
                         <div class="absolute -top-24 -left-24 w-80 h-80 bg-brand-yellow rounded-full filter blur-[100px] opacity-15"></div>
                         <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-brand-blue rounded-full filter blur-[100px] opacity-15"></div>
-                        <i class="fa-solid fa-star text-brand-yellow/30 text-lg absolute top-10 left-1/4 animate-float [animation-delay:0s]"></i>
-                        <i class="fa-solid fa-star text-brand-yellow/40 text-sm absolute bottom-12 left-1/3 animate-float [animation-delay:1.5s]"></i>
-                        <i class="fa-solid fa-star text-brand-yellow/30 text-base absolute top-16 right-1/4 animate-float [animation-delay:3s]"></i>
-                        <i class="fa-solid fa-star text-brand-yellow/50 text-xs absolute bottom-16 right-1/6 animate-float [animation-delay:2s]"></i>
+                        <i class="fa-solid fa-star text-brand-yellow/30 text-lg absolute top-10 left-1/4 animate-float" style="animation-delay: 0s;"></i>
+                        <i class="fa-solid fa-star text-brand-yellow/40 text-sm absolute bottom-12 left-1/3 animate-float" style="animation-delay: 1.5s;"></i>
+                        <i class="fa-solid fa-star text-brand-yellow/30 text-base absolute top-16 right-1/4 animate-float" style="animation-delay: 3s;"></i>
+                        <i class="fa-solid fa-star text-brand-yellow/50 text-xs absolute bottom-16 right-1/6 animate-float" style="animation-delay: 2s;"></i>
                     </div>
 
                     <!-- Lapisan Isi -->
@@ -739,7 +753,7 @@
                         <!-- Kolom Kiri: Teks dan Tombol -->
                         <div class="lg:col-span-7 text-center lg:text-left py-2 lg:py-10">
                             <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white mb-4 leading-tight">Lihat Langsung Suasana Kampus</h2>
-                            <p class="text-base lg:text-lg text-white/80 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">Jadwalkan kunjungan dan berkeliling sekolah bersama tim sekolah.</p>
+                            <p class="text-sm sm:text-base lg:text-lg text-white/80 font-medium leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">Jadwalkan kunjungan dan berkeliling sekolah bersama tim sekolah.</p>
                             
                             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                                 <a href="school-visit.html" class="inline-flex justify-center items-center gap-2 bg-brand-yellow text-brand-primary font-bold px-7 py-3.5 sm:py-4 rounded-xl shadow-md hover:bg-white transition-all transform hover:-translate-y-1 text-sm font-sans">
@@ -754,7 +768,7 @@
                         <!-- Kolom Kanan: Karakter 3D -->
                         <div class="lg:col-span-5 relative flex items-end justify-center pt-4 lg:pt-0">
                             <div class="relative w-full max-w-xs sm:max-w-sm lg:max-w-none flex items-end justify-center lg:-mt-16 xl:-mt-24">
-                                <img src="assets/images/karakter-3d-hero-index.webp" alt="Guru dan Murid Sedaya Bintang" class="relative z-10 w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[440px] object-contain drop-shadow-2xl" width="1400" height="1200" loading="lazy" decoding="async">
+                                <img src="assets/images/karakter-3d-hero-index.webp" alt="Guru dan Murid Sedaya Bintang" class="relative z-10 w-full max-h-[300px] sm:max-h-[360px] lg:max-h-[440px] object-contain drop-shadow-2xl">
                             </div>
                         </div>
 
@@ -772,7 +786,7 @@
     <div id="confetti-container"></div>
 
     <!-- 3D POP-UP MODAL (PORTRAIT, EXTERNAL GLOW, CLICK OUTSIDE TO CLOSE) -->
-    <div id="story-modal" class="modal-backdrop fixed inset-0 flex items-center justify-center p-4 sm:p-6 z-[100]" data-aksi="handleBackdropClick">
+    <div id="story-modal" class="modal-backdrop fixed inset-0 flex items-center justify-center p-4 sm:p-6 z-[100]" onclick="handleBackdropClick(event)">
         
         <div class="modal-3d-wrapper flex items-center justify-center w-full max-w-4xl relative">
             
@@ -783,7 +797,7 @@
             <div id="modal-card" class="modal-card bg-white rounded-[2rem] flex flex-col md:flex-row w-full border border-white/20 p-2 sm:p-3 relative z-10">
                 
                 <!-- NEW PROMINENT CLOSE BUTTON (X) -->
-                <button data-aksi="closeModal" data-arg="paksa" aria-label="Tutup Dialog" class="absolute -top-4 -right-4 z-[60] w-12 h-12 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-all shadow-xl hover:scale-110 cursor-pointer">
+                <button onclick="closeModal(event, true)" aria-label="Tutup Dialog" class="absolute -top-4 -right-4 z-[60] w-12 h-12 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-brand-red hover:text-white hover:border-brand-red transition-all shadow-xl hover:scale-110 cursor-pointer">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
 
@@ -811,7 +825,7 @@
                     
                     <div class="bg-brand-gray rounded-2xl p-5 md:p-6 border border-gray-200 relative">
                         <i class="fa-solid fa-quote-left text-gray-300 text-3xl absolute top-4 left-4"></i>
-                        <p id="m-story" class="text-base text-gray-600 leading-relaxed font-medium relative z-10 pl-6 pt-2">
+                        <p id="m-story" class="text-sm md:text-base text-gray-600 leading-relaxed font-medium relative z-10 pl-6 pt-2">
                             "Cerita proses di balik pencapaian ini..."
                         </p>
                     </div>
