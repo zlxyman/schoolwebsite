@@ -2,6 +2,11 @@
 
 Terakhir diperbarui: 15 November 2026. Branch kerja: `claude/busy-maxwell-o402pl` (belum digabung ke `main`).
 
+**Link preview:** https://claude-busy-maxwell-o402pl-schoolwebsite.marketing-caf.workers.dev
+Alamat ini selalu menampilkan versi terbaru branch kerja. Alamat `schoolwebsite.marketing-caf.workers.dev` adalah versi utama (`main`), jadi isinya masih versi lama sampai Pull Request digabung.
+
+Preview dibuat oleh Cloudflare Workers lewat file `wrangler.jsonc`. Blok `"previews": {}` di file itu wajib ada. Tanpa blok itu, build preview gagal.
+
 Laporan ini ditulis untuk pemilik website. Istilah teknis dijelaskan seperlunya.
 
 ## 1. Status singkat
@@ -100,7 +105,6 @@ Klaim yang **saya pertahankan** karena sudah ada di halaman lain yang direvisi: 
 ## 7. Yang belum bisa dipastikan
 
 - **Peta Google** tidak bisa dimuat di tempat saya bekerja karena akses ke Google diblokir. Kodenya tidak diubah, tetapi perlu dicek di HP asli.
-- **Link preview Cloudflare Pages**: saya tidak tahu nama project Cloudflare-nya, jadi tidak bisa menulis alamatnya. Bentuknya `claude-busy-maxwell-o402pl.<nama-project>.pages.dev`. Alamat pastinya muncul di GitHub, di tanda centang pada commit terakhir branch ini.
 - **Data terstruktur (JSON-LD)** di `kampus-bandung.html` ditulis langsung di halaman. Ini pengecualian yang wajar karena isinya data, bukan skrip yang dijalankan.
 - Pemeriksaan baru di lebar HP 375px, sesuai permintaan hemat. Tablet dan desktop belum dipotret ulang untuk tiga halaman ini.
 
