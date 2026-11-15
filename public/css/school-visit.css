@@ -35,7 +35,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: 0 10px 20px -5px rgba(29, 68, 134, 0.15);
 }
 
-.select-card.active {
+.select-card.active,
+.select-card:has(input:checked) {
     border-color: #1d4486;
     background-color: #1d4486;
     color: #ffffff;
@@ -45,11 +46,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .select-card.active .text-brand-primary,
 .select-card.active .text-gray-500,
-.select-card.active .text-gray-400 {
+.select-card.active .text-gray-400,
+.select-card:has(input:checked) .text-brand-primary,
+.select-card:has(input:checked) .text-gray-600 {
     color: #ffffff !important;
 }
 
-.select-card.active .text-brand-yellow {
+.select-card.active .text-brand-yellow,
+.select-card:has(input:checked) .text-brand-yellow {
     color: #ffcb05 !important;
     text-shadow: 0 0 10px rgba(255, 203, 5, 0.5);
 }
@@ -72,7 +76,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 14px;
 }
 
-.select-card.active .check-icon {
+.select-card.active .check-icon,
+.select-card:has(input:checked) .check-icon {
     opacity: 1;
     transform: scale(1);
 }
@@ -92,7 +97,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #20b858;
+    background-color: #065f46;
     z-index: -1;
     transform: scaleY(0);
     transform-origin: bottom;
@@ -106,4 +111,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .btn-wa-fill:hover::before {
     transform: scaleY(1);
+}
+
+/* Kartu pilihan sesi: cincin fokus saat dipilih lewat keyboard */
+.select-card:has(input:focus-visible) {
+    outline: 3px solid #1d4486;
+    outline-offset: 2px;
 }

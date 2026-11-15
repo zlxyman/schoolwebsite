@@ -41,7 +41,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, #20b858, #128c7e);
+    background: #065f46;
     z-index: -1;
     transform: scaleY(0);
     transform-origin: bottom;

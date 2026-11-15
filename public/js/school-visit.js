@@ -1,128 +1,53 @@
-/**
- * ==========================================================================
- * JS KHUSUS: SCHOOL VISIT - SEKOLAH TERPADU SEDAYA BINTANG
- * Arsitektur: Modular Page-Specific Script (Clean & Encapsulated)
- * Menangani pemilihan kartu tanggal, sesi waktu, validasi input, dan integrasi WhatsApp.
- * ==========================================================================
+/*
+ * Halaman School Visit: formulir permintaan jadwal kunjungan.
+ * Data tidak disimpan di website. Isinya disusun menjadi pesan lalu dibuka di WhatsApp admisi.
  */
-
-// Global function agar bisa dipanggil via onclick="selectCard(this, 'date', '...')"
-window.selectCard = function(element, type, value) {
-    if (element.classList.contains('disabled')) return;
-
-    // Hapus status active dari semua kartu dengan tipe yang sama
-    const siblings = document.querySelectorAll(`.${type}-card`);
-    siblings.forEach(el => el.classList.remove('active'));
-
-    // Tambahkan status active ke kartu yang diklik
-    element.classList.add('active');
-
-    // Masukkan nilai ke hidden input
-    const inputTarget = document.getElementById(`v-${type}`);
-    if (inputTarget) {
-        inputTarget.value = value;
-    }
-
-    // Sembunyikan pesan peringatan jika sebelumnya muncul
-    const errorTarget = document.getElementById(`error-${type}`);
-    if (errorTarget) {
-        errorTarget.classList.add('hidden');
-    }
-};
-
-// Global function submit WhatsApp agar kompatibel dengan onsubmit="sendVisitToWhatsApp(event)"
-window.sendVisitToWhatsApp = function(e) {
-    if (e && e.preventDefault) e.preventDefault();
-
-    // Validasi input kartu tanggal & sesi waktu
-    const dateInput = document.getElementById('v-date');
-    const timeInput = document.getElementById('v-time');
-    const dateValue = dateInput ? dateInput.value : '';
-    const timeValue = timeInput ? timeInput.value : '';
-    let isValid = true;
-
-    const errorDate = document.getElementById('error-date');
-    const errorTime = document.getElementById('error-time');
-
-    if (!dateValue) {
-        if (errorDate) errorDate.classList.remove('hidden');
-        isValid = false;
-    } else {
-        if (errorDate) errorDate.classList.add('hidden');
-    }
-
-    if (!timeValue) {
-        if (errorTime) errorTime.classList.remove('hidden');
-        isValid = false;
-    } else {
-        if (errorTime) errorTime.classList.add('hidden');
-    }
-
-    if (!isValid) {
-        const firstError = !dateValue ? errorDate : errorTime;
-        if (firstError) {
-            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        return false;
-    }
-
-    // Ambil data formulir
-    const parentName = document.getElementById('v-parent')?.value.trim() || '';
-    const childName = document.getElementById('v-child')?.value.trim() || '';
-    const dob = document.getElementById('v-dob')?.value || '';
-    const grade = document.getElementById('v-grade')?.value || '';
-    const phone = document.getElementById('v-phone')?.value.trim() || '';
-
-    // Format tanggal lahir ananda (DD/MM/YYYY)
-    let formattedDob = "-";
-    if (dob) {
-        const dateParts = dob.split('-');
-        if (dateParts.length === 3) {
-            formattedDob = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
-        }
-    }
-
-    // Nomor WhatsApp Resmi Tim Admisi Sedaya Bintang
-    const waNumber = "6281389772288";
-
-    // Format pesan ramah dan profesional
-    let waMessage = `Halo Tim Admisi Sedaya Bintang,\n\n`;
-    waMessage += `Saya ingin mengonfirmasi jadwal reservasi *School Visit* dengan rincian berikut:\n\n`;
-    waMessage += `*JADWAL KUNJUNGAN:*\n`;
-    waMessage += `📅 Tanggal : ${dateValue}\n`;
-    waMessage += `⏰ Sesi Waktu : ${timeValue}\n\n`;
-    waMessage += `*DATA PENGUNJUNG:*\n`;
-    waMessage += `👤 Nama Orang Tua : ${parentName}\n`;
-    waMessage += `📱 Nomor WA : ${phone}\n`;
-    waMessage += `👦/👧 Nama Ananda : ${childName}\n`;
-    waMessage += `🎂 Tanggal Lahir : ${formattedDob}\n`;
-    waMessage += `🎓 Minat Jenjang : ${grade}\n\n`;
-    waMessage += `Mohon konfirmasi ketersediaan kuota untuk jadwal tersebut. Terima kasih!`;
-
-    // Encode URL & Buka Tab Baru
-    const encodedMessage = encodeURIComponent(waMessage);
-    const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
-    window.open(waUrl, '_blank');
-    return false;
-};
-
-// Inisialisasi saat DOM siap
 document.addEventListener('DOMContentLoaded', () => {
-    // Validasi visual warna teks tanggal lahir
-    const dobInput = document.getElementById('v-dob');
-    if (dobInput) {
-        dobInput.addEventListener('change', function() {
-            if (this.value) {
-                this.classList.remove('text-gray-500');
-                this.classList.add('text-gray-800');
-            } else {
-                this.classList.remove('text-gray-800');
-                this.classList.add('text-gray-500');
-            }
-        });
+    const form = document.getElementById('visit-form');
+    if (!form) return;
 
-        // Batasi tanggal lahir hanya sampai hari ini (tidak bisa masa depan)
-        const today = new Date().toISOString().split('T')[0];
-        dobInput.setAttribute('max', today);
+    const isoLokal = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const hariIni = new Date();
+
+    // Tanggal lahir tidak boleh di masa depan
+    const dob = document.getElementById('v-dob');
+    if (dob) dob.max = isoLokal(hariIni);
+
+    // Tanggal kunjungan paling cepat besok
+    const tgl = document.getElementById('v-date');
+    if (tgl) {
+        const besok = new Date(hariIni); besok.setDate(besok.getDate() + 1);
+        tgl.min = isoLokal(besok);
     }
+
+    const tanggalPanjang = (iso) => {
+        const [th, bl, tg] = iso.split('-').map(Number);
+        return new Date(th, bl - 1, tg).toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    };
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nilai = (id) => (document.getElementById(id)?.value || '').trim();
+        const sesi = form.querySelector('input[name="sesi"]:checked');
+        const [th, bl, tg] = nilai('v-dob').split('-');
+        const pesan =
+`Halo Tim Admisi Sedaya Bintang,
+
+Saya ingin menjadwalkan School Visit:
+
+• Tanggal: ${tanggalPanjang(nilai('v-date'))}
+• Sesi: ${sesi ? sesi.value : '-'}
+
+• Nama orang tua: ${nilai('v-parent')}
+• Nomor WhatsApp: ${nilai('v-phone')}
+• Nama calon murid: ${nilai('v-child')}
+• Tanggal lahir: ${tg}/${bl}/${th}
+• Jenjang: ${nilai('v-grade')}
+
+Mohon konfirmasi jadwalnya. Terima kasih.`;
+
+        window.bukaWhatsApp(pesan);
+        const status = document.getElementById('visit-status');
+        if (status) status.textContent = 'WhatsApp sedang dibuka. Tekan kirim di WhatsApp supaya pesan sampai ke tim admisi.';
+    });
 });
