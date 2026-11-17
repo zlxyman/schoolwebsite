@@ -48,6 +48,10 @@ Cek setiap teks terhadap daftar ini. Kalau ketemu, ganti dengan kata sehari-hari
 - "Penutur asli". Tulis "guru native".
 - Nama aplikasi "Quintal". Tulis "Learning Management System (LMS)" atau "LMS".
 - Nama "RS Santo Borromeus" cukup di halaman Kampus Bandung (akses sekitar). Di tempat lain tulis "rumah sakit ternama".
+- "Keringanan biaya" (terkesan murah). Tulis "Program Siblings": "Program khusus untuk kakak-adik dalam satu Kartu Keluarga."
+- "Guru pendamping". Tulis "guru kelas" (contoh: "1 Guru Native + 2 Guru Kelas").
+- "Hotline". Kontak utama marketing: WhatsApp 0813 8977 2288.
+- Ajakan isi/kirim formulir langsung. Semua pendaftaran lewat tim admisi dulu: tulis "Kirim via WhatsApp" atau "Info Pendaftaran".
 
 **Kata sifat**: holistik, komprehensif, maksimal, inovatif, transformatif, revolusioner,
 berkualitas tinggi, kelas dunia, world-class, cemerlang, gemilang,
