@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Define Slides Data inside the function or globally
         const slides = [
-            { title: "Pembentukan Karakter Melalui Pendidikan Budi Pekerti", img: "assets/images/hero-sekolah-utama.jpg", desc: "Sekolah Terpadu Sedaya Bintang menekankan pendidikan karakter berlandaskan Di Zi Gui dan 10 Nilai Moral, penguasaan trilingual, dan daya berpikir kritis melalui STEAM." },
+            { title: "Budi Pekerti Sejak Usia Dini", img: "assets/images/hero-sekolah-utama.jpg", desc: "Menanamkan Budi Pekerti, tiga bahasa, dan cara berpikir kritis." },
             { title: "Lingkungan Belajar yang Menyenangkan", img: "assets/images/lingkungan-belajar-menyenangkan.jpg", desc: "Fasilitas modern yang dirancang khusus untuk merangsang kreativitas dan minat belajar anak. Ruang kelas interaktif memastikan setiap murid mendapatkan perhatian optimal." },
             { title: "Kolaborasi dan Inovasi Sejak Dini", img: "assets/images/murid-kolaborasi-kelas.jpg", desc: "Melalui kurikulum STEAM, murid kami dilatih untuk memecahkan masalah, bekerja sama dalam tim, dan berinovasi menciptakan solusi untuk masa depan." }
         ];
@@ -628,12 +628,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Bapak Kepala Sekolah",
-            role: "Head of Primary School",
-            level: "Primary School (SD)",
+            role: "Kepala Sekolah SD",
+            level: "SD",
             age: "Usia 6 – 12 Tahun",
-            kicker: "Sambutan · Jenjang SD",
-            quote: '"Cerdas Bernalar, Kokoh Berkarakter"',
-            p1: "Kami membimbing murid mengasah daya nalar kritis dan kreativitas belajar, berlandaskan nilai moral yang kuat untuk menyongsong masa depan dunia global.",
+            kicker: "Sambutan Kepala Sekolah SD",
+            quote: '"Berpikir Kritis, Berbudi Pekerti"',
+            p1: "Kami membimbing murid untuk berbudi pekerti, dapat berkomunikasi, dan berpikir kritis.",
             img: "assets/images/guru-sedaya-bintang.jpg"
         }
     ];
@@ -805,17 +805,17 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 title: "Guru Bimbingan & Konseling (BK)",
                 type: "Full-Time", location: "Bandung", icon: "fa-hand-holding-heart",
-                desc: "Memberikan bimbingan psikologis, akademik, dan karir kepada murid, serta berkolaborasi dengan orang tua untuk perkembangan holistik murid.",
-                req: ["Minimal S1 Bimbingan dan Konseling / Psikologi.", "Memiliki empati tinggi dan kemampuan komunikasi persuasif.", "Berpengalaman dalam menangani remaja.", "Memahami pendekatan konseling pendidikan modern."]
+                desc: "Memberikan bimbingan psikologis, akademik, dan karir kepada murid, serta berkolaborasi dengan orang tua untuk perkembangan murid.",
+                req: ["Minimal S1 Bimbingan dan Konseling / Psikologi.", "Memiliki empati tinggi dan kemampuan komunikasi persuasif.", "Berpengalaman dalam menangani remaja.", "Memahami pendekatan konseling pendidikan terkini."]
             },
             {
                 title: "Guru IPA / Sains Terpadu (SD)",
                 type: "Full-Time", location: "Bandung", icon: "fa-flask",
                 desc: "Mengajar sains dengan pendekatan eksperimen praktis (Hands-on Learning) dan memfasilitasi keingintahuan alami murid.",
-                req: ["Minimal S1 Pendidikan IPA / Sains.", "Mampu merancang eksperimen aman untuk usia SD.", "Kreatif, enerjik, dan menyukai dunia anak-anak.", "Bersedia mengajar lintas disiplin (STEM)."]
+                req: ["Minimal S1 Pendidikan IPA / Sains.", "Mampu merancang eksperimen aman untuk usia SD.", "Kreatif, enerjik, dan menyukai dunia anak-anak.", "Bersedia mengajar lintas disiplin (STEAM)."]
             },
             {
-                title: "Teacher Assistant (KB-TK)",
+                title: "Teacher Assistant (KB dan TK)",
                 type: "Full-Time", location: "Bandung", icon: "fa-child-reaching",
                 desc: "Mendampingi Guru Utama dalam kegiatan belajar mengajar, menyiapkan material kelas, dan mengobservasi perkembangan motorik anak.",
                 req: ["Minimal S1 PGPAUD atau Psikologi Anak.", "Menyukai dunia anak usia dini dan sabar.", "Mampu berbahasa Inggris dasar.", "Aktif, cekatan, dan memiliki inisiatif tinggi."]
@@ -833,7 +833,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 title: "IT Support & Infrastructure",
                 type: "Full-Time", location: "Bandung", icon: "fa-server",
-                desc: "Pemeliharaan infrastruktur teknologi informasi dan portal Quintal.",
+                desc: "Pemeliharaan infrastruktur teknologi informasi dan LMS sekolah.",
                 req: ["Minimal D3 Teknik Informatika / Sistem Informasi.", "Menguasai troubleshooting hardware, OS, dan jaringan LAN/WiFi.", "Responsif terhadap keluhan teknis staf dan guru.", "Memiliki pengetahuan dasar tentang keamanan siber."]
             },
             {
@@ -852,7 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "Graphic & UI/UX Designer",
                 type: "Full-Time", location: "Bandung", icon: "fa-bezier-curve",
                 desc: "Merancang materi komunikasi visual sekolah.",
-                req: ["Minimal S1 Desain Komunikasi Visual (DKV).", "Mahir menggunakan Adobe Creative Suite, Figma, dan tools desain modern.", "Memiliki portofolio desain yang kuat (sertakan link).", "Kreatif, update terhadap tren desain visual edukasi."]
+                req: ["Minimal S1 Desain Komunikasi Visual (DKV).", "Mahir menggunakan Adobe Creative Suite, Figma, dan tools desain terkini.", "Memiliki portofolio desain yang kuat (sertakan link).", "Kreatif, update terhadap tren desain visual edukasi."]
             }
         ];
 
@@ -901,7 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <!-- Sticky Button Apply -->
                                     <div class="absolute bottom-0 right-0 left-0 md:static md:col-span-2 flex justify-end mt-4 pt-4 md:pt-6 md:border-t border-gray-200/60 sticky-footer-area">
                                         <button class="w-full md:w-auto bg-brand-primary text-white font-bold px-8 py-3 rounded-full hover:bg-[#15346b] transition-colors shadow-md text-sm">
-                                            Apply Now
+                                            Lamar Sekarang
                                         </button>
                                     </div>
                                 </div>

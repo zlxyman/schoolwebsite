@@ -97,5 +97,5 @@ Mohon informasi lebih lanjut mengenai ketersediaan kuota dan tahapan pendaftaran
     }
 
     // Buka WhatsApp di tab / aplikasi baru
-    window.open(waUrl, '_blank');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
 }

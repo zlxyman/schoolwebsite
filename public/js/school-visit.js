@@ -102,7 +102,7 @@ window.sendVisitToWhatsApp = function(e) {
     // Encode URL & Buka Tab Baru
     const encodedMessage = encodeURIComponent(waMessage);
     const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
-    window.open(waUrl, '_blank');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
     return false;
 };
 
