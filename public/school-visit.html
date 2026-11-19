@@ -43,8 +43,8 @@
                     <span class="inline-block py-1.5 px-4 rounded-xl bg-white border border-gray-200 text-brand-primary text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
                         <i class="fa-regular fa-calendar-check mr-1 text-brand-yellow"></i> Reservasi Kunjungan
                     </span>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-primary mb-4 leading-tight">Melihat Langsung<br class="hidden sm:block"> Adalah Mempercayai.</h1>
-                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Jelajahi fasilitas eksklusif kami, diskusikan masa depan pendidikan si kecil, dan rasakan langsung lingkungan belajar yang suportif di Sedaya Bintang.</p>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-primary mb-4 leading-tight">Lihat Langsung<br class="hidden sm:block"> Sekolah Kami.</h1>
+                    <p class="text-sm sm:text-base text-gray-600 font-medium leading-relaxed">Cari tahu fasilitas dan suasana belajar si kecil.</p>
                 </div>
 
                 <!-- The Split Screen Layout -->
@@ -58,7 +58,7 @@
                             <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
                             <div class="absolute top-8 right-8 text-6xl text-white/5"><i class="fa-solid fa-map-location-dot"></i></div>
                             
-                            <h3 class="text-xl font-bold mb-6 relative z-10">Agenda Kunjungan Anda</h3>
+                            <h3 class="text-xl font-bold mb-6 relative z-10">Agenda Kunjungan</h3>
                             
                             <div class="space-y-6 relative z-10">
                                 <div class="flex gap-4">
@@ -66,8 +66,8 @@
                                         <i class="fa-solid fa-building-flag"></i>
                                     </div>
                                     <div>
-                                        <h4 class="font-bold text-sm mb-1 text-white">Tur Fasilitas Eksklusif</h4>
-                                        <p class="text-xs text-gray-300 leading-relaxed">Mengunjungi Spacelab, Roof Garden, dan area bermain (Playground) dengan panduan staf kami.</p>
+                                        <h4 class="font-bold text-sm mb-1 text-white">Tur Fasilitas</h4>
+                                        <p class="text-xs text-gray-300 leading-relaxed">Melihat Spacelab, Roof Garden, dan Playground bersama staf kami.</p>
                                     </div>
                                 </div>
                                 
@@ -77,7 +77,7 @@
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-sm mb-1 text-white">Konsultasi Akademik</h4>
-                                        <p class="text-xs text-gray-300 leading-relaxed">Diskusi tatap muka mengenai penerapan Budi Pekerti, Trilingual, dan kerangka STEAM.</p>
+                                        <p class="text-xs text-gray-300 leading-relaxed">Diskusi langsung tentang Budi Pekerti, Trilingual, dan STEAM.</p>
                                     </div>
                                 </div>
 
@@ -87,7 +87,7 @@
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-sm mb-1 text-white">Observasi Suasana</h4>
-                                        <p class="text-xs text-gray-300 leading-relaxed">Merasakan langsung sirkulasi udara alami dan lingkungan belajar yang dirancang khusus.</p>
+                                        <p class="text-xs text-gray-300 leading-relaxed">Merasakan langsung suasana belajar di sekolah.</p>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                             <div class="mt-8 pt-6 border-t border-white/20 relative z-10">
                                 <p class="text-[10px] text-gray-300 font-medium">
                                     <i class="fa-solid fa-circle-info text-brand-yellow mr-1"></i>
-                                    Demi kenyamanan dan keamanan, sesi kunjungan dibatasi menjadi 4 tanggal per bulan dengan kuota terbatas.
+                                    Kunjungan dibuka 4 kali sebulan dengan kuota terbatas.
                                 </p>
                             </div>
                         </div>
@@ -105,8 +105,8 @@
                     <!-- RIGHT COLUMN: The Booking Interface (Card System) -->
                     <div class="w-full lg:w-8/12">
                         <div class="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-xl relative z-10">
-                            <h2 class="text-2xl font-extrabold text-brand-primary mb-2">Formulir Reservasi</h2>
-                            <p class="text-sm text-gray-500 mb-8 font-medium">Pilih jadwal kunjungan kampus yang tersedia di bulan ini.</p>
+                            <h2 class="text-2xl font-extrabold text-brand-primary mb-2">Pilih Jadwal Kunjungan</h2>
+                            <p class="text-sm text-gray-500 mb-8 font-medium">Jadwal yang tersedia bulan ini.</p>
                             
                             <form id="visit-form" onsubmit="sendVisitToWhatsApp(event)" class="space-y-8">
                                 
@@ -130,7 +130,7 @@
                                         <div>
                                             <div class="relative">
                                                 <input type="date" id="v-dob" required class="input-field w-full px-4 py-3 rounded-lg sm:rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:border-brand-primary text-sm text-gray-800 cursor-pointer text-gray-500">
-                                                <p class="text-[10px] text-gray-400 mt-1 absolute -bottom-4 left-1">*Tanggal Lahir Ananda</p>
+                                                <p class="text-[10px] text-gray-400 mt-1 absolute -bottom-4 left-1">*Tanggal Lahir Anak</p>
                                             </div>
                                         </div>
                                         <div>
@@ -194,7 +194,7 @@
                                         </div>
                                     </div>
                                     <input type="hidden" id="v-date" required>
-                                    <p id="error-date" class="text-[10px] text-brand-red hidden">Mohon pilih salah satu tanggal kunjungan di atas.</p>
+                                    <p id="error-date" class="text-[10px] text-brand-red hidden">Pilih salah satu tanggal.</p>
                                 </div>
 
                                 <!-- STEP 3: Sesi Waktu -->
@@ -226,7 +226,7 @@
                                         </div>
                                     </div>
                                     <input type="hidden" id="v-time" required>
-                                    <p id="error-time" class="text-[10px] text-brand-red hidden">Mohon pilih salah satu sesi waktu di atas.</p>
+                                    <p id="error-time" class="text-[10px] text-brand-red hidden">Pilih salah satu sesi.</p>
                                 </div>
                                 
                                 <!-- Submit Button -->
@@ -235,7 +235,7 @@
                                         Konfirmasi Jadwal via WhatsApp <i class="fa-brands fa-whatsapp text-xl group-hover:scale-110 transition-transform ml-1"></i>
                                     </button>
                                     <p class="text-[10px] text-center text-gray-400 mt-3 font-medium px-4">
-                                        Tim Admisi kami akan memverifikasi ketersediaan kuota pada sesi yang Anda pilih dan membalas pesan Anda.
+                                        Tim Admisi akan mengecek kuota dan membalas pesan Anda.
                                     </p>
                                 </div>
                             </form>
@@ -251,7 +251,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10">
                     <h2 class="text-2xl font-extrabold text-brand-primary mb-2">Panduan Kedatangan</h2>
-                    <p class="text-sm text-gray-500 font-medium">Berada di dalam kawasan terintegrasi Summarecon Bandung.</p>
+                    <p class="text-sm text-gray-500 font-medium">Berada di Summarecon Bandung.</p>
                 </div>
                 
                 <div class="bg-brand-gray rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 border border-gray-100 flex flex-col md:flex-row gap-6 items-center shadow-sm">
