@@ -335,7 +335,7 @@ function easyItem(href, ikon, warna, judul, ket, luar) {
 
 const easyTouchTemplate = `
     <div id="easy-touch-backdrop" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-[90] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-    <div id="easy-touch-wrapper" class="easy-touch-wrapper fixed bottom-4 right-4 md:bottom-7 md:right-7 z-[95] flex flex-col items-end transition-opacity duration-300">
+    <div id="easy-touch-wrapper" class="easy-touch-wrapper fixed bottom-4 right-4 md:bottom-7 md:right-7 z-[95] flex flex-col items-end pointer-events-none transition-opacity duration-300">
 
         <div id="easy-touch-menu" inert class="iphone-glass-dock rounded-3xl p-4 mb-3 w-[min(340px,calc(100vw-2rem))] opacity-0 translate-y-6 scale-95 pointer-events-none transition duration-300 origin-bottom-right shadow-2xl">
             <p class="text-sm font-extrabold text-brand-primary pb-3 mb-3 border-b border-white/60">Akses Cepat</p>
@@ -348,7 +348,7 @@ const easyTouchTemplate = `
             </div>
         </div>
 
-        <button type="button" id="easy-touch-btn" aria-label="Buka akses cepat" aria-expanded="false" aria-controls="easy-touch-menu" class="iphone-glass-pill flex items-center gap-3 w-14 h-14 md:w-auto md:h-auto md:py-2.5 md:pl-2.5 md:pr-5 justify-center rounded-full text-brand-primary font-bold cursor-pointer">
+        <button type="button" id="easy-touch-btn" aria-label="Buka akses cepat" aria-expanded="false" aria-controls="easy-touch-menu" class="iphone-glass-pill pointer-events-auto flex items-center gap-3 w-14 h-14 md:w-auto md:h-auto md:py-2.5 md:pl-2.5 md:pr-5 justify-center rounded-full text-brand-primary font-bold cursor-pointer">
             <span class="w-10 h-10 rounded-full bg-brand-primary text-white flex items-center justify-center shadow-md shrink-0">
                 <i id="easy-touch-icon" class="fa-solid fa-headset text-base" aria-hidden="true"></i>
             </span>
@@ -474,6 +474,7 @@ function initEasyTouch() {
         easyMenu.classList.toggle('translate-y-6', !buka);
         easyMenu.classList.toggle('scale-95', !buka);
         easyMenu.classList.toggle('pointer-events-none', !buka);
+        easyMenu.classList.toggle('pointer-events-auto', buka);
         easyMenu.toggleAttribute('inert', !buka);
         easyBtn.setAttribute('aria-expanded', String(buka));
         easyBtn.setAttribute('aria-label', buka ? 'Tutup akses cepat' : 'Buka akses cepat');
@@ -491,11 +492,6 @@ function initEasyTouch() {
         if (e.key === 'Escape' && terbuka) { setel(false); easyBtn.focus(); }
     });
     easyMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setel(false)));
-
-    // Saat pengunjung mengisi formulir, tombol disembunyikan supaya tidak menutupi kolom dan tombol kirim
-    const kolom = 'input, select, textarea';
-    document.addEventListener('focusin', (e) => { if (e.target.matches && e.target.matches(kolom)) wrapper.classList.add('tersembunyi'); });
-    document.addEventListener('focusout', (e) => { if (e.target.matches && e.target.matches(kolom)) wrapper.classList.remove('tersembunyi'); });
 }
 
 // Jalankan Injeksi secara sinkron langsung ketika file ini dipanggil!
